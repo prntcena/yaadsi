@@ -1,0 +1,22 @@
+{
+  "id": "https-github-com-usrbinkat-obelisk",
+  "hash": "d8d84793164ca1a9",
+  "learnable": true,
+  "title": "Obelisk RAG Chatbot for MkDocs Docs",
+  "summary": "Teaches how Obelisk builds a RAG chatbot over MkDocs docs with document indexing, vector embeddings via ChromaDB, local LLM support via Ollama, and an OpenAI-compatible API with CLI and Docker deployment.",
+  "topics": [
+    "Retrieval-Augmented Generation",
+    "AI infrastructure",
+    "Developer tools"
+  ],
+  "concepts": [
+    "RAG pipeline",
+    "Vector storage with ChromaDB",
+    "Ollama integration for generation and embeddings",
+    "OpenAI-compatible API",
+    "Real-time document monitoring"
+  ],
+  "difficulty": 3,
+  "minutes": 25,
+  "has_diagram": false
+}

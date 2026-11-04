@@ -1,0 +1,216 @@
+{
+  "topic": "Design, Content Creation & Marketing",
+  "built_at": "2026-11-04T10:36:51",
+  "seconds": 20,
+  "saves_read": 22,
+  "focus": 5,
+  "core_ideas": [
+    {
+      "idea": "One AI design tool can replace a patchwork of apps for graphics",
+      "why": "Kittl bundles AI generation, customizable templates, text effects, and mockups so you don't jump between Canva, Photoshop and mockup generators",
+      "trade_off": "You still need to learn a new interface and AI can make designs look generic if you don't customize them",
+      "saves": [
+        "DPbgEw8CBgv"
+      ]
+    },
+    {
+      "idea": "You can now edit video by typing prompts instead of dragging on a timeline",
+      "why": "13 tools in one list and 12 in another let you type chat commands for cuts, silence removal and refinements instead of learning DaVinci, iMovie or CapCut",
+      "trade_off": "Prompt editing is faster for beginners but gives less frame-perfect control than manual timeline editing",
+      "saves": [
+        "DQr2EaKDDFn",
+        "DRcqa3UkTuo"
+      ]
+    },
+    {
+      "idea": "New editing primitives like avatar cloning, text-to-video and transcript editing are the building blocks",
+      "why": "Instead of just trimming clips, you can generate an avatar presenter, turn text into video, or edit by editing the transcript",
+      "trade_off": "Avatars and auto-generated footage can feel less authentic and may need disclosure or extra polishing",
+      "saves": [
+        "DQr2EaKDDFn",
+        "DRcqa3UkTuo"
+      ]
+    },
+    {
+      "idea": "The first 3 seconds win or lose the viewer, so use ready-made hook templates",
+      "why": "50 fill-in-the-blank storytelling hooks are designed to stop scrolling and boost engagement on Instagram and short-form video",
+      "trade_off": "Hooks only work if the rest of the story delivers; clickbaity openers hurt trust if you don't follow through",
+      "saves": [
+        "DSNmIOgAYQ2"
+      ]
+    },
+    {
+      "idea": "Storytelling is a learnable system you can improve in minutes, not just talent",
+      "why": "The 9-minute guide breaks engaging storytelling into practical tips you can apply to any video or post right away",
+      "trade_off": "Quick tips give you a start but still need practice and feedback to sound natural on camera",
+      "saves": [
+        "DUWMqQfCMCb"
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "a": "DQr2EaKDDFn",
+      "b": "DRcqa3UkTuo",
+      "reason": "Both curate the same 12-13 AI video editors that replace DaVinci/iMovie/CapCut with typing",
+      "cross_topic": false
+    },
+    {
+      "a": "DPbgEw8CBgv",
+      "b": "DQr2EaKDDFn",
+      "reason": "Both show AI replacing traditional creative software — Kittl for design, chat tools for video editing",
+      "cross_topic": false
+    },
+    {
+      "a": "DPbgEw8CBgv",
+      "b": "DONQZcYE90_",
+      "reason": "Kittl shows all-in-one design control while Veo 3 comparison shows JSON vs natural prompts for precise video control",
+      "cross_topic": true
+    },
+    {
+      "a": "DQr2EaKDDFn",
+      "b": "DONQZcYE90_",
+      "reason": "Both turn text prompts into video — one edits existing footage by chatting, one generates seamless transitions in Veo 3",
+      "cross_topic": true
+    },
+    {
+      "a": "DRcqa3UkTuo",
+      "b": "DONQZcYE90_",
+      "reason": "Typing to edit video extends to typing JSON to direct cinematic style, lighting and cuts in Veo 3",
+      "cross_topic": true
+    },
+    {
+      "a": "DSNmIOgAYQ2",
+      "b": "DUWMqQfCMCb",
+      "reason": "Hooks get attention in 3 seconds, the 9-minute framework keeps people watching after the hook",
+      "cross_topic": false
+    },
+    {
+      "a": "DUWMqQfCMCb",
+      "b": "DQr2EaKDDFn",
+      "reason": "When AI handles tedious cuts and auto-edits, you free up time to focus on story structure",
+      "cross_topic": false
+    },
+    {
+      "a": "DSNmIOgAYQ2",
+      "b": "DONQZcYE90_",
+      "reason": "A strong fill-in-the-blank hook plus precise Veo 3 prompting turns a concept into a finished viral clip fast",
+      "cross_topic": true
+    }
+  ],
+  "disagreements": [],
+  "gaps": [
+    {
+      "missing": "how to distribute and market after creation — thumbnails, posting times, algorithms, and analytics",
+      "why_it_matters": "Hooks and edits get views only if people see the content; you need a system to test what actually performs"
+    },
+    {
+      "missing": "hands-on workflow, pricing and limits for Kittl and the 12-13 AI video editors",
+      "why_it_matters": "Beginners need to know what’s free, what watermarks, and which tool to pick first without overwhelm"
+    },
+    {
+      "missing": "audio, voiceover and music for AI video — cleanup, captions, and licensing",
+      "why_it_matters": "Sound is half of retention and many AI editors upsell voice and music features"
+    },
+    {
+      "missing": "copyright, disclosure and brand consistency when using AI avatars and generated designs",
+      "why_it_matters": "Using avatars and AI mockups at scale can create trust and legal issues if not handled transparently"
+    }
+  ],
+  "learning_order": [
+    {
+      "id": "DUWMqQfCMCb",
+      "why_here": "Foundation: understand what makes any story engaging in under 9 minutes"
+    },
+    {
+      "id": "DSNmIOgAYQ2",
+      "why_here": "Apply story to the opening — practice 50 hook templates to stop the scroll in 3 seconds"
+    },
+    {
+      "id": "DPbgEw8CBgv",
+      "why_here": "Create visuals to support your story — learn Kittl for thumbnails, templates and mockups"
+    },
+    {
+      "id": "DQr2EaKDDFn",
+      "why_here": "Learn the new way to edit — overview of 13 prompt-based tools that replace timeline editing"
+    },
+    {
+      "id": "DRcqa3UkTuo",
+      "why_here": "Go deeper on the same idea with 12 typed-editing tools for avatars, transcript cuts and auto-refinements"
+    }
+  ],
+  "cards": {
+    "DUWMqQfCMCb": {
+      "id": "DUWMqQfCMCb",
+      "title": "Improve Your Storytelling in 9 Minutes",
+      "platform": "instagram-reel",
+      "url": "https://www.instagram.com/reel/DUWMqQfCMCb/",
+      "summary": "Teaches how to improve storytelling quickly using practical tips from a popular storytelling guide, focused on making stories more engaging.",
+      "note": "",
+      "minutes": 9,
+      "difficulty": 2,
+      "has_images": true,
+      "kept": true
+    },
+    "DONQZcYE90_": {
+      "id": "DONQZcYE90_",
+      "title": "JSON vs Natural Prompts for Veo 3 Video",
+      "platform": "instagram-reel",
+      "url": "https://www.instagram.com/reel/DONQZcYE90_/",
+      "summary": "Compares standard natural-language prompts and structured JSON prompts in Google Veo 3 to create the same seamless fashion video transition, showing how JSON prompting offers more precise control over cinematic style, lighting, and cuts.",
+      "note": "",
+      "minutes": 8,
+      "difficulty": 2,
+      "has_images": true,
+      "kept": true
+    },
+    "DPbgEw8CBgv": {
+      "id": "DPbgEw8CBgv",
+      "title": "Kittl as an All-in-One Canva Alternative",
+      "platform": "instagram-reel",
+      "url": "https://www.instagram.com/reel/DPbgEw8CBgv/",
+      "summary": "Introduces Kittl.com as a Canva replacement for graphic design, showing its AI generation, customizable templates, text effects, and mockup tools for creating designs.",
+      "note": "",
+      "minutes": 6,
+      "difficulty": 1,
+      "has_images": true,
+      "kept": true
+    },
+    "DRcqa3UkTuo": {
+      "id": "DRcqa3UkTuo",
+      "title": "12 AI Tools to Edit Video by Typing",
+      "platform": "instagram-post",
+      "url": "https://www.instagram.com/p/DRcqa3UkTuo/",
+      "summary": "Shows how AI replaces manual editing with text commands, curating 12 tools for avatar videos, text-to-video, transcript editing, auto-cuts, silence removal and chat-based video refinement.",
+      "note": "",
+      "minutes": 12,
+      "difficulty": 1,
+      "has_images": true,
+      "kept": true
+    },
+    "DQr2EaKDDFn": {
+      "id": "DQr2EaKDDFn",
+      "title": "Prompt-Based AI Video Editing Tools",
+      "platform": "instagram-post",
+      "url": "https://www.instagram.com/p/DQr2EaKDDFn/",
+      "summary": "Shows how to edit video by chatting with AI instead of timeline editing. Covers 13 tools for avatar cloning, text-to-video, transcript editing, auto-cuts, and chat commands as alternatives to DaVinci, iMovie, and CapCut.",
+      "note": "",
+      "minutes": 12,
+      "difficulty": 2,
+      "has_images": true,
+      "kept": true
+    },
+    "DSNmIOgAYQ2": {
+      "id": "DSNmIOgAYQ2",
+      "title": "50 Storytelling Hooks to Get Views",
+      "platform": "instagram-post",
+      "url": "https://www.instagram.com/p/DSNmIOgAYQ2/",
+      "summary": "Provides 50 fill-in-the-blank storytelling hook templates designed to grab attention in 3 seconds, stop scrolling, and increase engagement for Instagram and short-form content.",
+      "note": "",
+      "minutes": 10,
+      "difficulty": 1,
+      "has_images": true,
+      "kept": true
+    }
+  }
+}

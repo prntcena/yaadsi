@@ -1,0 +1,23 @@
+{
+  "id": "https-github-com-dvgodoy-finetuningllms",
+  "hash": "1f545a4aa0fdfb85",
+  "learnable": true,
+  "title": "Hands-On Guide to Fine-Tuning LLMs",
+  "summary": "Teaches how to fine-tune large language models using PyTorch and Hugging Face, covering quantization, LoRA adapters, dataset formatting, SFTTrainer, and local deployment.",
+  "topics": [
+    "LLMs",
+    "Fine-tuning",
+    "PyTorch"
+  ],
+  "concepts": [
+    "Quantization with bitsandbytes",
+    "Low-Rank Adaptation (LoRA)",
+    "PEFT",
+    "Dataset formatting and templates",
+    "SFTTrainer",
+    "Local deployment with Ollama"
+  ],
+  "difficulty": 3,
+  "minutes": 300,
+  "has_diagram": false
+}

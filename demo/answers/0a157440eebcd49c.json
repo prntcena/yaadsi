@@ -1,0 +1,13 @@
+{
+  "question": "across my saves, what do the AI agent posts have in common?",
+  "answer": "You've got two web docs on agentic AI and they've got a lot in common. Both talk about how to build real production agents, not just demos. They cover picking single or multi-agent setups, using graph-style orchestration, mixing fixed logic with AI reasoning, and weighing things like cost, speed, and when you need a human to step in.",
+  "follow_up": "How do I choose a design pattern for an agentic AI system?",
+  "cited": [
+    "gle-com-architecture-choose-design-pattern-agentic-ai-system",
+    "https-google-github-io-adk-docs"
+  ],
+  "found": true,
+  "agent_trace": [],
+  "mode": "whole",
+  "saves_read": 22
+}

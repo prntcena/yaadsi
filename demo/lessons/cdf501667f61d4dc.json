@@ -1,0 +1,189 @@
+{
+  "title": "Beyond Prompting: How Real LLM Systems Are Built",
+  "sections": [
+    {
+      "heading": "Everyday analogy",
+      "body": "Think of a language model like a smart new employee who read the internet. Prompting is like giving clearer instructions. It helps, but they still don't know your private files, your style, or your rules. To make them truly useful, you train them on your work, give them access to your filing cabinet, and check their work regularly."
+    },
+    {
+      "heading": "Why it exists",
+      "body": "Prompting alone can't teach new knowledge or keep answers accurate. So builders add five parts: Training with LoRA / QLoRA fine-tuning — updating only a tiny extra part of the model to save time and money. QLoRA also uses quantization — shrinking weights to use less memory. Alignment with RLHF — learning from human feedback. Retrieval with RAG — looking up your documents before answering. Evaluation with MLflow and caching to track quality and lower cost."
+    },
+    {
+      "heading": "What can go wrong",
+      "body": "If you skip these steps, the model makes things up or costs too much. Even with them, things can break: bad training data teaches bias through LoRA, wrong documents make RAG answers wrong, and without MLflow evaluation you won't know a new version got worse."
+    }
+  ],
+  "diagram": {
+    "nodes": [
+      {
+        "id": "base",
+        "label": "Base Model (LLaMA, Mistral, etc)"
+      },
+      {
+        "id": "train",
+        "label": "Fine-tune with LoRA/QLoRA + Quantization"
+      },
+      {
+        "id": "align",
+        "label": "Align with RLHF"
+      },
+      {
+        "id": "retrieve",
+        "label": "Retrieve with RAG / Knowledge Graph"
+      },
+      {
+        "id": "evaluate",
+        "label": "Evaluate & Optimize with MLflow"
+      }
+    ],
+    "edges": [
+      [
+        "base",
+        "train",
+        ""
+      ],
+      [
+        "train",
+        "align",
+        ""
+      ],
+      [
+        "align",
+        "retrieve",
+        ""
+      ],
+      [
+        "retrieve",
+        "evaluate",
+        ""
+      ],
+      [
+        "evaluate",
+        "train",
+        "loop back"
+      ]
+    ]
+  },
+  "steps": [
+    {
+      "node_id": "base",
+      "narration": "Start with a large pre-trained base model that knows general language."
+    },
+    {
+      "node_id": "train",
+      "narration": "Efficiently teach it your task using LoRA/QLoRA and 4-bit quantization to save memory."
+    },
+    {
+      "node_id": "align",
+      "narration": "Align its answers to human preferences using RLHF on your own data."
+    },
+    {
+      "node_id": "retrieve",
+      "narration": "Connect it to your documents with RAG so it can look up facts instead of hallucinating."
+    },
+    {
+      "node_id": "evaluate",
+      "narration": "Test and track everything with MLflow evaluation to keep quality high and costs low."
+    }
+  ],
+  "quiz": [
+    {
+      "q": "What does LoRA / QLoRA fine-tuning let you do?",
+      "options": [
+        "Rewrite the entire internet",
+        "Update only a tiny extra part of the model cheaply",
+        "Delete the need for any data",
+        "Make the model run without a computer"
+      ],
+      "answer_index": 1,
+      "why": "Your save lists LoRA / QLoRA as efficient fine-tuning - updating adapters, not the full model, with quantization to save memory."
+    },
+    {
+      "q": "What fails first if usage grows 100x without optimization?",
+      "options": [
+        "RAG will find more accurate documents automatically",
+        "Memory and cost explode unless you use 4-bit/8-bit quantization and caching",
+        "RLHF will fix itself",
+        "MLflow will train the model faster"
+      ],
+      "answer_index": 1,
+      "why": "Without quantization and optimization workflows, big models need too much memory and money to serve many users."
+    },
+    {
+      "q": "Why add a RAG pipeline with LangChain?",
+      "options": [
+        "To make the model smaller",
+        "To let the model retrieve fresh info from your documents before answering",
+        "To replace evaluation",
+        "To remove the need for training"
+      ],
+      "answer_index": 1,
+      "why": "RAG is retrieval - looking up relevant documents to ground answers, as listed in your saves."
+    }
+  ],
+  "sources": [
+    "linkedin-com-feed-update-urn-li-activity-7428320533613780992"
+  ],
+  "extra": [],
+  "level": 2,
+  "topic": "AI & Machine Learning",
+  "save_ids": [
+    "linkedin-com-feed-update-urn-li-activity-7428320533613780992"
+  ],
+  "words": 179,
+  "word_limit": 200,
+  "mermaid": "flowchart TD\n  n0[\"Base Model (LLaMA, Mistral, etc)\"]\n  n1[\"Fine-tune with LoRA/QLoRA + Quantization\"]\n  n2[\"Align with RLHF\"]\n  n3[\"Retrieve with RAG / Knowledge Graph\"]\n  n4[\"Evaluate   Optimize with MLflow\"]\n  n0 --> n1\n  n1 --> n2\n  n2 --> n3\n  n3 --> n4\n  n4 -->|\"loop back\"| n1",
+  "animation": [
+    {
+      "node": "n0",
+      "narration": "Start with a large pre-trained base model that knows general language."
+    },
+    {
+      "node": "n1",
+      "narration": "Efficiently teach it your task using LoRA/QLoRA and 4-bit quantization to save memory."
+    },
+    {
+      "node": "n2",
+      "narration": "Align its answers to human preferences using RLHF on your own data."
+    },
+    {
+      "node": "n3",
+      "narration": "Connect it to your documents with RAG so it can look up facts instead of hallucinating."
+    },
+    {
+      "node": "n4",
+      "narration": "Test and track everything with MLflow evaluation to keep quality high and costs low."
+    }
+  ],
+  "rules_used": [],
+  "agent_trace": [],
+  "judge": {
+    "drafts": 3,
+    "best": "D2",
+    "why": "D2 is concise, starts with a clear everyday analogy, defines key terms in plain beginner language, stays closest to the saved material, and its quiz checks practical understanding without overloading model names or adding many unmarked claims.",
+    "scores": {
+      "D1": {
+        "grounding": 8,
+        "level_fit": 6,
+        "clarity": 7
+      },
+      "D2": {
+        "grounding": 9,
+        "level_fit": 9,
+        "clarity": 8
+      },
+      "D3": {
+        "grounding": 7,
+        "level_fit": 8,
+        "clarity": 9
+      }
+    },
+    "temperatures": [
+      0.4,
+      0.8,
+      1.0
+    ]
+  },
+  "id": "cdf501667f61d4dc"
+}

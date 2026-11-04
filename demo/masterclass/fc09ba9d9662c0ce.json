@@ -1,0 +1,269 @@
+{
+  "topic": "Career Development & Interview Prep",
+  "built_at": "2026-11-04T10:37:07",
+  "seconds": 20,
+  "saves_read": 22,
+  "focus": 4,
+  "core_ideas": [
+    {
+      "idea": "Learn DSA smarter with personalized ChatGPT prompts instead of passive tutorials",
+      "why": "Tutorials teach everyone the same way, but 7 tailored prompts adapt to your level, mistakes, and pace to build concept intuition, debug code, break down problems, spot patterns, and analyze complexity",
+      "trade_off": "You still have to do real solving and verify answers — AI can hallucinate and won't build muscle memory without practice",
+      "saves": [
+        "DTg1Dnqk8tY"
+      ]
+    },
+    {
+      "idea": "Use free mock-interview tools to practice under real conditions",
+      "why": "Pramp for live peer mocks, Exponent for FAANG frameworks, Google Warmup for AI voice practice, and InterviewBit for structured coding paths simulate interview pressure without paid courses",
+      "trade_off": "Peer match quality varies, free tiers limit sessions, and you need consistency to see improvement",
+      "saves": [
+        "DTh_CT8k_gj"
+      ]
+    },
+    {
+      "idea": "Storytelling in 9 minutes makes your interview answers memorable",
+      "why": "Beyond correct code, recruiters remember engaging stories about your projects and decisions — crucial for behavioral rounds and explaining trade-offs",
+      "trade_off": "Quick tips only work if you practice out loud; over-rehearsed stories can sound robotic",
+      "saves": [
+        "DUWMqQfCMCb"
+      ]
+    },
+    {
+      "idea": "Master system design by practicing 25 canonical HLD questions by domain",
+      "why": "Rate limiter, URL shortener, Twitter/Instagram feeds, WhatsApp/Discord/Zoom, YouTube/Netflix/Spotify, and storage/booking designs for SDE-2/SDE-3 reuse the same patterns, with Excalidraw workspaces for hands-on drawing",
+      "trade_off": "Each design takes hours and assumes you already know distributed systems basics — it's a long grind, not a quick hack",
+      "saves": [
+        "ww-linkedin-com-feed-update-urn-li-share-7516022880535527424"
+      ]
+    },
+    {
+      "idea": "Great prep loops DSA + system design + storytelling + mock tools together",
+      "why": "DSA and system design test hard skills while storytelling and mock interviews test communication — together they mirror the full hiring funnel from coding screen to HLD to behavioral",
+      "trade_off": "Juggling all four at once is overwhelming; without a weekly schedule you risk shallow prep in each area",
+      "saves": [
+        "DTg1Dnqk8tY",
+        "DTh_CT8k_gj",
+        "DUWMqQfCMCb",
+        "ww-linkedin-com-feed-update-urn-li-share-7516022880535527424"
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "a": "DTg1Dnqk8tY",
+      "b": "DUaCif-kfOt",
+      "reason": "Both push beyond viral tutorials to deeper thinking tools — ChatGPT prompts for DSA intuition plus hidden sites like VisuAlgo and Exercism",
+      "cross_topic": true
+    },
+    {
+      "a": "DTg1Dnqk8tY",
+      "b": "DV02icRE1Z0",
+      "reason": "Prompt-based DSA practice pairs with repos that teach how engineers think, like what-happens-when-you-type-google.com",
+      "cross_topic": true
+    },
+    {
+      "a": "DTh_CT8k_gj",
+      "b": "linkedin-com-feed-update-urn-li-activity-7405595393402556416",
+      "reason": "Free tools like Exponent and Pramp work best after learning the 16 core system design concepts for beginners",
+      "cross_topic": true
+    },
+    {
+      "a": "ww-linkedin-com-feed-update-urn-li-share-7516022880535527424",
+      "b": "linkedin-com-feed-update-urn-li-activity-7405595393402556416",
+      "reason": "The 25 HLD questions apply the 16 fundamentals — consistent hashing, service discovery, saga pattern etc. — in real interview scenarios",
+      "cross_topic": true
+    },
+    {
+      "a": "ww-linkedin-com-feed-update-urn-li-share-7516022880535527424",
+      "b": "linkedin-com-feed-update-urn-li-activity-7408755754494607360",
+      "reason": "Indexing techniques like B-Tree, LSM Tree, and inverted indexes are key building blocks for HLD designs like distributed KV store",
+      "cross_topic": true
+    },
+    {
+      "a": "DUWMqQfCMCb",
+      "b": "DSNmIOgAYQ2",
+      "reason": "9-minute storytelling improvement is amplified by 50 hook templates to grab attention in the first 3 seconds",
+      "cross_topic": true
+    },
+    {
+      "a": "DTh_CT8k_gj",
+      "b": "DUWMqQfCMCb",
+      "reason": "AI voice practice on Google Warmup is where storytelling skills pay off for behavioral interview answers",
+      "cross_topic": false
+    },
+    {
+      "a": "DTg1Dnqk8tY",
+      "b": "linkedin-com-feed-update-urn-li-activity-7421516454489088000",
+      "reason": "Both offer free, industry-grade alternatives to paid courses — 7 ChatGPT prompts and 7 free NVIDIA AI courses",
+      "cross_topic": true
+    }
+  ],
+  "disagreements": [
+    {
+      "point": "Best learning mode: quit tutorials and learn solo with personalized ChatGPT vs. use structured video lessons and peer mocks via Exponent/Pramp",
+      "saves": [
+        "DTg1Dnqk8tY",
+        "DTh_CT8k_gj"
+      ]
+    }
+  ],
+  "gaps": [
+    {
+      "missing": "consider saving something on resume, LinkedIn, and portfolio review with ATS optimization",
+      "why_it_matters": "You need to get the interview before you can pass DSA and system design rounds"
+    },
+    {
+      "missing": "consider saving something on behavioral frameworks like STAR and common FAANG behavioral questions",
+      "why_it_matters": "Storytelling tips help, but you need a repeatable structure for tell-me-about-a-time questions"
+    },
+    {
+      "missing": "consider saving something on salary negotiation and offer evaluation",
+      "why_it_matters": "Prep doesn't end at the yes — negotiation can change compensation by 20-40%"
+    },
+    {
+      "missing": "consider saving something on time-boxed LeetCode strategy and coding interview etiquette",
+      "why_it_matters": "Knowing patterns is different from solving under 45-minute pressure with an interviewer watching"
+    }
+  ],
+  "learning_order": [
+    {
+      "id": "DTh_CT8k_gj",
+      "why_here": "Start with the map — see what free tools exist so you know how you'll practice from day one"
+    },
+    {
+      "id": "DTg1Dnqk8tY",
+      "why_here": "Build foundational DSA intuition with personalized prompts — the first technical filter in most interviews"
+    },
+    {
+      "id": "DUWMqQfCMCb",
+      "why_here": "Add storytelling early so you can explain your DSA solutions and projects clearly in mocks"
+    },
+    {
+      "id": "ww-linkedin-com-feed-update-urn-li-share-7516022880535527424",
+      "why_here": "Tackle advanced HLD last — it builds on DSA maturity and is aimed at SDE-2/SDE-3 roles"
+    }
+  ],
+  "cards": {
+    "DUWMqQfCMCb": {
+      "id": "DUWMqQfCMCb",
+      "title": "Improve Your Storytelling in 9 Minutes",
+      "platform": "instagram-reel",
+      "url": "https://www.instagram.com/reel/DUWMqQfCMCb/",
+      "summary": "Teaches how to improve storytelling quickly using practical tips from a popular storytelling guide, focused on making stories more engaging.",
+      "note": "",
+      "minutes": 9,
+      "difficulty": 2,
+      "has_images": true,
+      "kept": true
+    },
+    "DTg1Dnqk8tY": {
+      "id": "DTg1Dnqk8tY",
+      "title": "ChatGPT Prompts to Learn DSA Smarter",
+      "platform": "instagram-post",
+      "url": "https://www.instagram.com/p/DTg1Dnqk8tY/",
+      "summary": "Teaches 7 ChatGPT prompts to learn DSA personally instead of tutorials, covering concept intuition, code debugging, problem breakdown, curated practice, pattern recognition, and complexity analysis.",
+      "note": "",
+      "minutes": 15,
+      "difficulty": 2,
+      "has_images": true,
+      "kept": true
+    },
+    "linkedin-com-feed-update-urn-li-activity-7408755754494607360": {
+      "id": "linkedin-com-feed-update-urn-li-activity-7408755754494607360",
+      "title": "15 Database Indexing Techniques Every Engineer Should Know",
+      "platform": "linkedin",
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:7408755754494607360/",
+      "summary": "Explains 15 database indexing structures, their strengths and trade-offs, from B-Tree, B+ Tree and Hash indexes to LSM, inverted, spatial and time-series indexes, helping engineers pick the right index to speed up queries.",
+      "note": "",
+      "minutes": 15,
+      "difficulty": 3,
+      "has_images": false,
+      "kept": true
+    },
+    "DV02icRE1Z0": {
+      "id": "DV02icRE1Z0",
+      "title": "Repos That Teach How Engineers Think",
+      "platform": "instagram-post",
+      "url": "https://www.instagram.com/p/DV02icRE1Z0/",
+      "summary": "Curated GitHub repos that teach engineering reasoning beyond code: browser-to-server flow, classic CS papers, production engineering blogs, real-world testing strategies, and command-line mastery.",
+      "note": "",
+      "minutes": 90,
+      "difficulty": 3,
+      "has_images": true,
+      "kept": true
+    },
+    "linkedin-com-feed-update-urn-li-activity-7405595393402556416": {
+      "id": "linkedin-com-feed-update-urn-li-activity-7405595393402556416",
+      "title": "16 Core System Design Concepts for Beginners",
+      "platform": "linkedin",
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:7405595393402556416/",
+      "summary": "A starter curriculum of 16 system design fundamentals for 2026 covering distributed systems, idempotent APIs, JWT, consistent hashing, service discovery, Bloom filters, saga pattern, RPC, API design and more.",
+      "note": "",
+      "minutes": 120,
+      "difficulty": 3,
+      "has_images": false,
+      "kept": true
+    },
+    "DUaCif-kfOt": {
+      "id": "DUaCif-kfOt",
+      "title": "5 Hidden Websites to Get Better at Coding",
+      "platform": "instagram-post",
+      "url": "https://www.instagram.com/p/DUaCif-kfOt/",
+      "summary": "Introduces five lesser-known practice sites that build deep coding skill over popularity, explaining how VisuAlgo, Project Euler, Exercism, Codewars and Refactoring Guru improve algorithm intuition, math reasoning, clean code and design instincts.",
+      "note": "",
+      "minutes": 10,
+      "difficulty": 2,
+      "has_images": true,
+      "kept": true
+    },
+    "DSNmIOgAYQ2": {
+      "id": "DSNmIOgAYQ2",
+      "title": "50 Storytelling Hooks to Get Views",
+      "platform": "instagram-post",
+      "url": "https://www.instagram.com/p/DSNmIOgAYQ2/",
+      "summary": "Provides 50 fill-in-the-blank storytelling hook templates designed to grab attention in 3 seconds, stop scrolling, and increase engagement for Instagram and short-form content.",
+      "note": "",
+      "minutes": 10,
+      "difficulty": 1,
+      "has_images": true,
+      "kept": true
+    },
+    "linkedin-com-feed-update-urn-li-activity-7421516454489088000": {
+      "id": "linkedin-com-feed-update-urn-li-activity-7421516454489088000",
+      "title": "NVIDIA's Seven Free AI Courses",
+      "platform": "linkedin",
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:7421516454489088000/",
+      "summary": "Curated list of seven free NVIDIA courses covering generative AI basics, RAG models and agents, video AI apps, edge AI on Jetson Nano, digital fingerprinting, and CUDA GPU programming for building production-ready AI systems.",
+      "note": "",
+      "minutes": 5,
+      "difficulty": 2,
+      "has_images": false,
+      "kept": true
+    },
+    "DTh_CT8k_gj": {
+      "id": "DTh_CT8k_gj",
+      "title": "Four Tools for Tech Interview Preparation",
+      "platform": "instagram-post",
+      "url": "https://www.instagram.com/p/DTh_CT8k_gj/",
+      "summary": "Lists four free tools to practice tech interviews: peer mock sessions on Pramp, FAANG lessons on Exponent, AI voice practice on Google Warmup, and structured coding paths on InterviewBit.",
+      "note": "",
+      "minutes": 15,
+      "difficulty": 1,
+      "has_images": true,
+      "kept": true
+    },
+    "ww-linkedin-com-feed-update-urn-li-share-7516022880535527424": {
+      "id": "ww-linkedin-com-feed-update-urn-li-share-7516022880535527424",
+      "title": "25 High-Level System Design Interview Questions",
+      "platform": "linkedin",
+      "url": "https://www.linkedin.com/feed/update/urn:li:share:7516022880535527424/",
+      "summary": "A curated list of 25 frequently asked HLD interview questions for SDE-2/SDE-3 roles, grouped by domain like infrastructure, social feeds, messaging, streaming, storage, and booking, with direct links to Excalidraw workspaces for hands-on architecture practice.",
+      "note": "",
+      "minutes": 300,
+      "difficulty": 4,
+      "has_images": false,
+      "kept": true
+    }
+  }
+}

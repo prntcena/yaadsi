@@ -1,0 +1,21 @@
+{
+  "id": "DV02icRE1Z0",
+  "hash": "3005ce85933deac0",
+  "learnable": true,
+  "title": "Repos That Teach How Engineers Think",
+  "summary": "Curated GitHub repos that teach engineering reasoning beyond code: browser-to-server flow, classic CS papers, production engineering blogs, real-world testing strategies, and command-line mastery.",
+  "topics": [
+    "Software Engineering",
+    "Computer Science"
+  ],
+  "concepts": [
+    "Browser internals and networking",
+    "Distributed systems papers",
+    "Production architecture decisions",
+    "Test automation strategies",
+    "Command line workflows"
+  ],
+  "difficulty": 3,
+  "minutes": 90,
+  "has_diagram": false
+}

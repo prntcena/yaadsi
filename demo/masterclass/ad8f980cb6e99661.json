@@ -1,0 +1,329 @@
+{
+  "topic": "Software Engineering & Systems",
+  "built_at": "2026-11-04T10:36:59",
+  "seconds": 19,
+  "saves_read": 22,
+  "focus": 11,
+  "core_ideas": [
+    {
+      "idea": "Learn DSA actively with personalized prompts, not passive tutorials",
+      "why": "ChatGPT prompts adapt to your level, mistakes and pace, and teach intuition, debugging, pattern recognition and complexity instead of watching the same video as everyone",
+      "trade_off": "Slower and requires you to think, break down problems and practice deliberately; no instant dopamine or finished code to copy",
+      "saves": [
+        "DTg1Dnqk8tY",
+        "DUaCif-kfOt"
+      ]
+    },
+    {
+      "idea": "Deep coding skill comes from hidden practice sites that build thinking",
+      "why": "VisuAlgo, Project Euler, Exercism, Codewars and Refactoring Guru build algorithm intuition, math reasoning, clean code and design instincts over popularity",
+      "trade_off": "These sites won't go viral or feel productive instantly; they require consistency to build real engineering instincts",
+      "saves": [
+        "DUaCif-kfOt",
+        "DV02icRE1Z0"
+      ]
+    },
+    {
+      "idea": "System design and database indexing are the foundations for scale and speed",
+      "why": "The 16 core concepts (distributed systems, idempotent APIs, JWT, consistent hashing, service discovery, Bloom filters, saga pattern, RPC) plus 15 index types (B-Tree, B+Tree, Hash, LSM, Inverted, R-Tree, Trie etc.) show how to pick the right structure to make systems reliable and queries orders of magnitude faster",
+      "trade_off": "More concepts to learn and wrong choices hurt you; a well-designed index speeds up, a wrong index slows everything down",
+      "saves": [
+        "linkedin-com-feed-update-urn-li-activity-7405595393402556416",
+        "linkedin-com-feed-update-urn-li-activity-7408755754494607360",
+        "ww-linkedin-com-feed-update-urn-li-share-7516022880535527424"
+      ]
+    },
+    {
+      "idea": "Production agentic AI needs explicit pattern choices, not just prompting",
+      "why": "Choose single vs multi-agent based on task complexity, latency vs accuracy, cost and human oversight; then implement with deterministic logic + LLM reasoning, graph orchestration, vector retrieval and deployable APIs",
+      "trade_off": "Multi-agent and RAG systems are more powerful but cost more, add latency, and need vector storage (ChromaDB), orchestration (ADK) and monitoring",
+      "saves": [
+        "gle-com-architecture-choose-design-pattern-agentic-ai-system",
+        "https-google-github-io-adk-docs",
+        "https-github-com-usrbinkat-obelisk"
+      ]
+    },
+    {
+      "idea": "Ship premium-feeling apps fast by composing APIs and using free hosting",
+      "why": "Mapbox for maps, Resend for email, Clerk for auth, Stream for chat/feeds/video, Cloudinary for media, plus Fly.io, Netlify, Cloudflare Pages, Google Cloud free tier etc. let you deploy and showcase without building everything from scratch",
+      "trade_off": "Faster to start but you depend on vendors, free-tier limits, and less control over customization and scaling",
+      "saves": [
+        "DY3rLu6FMm6",
+        "DY_OCbUkuA0"
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "a": "DTg1Dnqk8tY",
+      "b": "DUaCif-kfOt",
+      "reason": "Both replace passive tutorials with active, thinking-first DSA practice via prompts and hidden practice sites",
+      "cross_topic": false
+    },
+    {
+      "a": "DV02icRE1Z0",
+      "b": "linkedin-com-feed-update-urn-li-activity-7405595393402556416",
+      "reason": "The 'what happens when you type google.com' repo grounds the 16 system design concepts in a real browser-to-server flow",
+      "cross_topic": false
+    },
+    {
+      "a": "linkedin-com-feed-update-urn-li-activity-7405595393402556416",
+      "b": "linkedin-com-feed-update-urn-li-activity-7408755754494607360",
+      "reason": "System design fundamentals need the right index choice; indexing chapter explains which structure fits which query trade-off",
+      "cross_topic": false
+    },
+    {
+      "a": "linkedin-com-feed-update-urn-li-activity-7405595393402556416",
+      "b": "ww-linkedin-com-feed-update-urn-li-share-7516022880535527424",
+      "reason": "16 core concepts are the building blocks you use to answer the 25 HLD interview questions",
+      "cross_topic": false
+    },
+    {
+      "a": "linkedin-com-feed-update-urn-li-activity-7408755754494607360",
+      "b": "DY3rLu6FMm6",
+      "reason": "Choosing B-Tree vs LSM vs Inverted indexes directly determines how fast your premium API features feel",
+      "cross_topic": false
+    },
+    {
+      "a": "DY3rLu6FMm6",
+      "b": "DY_OCbUkuA0",
+      "reason": "Premium APIs plus free hosting lets you build and deploy a polished app end-to-end without infra cost",
+      "cross_topic": false
+    },
+    {
+      "a": "gle-com-architecture-choose-design-pattern-agentic-ai-system",
+      "b": "https-google-github-io-adk-docs",
+      "reason": "The design pattern guide's latency vs accuracy vs cost framework maps directly to ADK's graph-based multi-agent orchestration",
+      "cross_topic": false
+    },
+    {
+      "a": "https-google-github-io-adk-docs",
+      "b": "https-github-com-usrbinkat-obelisk",
+      "reason": "Both show production RAG/agent stacks with vector storage, LLM integration and OpenAI-compatible API deployment",
+      "cross_topic": false
+    },
+    {
+      "a": "DV02icRE1Z0",
+      "b": "https-github-com-usrbinkat-obelisk",
+      "reason": "Repos that teach engineering decisions link to Obelisk as a concrete RAG pipeline example with ChromaDB and Docker",
+      "cross_topic": false
+    },
+    {
+      "a": "DTg1Dnqk8tY",
+      "b": "DTh_CT8k_gj",
+      "reason": "Personalized DSA prompts pair naturally with interview tools like Pramp, Exponent and Google Warmup for mock practice",
+      "cross_topic": true
+    }
+  ],
+  "disagreements": [],
+  "gaps": [
+    {
+      "missing": "consider saving something on hands-on system design implementation: coding Rate Limiter, URL Shortener or Chat System, not just concepts and questions",
+      "why_it_matters": "You need to bridge theory (16 concepts, 15 indexes) to actually building the 25 HLD designs reviewers expect"
+    },
+    {
+      "missing": "consider saving something on testing, observability and debugging for agentic/RAG apps",
+      "why_it_matters": "Production agents with ADK/Obelisk need evaluation, logging and traceability beyond just choosing a pattern"
+    },
+    {
+      "missing": "consider saving something on security and auth in depth beyond Clerk API intro",
+      "why_it_matters": "Premium apps need JWT handling, password storage and API security that the hosting/API saves only mention briefly"
+    },
+    {
+      "missing": "consider saving something on going from free hosting to production scaling and CI/CD",
+      "why_it_matters": "Free tiers are great to showcase, but you need deployment pipelines, env management and cost planning for real users"
+    }
+  ],
+  "learning_order": [
+    {
+      "id": "DTg1Dnqk8tY",
+      "why_here": "Start with personalized DSA prompts; easiest entry to replace passive tutorials with active thinking"
+    },
+    {
+      "id": "DUaCif-kfOt",
+      "why_here": "Add hidden practice sites to deepen algorithm intuition and clean code after you have prompt workflows"
+    },
+    {
+      "id": "DV02icRE1Z0",
+      "why_here": "Shift from coding to engineering reasoning via repos on browser flows, CS papers and production blogs"
+    },
+    {
+      "id": "linkedin-com-feed-update-urn-li-activity-7405595393402556416",
+      "why_here": "Learn the 16 foundational system design concepts that underlie all distributed systems"
+    },
+    {
+      "id": "linkedin-com-feed-update-urn-li-activity-7408755754494607360",
+      "why_here": "Deep dive on the data layer; indexes explain how design choices affect query performance"
+    },
+    {
+      "id": "ww-linkedin-com-feed-update-urn-li-share-7516022880535527424",
+      "why_here": "Apply concepts and indexes to practice the 25 most-asked HLD interview questions"
+    },
+    {
+      "id": "DY3rLu6FMm6",
+      "why_here": "Learn to compose real apps quickly using premium APIs for maps, email, auth, chat and media"
+    },
+    {
+      "id": "DY_OCbUkuA0",
+      "why_here": "Deploy what you build using free hosting platforms to showcase projects to the world"
+    },
+    {
+      "id": "gle-com-architecture-choose-design-pattern-agentic-ai-system",
+      "why_here": "Understand the framework for choosing single vs multi-agent patterns before coding agents"
+    },
+    {
+      "id": "https-google-github-io-adk-docs",
+      "why_here": "Build production multi-agent systems with ADK's graph orchestration and deterministic + LLM logic"
+    },
+    {
+      "id": "https-github-com-usrbinkat-obelisk",
+      "why_here": "See a concrete RAG implementation over docs with ChromaDB, Ollama and Docker to tie it all together"
+    }
+  ],
+  "cards": {
+    "gle-com-architecture-choose-design-pattern-agentic-ai-system": {
+      "id": "gle-com-architecture-choose-design-pattern-agentic-ai-system",
+      "title": "Choosing Design Patterns for Agentic AI Systems",
+      "platform": "web",
+      "url": "https://cloud.google.com/architecture/choose-design-pattern-agentic-ai-system",
+      "summary": "Teaches how to choose a single or multi-agent pattern for Vertex AI based on task complexity, latency vs accuracy, cost, and human oversight needs.",
+      "note": "",
+      "minutes": 15,
+      "difficulty": 3,
+      "has_images": false,
+      "kept": true
+    },
+    "linkedin-com-feed-update-urn-li-activity-7408755754494607360": {
+      "id": "linkedin-com-feed-update-urn-li-activity-7408755754494607360",
+      "title": "15 Database Indexing Techniques Every Engineer Should Know",
+      "platform": "linkedin",
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:7408755754494607360/",
+      "summary": "Explains 15 database indexing structures, their strengths and trade-offs, from B-Tree, B+ Tree and Hash indexes to LSM, inverted, spatial and time-series indexes, helping engineers pick the right index to speed up queries.",
+      "note": "",
+      "minutes": 15,
+      "difficulty": 3,
+      "has_images": false,
+      "kept": true
+    },
+    "linkedin-com-feed-update-urn-li-activity-7405595393402556416": {
+      "id": "linkedin-com-feed-update-urn-li-activity-7405595393402556416",
+      "title": "16 Core System Design Concepts for Beginners",
+      "platform": "linkedin",
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:7405595393402556416/",
+      "summary": "A starter curriculum of 16 system design fundamentals for 2026 covering distributed systems, idempotent APIs, JWT, consistent hashing, service discovery, Bloom filters, saga pattern, RPC, API design and more.",
+      "note": "",
+      "minutes": 120,
+      "difficulty": 3,
+      "has_images": false,
+      "kept": true
+    },
+    "DUaCif-kfOt": {
+      "id": "DUaCif-kfOt",
+      "title": "5 Hidden Websites to Get Better at Coding",
+      "platform": "instagram-post",
+      "url": "https://www.instagram.com/p/DUaCif-kfOt/",
+      "summary": "Introduces five lesser-known practice sites that build deep coding skill over popularity, explaining how VisuAlgo, Project Euler, Exercism, Codewars and Refactoring Guru improve algorithm intuition, math reasoning, clean code and design instincts.",
+      "note": "",
+      "minutes": 10,
+      "difficulty": 2,
+      "has_images": true,
+      "kept": true
+    },
+    "DTh_CT8k_gj": {
+      "id": "DTh_CT8k_gj",
+      "title": "Four Tools for Tech Interview Preparation",
+      "platform": "instagram-post",
+      "url": "https://www.instagram.com/p/DTh_CT8k_gj/",
+      "summary": "Lists four free tools to practice tech interviews: peer mock sessions on Pramp, FAANG lessons on Exponent, AI voice practice on Google Warmup, and structured coding paths on InterviewBit.",
+      "note": "",
+      "minutes": 15,
+      "difficulty": 1,
+      "has_images": true,
+      "kept": true
+    },
+    "DY3rLu6FMm6": {
+      "id": "DY3rLu6FMm6",
+      "title": "APIs That Make Apps Feel Premium",
+      "platform": "instagram-post",
+      "url": "https://www.instagram.com/p/DY3rLu6FMm6/",
+      "summary": "Lists 5 APIs to add premium polish to apps: Mapbox for custom maps, Resend for transactional email, Clerk for auth with polished UI, Stream for chat/feeds/video, and Cloudinary for image/video optimization and delivery.",
+      "note": "",
+      "minutes": 6,
+      "difficulty": 2,
+      "has_images": true,
+      "kept": true
+    },
+    "DY_OCbUkuA0": {
+      "id": "DY_OCbUkuA0",
+      "title": "Free Hosting Platforms for Developers",
+      "platform": "instagram-post",
+      "url": "https://www.instagram.com/p/DY_OCbUkuA0/",
+      "summary": "Lists free hosting options to deploy and showcase projects, including Fly.io, Google Cloud free tier, Netlify, Cloudflare Pages, Heroku, Koyeb, Surge and others for frontend, backend and static sites.",
+      "note": "",
+      "minutes": 10,
+      "difficulty": 2,
+      "has_images": true,
+      "kept": true
+    },
+    "DTg1Dnqk8tY": {
+      "id": "DTg1Dnqk8tY",
+      "title": "ChatGPT Prompts to Learn DSA Smarter",
+      "platform": "instagram-post",
+      "url": "https://www.instagram.com/p/DTg1Dnqk8tY/",
+      "summary": "Teaches 7 ChatGPT prompts to learn DSA personally instead of tutorials, covering concept intuition, code debugging, problem breakdown, curated practice, pattern recognition, and complexity analysis.",
+      "note": "",
+      "minutes": 15,
+      "difficulty": 2,
+      "has_images": true,
+      "kept": true
+    },
+    "DV02icRE1Z0": {
+      "id": "DV02icRE1Z0",
+      "title": "Repos That Teach How Engineers Think",
+      "platform": "instagram-post",
+      "url": "https://www.instagram.com/p/DV02icRE1Z0/",
+      "summary": "Curated GitHub repos that teach engineering reasoning beyond code: browser-to-server flow, classic CS papers, production engineering blogs, real-world testing strategies, and command-line mastery.",
+      "note": "",
+      "minutes": 90,
+      "difficulty": 3,
+      "has_images": true,
+      "kept": true
+    },
+    "https-google-github-io-adk-docs": {
+      "id": "https-google-github-io-adk-docs",
+      "title": "Building Production Agents with Google ADK",
+      "platform": "web",
+      "url": "https://google.github.io/adk-docs/",
+      "summary": "Introduces Google's open-source ADK for building production multi-agent systems, covering how to combine deterministic logic with LLM reasoning, orchestrate agents via graphs, manage context efficiently, and deploy across languages and models.",
+      "note": "",
+      "minutes": 15,
+      "difficulty": 3,
+      "has_images": false,
+      "kept": true
+    },
+    "https-github-com-usrbinkat-obelisk": {
+      "id": "https-github-com-usrbinkat-obelisk",
+      "title": "Obelisk RAG Chatbot for MkDocs Docs",
+      "platform": "github-repo",
+      "url": "https://github.com/usrbinkat/obelisk",
+      "summary": "Teaches how Obelisk builds a RAG chatbot over MkDocs docs with document indexing, vector embeddings via ChromaDB, local LLM support via Ollama, and an OpenAI-compatible API with CLI and Docker deployment.",
+      "note": "",
+      "minutes": 25,
+      "difficulty": 3,
+      "has_images": false,
+      "kept": true
+    },
+    "ww-linkedin-com-feed-update-urn-li-share-7516022880535527424": {
+      "id": "ww-linkedin-com-feed-update-urn-li-share-7516022880535527424",
+      "title": "25 High-Level System Design Interview Questions",
+      "platform": "linkedin",
+      "url": "https://www.linkedin.com/feed/update/urn:li:share:7516022880535527424/",
+      "summary": "A curated list of 25 frequently asked HLD interview questions for SDE-2/SDE-3 roles, grouped by domain like infrastructure, social feeds, messaging, streaming, storage, and booking, with direct links to Excalidraw workspaces for hands-on architecture practice.",
+      "note": "",
+      "minutes": 300,
+      "difficulty": 4,
+      "has_images": false,
+      "kept": true
+    }
+  }
+}

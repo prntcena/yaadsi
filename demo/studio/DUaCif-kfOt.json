@@ -1,0 +1,22 @@
+{
+  "id": "DUaCif-kfOt",
+  "hash": "c311f60f9fa9d264",
+  "learnable": true,
+  "title": "5 Hidden Websites to Get Better at Coding",
+  "summary": "Introduces five lesser-known practice sites that build deep coding skill over popularity, explaining how VisuAlgo, Project Euler, Exercism, Codewars and Refactoring Guru improve algorithm intuition, math reasoning, clean code and design instincts.",
+  "topics": [
+    "Software Engineering",
+    "Programming",
+    "Computer Science"
+  ],
+  "concepts": [
+    "Algorithm visualization with VisuAlgo",
+    "Mathematical thinking and problem decomposition",
+    "Clean code and refactoring",
+    "Design patterns intuition",
+    "Kata training and edge-case thinking"
+  ],
+  "difficulty": 2,
+  "minutes": 10,
+  "has_diagram": true
+}

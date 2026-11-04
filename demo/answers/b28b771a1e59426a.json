@@ -1,0 +1,12 @@
+{
+  "question": "How does JSON prompting give you better control in Veo 3?",
+  "answer": "Your Instagram reel on JSON vs Natural Prompts for Veo 3 Video shows it well — both prompts make the same fashion video, but the JSON one gives you clearer control. Instead of just describing it in normal words, you can set the style, lighting, and cuts more precisely. That helps Veo 3 keep seamless transitions and invisible cuts looking clean and cinematic.",
+  "follow_up": "How does JSON prompting help you create seamless transitions in Veo 3?",
+  "cited": [
+    "DONQZcYE90_"
+  ],
+  "found": true,
+  "agent_trace": [],
+  "mode": "keyword",
+  "saves_read": 1
+}

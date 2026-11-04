@@ -1,0 +1,191 @@
+{
+  "title": "What Happens When You Type google.com and Press Enter",
+  "sections": [
+    {
+      "heading": "Everyday analogy - sending a letter",
+      "body": "Imagine typing google.com is like mailing a letter.\n\nYou write an address (the URL). Your helper (the browser) checks if it is a real address or just a search term. Then it asks a directory (networking) where that address lives, and sends your letter through many hands to the right house (the server).\n\n- URL means the address you type, like google.com.\n- Browser is the app that reads and shows web pages."
+    },
+    {
+      "heading": "Why it exists",
+      "body": "Engineers ask this question to learn decisions, not just code.\n\nThe repo \"what-happens-when\" breaks the journey into tiny steps: the g key is pressed, the shell receives input, a key event is sent to the app, the URL is parsed, and then browser internals and networking take over.\n\nThis teaches how a browser, network, and server work together as one system."
+    },
+    {
+      "heading": "What can go wrong",
+      "body": "Each step can fail.\n\n- If URL parsing fails, you search instead of visiting.\n- If networking fails, the address cannot be found and the page never loads.\n- If the server is busy, it responds slowly or not at all.\n\nThinking in steps helps you find where a problem started and fix that part first."
+    }
+  ],
+  "diagram": {
+    "nodes": [
+      {
+        "id": "key",
+        "label": "Press g key"
+      },
+      {
+        "id": "app",
+        "label": "Browser gets key event"
+      },
+      {
+        "id": "parse",
+        "label": "Parse URL"
+      },
+      {
+        "id": "network",
+        "label": "Network lookup"
+      },
+      {
+        "id": "server",
+        "label": "Server responds"
+      }
+    ],
+    "edges": [
+      [
+        "key",
+        "app",
+        "event"
+      ],
+      [
+        "app",
+        "parse",
+        "check"
+      ],
+      [
+        "parse",
+        "network",
+        "send"
+      ],
+      [
+        "network",
+        "server",
+        "request"
+      ]
+    ]
+  },
+  "steps": [
+    {
+      "node_id": "key",
+      "narration": "You press a key, the keyboard sends a signal."
+    },
+    {
+      "node_id": "app",
+      "narration": "The app receives a KeyPress event from the system."
+    },
+    {
+      "node_id": "parse",
+      "narration": "Browser checks if your text is a URL or search term."
+    },
+    {
+      "node_id": "network",
+      "narration": "Browser uses networking to find the server address."
+    },
+    {
+      "node_id": "server",
+      "narration": "Server gets the request and sends back the page."
+    }
+  ],
+  "quiz": [
+    {
+      "q": "What does the browser do first with what you typed?",
+      "options": [
+        "Delete it immediately",
+        "Parse if it is a URL or search term",
+        "Turn off the network",
+        "Restart the computer"
+      ],
+      "answer_index": 1,
+      "why": "The save shows Parse URLs and Is it a URL, or a search term as early steps."
+    },
+    {
+      "q": "Why do engineers study the full what-happens-when flow?",
+      "options": [
+        "To memorize shortcuts",
+        "To understand decisions across browser, network, and server",
+        "To avoid using a browser",
+        "To only learn typing"
+      ],
+      "answer_index": 1,
+      "why": "The repo teaches engineering reasoning beyond code: browser internals and networking as a system."
+    },
+    {
+      "q": "What fails first if usage grows 100x overnight?",
+      "options": [
+        "The g key on keyboards",
+        "Network lookup and server capacity",
+        "The spelling of google.com",
+        "The color of the browser"
+      ],
+      "answer_index": 1,
+      "why": "Networking and servers get overloaded first when many more requests arrive at once."
+    }
+  ],
+  "sources": [
+    "DV02icRE1Z0"
+  ],
+  "extra": [],
+  "level": 2,
+  "topic": "Software Engineering & Systems",
+  "save_ids": [
+    "DV02icRE1Z0"
+  ],
+  "words": 190,
+  "word_limit": 200,
+  "mermaid": "flowchart TD\n  n0[\"Press g key\"]\n  n1[\"Browser gets key event\"]\n  n2[\"Parse URL\"]\n  n3[\"Network lookup\"]\n  n4[\"Server responds\"]\n  n0 -->|\"event\"| n1\n  n1 -->|\"check\"| n2\n  n2 -->|\"send\"| n3\n  n3 -->|\"request\"| n4",
+  "animation": [
+    {
+      "node": "n0",
+      "narration": "You press a key, the keyboard sends a signal."
+    },
+    {
+      "node": "n1",
+      "narration": "The app receives a KeyPress event from the system."
+    },
+    {
+      "node": "n2",
+      "narration": "Browser checks if your text is a URL or search term."
+    },
+    {
+      "node": "n3",
+      "narration": "Browser uses networking to find the server address."
+    },
+    {
+      "node": "n4",
+      "narration": "Server gets the request and sends back the page."
+    }
+  ],
+  "rules_used": [],
+  "agent_trace": [
+    {
+      "tool": "read_save",
+      "args": {
+        "save_id": "DV02icRE1Z0"
+      }
+    }
+  ],
+  "judge": {
+    "drafts": 3,
+    "best": "D1",
+    "why": "D1 starts with a clear analogy, defines URL and browser, stays closest to the shown source steps and target length, and its quiz checks the URL-parsing and whole-system ideas. D2 and D3 add several unmarked details and more undefined terms.",
+    "scores": {
+      "D1": {
+        "grounding": 8,
+        "level_fit": 7,
+        "clarity": 8
+      },
+      "D2": {
+        "grounding": 5,
+        "level_fit": 5,
+        "clarity": 8
+      },
+      "D3": {
+        "grounding": 6,
+        "level_fit": 5,
+        "clarity": 7
+      }
+    },
+    "temperatures": [
+      0.4,
+      0.8,
+      1.0
+    ]
+  },
+  "id": "d2aa690cb5d66375"
+}

@@ -1,0 +1,12 @@
+{
+  "question": "the github thing where someone built a chatbot over their docs site",
+  "answer": "Yep, you've got it saved. It's your github-repo on Obelisk, it's a RAG chatbot built right over MkDocs docs. It handles document indexing and retrieval with vector storage in ChromaDB, and it can run local models through Ollama for embeddings and generation. It's got an OpenAI-compatible API too, plus a CLI and Docker setup so you can deploy it easily.",
+  "follow_up": "How does the RAG pipeline with ChromaDB and Ollama work?",
+  "cited": [
+    "https-github-com-usrbinkat-obelisk"
+  ],
+  "found": true,
+  "agent_trace": [],
+  "mode": "keyword",
+  "saves_read": 1
+}

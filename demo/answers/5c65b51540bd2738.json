@@ -1,0 +1,13 @@
+{
+  "question": "which of my saves should I read before a system design interview?",
+  "answer": "You've got two perfect LinkedIn posts saved for this. One covers 16 core ideas like distributed systems, idempotent APIs and consistent hashing so you'll get the basics down. The other has 25 top interview questions with practice boards for things like rate limiters, URL shorteners and chat systems. They're great to review together before you go in.",
+  "follow_up": "What are the 16 core system design concepts I should know?",
+  "cited": [
+    "linkedin-com-feed-update-urn-li-activity-7405595393402556416",
+    "ww-linkedin-com-feed-update-urn-li-share-7516022880535527424"
+  ],
+  "found": true,
+  "agent_trace": [],
+  "mode": "whole",
+  "saves_read": 22
+}

@@ -1,0 +1,21 @@
+{
+  "id": "https-github-com-premai-io-state-of-open-source-ai",
+  "hash": "f47462e27af591c3",
+  "learnable": true,
+  "title": "The State of Open Source AI 2023",
+  "summary": "An open ebook providing an overview of the open-source AI ecosystem, covering model evaluations through to deployment to help navigate fast-paced open-source innovation.",
+  "topics": [
+    "Open Source AI",
+    "MLOps",
+    "Artificial Intelligence"
+  ],
+  "concepts": [
+    "Open-source AI landscape overview",
+    "Model evaluation",
+    "AI deployment",
+    "Open-source licensing and collaboration"
+  ],
+  "difficulty": 2,
+  "minutes": 90,
+  "has_diagram": false
+}

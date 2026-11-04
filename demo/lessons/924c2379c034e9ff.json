@@ -1,0 +1,188 @@
+{
+  "title": "Storytelling That Stops The Scroll",
+  "sections": [
+    {
+      "heading": "Everyday Analogy: The Fishing Hook",
+      "body": "Think of storytelling like fishing. Your story is the fish, but your hook is what catches someone first.\n\nStory hook means the first 3 seconds that makes someone stop scrolling. Story structure means the order you tell it in - start, middle, end - so they stay. Without a hook, no one bites."
+    },
+    {
+      "heading": "Why It Exists",
+      "body": "Good stories exist to hold attention and build trust. Audience engagement means people watch, comment, and share instead of scrolling past.\n\nThe 9-minute guide teaches structure to make stories more engaging, not just longer. The 50 fill-in-the-blank hooks give you starter lines so you grab attention in 3 seconds every time."
+    },
+    {
+      "heading": "What Can Go Wrong",
+      "body": "If you use the same hook template every time, people get bored and tune out. That is template fatigue.\n\nIf your hook promises something exciting but the story structure is weak or slow, trust breaks. People leave early and the algorithm shows your video to fewer people."
+    }
+  ],
+  "diagram": {
+    "nodes": [
+      {
+        "id": "hook",
+        "label": "Hook (first 3 sec)"
+      },
+      {
+        "id": "structure",
+        "label": "Story Structure"
+      },
+      {
+        "id": "engage",
+        "label": "Audience Engagement"
+      },
+      {
+        "id": "fail",
+        "label": "Break: Boring / Trust Lost"
+      }
+    ],
+    "edges": [
+      [
+        "hook",
+        "structure",
+        "grabs"
+      ],
+      [
+        "structure",
+        "engage",
+        "keeps"
+      ],
+      [
+        "engage",
+        "fail",
+        "if weak"
+      ]
+    ]
+  },
+  "steps": [
+    {
+      "node_id": "hook",
+      "narration": "Start with one hook line from the 50 templates to stop the scroll."
+    },
+    {
+      "node_id": "structure",
+      "narration": "Follow a clear start-middle-end so the story is easy to follow."
+    },
+    {
+      "node_id": "engage",
+      "narration": "If both work, people watch longer and engage."
+    },
+    {
+      "node_id": "fail",
+      "narration": "If hook is clickbait or structure drags, engagement drops."
+    }
+  ],
+  "quiz": [
+    {
+      "q": "What does a 'story hook' do?",
+      "options": [
+        "It edits your video automatically",
+        "It grabs attention in the first 3 seconds",
+        "It adds background music",
+        "It posts for you"
+      ],
+      "answer_index": 1,
+      "why": "From your saves, hooks are designed to stop scrolling and get views in 3 seconds."
+    },
+    {
+      "q": "Why is story structure important after the hook?",
+      "options": [
+        "It makes the file smaller",
+        "It keeps people watching by giving order to start-middle-end",
+        "It removes silence",
+        "It clones your voice"
+      ],
+      "answer_index": 1,
+      "why": "Structure keeps engagement after the hook catches them."
+    },
+    {
+      "q": "What fails first if you use the same 2-3 hook templates 100x?",
+      "options": [
+        "Your camera breaks",
+        "Audience gets template fatigue and ignores you",
+        "Instagram deletes your account",
+        "Videos get longer"
+      ],
+      "answer_index": 1,
+      "why": "Repeating the same hooks causes boredom and trust drops, so views fall."
+    }
+  ],
+  "sources": [
+    "DUWMqQfCMCb",
+    "DSNmIOgAYQ2"
+  ],
+  "extra": [],
+  "level": 2,
+  "topic": "Design, Content Creation & Marketing",
+  "save_ids": [
+    "DUWMqQfCMCb"
+  ],
+  "words": 151,
+  "word_limit": 200,
+  "mermaid": "flowchart TD\n  n0[\"Hook (first 3 sec)\"]\n  n1[\"Story Structure\"]\n  n2[\"Audience Engagement\"]\n  n3[\"Break: Boring / Trust Lost\"]\n  n0 -->|\"grabs\"| n1\n  n1 -->|\"keeps\"| n2\n  n2 -->|\"if weak\"| n3",
+  "animation": [
+    {
+      "node": "n0",
+      "narration": "Start with one hook line from the 50 templates to stop the scroll."
+    },
+    {
+      "node": "n1",
+      "narration": "Follow a clear start-middle-end so the story is easy to follow."
+    },
+    {
+      "node": "n2",
+      "narration": "If both work, people watch longer and engage."
+    },
+    {
+      "node": "n3",
+      "narration": "If hook is clickbait or structure drags, engagement drops."
+    }
+  ],
+  "rules_used": [],
+  "agent_trace": [
+    {
+      "tool": "search_saves",
+      "args": {
+        "query": "storytelling story structure hooks audience engagement",
+        "topic": "Design, Content Creation & Marketing"
+      }
+    },
+    {
+      "tool": "read_save",
+      "args": {
+        "save_id": "DUWMqQfCMCb"
+      }
+    },
+    {
+      "tool": "read_save",
+      "args": {
+        "save_id": "DSNmIOgAYQ2"
+      }
+    }
+  ],
+  "judge": {
+    "drafts": 3,
+    "best": "D3",
+    "why": "D3 is the shortest, simplest, starts with an everyday analogy, defines key terms in plain words, and sticks closest to the source concepts of hooks, structure, and engagement. All drafts add unmarked details not in the source, but D2 invents the most, including Kittl, Canva, and AI tools.",
+    "scores": {
+      "D1": {
+        "grounding": 3,
+        "level_fit": 5,
+        "clarity": 7
+      },
+      "D2": {
+        "grounding": 2,
+        "level_fit": 4,
+        "clarity": 6
+      },
+      "D3": {
+        "grounding": 4,
+        "level_fit": 6,
+        "clarity": 8
+      }
+    },
+    "temperatures": [
+      0.4,
+      0.8,
+      1.0
+    ]
+  },
+  "id": "924c2379c034e9ff"
+}

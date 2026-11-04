@@ -1,0 +1,22 @@
+{
+  "id": "ww-linkedin-com-feed-update-urn-li-share-7516022880535527424",
+  "hash": "094292dde10b1a8c",
+  "learnable": true,
+  "title": "25 High-Level System Design Interview Questions",
+  "summary": "A curated list of 25 frequently asked HLD interview questions for SDE-2/SDE-3 roles, grouped by domain like infrastructure, social feeds, messaging, streaming, storage, and booking, with direct links to Excalidraw workspaces for hands-on architecture practice.",
+  "topics": [
+    "System Design",
+    "Interview Preparation"
+  ],
+  "concepts": [
+    "Rate Limiting",
+    "Distributed Key-Value Store",
+    "Social Graph and News Feed",
+    "Real-time Messaging and Notifications",
+    "Video Streaming Architecture",
+    "Location-based Services"
+  ],
+  "difficulty": 4,
+  "minutes": 300,
+  "has_diagram": true
+}

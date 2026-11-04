@@ -1,0 +1,12 @@
+{
+  "question": "How do I choose a design pattern for an agentic AI system?",
+  "answer": "You pick by what your task needs, not just cool tech. Your saved web article on choosing design patterns for agentic AI says to look at how complex your task is, whether you need speed or accuracy more, the cost of extra model calls, and if a human should check high-stakes steps. Simple single steps work fine with one agent, but messy multi-step work often needs multiple agents working together.",
+  "follow_up": "How does multi-agent orchestration work with Google ADK?",
+  "cited": [
+    "gle-com-architecture-choose-design-pattern-agentic-ai-system"
+  ],
+  "found": true,
+  "agent_trace": [],
+  "mode": "keyword",
+  "saves_read": 1
+}

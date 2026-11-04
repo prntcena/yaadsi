@@ -1,0 +1,202 @@
+{
+  "title": "How to Think About High-Level System Design",
+  "sections": [
+    {
+      "heading": "Everyday Analogy",
+      "body": "Think of an app like a city. High-Level Design (HLD) is the city map before building roads and buildings. It shows big pieces — where users enter, where data lives, how parts talk — without tiny code details. System Design interview questions ask you to draw this map."
+    },
+    {
+      "heading": "Why it exists",
+      "body": "Why it exists: real apps serve millions. We group problems so you can reuse maps:\n- Core Infrastructure: Rate Limiting (blocking too many requests) and Distributed Key-Value Store (many computers acting as one simple storage)\n- Social Feeds + Messaging + Streaming: Social Graph, News Feed, Real-time Chat. Same map fits many apps."
+    },
+    {
+      "heading": "What can go wrong",
+      "body": "What can go wrong: if traffic jumps 100x, bottlenecks appear. Rate Limiter fails and lets flood through, or blocks real users. Key-Value Store runs out of space or slows. News Feed becomes stale or late. Practice on a whiteboard, like Excalidraw, helps you spot these cracks before users do."
+    }
+  ],
+  "diagram": {
+    "nodes": [
+      {
+        "id": "user",
+        "label": "User Request"
+      },
+      {
+        "id": "limiter",
+        "label": "Rate Limiter Gate"
+      },
+      {
+        "id": "service",
+        "label": "App Service"
+      },
+      {
+        "id": "store",
+        "label": "Distributed Key-Value Store"
+      },
+      {
+        "id": "feed",
+        "label": "Feed / Chat Delivery"
+      }
+    ],
+    "edges": [
+      [
+        "user",
+        "limiter",
+        "checks limit"
+      ],
+      [
+        "limiter",
+        "service",
+        "if allowed"
+      ],
+      [
+        "service",
+        "store",
+        "read/write"
+      ],
+      [
+        "service",
+        "feed",
+        "build response"
+      ],
+      [
+        "feed",
+        "user",
+        "deliver"
+      ]
+    ]
+  },
+  "steps": [
+    {
+      "node_id": "user",
+      "narration": "Users send many requests, like cars entering a city."
+    },
+    {
+      "node_id": "limiter",
+      "narration": "Rate Limiter gate decides if request can pass or must wait."
+    },
+    {
+      "node_id": "service",
+      "narration": "App service does the work using shared building blocks."
+    },
+    {
+      "node_id": "store",
+      "narration": "Distributed Key-Value Store keeps simple data across many machines."
+    },
+    {
+      "node_id": "feed",
+      "narration": "Feed or chat system sends the right updates back to users."
+    }
+  ],
+  "quiz": [
+    {
+      "q": "What is High-Level Design (HLD) most like?",
+      "options": [
+        "Writing every line of code",
+        "Drawing a city map of big parts before building",
+        "Testing one button",
+        "Buying servers only"
+      ],
+      "answer_index": 1,
+      "why": "HLD is the big-picture map showing where users enter, where data lives, and how parts talk."
+    },
+    {
+      "q": "What fails first if usage grows 100x and you have no Rate Limiter?",
+      "options": [
+        "App stays fast forever",
+        "Servers get flooded, slow down, and may crash",
+        "Data automatically becomes more correct",
+        "Users get cleaner feeds"
+      ],
+      "answer_index": 1,
+      "why": "Without Rate Limiting, too many requests overwhelm services and storage — a classic bottleneck."
+    },
+    {
+      "q": "Why are HLD questions grouped into domains like Social Feeds and Messaging?",
+      "options": [
+        "To reuse similar maps for similar problems",
+        "Because every app is totally unique",
+        "To avoid whiteboard practice",
+        "To memorize links only"
+      ],
+      "answer_index": 0,
+      "why": "Grouping lets you reuse core patterns like feed, graph, and real-time delivery across many apps."
+    }
+  ],
+  "sources": [
+    "ww-linkedin-com-feed-update-urn-li-share-7516022880535527424"
+  ],
+  "extra": [],
+  "level": 2,
+  "topic": "Software Engineering & Systems",
+  "save_ids": [
+    "ww-linkedin-com-feed-update-urn-li-share-7516022880535527424"
+  ],
+  "words": 150,
+  "word_limit": 200,
+  "mermaid": "flowchart TD\n  n0[\"User Request\"]\n  n1[\"Rate Limiter Gate\"]\n  n2[\"App Service\"]\n  n3[\"Distributed Key-Value Store\"]\n  n4[\"Feed / Chat Delivery\"]\n  n0 -->|\"checks limit\"| n1\n  n1 -->|\"if allowed\"| n2\n  n2 -->|\"read/write\"| n3\n  n2 -->|\"build response\"| n4\n  n4 -->|\"deliver\"| n0",
+  "animation": [
+    {
+      "node": "n0",
+      "narration": "Users send many requests, like cars entering a city."
+    },
+    {
+      "node": "n1",
+      "narration": "Rate Limiter gate decides if request can pass or must wait."
+    },
+    {
+      "node": "n2",
+      "narration": "App service does the work using shared building blocks."
+    },
+    {
+      "node": "n3",
+      "narration": "Distributed Key-Value Store keeps simple data across many machines."
+    },
+    {
+      "node": "n4",
+      "narration": "Feed or chat system sends the right updates back to users."
+    }
+  ],
+  "rules_used": [],
+  "agent_trace": [
+    {
+      "tool": "read_save",
+      "args": {
+        "save_id": "ww-linkedin-com-feed-update-urn-li-share-7516022880535527424"
+      }
+    },
+    {
+      "tool": "search_saves",
+      "args": {
+        "query": "High-Level System Design HLD interview"
+      }
+    }
+  ],
+  "judge": {
+    "drafts": 3,
+    "best": "D3",
+    "why": "D3 stays closest to the source's grouped HLD questions and Excalidraw practice, starts with a city-map analogy, defines HLD plainly, is the most beginner-sized, and its quiz checks grouping and scale understanding. D1 and D2 add more unmarked beyond-source detail, and D2 is longer and more advanced.",
+    "scores": {
+      "D1": {
+        "grounding": 6,
+        "level_fit": 7,
+        "clarity": 8
+      },
+      "D2": {
+        "grounding": 5,
+        "level_fit": 5,
+        "clarity": 8
+      },
+      "D3": {
+        "grounding": 8,
+        "level_fit": 9,
+        "clarity": 8
+      }
+    },
+    "temperatures": [
+      0.4,
+      0.8,
+      1.0
+    ]
+  },
+  "id": "09adad71df0dbd0b"
+}

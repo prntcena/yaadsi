@@ -1,0 +1,200 @@
+{
+  "title": "Learning DSA with AI Prompts",
+  "sections": [
+    {
+      "heading": "Everyday Analogy",
+      "body": "Think of learning to cook. A video shows one recipe for everyone. A personal tutor watches you cook, tastes your food, and fixes your mistakes.\n\nTutorials are like the video. ChatGPT with good prompts is like the tutor. A prompt is just the instruction you type to the AI. Prompt engineering means writing that instruction clearly so the AI helps you the right way."
+    },
+    {
+      "heading": "Why It Exists",
+      "body": "This exists because everyone gets stuck differently. Personalized learning means the AI adapts to your level, your mistakes, and your pace.\n\nInstead of watching, you ask the AI to:\n- explain the idea simply\n- break a big problem into small steps\n- check your code and find edge cases\n- give you similar problems to practice patterns\n\nThis helps you think, not just copy."
+    },
+    {
+      "heading": "What Can Go Wrong",
+      "body": "The AI can sound confident but be wrong. It might give code that fails or miss a better solution.\n\nIf you only copy answers, you don't learn the pattern. Pattern means the reusable trick behind many problems, like two pointers or sliding window.\n\nAlways test the code yourself and ask the AI to explain time and space complexity, which is how fast your code runs and how much memory it uses."
+    }
+  ],
+  "diagram": {
+    "nodes": [
+      {
+        "id": "n1",
+        "label": "You get stuck on DSA"
+      },
+      {
+        "id": "n2",
+        "label": "Write clear prompt"
+      },
+      {
+        "id": "n3",
+        "label": "AI tutors personally"
+      },
+      {
+        "id": "n4",
+        "label": "You practice patterns"
+      },
+      {
+        "id": "n5",
+        "label": "Check for mistakes"
+      }
+    ],
+    "edges": [
+      [
+        "n1",
+        "n2",
+        "ask"
+      ],
+      [
+        "n2",
+        "n3",
+        ""
+      ],
+      [
+        "n3",
+        "n4",
+        ""
+      ],
+      [
+        "n4",
+        "n5",
+        "verify"
+      ]
+    ]
+  },
+  "steps": [
+    {
+      "node_id": "n1",
+      "narration": "You hit a DSA problem you don't understand."
+    },
+    {
+      "node_id": "n2",
+      "narration": "You write a specific prompt, not just 'solve this'."
+    },
+    {
+      "node_id": "n3",
+      "narration": "AI explains at your level and pace."
+    },
+    {
+      "node_id": "n4",
+      "narration": "You get similar problems to learn the pattern."
+    },
+    {
+      "node_id": "n5",
+      "narration": "You test the answer and ask about complexity."
+    }
+  ],
+  "quiz": [
+    {
+      "q": "What does prompt engineering mean here?",
+      "options": [
+        "Writing clear instructions for the AI",
+        "Installing new AI software",
+        "Watching more tutorials",
+        "Paying for a course"
+      ],
+      "answer_index": 0,
+      "why": "The save is about 7 prompts that make the AI teach you personally."
+    },
+    {
+      "q": "Why is personalized learning better than a generic tutorial?",
+      "options": [
+        "It is longer",
+        "It adapts to your level, mistakes and pace",
+        "It always gives the final answer",
+        "It needs no practice"
+      ],
+      "answer_index": 1,
+      "why": "Slide 2 says ChatGPT adapts to your level, mistakes and pace."
+    },
+    {
+      "q": "What breaks or goes wrong if you just copy AI answers?",
+      "options": [
+        "You learn faster",
+        "You miss the pattern and may get wrong code",
+        "Complexity always improves",
+        "Edge cases disappear"
+      ],
+      "answer_index": 1,
+      "why": "AI can be confidently wrong and you won't learn reusable patterns without testing."
+    }
+  ],
+  "sources": [
+    "DTg1Dnqk8tY"
+  ],
+  "extra": [
+    "AI models can hallucinate - generate plausible but incorrect explanations or code."
+  ],
+  "level": 2,
+  "topic": "AI & Machine Learning",
+  "save_ids": [
+    "DTg1Dnqk8tY"
+  ],
+  "words": 200,
+  "word_limit": 200,
+  "mermaid": "flowchart TD\n  n0[\"You get stuck on DSA\"]\n  n1[\"Write clear prompt\"]\n  n2[\"AI tutors personally\"]\n  n3[\"You practice patterns\"]\n  n4[\"Check for mistakes\"]\n  n0 -->|\"ask\"| n1\n  n1 --> n2\n  n2 --> n3\n  n3 -->|\"verify\"| n4",
+  "animation": [
+    {
+      "node": "n0",
+      "narration": "You hit a DSA problem you don't understand."
+    },
+    {
+      "node": "n1",
+      "narration": "You write a specific prompt, not just 'solve this'."
+    },
+    {
+      "node": "n2",
+      "narration": "AI explains at your level and pace."
+    },
+    {
+      "node": "n3",
+      "narration": "You get similar problems to learn the pattern."
+    },
+    {
+      "node": "n4",
+      "narration": "You test the answer and ask about complexity."
+    }
+  ],
+  "rules_used": [],
+  "agent_trace": [
+    {
+      "tool": "read_save",
+      "args": {
+        "save_id": "DTg1Dnqk8tY"
+      }
+    },
+    {
+      "tool": "search_saves",
+      "args": {
+        "query": "AI prompts personalized learning DSA",
+        "topic": "AI & Machine Learning"
+      }
+    }
+  ],
+  "judge": {
+    "drafts": 3,
+    "best": "D1",
+    "why": "D1 starts with a clear everyday analogy, defines prompt engineering, pattern, and complexity in plain words, stays closest to the length limit, and its quiz checks the source's core ideas. D2 is grounded but leaves several terms undefined, while D3 is clearest but too long.",
+    "scores": {
+      "D1": {
+        "grounding": 7,
+        "level_fit": 8,
+        "clarity": 8
+      },
+      "D2": {
+        "grounding": 8,
+        "level_fit": 7,
+        "clarity": 7
+      },
+      "D3": {
+        "grounding": 7,
+        "level_fit": 6,
+        "clarity": 9
+      }
+    },
+    "temperatures": [
+      0.4,
+      0.8,
+      1.0
+    ]
+  },
+  "id": "a9b5f5a8799e628b"
+}

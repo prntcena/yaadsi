@@ -1,0 +1,198 @@
+{
+  "title": "System Design Starter: From One Computer to Many",
+  "sections": [
+    {
+      "heading": "Everyday analogy",
+      "body": "Think of a food court. One stall is one server. When lunch rush hits, you add stalls, split jobs, and need a way to find the right stall.\n\nDistributed system means many computers working as one team. Service discovery is the directory board that tells you where each stall is. Consistent hashing is the rule for which stall handles which customer, so adding a stall moves only a few customers."
+    },
+    {
+      "heading": "Why it exists",
+      "body": "One computer hits limits on traffic, storage, and failures. System design spreads work so the service stays fast and available.\n\nIdempotent API means doing the same request twice gives the same result, like pressing pay again does not charge twice. This is needed because networks retry. JWT authentication is a signed pass that proves who you are without asking a central desk every time."
+    },
+    {
+      "heading": "What can go wrong",
+      "body": "More machines means more ways to fail. If service discovery is stale, requests go to dead servers. If hashing is uneven, one server gets overloaded.\n\nWithout idempotent APIs, retries create duplicate orders. Bloom filter is a fast maybe-check to avoid expensive lookups, but it can say maybe when answer is no, so you still need a real check."
+    }
+  ],
+  "diagram": {
+    "nodes": [
+      {
+        "id": "client",
+        "label": "Client request"
+      },
+      {
+        "id": "discovery",
+        "label": "Service discovery"
+      },
+      {
+        "id": "hash",
+        "label": "Consistent hashing"
+      },
+      {
+        "id": "server",
+        "label": "Servers"
+      },
+      {
+        "id": "retry",
+        "label": "Retry with idempotent API"
+      }
+    ],
+    "edges": [
+      [
+        "client",
+        "discovery",
+        "finds"
+      ],
+      [
+        "discovery",
+        "hash",
+        "routes"
+      ],
+      [
+        "hash",
+        "server",
+        "assigns"
+      ],
+      [
+        "client",
+        "retry",
+        "on fail"
+      ],
+      [
+        "retry",
+        "server",
+        "safe retry"
+      ]
+    ]
+  },
+  "steps": [
+    {
+      "node_id": "client",
+      "narration": "Client sends a request like place order."
+    },
+    {
+      "node_id": "discovery",
+      "narration": "Service discovery finds healthy servers."
+    },
+    {
+      "node_id": "hash",
+      "narration": "Consistent hashing picks which server owns this key."
+    },
+    {
+      "node_id": "server",
+      "narration": "Server handles it; JWT proves identity."
+    },
+    {
+      "node_id": "retry",
+      "narration": "If network fails, retry is safe because API is idempotent."
+    }
+  ],
+  "quiz": [
+    {
+      "q": "What does an idempotent API guarantee?",
+      "options": [
+        "First request is faster",
+        "Same request twice has same effect as once",
+        "Requests never fail",
+        "Server stores all past requests forever"
+      ],
+      "answer_index": 1,
+      "why": "Idempotent means retries do not create duplicates, key for unreliable networks."
+    },
+    {
+      "q": "What fails first if usage grows 100x without consistent hashing?",
+      "options": [
+        "One server gets overloaded while others sit idle",
+        "JWTs become invalid",
+        "Bloom filters delete data",
+        "RPC stops working"
+      ],
+      "answer_index": 0,
+      "why": "Poor distribution causes hot spots; consistent hashing limits reshuffling and balances load."
+    },
+    {
+      "q": "Why use service discovery?",
+      "options": [
+        "To make passwords stronger",
+        "To locate healthy service instances dynamically",
+        "To compress data",
+        "To version APIs"
+      ],
+      "answer_index": 1,
+      "why": "Servers come and go; discovery keeps the directory current."
+    }
+  ],
+  "sources": [
+    "linkedin-com-feed-update-urn-li-activity-7405595393402556416"
+  ],
+  "extra": [
+    "Bloom filters have false positives but never false negatives."
+  ],
+  "level": 2,
+  "topic": "Software Engineering & Systems",
+  "save_ids": [
+    "linkedin-com-feed-update-urn-li-activity-7405595393402556416"
+  ],
+  "words": 192,
+  "word_limit": 200,
+  "mermaid": "flowchart TD\n  n0[\"Client request\"]\n  n1[\"Service discovery\"]\n  n2[\"Consistent hashing\"]\n  n3[\"Servers\"]\n  n4[\"Retry with idempotent API\"]\n  n0 -->|\"finds\"| n1\n  n1 -->|\"routes\"| n2\n  n2 -->|\"assigns\"| n3\n  n0 -->|\"on fail\"| n4\n  n4 -->|\"safe retry\"| n3",
+  "animation": [
+    {
+      "node": "n0",
+      "narration": "Client sends a request like place order."
+    },
+    {
+      "node": "n1",
+      "narration": "Service discovery finds healthy servers."
+    },
+    {
+      "node": "n2",
+      "narration": "Consistent hashing picks which server owns this key."
+    },
+    {
+      "node": "n3",
+      "narration": "Server handles it; JWT proves identity."
+    },
+    {
+      "node": "n4",
+      "narration": "If network fails, retry is safe because API is idempotent."
+    }
+  ],
+  "rules_used": [],
+  "agent_trace": [
+    {
+      "tool": "search_saves",
+      "args": {
+        "query": "system design idempotent consistent hashing service discovery"
+      }
+    }
+  ],
+  "judge": {
+    "drafts": 3,
+    "best": "D1",
+    "why": "D1 starts with a clear everyday analogy, defines the listed concepts in plain beginner language, and has accurate, understanding-focused quizzes. It exceeds 200 words and presents definitions beyond the list-only source without marking them as extra, lowering grounding and level_fit, but it is more…",
+    "scores": {
+      "D1": {
+        "grounding": 6,
+        "level_fit": 6,
+        "clarity": 8
+      },
+      "D2": {
+        "grounding": 6,
+        "level_fit": 4,
+        "clarity": 9
+      },
+      "D3": {
+        "grounding": 5,
+        "level_fit": 6,
+        "clarity": 7
+      }
+    },
+    "temperatures": [
+      0.4,
+      0.8,
+      1.0
+    ]
+  },
+  "id": "78d1c5f584e06e9b"
+}

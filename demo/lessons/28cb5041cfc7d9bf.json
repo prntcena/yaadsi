@@ -1,0 +1,191 @@
+{
+  "title": "Database Indexes: Finding Data Without Scanning Everything",
+  "sections": [
+    {
+      "heading": "Everyday analogy: the library catalog",
+      "body": "Imagine a library with no catalog. To find one book, you check every shelf. That's a full scan - slow.\n\nAn index is like a separate, sorted catalog card system. It stores a shortcut: key -> location. A query (a question you ask the database) uses the catalog to jump straight to the right shelf.\n\n- B-Tree / B+ Tree = catalog sorted by title for range searches like \"A to M\"\n- Hash Index = exact match drawer, perfect for \"where is book ID 123?\"\n- Inverted Index = word -> list of books containing that word, for search"
+    },
+    {
+      "heading": "Why it exists",
+      "body": "Databases keep data on disk. Reading disk is slow, so we avoid scanning all rows.\n\nAn index exists to trade a little extra storage and write work for much faster reads.\n\nDifferent questions need different catalogs:\n- Need range queries? B+ Tree keeps leaves linked and sorted. Used in MySQL, PostgreSQL.\n- Need fast writes? LSM Tree (used in Cassandra, RocksDB) writes sequentially, then merges later.\n- Need location search? R-Tree handles multi-dimensional spatial data."
+    },
+    {
+      "heading": "What can go wrong",
+      "body": "A term: cardinality means how many unique values a column has. Low cardinality = few values like \"gender\" or \"status\".\n\nIndexes can hurt if misused:\n- Wrong index slows everything: every write must update all indexes.\n- Bitmap Index is great for low-cardinality filtering in analytics, but terrible for high-cardinality or heavy writes.\n- Hash Index cannot do range queries, only equality.\n\nToo many indexes = slow writes, large storage, and the database picks the wrong catalog."
+    }
+  ],
+  "diagram": {
+    "nodes": [
+      {
+        "id": "q",
+        "label": "Query arrives"
+      },
+      {
+        "id": "idx",
+        "label": "Index (shortcut)"
+      },
+      {
+        "id": "data",
+        "label": "Data on disk"
+      },
+      {
+        "id": "write",
+        "label": "Write cost"
+      },
+      {
+        "id": "pick",
+        "label": "Pick right type"
+      }
+    ],
+    "edges": [
+      [
+        "q",
+        "idx",
+        "uses"
+      ],
+      [
+        "idx",
+        "data",
+        "points to"
+      ],
+      [
+        "write",
+        "idx",
+        "updates"
+      ],
+      [
+        "pick",
+        "idx",
+        "chooses B-Tree/Hash/LSM"
+      ]
+    ]
+  },
+  "steps": [
+    {
+      "node_id": "q",
+      "narration": "A query asks for specific data, not the whole table."
+    },
+    {
+      "node_id": "pick",
+      "narration": "We pick an index type that matches the question: range, exact, text, or spatial."
+    },
+    {
+      "node_id": "idx",
+      "narration": "The index is a small, sorted shortcut from key to location."
+    },
+    {
+      "node_id": "data",
+      "narration": "We jump directly to the data on disk, avoiding a full scan."
+    },
+    {
+      "node_id": "write",
+      "narration": "On every write, we must also update the index, which costs time and space."
+    }
+  ],
+  "quiz": [
+    {
+      "q": "Which index is best for finding all orders with price between $10 and $50?",
+      "options": [
+        "Hash Index",
+        "B+ Tree",
+        "Inverted Index",
+        "Trie"
+      ],
+      "answer_index": 1,
+      "why": "B+ Tree keeps data sorted with linked leaves, so range scans are fast. Hash Index only does equality."
+    },
+    {
+      "q": "What fails first if writes grow 100x and you have 10 indexes on the table?",
+      "options": [
+        "Reads get faster forever",
+        "Writes slow down sharply as each index must be updated",
+        "Inverted Index starts doing range queries",
+        "R-Tree becomes a Hash Index"
+      ],
+      "answer_index": 1,
+      "why": "Every write pays a cost to update every index. Too many indexes make high-write workloads very slow and storage-heavy."
+    },
+    {
+      "q": "Why would you use an Inverted Index?",
+      "options": [
+        "To store low-cardinality bitmaps",
+        "For full-text search: word to documents",
+        "For sequential high-write throughput",
+        "For exact equality only"
+      ],
+      "answer_index": 1,
+      "why": "Inverted Index maps each keyword to the list of documents containing it, powering Elasticsearch and search engines."
+    }
+  ],
+  "sources": [
+    "linkedin-com-feed-update-urn-li-activity-7408755754494607360"
+  ],
+  "extra": [],
+  "level": 2,
+  "topic": "Software Engineering & Systems",
+  "save_ids": [
+    "linkedin-com-feed-update-urn-li-activity-7408755754494607360"
+  ],
+  "words": 252,
+  "word_limit": 200,
+  "mermaid": "flowchart TD\n  n0[\"Query arrives\"]\n  n1[\"Index (shortcut)\"]\n  n2[\"Data on disk\"]\n  n3[\"Write cost\"]\n  n4[\"Pick right type\"]\n  n0 -->|\"uses\"| n1\n  n1 -->|\"points to\"| n2\n  n3 -->|\"updates\"| n1\n  n4 -->|\"chooses B-Tree/Hash/LSM\"| n1",
+  "animation": [
+    {
+      "node": "n0",
+      "narration": "A query asks for specific data, not the whole table."
+    },
+    {
+      "node": "n4",
+      "narration": "We pick an index type that matches the question: range, exact, text, or spatial."
+    },
+    {
+      "node": "n1",
+      "narration": "The index is a small, sorted shortcut from key to location."
+    },
+    {
+      "node": "n2",
+      "narration": "We jump directly to the data on disk, avoiding a full scan."
+    },
+    {
+      "node": "n3",
+      "narration": "On every write, we must also update the index, which costs time and space."
+    }
+  ],
+  "rules_used": [],
+  "agent_trace": [
+    {
+      "tool": "read_save",
+      "args": {
+        "save_id": "linkedin-com-feed-update-urn-li-activity-7408755754494607360"
+      }
+    }
+  ],
+  "judge": {
+    "drafts": 3,
+    "best": "D2",
+    "why": "D2 starts with a clear library analogy, defines query, full scan and cardinality in plain words, maps each index to a beginner-friendly use case, and its quiz tests range vs equality and write-cost understanding.",
+    "scores": {
+      "D1": {
+        "grounding": 6,
+        "level_fit": 5,
+        "clarity": 7
+      },
+      "D2": {
+        "grounding": 6,
+        "level_fit": 6,
+        "clarity": 8
+      },
+      "D3": {
+        "grounding": 5,
+        "level_fit": 6,
+        "clarity": 8
+      }
+    },
+    "temperatures": [
+      0.4,
+      0.8,
+      1.0
+    ]
+  },
+  "id": "28cb5041cfc7d9bf"
+}

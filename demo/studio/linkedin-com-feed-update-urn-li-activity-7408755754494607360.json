@@ -1,0 +1,23 @@
+{
+  "id": "linkedin-com-feed-update-urn-li-activity-7408755754494607360",
+  "hash": "467f79a7b5447e62",
+  "learnable": true,
+  "title": "15 Database Indexing Techniques Every Engineer Should Know",
+  "summary": "Explains 15 database indexing structures, their strengths and trade-offs, from B-Tree, B+ Tree and Hash indexes to LSM, inverted, spatial and time-series indexes, helping engineers pick the right index to speed up queries.",
+  "topics": [
+    "Databases",
+    "System Design",
+    "Backend Engineering"
+  ],
+  "concepts": [
+    "B-Tree and B+ Tree",
+    "Hash Index",
+    "LSM Tree",
+    "Inverted Index",
+    "Bitmap and BRIN Indexes",
+    "R-Tree and Z-Order Index"
+  ],
+  "difficulty": 3,
+  "minutes": 15,
+  "has_diagram": true
+}

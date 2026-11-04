@@ -1,0 +1,22 @@
+{
+  "id": "DY3rLu6FMm6",
+  "hash": "4201de6188968551",
+  "learnable": true,
+  "title": "APIs That Make Apps Feel Premium",
+  "summary": "Lists 5 APIs to add premium polish to apps: Mapbox for custom maps, Resend for transactional email, Clerk for auth with polished UI, Stream for chat/feeds/video, and Cloudinary for image/video optimization and delivery.",
+  "topics": [
+    "Software Development",
+    "APIs",
+    "Web Development"
+  ],
+  "concepts": [
+    "Mapbox custom maps and location features",
+    "Resend transactional email API",
+    "Clerk authentication and user management",
+    "Stream real-time chat and activity feeds",
+    "Cloudinary image and video optimization via CDN"
+  ],
+  "difficulty": 2,
+  "minutes": 6,
+  "has_diagram": false
+}

@@ -1,0 +1,23 @@
+{
+  "id": "linkedin-com-feed-update-urn-li-activity-7421516454489088000",
+  "hash": "1d3308c3a8107ef7",
+  "learnable": true,
+  "title": "NVIDIA's Seven Free AI Courses",
+  "summary": "Curated list of seven free NVIDIA courses covering generative AI basics, RAG models and agents, video AI apps, edge AI on Jetson Nano, digital fingerprinting, and CUDA GPU programming for building production-ready AI systems.",
+  "topics": [
+    "Artificial Intelligence",
+    "Generative AI",
+    "GPU Computing"
+  ],
+  "concepts": [
+    "Retrieval-Augmented Generation (RAG)",
+    "RAG Agents",
+    "CUDA programming",
+    "Video AI applications",
+    "Edge AI on Jetson Nano",
+    "Digital fingerprinting"
+  ],
+  "difficulty": 2,
+  "minutes": 5,
+  "has_diagram": true
+}

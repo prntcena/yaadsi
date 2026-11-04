@@ -1,0 +1,167 @@
+{
+  "title": "Editing Video by Chatting With AI",
+  "sections": [
+    {
+      "heading": "An Everyday Analogy",
+      "body": "Think of old video editing like cutting paper film with scissors on a timeline.\n\nPrompt-based video editing is like telling an assistant what you want. You type \"remove silences, make it brighter, add captions\" and the AI does the cuts for you.\n\nTranscript-based editing means the video turns into text. Delete a word in the text, and that part of the video disappears."
+    },
+    {
+      "heading": "Why It Exists",
+      "body": "Traditional tools like DaVinci Resolve, iMovie, and CapCut need manual timeline work. That takes time and skill.\n\nThese new tools exist to make editing faster with simple chat commands. They use:\n- AI avatar cloning: a digital copy of you that can speak any script\n- Text-to-video generation: creating video from just written text\n- Automated cuts and silence removal: AI finds and removes pauses and bad takes\n\nThis helps creators make avatar videos, translations, and voiceovers quickly."
+    },
+    {
+      "heading": "What Can Go Wrong",
+      "body": "AI editing is fast, but it has limits.\n\nAn avatar clone can look fake or steal someone's face and voice without permission. Auto-cuts can remove important pauses or emotion. Chat commands may misunderstand you and cut the wrong part.\n\nTerm to know: prompt means the written instruction you give the AI, like \"cut the boring parts.\" If the prompt is vague, the result will be wrong."
+    }
+  ],
+  "diagram": {
+    "nodes": [
+      {
+        "id": "prompt",
+        "label": "You type a prompt"
+      },
+      {
+        "id": "ai",
+        "label": "AI understands request"
+      },
+      {
+        "id": "video",
+        "label": "AI edits video"
+      },
+      {
+        "id": "check",
+        "label": "You check result"
+      }
+    ],
+    "edges": [
+      [
+        "prompt",
+        "ai",
+        ""
+      ],
+      [
+        "ai",
+        "video",
+        ""
+      ],
+      [
+        "video",
+        "check",
+        ""
+      ]
+    ]
+  },
+  "steps": [
+    {
+      "node_id": "prompt",
+      "narration": "You write a simple instruction like remove silences."
+    },
+    {
+      "node_id": "ai",
+      "narration": "The AI turns your words into editing tasks."
+    },
+    {
+      "node_id": "video",
+      "narration": "It cuts, adds captions, or uses your avatar clone."
+    },
+    {
+      "node_id": "check",
+      "narration": "You watch and fix any mistakes the AI made."
+    }
+  ],
+  "quiz": [
+    {
+      "q": "What does prompt-based video editing mean?",
+      "options": [
+        "Editing by dragging clips on a timeline",
+        "Editing by typing chat instructions to AI",
+        "Editing by printing video as photos",
+        "Editing by recording with a new camera"
+      ],
+      "answer_index": 1,
+      "why": "The save shows editing just by chatting with prompts instead of manual timeline editing."
+    },
+    {
+      "q": "What fails first if usage grows 100x and everyone uses AI avatar cloning?",
+      "options": [
+        "Avatars get more realistic forever",
+        "Viewers trust drops and fake clones spread",
+        "Computers no longer need electricity",
+        "Timeline editing becomes required again"
+      ],
+      "answer_index": 1,
+      "why": "At huge scale, fake copies and trust issues break first, plus auto-cuts and voiceovers can make errors."
+    },
+    {
+      "q": "What does transcript-based editing do?",
+      "options": [
+        "Changes video by editing its text transcript",
+        "Makes the video longer automatically",
+        "Clones your voice without text",
+        "Deletes your original files"
+      ],
+      "answer_index": 0,
+      "why": "The save lists transcript editing where editing text edits the video itself."
+    }
+  ],
+  "sources": [
+    "DQr2EaKDDFn"
+  ],
+  "extra": [],
+  "level": 2,
+  "topic": "AI & Machine Learning",
+  "save_ids": [
+    "DQr2EaKDDFn"
+  ],
+  "words": 207,
+  "word_limit": 200,
+  "mermaid": "flowchart TD\n  n0[\"You type a prompt\"]\n  n1[\"AI understands request\"]\n  n2[\"AI edits video\"]\n  n3[\"You check result\"]\n  n0 --> n1\n  n1 --> n2\n  n2 --> n3",
+  "animation": [
+    {
+      "node": "n0",
+      "narration": "You write a simple instruction like remove silences."
+    },
+    {
+      "node": "n1",
+      "narration": "The AI turns your words into editing tasks."
+    },
+    {
+      "node": "n2",
+      "narration": "It cuts, adds captions, or uses your avatar clone."
+    },
+    {
+      "node": "n3",
+      "narration": "You watch and fix any mistakes the AI made."
+    }
+  ],
+  "rules_used": [],
+  "agent_trace": [],
+  "judge": {
+    "drafts": 3,
+    "best": "D3",
+    "why": "D3 stays within the source on chat editing, avatar cloning, text-to-video, transcript editing, and auto-cuts, while D1 and D2 present ungrounded JSON/Veo 3 claims as sourced. D3 also best fits beginner level with an everyday analogy, plain definitions, and a quiz checking real understanding.",
+    "scores": {
+      "D1": {
+        "grounding": 3,
+        "level_fit": 4,
+        "clarity": 5
+      },
+      "D2": {
+        "grounding": 4,
+        "level_fit": 5,
+        "clarity": 6
+      },
+      "D3": {
+        "grounding": 9,
+        "level_fit": 8,
+        "clarity": 9
+      }
+    },
+    "temperatures": [
+      0.4,
+      0.8,
+      1.0
+    ]
+  },
+  "id": "e4bec53728f72665"
+}

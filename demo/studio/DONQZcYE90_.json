@@ -1,0 +1,22 @@
+{
+  "id": "DONQZcYE90_",
+  "hash": "ed0617a8c10ff520",
+  "learnable": true,
+  "title": "JSON vs Natural Prompts for Veo 3 Video",
+  "summary": "Compares standard natural-language prompts and structured JSON prompts in Google Veo 3 to create the same seamless fashion video transition, showing how JSON prompting offers more precise control over cinematic style, lighting, and cuts.",
+  "topics": [
+    "Generative AI",
+    "Prompt Engineering",
+    "Video Generation"
+  ],
+  "concepts": [
+    "Veo 3",
+    "JSON prompting",
+    "Seamless transitions",
+    "Cinematic AI styling",
+    "Invisible cuts"
+  ],
+  "difficulty": 2,
+  "minutes": 8,
+  "has_diagram": false
+}

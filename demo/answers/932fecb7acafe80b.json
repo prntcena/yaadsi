@@ -1,0 +1,12 @@
+{
+  "question": "How does the RAG pipeline with ChromaDB and Ollama work?",
+  "answer": "Your GitHub repo on Obelisk shows how it works and it's pretty simple. You've got a full RAG pipeline that takes your MkDocs docs, processes them and makes vector embeddings that get stored in ChromaDB. Then when you ask a question it pulls the right context and Ollama handles the local LLM part for both embeddings and generating the answer.",
+  "follow_up": "How does Ollama integration for local LLMs work?",
+  "cited": [
+    "https-github-com-usrbinkat-obelisk"
+  ],
+  "found": true,
+  "agent_trace": [],
+  "mode": "keyword",
+  "saves_read": 1
+}

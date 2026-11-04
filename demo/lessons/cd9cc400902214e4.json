@@ -1,0 +1,203 @@
+{
+  "title": "JSON vs Natural Prompts for Veo 3 Video",
+  "sections": [
+    {
+      "heading": "Everyday Analogy - Recipe Note vs Recipe Form",
+      "body": "Think of asking a friend to cook.\n\nA natural prompt is like a note: \"make a cool red dress video, dark and fancy.\" Your friend guesses the details.\n\nA JSON prompt is like a filled form with boxes: lighting: red, style: cinematic, cut: invisible. JSON means JavaScript Object Notation, a way to write labeled boxes for a computer. Veo 3 is Google's AI that makes video from text.\n\nBoth can make the same red fashion video, but the form gives tighter control."
+    },
+    {
+      "heading": "Why it exists",
+      "body": "Natural language is fast but vague. Words like \"cinematic\" or \"seamless\" can mean many things.\n\nJSON prompting exists to be precise. You set separate controls for lighting, style, and cuts. An invisible cut is an edit hidden to look like one continuous shot.\n\nIn your save, both prompts made the same dark red surreal concept, but JSON let the creator steer the exact look and transition."
+    },
+    {
+      "heading": "What can go wrong",
+      "body": "More control means more ways to fail.\n\n- Too many or wrong labels can confuse Veo 3 and make a stiff or broken video.\n- Small typos in JSON, like a missing bracket, can make the whole prompt fail.\n- Over-specifying can kill creativity, giving a perfect but boring result."
+    }
+  ],
+  "diagram": {
+    "nodes": [
+      {
+        "id": "idea",
+        "label": "Your Idea: red fashion video"
+      },
+      {
+        "id": "natural",
+        "label": "Natural Prompt: vague note"
+      },
+      {
+        "id": "json",
+        "label": "JSON Prompt: labeled boxes"
+      },
+      {
+        "id": "veo3",
+        "label": "Veo 3 generates video"
+      },
+      {
+        "id": "result",
+        "label": "Seamless transition result"
+      }
+    ],
+    "edges": [
+      [
+        "idea",
+        "natural",
+        ""
+      ],
+      [
+        "idea",
+        "json",
+        ""
+      ],
+      [
+        "natural",
+        "veo3",
+        "guesses"
+      ],
+      [
+        "json",
+        "veo3",
+        "precise control"
+      ],
+      [
+        "veo3",
+        "result",
+        ""
+      ]
+    ]
+  },
+  "steps": [
+    {
+      "node_id": "idea",
+      "narration": "Start with your idea for the video."
+    },
+    {
+      "node_id": "natural",
+      "narration": "Natural prompt sends it as one vague sentence."
+    },
+    {
+      "node_id": "json",
+      "narration": "JSON prompt splits it into labeled boxes for lighting and cuts."
+    },
+    {
+      "node_id": "veo3",
+      "narration": "Veo 3 reads the prompt and builds the video."
+    },
+    {
+      "node_id": "result",
+      "narration": "You get the seamless transition, more precise with JSON."
+    }
+  ],
+  "quiz": [
+    {
+      "q": "What is JSON prompting in Veo 3?",
+      "options": [
+        "A way to write prompts as labeled boxes for precise control",
+        "A way to make videos without any prompt",
+        "A filter that only changes music",
+        "A tool to delete videos"
+      ],
+      "answer_index": 0,
+      "why": "Your save shows JSON prompting uses structured labels to control cinematic style, lighting, and cuts more precisely than natural language."
+    },
+    {
+      "q": "Why use JSON instead of just natural language?",
+      "options": [
+        "Natural language is too precise",
+        "JSON lets you control each part like lighting and cuts separately",
+        "JSON is always faster to type",
+        "Veo 3 cannot read natural language"
+      ],
+      "answer_index": 1,
+      "why": "Natural prompts are vague, JSON exists to give separate, precise controls for the same concept."
+    },
+    {
+      "q": "What breaks or goes wrong if you make your JSON prompt 100x more detailed?",
+      "options": [
+        "Veo 3 will always make it perfect",
+        "Small typos or conflicting labels can make the video fail or look stiff",
+        "Natural prompts will stop working",
+        "The video will automatically become shorter"
+      ],
+      "answer_index": 1,
+      "why": "Over-specifying with too many boxes increases typos and conflicts, which can confuse the model and break the seamless result."
+    }
+  ],
+  "sources": [
+    "DONQZcYE90_"
+  ],
+  "extra": [],
+  "level": 2,
+  "topic": "AI & Machine Learning",
+  "save_ids": [
+    "DONQZcYE90_"
+  ],
+  "words": 198,
+  "word_limit": 200,
+  "mermaid": "flowchart TD\n  n0[\"Your Idea: red fashion video\"]\n  n1[\"Natural Prompt: vague note\"]\n  n2[\"JSON Prompt: labeled boxes\"]\n  n3[\"Veo 3 generates video\"]\n  n4[\"Seamless transition result\"]\n  n0 --> n1\n  n0 --> n2\n  n1 -->|\"guesses\"| n3\n  n2 -->|\"precise control\"| n3\n  n3 --> n4",
+  "animation": [
+    {
+      "node": "n0",
+      "narration": "Start with your idea for the video."
+    },
+    {
+      "node": "n1",
+      "narration": "Natural prompt sends it as one vague sentence."
+    },
+    {
+      "node": "n2",
+      "narration": "JSON prompt splits it into labeled boxes for lighting and cuts."
+    },
+    {
+      "node": "n3",
+      "narration": "Veo 3 reads the prompt and builds the video."
+    },
+    {
+      "node": "n4",
+      "narration": "You get the seamless transition, more precise with JSON."
+    }
+  ],
+  "rules_used": [],
+  "agent_trace": [
+    {
+      "tool": "search_saves",
+      "args": {
+        "query": "JSON prompting Veo 3 video generation",
+        "topic": "AI & Machine Learning"
+      }
+    },
+    {
+      "tool": "read_save",
+      "args": {
+        "save_id": "DONQZcYE90_"
+      }
+    }
+  ],
+  "judge": {
+    "drafts": 3,
+    "best": "D1",
+    "why": "D1 starts with a clear everyday analogy, defines JSON, Veo 3 and invisible cut in plain words, stays closest to the 200-word limit, and its claims and quiz most directly follow the saved comparison of precise control over style, lighting and cuts.",
+    "scores": {
+      "D1": {
+        "grounding": 8,
+        "level_fit": 9,
+        "clarity": 9
+      },
+      "D2": {
+        "grounding": 6,
+        "level_fit": 7,
+        "clarity": 8
+      },
+      "D3": {
+        "grounding": 7,
+        "level_fit": 6,
+        "clarity": 8
+      }
+    },
+    "temperatures": [
+      0.4,
+      0.8,
+      1.0
+    ]
+  },
+  "id": "cd9cc400902214e4"
+}

@@ -1,0 +1,21 @@
+{
+  "id": "DY_OCbUkuA0",
+  "hash": "bc254855f10f0e1b",
+  "learnable": true,
+  "title": "Free Hosting Platforms for Developers",
+  "summary": "Lists free hosting options to deploy and showcase projects, including Fly.io, Google Cloud free tier, Netlify, Cloudflare Pages, Heroku, Koyeb, Surge and others for frontend, backend and static sites.",
+  "topics": [
+    "Web Development",
+    "Deployment"
+  ],
+  "concepts": [
+    "Free tier hosting",
+    "Static site publishing",
+    "Edge deployment",
+    "JAMstack platforms",
+    "Git-based deployment"
+  ],
+  "difficulty": 2,
+  "minutes": 10,
+  "has_diagram": false
+}

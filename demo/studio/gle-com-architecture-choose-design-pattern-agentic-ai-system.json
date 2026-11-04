@@ -1,0 +1,22 @@
+{
+  "id": "gle-com-architecture-choose-design-pattern-agentic-ai-system",
+  "hash": "5928d54b43fa9cdf",
+  "learnable": true,
+  "title": "Choosing Design Patterns for Agentic AI Systems",
+  "summary": "Teaches how to choose a single or multi-agent pattern for Vertex AI based on task complexity, latency vs accuracy, cost, and human oversight needs.",
+  "topics": [
+    "AI agents",
+    "System architecture",
+    "Google Cloud"
+  ],
+  "concepts": [
+    "Single-agent vs multi-agent patterns",
+    "Requirement-driven pattern selection",
+    "Latency vs accuracy tradeoffs",
+    "Cost of inference calls",
+    "Human-in-the-loop for high-stakes tasks"
+  ],
+  "difficulty": 3,
+  "minutes": 15,
+  "has_diagram": false
+}

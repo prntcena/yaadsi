@@ -1,0 +1,22 @@
+{
+  "id": "DQr2EaKDDFn",
+  "hash": "971f6a5daa3d8446",
+  "learnable": true,
+  "title": "Prompt-Based AI Video Editing Tools",
+  "summary": "Shows how to edit video by chatting with AI instead of timeline editing. Covers 13 tools for avatar cloning, text-to-video, transcript editing, auto-cuts, and chat commands as alternatives to DaVinci, iMovie, and CapCut.",
+  "topics": [
+    "Video Editing",
+    "AI Tools",
+    "Content Creation"
+  ],
+  "concepts": [
+    "Prompt-based video editing",
+    "AI avatar cloning",
+    "Transcript-based editing",
+    "Text-to-video generation",
+    "Automated cuts and silence removal"
+  ],
+  "difficulty": 2,
+  "minutes": 12,
+  "has_diagram": false
+}

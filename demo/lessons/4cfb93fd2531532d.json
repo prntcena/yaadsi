@@ -1,0 +1,184 @@
+{
+  "title": "Design Tools Like Kittl: Your All-in-One Creative Kitchen",
+  "sections": [
+    {
+      "heading": "The Analogy: A Creative Kitchen",
+      "body": "Think of making posters like cooking. Canva is like a kitchen with good recipes (templates) and basic tools.\n\nKittl is a newer kitchen that also has a robot chef. An all-in-one design tool means one website to do everything: make pictures, add fancy text, and show your design on a shirt or mug. A template is a ready-made starting design you edit. A mockup is a fake preview showing how your design looks on a real product."
+    },
+    {
+      "heading": "Why It Exists",
+      "body": "Why have a new tool? Because creators want to work faster and do more in one place.\n\nKittl exists to combine steps. AI image generation means you type words and the computer creates an image for you. Text effects mean you can make words look 3D, vintage, or warped with one click. Instead of using one app for images, one for text, and one for mockups, an all-in-one tool saves time and keeps your style consistent."
+    },
+    {
+      "heading": "What Can Go Wrong",
+      "body": "If everyone uses the same templates and AI, designs start to look the same. That breaks originality. Your brand can look generic.\n\nWhat fails first if you rely only on AI and templates? Trust and quality. AI can make mistakes like weird hands or copied text. Templates can limit your ideas. Mockups can also mislead customers if the real printed product looks different. You still need your own eye to check and customize."
+    }
+  ],
+  "diagram": {
+    "nodes": [
+      {
+        "id": "n1",
+        "label": "Idea: Need a design"
+      },
+      {
+        "id": "n2",
+        "label": "Start with Template"
+      },
+      {
+        "id": "n3",
+        "label": "Add AI Image + Text Effects"
+      },
+      {
+        "id": "n4",
+        "label": "Preview with Mockup"
+      },
+      {
+        "id": "n5",
+        "label": "Share Final Design"
+      }
+    ],
+    "edges": [
+      [
+        "n1",
+        "n2",
+        ""
+      ],
+      [
+        "n2",
+        "n3",
+        ""
+      ],
+      [
+        "n3",
+        "n4",
+        ""
+      ],
+      [
+        "n4",
+        "n5",
+        ""
+      ]
+    ]
+  },
+  "steps": [
+    {
+      "node_id": "n1",
+      "narration": "You start with an idea, like a poster for your shop."
+    },
+    {
+      "node_id": "n2",
+      "narration": "You pick a template so you don't start from zero."
+    },
+    {
+      "node_id": "n3",
+      "narration": "You use AI to make an image and add text effects to stand out."
+    },
+    {
+      "node_id": "n4",
+      "narration": "You use a mockup to see how it looks on a real shirt or poster."
+    },
+    {
+      "node_id": "n5",
+      "narration": "You fix details and share it, keeping it original."
+    }
+  ],
+  "quiz": [
+    {
+      "q": "What does 'all-in-one' mean for a tool like Kittl?",
+      "options": [
+        "It only makes mockups",
+        "It lets you do images, text, and mockups in one place",
+        "It replaces your computer",
+        "It only works with Canva"
+      ],
+      "answer_index": 1,
+      "why": "The save shows Kittl combines AI generation, templates, text effects, and mockups together."
+    },
+    {
+      "q": "What is a mockup?",
+      "options": [
+        "A finished printed product",
+        "An AI robot",
+        "A fake preview of your design on a real product",
+        "A type of font"
+      ],
+      "answer_index": 2,
+      "why": "Mockups let you preview how a design would look on a shirt, mug, or poster before printing."
+    },
+    {
+      "q": "What breaks first if everyone uses the same AI and templates without customizing?",
+      "options": [
+        "Your internet gets faster",
+        "Designs look generic and originality is lost",
+        "Mockups become real products",
+        "Text effects stop working"
+      ],
+      "answer_index": 1,
+      "why": "Over-reliance on the same templates and AI makes brands look the same and can hide quality mistakes."
+    }
+  ],
+  "sources": [
+    "DPbgEw8CBgv"
+  ],
+  "extra": [],
+  "level": 2,
+  "topic": "Design, Content Creation & Marketing",
+  "save_ids": [
+    "DPbgEw8CBgv"
+  ],
+  "words": 226,
+  "word_limit": 200,
+  "mermaid": "flowchart TD\n  n0[\"Idea: Need a design\"]\n  n1[\"Start with Template\"]\n  n2[\"Add AI Image + Text Effects\"]\n  n3[\"Preview with Mockup\"]\n  n4[\"Share Final Design\"]\n  n0 --> n1\n  n1 --> n2\n  n2 --> n3\n  n3 --> n4",
+  "animation": [
+    {
+      "node": "n0",
+      "narration": "You start with an idea, like a poster for your shop."
+    },
+    {
+      "node": "n1",
+      "narration": "You pick a template so you don't start from zero."
+    },
+    {
+      "node": "n2",
+      "narration": "You use AI to make an image and add text effects to stand out."
+    },
+    {
+      "node": "n3",
+      "narration": "You use a mockup to see how it looks on a real shirt or poster."
+    },
+    {
+      "node": "n4",
+      "narration": "You fix details and share it, keeping it original."
+    }
+  ],
+  "rules_used": [],
+  "agent_trace": [],
+  "judge": {
+    "drafts": 3,
+    "best": "D2",
+    "why": "D2 stays closest to the source concepts, starts with a clear everyday analogy, defines terms in plain words, and its quiz checks real understanding; D1 invents an ungrounded hooks save, while D3 adds some unsupported claims.",
+    "scores": {
+      "D1": {
+        "grounding": 3,
+        "level_fit": 4,
+        "clarity": 5
+      },
+      "D2": {
+        "grounding": 8,
+        "level_fit": 6,
+        "clarity": 9
+      },
+      "D3": {
+        "grounding": 7,
+        "level_fit": 6,
+        "clarity": 8
+      }
+    },
+    "temperatures": [
+      0.4,
+      0.8,
+      1.0
+    ]
+  },
+  "id": "4cfb93fd2531532d"
+}

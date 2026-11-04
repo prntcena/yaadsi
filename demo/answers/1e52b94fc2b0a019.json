@@ -1,0 +1,19 @@
+{
+  "question": "the linkedin post about b-trees and other ways databases find rows fast",
+  "answer": "Yep, that's your LinkedIn post on 15 database indexing techniques. It says a good index speeds things up a ton but the wrong one slows everything down. It covers B-Tree for fast range queries in MySQL and Postgres, B+ Tree with linked leaf nodes for range scans, Hash for quick equality lookups, plus Bitmap, R-Tree, Inverted, LSM Tree, Trie and more with when to use each.",
+  "follow_up": "What are the different types of database indexes and when should I use each one?",
+  "cited": [
+    "linkedin-com-feed-update-urn-li-activity-7408755754494607360"
+  ],
+  "found": true,
+  "agent_trace": [
+    {
+      "tool": "read_save",
+      "args": {
+        "save_id": "linkedin-com-feed-update-urn-li-activity-7408755754494607360"
+      }
+    }
+  ],
+  "mode": "keyword",
+  "saves_read": 1
+}

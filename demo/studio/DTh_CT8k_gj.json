@@ -1,0 +1,20 @@
+{
+  "id": "DTh_CT8k_gj",
+  "hash": "d429b5b73a62f994",
+  "learnable": true,
+  "title": "Four Tools for Tech Interview Preparation",
+  "summary": "Lists four free tools to practice tech interviews: peer mock sessions on Pramp, FAANG lessons on Exponent, AI voice practice on Google Warmup, and structured coding paths on InterviewBit.",
+  "topics": [
+    "Career Development",
+    "Interview Preparation"
+  ],
+  "concepts": [
+    "Peer mock interviews",
+    "FAANG interview frameworks",
+    "AI speech feedback",
+    "Structured coding prep"
+  ],
+  "difficulty": 1,
+  "minutes": 15,
+  "has_diagram": false
+}

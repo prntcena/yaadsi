@@ -1,0 +1,12 @@
+{
+  "question": "What are the 16 core system design concepts I should know?",
+  "answer": "You got it — your LinkedIn post on 16 Core System Design Concepts for Beginners has a great starter list. It says in 2026 you should learn distributed systems, idempotent APIs, system design 101, saga pattern, cloud architecture pitfalls, JWT, consistent hashing, service discovery, frontend system design, Bloom filters, how databases keep passwords secure, modular monolith, API design best practices, RPC, API versioning, and that concurrency is not parallelism.",
+  "follow_up": "How do idempotent APIs work?",
+  "cited": [
+    "linkedin-com-feed-update-urn-li-activity-7405595393402556416"
+  ],
+  "found": true,
+  "agent_trace": [],
+  "mode": "keyword",
+  "saves_read": 1
+}

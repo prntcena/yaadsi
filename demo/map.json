@@ -1,0 +1,509 @@
+{
+  "AI & Machine Learning": {
+    "saves": [
+      "DONQZcYE90_",
+      "DQr2EaKDDFn",
+      "DRcqa3UkTuo",
+      "DTg1Dnqk8tY",
+      "gle-com-architecture-choose-design-pattern-agentic-ai-system",
+      "https-github-com-dvgodoy-finetuningllms",
+      "https-github-com-premai-io-state-of-open-source-ai",
+      "https-github-com-usrbinkat-obelisk",
+      "https-google-github-io-adk-docs",
+      "linkedin-com-feed-update-urn-li-activity-7421516454489088000",
+      "linkedin-com-feed-update-urn-li-activity-7428320533613780992"
+    ],
+    "concepts": {
+      "Veo 3": [
+        "DONQZcYE90_"
+      ],
+      "JSON prompting": [
+        "DONQZcYE90_"
+      ],
+      "Seamless transitions": [
+        "DONQZcYE90_"
+      ],
+      "Cinematic AI styling": [
+        "DONQZcYE90_"
+      ],
+      "Invisible cuts": [
+        "DONQZcYE90_"
+      ],
+      "Prompt-based video editing": [
+        "DQr2EaKDDFn"
+      ],
+      "AI avatar cloning": [
+        "DQr2EaKDDFn",
+        "DRcqa3UkTuo"
+      ],
+      "Transcript-based editing": [
+        "DQr2EaKDDFn",
+        "DRcqa3UkTuo"
+      ],
+      "Text-to-video generation": [
+        "DQr2EaKDDFn",
+        "DRcqa3UkTuo"
+      ],
+      "Automated cuts and silence removal": [
+        "DQr2EaKDDFn"
+      ],
+      "Automated silence removal and storyboarding": [
+        "DRcqa3UkTuo"
+      ],
+      "Chat-style editing commands": [
+        "DRcqa3UkTuo"
+      ],
+      "Prompt engineering for DSA tutoring": [
+        "DTg1Dnqk8tY"
+      ],
+      "Personalized learning with AI": [
+        "DTg1Dnqk8tY"
+      ],
+      "Problem breakdown and edge-case analysis": [
+        "DTg1Dnqk8tY"
+      ],
+      "Pattern-based problem solving": [
+        "DTg1Dnqk8tY"
+      ],
+      "Time and space complexity optimization": [
+        "DTg1Dnqk8tY"
+      ],
+      "Multi-agent orchestration": [
+        "https-google-github-io-adk-docs"
+      ],
+      "Single-agent vs multi-agent patterns": [
+        "gle-com-architecture-choose-design-pattern-agentic-ai-system"
+      ],
+      "Requirement-driven pattern selection": [
+        "gle-com-architecture-choose-design-pattern-agentic-ai-system"
+      ],
+      "Latency vs accuracy tradeoffs": [
+        "gle-com-architecture-choose-design-pattern-agentic-ai-system"
+      ],
+      "Cost of inference calls": [
+        "gle-com-architecture-choose-design-pattern-agentic-ai-system"
+      ],
+      "Human-in-the-loop for high-stakes tasks": [
+        "gle-com-architecture-choose-design-pattern-agentic-ai-system"
+      ],
+      "Quantization with bitsandbytes": [
+        "https-github-com-dvgodoy-finetuningllms"
+      ],
+      "Low-Rank Adaptation (LoRA)": [
+        "https-github-com-dvgodoy-finetuningllms"
+      ],
+      "PEFT": [
+        "https-github-com-dvgodoy-finetuningllms"
+      ],
+      "Dataset formatting and templates": [
+        "https-github-com-dvgodoy-finetuningllms"
+      ],
+      "SFTTrainer": [
+        "https-github-com-dvgodoy-finetuningllms"
+      ],
+      "Local deployment with Ollama": [
+        "https-github-com-dvgodoy-finetuningllms"
+      ],
+      "Open-source AI landscape overview": [
+        "https-github-com-premai-io-state-of-open-source-ai"
+      ],
+      "Model evaluation": [
+        "https-github-com-premai-io-state-of-open-source-ai"
+      ],
+      "AI deployment": [
+        "https-github-com-premai-io-state-of-open-source-ai"
+      ],
+      "Open-source licensing and collaboration": [
+        "https-github-com-premai-io-state-of-open-source-ai"
+      ],
+      "RAG pipeline": [
+        "https-github-com-usrbinkat-obelisk"
+      ],
+      "Vector storage with ChromaDB": [
+        "https-github-com-usrbinkat-obelisk"
+      ],
+      "Ollama integration for generation and embeddings": [
+        "https-github-com-usrbinkat-obelisk"
+      ],
+      "OpenAI-compatible API": [
+        "https-github-com-usrbinkat-obelisk"
+      ],
+      "Real-time document monitoring": [
+        "https-github-com-usrbinkat-obelisk"
+      ],
+      "Graph-based workflows": [
+        "https-google-github-io-adk-docs"
+      ],
+      "Hybrid deterministic and AI reasoning": [
+        "https-google-github-io-adk-docs"
+      ],
+      "Structured context management": [
+        "https-google-github-io-adk-docs"
+      ],
+      "Model-agnostic deployment": [
+        "https-google-github-io-adk-docs"
+      ],
+      "Retrieval-Augmented Generation (RAG)": [
+        "linkedin-com-feed-update-urn-li-activity-7421516454489088000"
+      ],
+      "RAG Agents": [
+        "linkedin-com-feed-update-urn-li-activity-7421516454489088000"
+      ],
+      "CUDA programming": [
+        "linkedin-com-feed-update-urn-li-activity-7421516454489088000"
+      ],
+      "Video AI applications": [
+        "linkedin-com-feed-update-urn-li-activity-7421516454489088000"
+      ],
+      "Edge AI on Jetson Nano": [
+        "linkedin-com-feed-update-urn-li-activity-7421516454489088000"
+      ],
+      "Digital fingerprinting": [
+        "linkedin-com-feed-update-urn-li-activity-7421516454489088000"
+      ],
+      "LoRA / QLoRA fine-tuning": [
+        "linkedin-com-feed-update-urn-li-activity-7428320533613780992"
+      ],
+      "4-bit / 8-bit quantization with bitsandbytes": [
+        "linkedin-com-feed-update-urn-li-activity-7428320533613780992"
+      ],
+      "RLHF on custom datasets": [
+        "linkedin-com-feed-update-urn-li-activity-7428320533613780992"
+      ],
+      "RAG pipelines with LangChain": [
+        "linkedin-com-feed-update-urn-li-activity-7428320533613780992"
+      ],
+      "MLflow evaluation workflows": [
+        "linkedin-com-feed-update-urn-li-activity-7428320533613780992"
+      ]
+    },
+    "minutes": 587
+  },
+  "Design, Content Creation & Marketing": {
+    "saves": [
+      "DPbgEw8CBgv",
+      "DQr2EaKDDFn",
+      "DRcqa3UkTuo",
+      "DSNmIOgAYQ2",
+      "DUWMqQfCMCb"
+    ],
+    "concepts": {
+      "Kittl as Canva alternative": [
+        "DPbgEw8CBgv"
+      ],
+      "AI image generation": [
+        "DPbgEw8CBgv"
+      ],
+      "Customizable design templates": [
+        "DPbgEw8CBgv"
+      ],
+      "Text effects": [
+        "DPbgEw8CBgv"
+      ],
+      "Mockup creation": [
+        "DPbgEw8CBgv"
+      ],
+      "Prompt-based video editing": [
+        "DQr2EaKDDFn"
+      ],
+      "AI avatar cloning": [
+        "DQr2EaKDDFn",
+        "DRcqa3UkTuo"
+      ],
+      "Transcript-based editing": [
+        "DQr2EaKDDFn",
+        "DRcqa3UkTuo"
+      ],
+      "Text-to-video generation": [
+        "DQr2EaKDDFn",
+        "DRcqa3UkTuo"
+      ],
+      "Automated cuts and silence removal": [
+        "DQr2EaKDDFn"
+      ],
+      "Automated silence removal and storyboarding": [
+        "DRcqa3UkTuo"
+      ],
+      "Chat-style editing commands": [
+        "DRcqa3UkTuo"
+      ],
+      "Attention-grabbing hooks": [
+        "DSNmIOgAYQ2"
+      ],
+      "Storytelling templates": [
+        "DSNmIOgAYQ2"
+      ],
+      "Audience engagement": [
+        "DSNmIOgAYQ2",
+        "DUWMqQfCMCb"
+      ],
+      "Fill-in-the-blank copywriting": [
+        "DSNmIOgAYQ2"
+      ],
+      "Story structure": [
+        "DUWMqQfCMCb"
+      ],
+      "Story hooks": [
+        "DUWMqQfCMCb"
+      ]
+    },
+    "minutes": 49
+  },
+  "Software Engineering & Systems": {
+    "saves": [
+      "DTg1Dnqk8tY",
+      "DUaCif-kfOt",
+      "DV02icRE1Z0",
+      "DY3rLu6FMm6",
+      "DY_OCbUkuA0",
+      "gle-com-architecture-choose-design-pattern-agentic-ai-system",
+      "https-github-com-usrbinkat-obelisk",
+      "https-google-github-io-adk-docs",
+      "linkedin-com-feed-update-urn-li-activity-7405595393402556416",
+      "linkedin-com-feed-update-urn-li-activity-7408755754494607360",
+      "ww-linkedin-com-feed-update-urn-li-share-7516022880535527424"
+    ],
+    "concepts": {
+      "Prompt engineering for DSA tutoring": [
+        "DTg1Dnqk8tY"
+      ],
+      "Personalized learning with AI": [
+        "DTg1Dnqk8tY"
+      ],
+      "Problem breakdown and edge-case analysis": [
+        "DTg1Dnqk8tY"
+      ],
+      "Pattern-based problem solving": [
+        "DTg1Dnqk8tY"
+      ],
+      "Time and space complexity optimization": [
+        "DTg1Dnqk8tY"
+      ],
+      "Algorithm visualization with VisuAlgo": [
+        "DUaCif-kfOt"
+      ],
+      "Mathematical thinking and problem decomposition": [
+        "DUaCif-kfOt"
+      ],
+      "Clean code and refactoring": [
+        "DUaCif-kfOt"
+      ],
+      "Design patterns intuition": [
+        "DUaCif-kfOt"
+      ],
+      "Kata training and edge-case thinking": [
+        "DUaCif-kfOt"
+      ],
+      "Browser internals and networking": [
+        "DV02icRE1Z0"
+      ],
+      "Distributed systems papers": [
+        "DV02icRE1Z0"
+      ],
+      "Production architecture decisions": [
+        "DV02icRE1Z0"
+      ],
+      "Test automation strategies": [
+        "DV02icRE1Z0"
+      ],
+      "Command line workflows": [
+        "DV02icRE1Z0"
+      ],
+      "Mapbox custom maps and location features": [
+        "DY3rLu6FMm6"
+      ],
+      "Resend transactional email API": [
+        "DY3rLu6FMm6"
+      ],
+      "Clerk authentication and user management": [
+        "DY3rLu6FMm6"
+      ],
+      "Stream real-time chat and activity feeds": [
+        "DY3rLu6FMm6"
+      ],
+      "Cloudinary image and video optimization via CDN": [
+        "DY3rLu6FMm6"
+      ],
+      "Free tier hosting": [
+        "DY_OCbUkuA0"
+      ],
+      "Static site publishing": [
+        "DY_OCbUkuA0"
+      ],
+      "Edge deployment": [
+        "DY_OCbUkuA0"
+      ],
+      "JAMstack platforms": [
+        "DY_OCbUkuA0"
+      ],
+      "Git-based deployment": [
+        "DY_OCbUkuA0"
+      ],
+      "Single-agent vs multi-agent patterns": [
+        "gle-com-architecture-choose-design-pattern-agentic-ai-system"
+      ],
+      "Requirement-driven pattern selection": [
+        "gle-com-architecture-choose-design-pattern-agentic-ai-system"
+      ],
+      "Latency vs accuracy tradeoffs": [
+        "gle-com-architecture-choose-design-pattern-agentic-ai-system"
+      ],
+      "Cost of inference calls": [
+        "gle-com-architecture-choose-design-pattern-agentic-ai-system"
+      ],
+      "Human-in-the-loop for high-stakes tasks": [
+        "gle-com-architecture-choose-design-pattern-agentic-ai-system"
+      ],
+      "RAG pipeline": [
+        "https-github-com-usrbinkat-obelisk"
+      ],
+      "Vector storage with ChromaDB": [
+        "https-github-com-usrbinkat-obelisk"
+      ],
+      "Ollama integration for generation and embeddings": [
+        "https-github-com-usrbinkat-obelisk"
+      ],
+      "OpenAI-compatible API": [
+        "https-github-com-usrbinkat-obelisk"
+      ],
+      "Real-time document monitoring": [
+        "https-github-com-usrbinkat-obelisk"
+      ],
+      "Multi-agent orchestration": [
+        "https-google-github-io-adk-docs"
+      ],
+      "Graph-based workflows": [
+        "https-google-github-io-adk-docs"
+      ],
+      "Hybrid deterministic and AI reasoning": [
+        "https-google-github-io-adk-docs"
+      ],
+      "Structured context management": [
+        "https-google-github-io-adk-docs"
+      ],
+      "Model-agnostic deployment": [
+        "https-google-github-io-adk-docs"
+      ],
+      "Idempotent APIs": [
+        "linkedin-com-feed-update-urn-li-activity-7405595393402556416"
+      ],
+      "Saga Design Pattern": [
+        "linkedin-com-feed-update-urn-li-activity-7405595393402556416"
+      ],
+      "Consistent Hashing": [
+        "linkedin-com-feed-update-urn-li-activity-7405595393402556416"
+      ],
+      "Service Discovery": [
+        "linkedin-com-feed-update-urn-li-activity-7405595393402556416"
+      ],
+      "Bloom Filters": [
+        "linkedin-com-feed-update-urn-li-activity-7405595393402556416"
+      ],
+      "JWT Authentication": [
+        "linkedin-com-feed-update-urn-li-activity-7405595393402556416"
+      ],
+      "B-Tree and B+ Tree": [
+        "linkedin-com-feed-update-urn-li-activity-7408755754494607360"
+      ],
+      "Hash Index": [
+        "linkedin-com-feed-update-urn-li-activity-7408755754494607360"
+      ],
+      "LSM Tree": [
+        "linkedin-com-feed-update-urn-li-activity-7408755754494607360"
+      ],
+      "Inverted Index": [
+        "linkedin-com-feed-update-urn-li-activity-7408755754494607360"
+      ],
+      "Bitmap and BRIN Indexes": [
+        "linkedin-com-feed-update-urn-li-activity-7408755754494607360"
+      ],
+      "R-Tree and Z-Order Index": [
+        "linkedin-com-feed-update-urn-li-activity-7408755754494607360"
+      ],
+      "Rate Limiting": [
+        "ww-linkedin-com-feed-update-urn-li-share-7516022880535527424"
+      ],
+      "Distributed Key-Value Store": [
+        "ww-linkedin-com-feed-update-urn-li-share-7516022880535527424"
+      ],
+      "Social Graph and News Feed": [
+        "ww-linkedin-com-feed-update-urn-li-share-7516022880535527424"
+      ],
+      "Real-time Messaging and Notifications": [
+        "ww-linkedin-com-feed-update-urn-li-share-7516022880535527424"
+      ],
+      "Video Streaming Architecture": [
+        "ww-linkedin-com-feed-update-urn-li-share-7516022880535527424"
+      ],
+      "Location-based Services": [
+        "ww-linkedin-com-feed-update-urn-li-share-7516022880535527424"
+      ]
+    },
+    "minutes": 621
+  },
+  "Career Development & Interview Prep": {
+    "saves": [
+      "DTg1Dnqk8tY",
+      "DTh_CT8k_gj",
+      "DUWMqQfCMCb",
+      "ww-linkedin-com-feed-update-urn-li-share-7516022880535527424"
+    ],
+    "concepts": {
+      "Prompt engineering for DSA tutoring": [
+        "DTg1Dnqk8tY"
+      ],
+      "Personalized learning with AI": [
+        "DTg1Dnqk8tY"
+      ],
+      "Problem breakdown and edge-case analysis": [
+        "DTg1Dnqk8tY"
+      ],
+      "Pattern-based problem solving": [
+        "DTg1Dnqk8tY"
+      ],
+      "Time and space complexity optimization": [
+        "DTg1Dnqk8tY"
+      ],
+      "Peer mock interviews": [
+        "DTh_CT8k_gj"
+      ],
+      "FAANG interview frameworks": [
+        "DTh_CT8k_gj"
+      ],
+      "AI speech feedback": [
+        "DTh_CT8k_gj"
+      ],
+      "Structured coding prep": [
+        "DTh_CT8k_gj"
+      ],
+      "Story structure": [
+        "DUWMqQfCMCb"
+      ],
+      "Audience engagement": [
+        "DUWMqQfCMCb"
+      ],
+      "Story hooks": [
+        "DUWMqQfCMCb"
+      ],
+      "Rate Limiting": [
+        "ww-linkedin-com-feed-update-urn-li-share-7516022880535527424"
+      ],
+      "Distributed Key-Value Store": [
+        "ww-linkedin-com-feed-update-urn-li-share-7516022880535527424"
+      ],
+      "Social Graph and News Feed": [
+        "ww-linkedin-com-feed-update-urn-li-share-7516022880535527424"
+      ],
+      "Real-time Messaging and Notifications": [
+        "ww-linkedin-com-feed-update-urn-li-share-7516022880535527424"
+      ],
+      "Video Streaming Architecture": [
+        "ww-linkedin-com-feed-update-urn-li-share-7516022880535527424"
+      ],
+      "Location-based Services": [
+        "ww-linkedin-com-feed-update-urn-li-share-7516022880535527424"
+      ]
+    },
+    "minutes": 339
+  }
+}

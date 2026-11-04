@@ -1,0 +1,22 @@
+# secrets and the founder's own data: never in the repo
+.env
+data/
+out/
+__pycache__/
+.venv/
+*.tmp
+*.jsonl
+
+# demo: learner state and creators' raw material stay local (Yaad's own Muse Image pictures are kept)
+demo/profile.json
+demo/added.json
+demo/ocr/
+demo/media/fig-*
+demo/eval/
+
+# the phase-0 key probe
+00_probe.py
+demo/studio/add-*
+
+# the ask eval names saves kept out of the demo
+ask_eval.py

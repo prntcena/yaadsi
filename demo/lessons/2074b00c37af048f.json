@@ -1,0 +1,201 @@
+{
+  "title": "Better at Coding: Depth Over Popularity",
+  "sections": [
+    {
+      "heading": "An Everyday Analogy",
+      "body": "Imagine learning to cook by only copying viral recipes. You feel busy, but you don't learn why food tastes good.\n\nReal skill comes in a practice kitchen. You watch how heat moves, you fix a salty soup, you learn patterns for sauces. VisuAlgo is like seeing the heat move. Exercism and Refactoring Guru are like fixing the soup. Project Euler and Codewars are like small drills that train your taste."
+    },
+    {
+      "heading": "Why it exists",
+      "body": "Popular coding sites give you many problems. Hidden sites build how you think. A term to know:\n\n- Algorithm: a step-by-step recipe to solve a task.\n- Design pattern: a reusable solution shape for common code problems.\n\nThey help you in different ways:\n- VisuAlgo: shows algorithms moving so you build intuition.\n- Project Euler: uses math puzzles to teach problem breakdown.\n- Exercism and Codewars: use small practice tasks called katas to teach clean code and edge cases.\n- Refactoring Guru: teaches patterns and how to clean messy code."
+    },
+    {
+      "heading": "What can go wrong",
+      "body": "If you only chase quick wins, this breaks:\n\n- You memorize answers but can't explain your code.\n- You miss edge cases, which means rare inputs that break your program.\n- Your code gets messy and hard to change.\n\nDepth is slow at first. That is normal. Come back to these sites when tutorials stop helping, and practice a little each week."
+    }
+  ],
+  "diagram": {
+    "nodes": [
+      {
+        "id": "n1",
+        "label": "Quick Problems"
+      },
+      {
+        "id": "n2",
+        "label": "Deep Practice"
+      },
+      {
+        "id": "n3",
+        "label": "See How It Works (VisuAlgo)"
+      },
+      {
+        "id": "n4",
+        "label": "Think in Steps (Euler/Codewars)"
+      },
+      {
+        "id": "n5",
+        "label": "Clean & Fix (Exercism/Refactoring Guru)"
+      },
+      {
+        "id": "n6",
+        "label": "Real Engineering Instinct"
+      }
+    ],
+    "edges": [
+      [
+        "n1",
+        "n2",
+        "shift"
+      ],
+      [
+        "n2",
+        "n3",
+        ""
+      ],
+      [
+        "n3",
+        "n4",
+        ""
+      ],
+      [
+        "n4",
+        "n5",
+        ""
+      ],
+      [
+        "n5",
+        "n6",
+        ""
+      ]
+    ]
+  },
+  "steps": [
+    {
+      "node_id": "n1",
+      "narration": "Start with many quick problems that feel productive."
+    },
+    {
+      "node_id": "n2",
+      "narration": "Choose deep practice over popularity."
+    },
+    {
+      "node_id": "n3",
+      "narration": "Watch algorithms to build intuition."
+    },
+    {
+      "node_id": "n4",
+      "narration": "Break math and kata puzzles into small steps."
+    },
+    {
+      "node_id": "n5",
+      "narration": "Read, clean, and refactor code using patterns."
+    },
+    {
+      "node_id": "n6",
+      "narration": "Grow real instincts you can reuse at work."
+    }
+  ],
+  "quiz": [
+    {
+      "q": "What is the main idea behind the hidden websites?",
+      "options": [
+        "They give viral easy wins",
+        "They build thinking and clean-code depth slowly",
+        "They replace needing to practice",
+        "They only teach one language"
+      ],
+      "answer_index": 1,
+      "why": "The save says they improve how you think, read and refactor code, building real instincts, not quick dopamine."
+    },
+    {
+      "q": "What fails first if you only chase popular sites and skip deep practice?",
+      "options": [
+        "You type faster instantly",
+        "You handle edge cases and messy code poorly",
+        "You never need design patterns",
+        "Your contribution graph looks empty"
+      ],
+      "answer_index": 1,
+      "why": "Without visualization, katas, and refactoring practice, you memorize but miss edge cases and leave code hard to change."
+    },
+    {
+      "q": "Which site is best for seeing how an algorithm works step-by-step?",
+      "options": [
+        "VisuAlgo",
+        "Project Euler",
+        "Exercism",
+        "Refactoring Guru"
+      ],
+      "answer_index": 0,
+      "why": "VisuAlgo is listed for algorithm visualization and intuition."
+    }
+  ],
+  "sources": [
+    "DUaCif-kfOt"
+  ],
+  "extra": [],
+  "level": 2,
+  "topic": "Software Engineering & Systems",
+  "save_ids": [
+    "DUaCif-kfOt"
+  ],
+  "words": 222,
+  "word_limit": 200,
+  "mermaid": "flowchart TD\n  n0[\"Quick Problems\"]\n  n1[\"Deep Practice\"]\n  n2[\"See How It Works (VisuAlgo)\"]\n  n3[\"Think in Steps (Euler/Codewars)\"]\n  n4[\"Clean   Fix (Exercism/Refactoring Guru)\"]\n  n5[\"Real Engineering Instinct\"]\n  n0 -->|\"shift\"| n1\n  n1 --> n2\n  n2 --> n3\n  n3 --> n4\n  n4 --> n5",
+  "animation": [
+    {
+      "node": "n0",
+      "narration": "Start with many quick problems that feel productive."
+    },
+    {
+      "node": "n1",
+      "narration": "Choose deep practice over popularity."
+    },
+    {
+      "node": "n2",
+      "narration": "Watch algorithms to build intuition."
+    },
+    {
+      "node": "n3",
+      "narration": "Break math and kata puzzles into small steps."
+    },
+    {
+      "node": "n4",
+      "narration": "Read, clean, and refactor code using patterns."
+    },
+    {
+      "node": "n5",
+      "narration": "Grow real instincts you can reuse at work."
+    }
+  ],
+  "rules_used": [],
+  "agent_trace": [],
+  "judge": {
+    "drafts": 3,
+    "best": "D2",
+    "why": "D2 starts with a clear everyday analogy, defines key terms in plain words, stays concise for beginner level, maps each site to the source concepts accurately, and uses varied quiz answers that check real understanding.",
+    "scores": {
+      "D1": {
+        "grounding": 7,
+        "level_fit": 8,
+        "clarity": 8
+      },
+      "D2": {
+        "grounding": 8,
+        "level_fit": 9,
+        "clarity": 9
+      },
+      "D3": {
+        "grounding": 7,
+        "level_fit": 8,
+        "clarity": 6
+      }
+    },
+    "temperatures": [
+      0.4,
+      0.8,
+      1.0
+    ]
+  },
+  "id": "2074b00c37af048f"
+}

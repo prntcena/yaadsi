@@ -1,0 +1,200 @@
+{
+  "title": "How Free Hosting Gets Your Code On the Internet",
+  "sections": [
+    {
+      "heading": "Everyday Analogy",
+      "body": "Think of hosting like renting table space at a market.\n\nYour website is your shop. Without a table, no one can visit. A hosting platform is the market that gives you a table, power, and a street address.\n\nFree tier hosting means the market lets you start with a small table for free to show your work."
+    },
+    {
+      "heading": "Why It Exists",
+      "body": "Before hosting, your code only runs on your laptop. No one else can see it.\n\nHosting platforms fix this. Static site publishing is for simple sites with fixed files like HTML and images. Edge deployment means your site is copied to servers close to users around the world, so it loads fast.\n\nGit-based deployment means when you push code to GitHub, the platform auto-publishes it."
+    },
+    {
+      "heading": "What Can Go Wrong",
+      "body": "Free tables are small. What fails first if usage grows 100x?\n\nYour free limits break. Hosting is where your app lives. Deployment is moving new code there.\n\nOn free tiers, you may hit sleep, slow loads, or shutdowns. Edge copies can show old files if not updated. And JAMstack platforms are great for static sites, but not for apps needing always-on servers."
+    }
+  ],
+  "diagram": {
+    "nodes": [
+      {
+        "id": "code",
+        "label": "Your Code on Laptop"
+      },
+      {
+        "id": "push",
+        "label": "Git Push"
+      },
+      {
+        "id": "host",
+        "label": "Hosting Platform"
+      },
+      {
+        "id": "edge",
+        "label": "Edge Servers Worldwide"
+      },
+      {
+        "id": "user",
+        "label": "Users Visit Site"
+      }
+    ],
+    "edges": [
+      [
+        "code",
+        "push",
+        "deploy"
+      ],
+      [
+        "push",
+        "host",
+        "builds"
+      ],
+      [
+        "host",
+        "edge",
+        "copies"
+      ],
+      [
+        "edge",
+        "user",
+        "fast load"
+      ]
+    ]
+  },
+  "steps": [
+    {
+      "node_id": "code",
+      "narration": "You build a site, but it only lives on your laptop."
+    },
+    {
+      "node_id": "push",
+      "narration": "You push to Git, which triggers a deployment."
+    },
+    {
+      "node_id": "host",
+      "narration": "The hosting platform builds and hosts your files."
+    },
+    {
+      "node_id": "edge",
+      "narration": "It copies them to edge servers near users."
+    },
+    {
+      "node_id": "user",
+      "narration": "Users visit quickly from the closest copy."
+    }
+  ],
+  "quiz": [
+    {
+      "q": "What is the difference between hosting and deployment?",
+      "options": [
+        "They are the same",
+        "Hosting is where your app lives, deployment is moving code there",
+        "Deployment is free, hosting is not",
+        "Hosting is only for images"
+      ],
+      "answer_index": 1,
+      "why": "Hosting is the home, deployment is the move. Your save shows platforms that host after you deploy."
+    },
+    {
+      "q": "What fails first if usage grows 100x on a free tier?",
+      "options": [
+        "Your laptop breaks",
+        "You hit free limits: sleep, caps, slow loads, or shutdowns",
+        "GitHub deletes your code",
+        "Edge servers make it faster forever"
+      ],
+      "answer_index": 1,
+      "why": "Free tiers are small demos. Huge traffic hits limits first, as free hosting is for showcasing, not big scale."
+    },
+    {
+      "q": "What is edge deployment best for?",
+      "options": [
+        "Running code only on your laptop",
+        "Copying your site close to users for fast loads",
+        "Making your site invisible",
+        "Paying more for slower sites"
+      ],
+      "answer_index": 1,
+      "why": "Fly.io in your save advertises global edge deployment to run apps closer to users."
+    }
+  ],
+  "sources": [
+    "DY_OCbUkuA0"
+  ],
+  "extra": [
+    "Free tiers often require credit card verification and have cold starts after inactivity"
+  ],
+  "level": 2,
+  "topic": "Software Engineering & Systems",
+  "save_ids": [
+    "DY_OCbUkuA0"
+  ],
+  "words": 184,
+  "word_limit": 200,
+  "mermaid": "flowchart TD\n  n0[\"Your Code on Laptop\"]\n  n1[\"Git Push\"]\n  n2[\"Hosting Platform\"]\n  n3[\"Edge Servers Worldwide\"]\n  n4[\"Users Visit Site\"]\n  n0 -->|\"deploy\"| n1\n  n1 -->|\"builds\"| n2\n  n2 -->|\"copies\"| n3\n  n3 -->|\"fast load\"| n4",
+  "animation": [
+    {
+      "node": "n0",
+      "narration": "You build a site, but it only lives on your laptop."
+    },
+    {
+      "node": "n1",
+      "narration": "You push to Git, which triggers a deployment."
+    },
+    {
+      "node": "n2",
+      "narration": "The hosting platform builds and hosts your files."
+    },
+    {
+      "node": "n3",
+      "narration": "It copies them to edge servers near users."
+    },
+    {
+      "node": "n4",
+      "narration": "Users visit quickly from the closest copy."
+    }
+  ],
+  "rules_used": [],
+  "agent_trace": [
+    {
+      "tool": "read_save",
+      "args": {
+        "save_id": "DY_OCbUkuA0"
+      }
+    },
+    {
+      "tool": "search_saves",
+      "args": {
+        "query": "hosting deployment systems edge",
+        "topic": "Software Engineering & Systems"
+      }
+    }
+  ],
+  "judge": {
+    "drafts": 3,
+    "best": "D2",
+    "why": "D2 starts with a simple analogy, defines key terms plainly, stays closest to the length limit, clearly marks its extra claim, and its quiz checks hosting vs deployment, free-tier limits, and edge deployment.",
+    "scores": {
+      "D1": {
+        "grounding": 7,
+        "level_fit": 6,
+        "clarity": 8
+      },
+      "D2": {
+        "grounding": 8,
+        "level_fit": 7,
+        "clarity": 8
+      },
+      "D3": {
+        "grounding": 7,
+        "level_fit": 5,
+        "clarity": 9
+      }
+    },
+    "temperatures": [
+      0.4,
+      0.8,
+      1.0
+    ]
+  },
+  "id": "7d6a0583e2f47323"
+}

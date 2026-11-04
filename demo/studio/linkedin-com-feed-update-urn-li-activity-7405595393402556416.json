@@ -1,0 +1,23 @@
+{
+  "id": "linkedin-com-feed-update-urn-li-activity-7405595393402556416",
+  "hash": "fc50c1d7de5e452d",
+  "learnable": true,
+  "title": "16 Core System Design Concepts for Beginners",
+  "summary": "A starter curriculum of 16 system design fundamentals for 2026 covering distributed systems, idempotent APIs, JWT, consistent hashing, service discovery, Bloom filters, saga pattern, RPC, API design and more.",
+  "topics": [
+    "System Design",
+    "Distributed Systems",
+    "Backend Engineering"
+  ],
+  "concepts": [
+    "Idempotent APIs",
+    "Saga Design Pattern",
+    "Consistent Hashing",
+    "Service Discovery",
+    "Bloom Filters",
+    "JWT Authentication"
+  ],
+  "difficulty": 3,
+  "minutes": 120,
+  "has_diagram": true
+}

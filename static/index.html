@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Yaadsi</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='17' r='13' fill='%234355B9'/%3E%3Ccircle cx='12' cy='15' r='2.2' fill='white'/%3E%3Ccircle cx='20' cy='15' r='2.2' fill='white'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0..1,0&display=block">
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.1/mermaid.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+</head>
+<body>
+  <header class="top">
+    <div class="brand" aria-label="Yaadsi"><span class="brand-dot" aria-hidden="true"></span><span class="wordmark">Yaadsi</span><span class="replay-chip" id="replay-chip" hidden title="No API keys: showing lessons Yaad already made. Add keys to .env to go live.">Replay</span></div>
+    <nav class="nav" aria-label="Main">
+      <button class="nav-item" data-go="setup"><span class="ms" aria-hidden="true">today</span><span>Today</span></button>
+      <button class="nav-item" data-go="plan" id="nav-plan" hidden><span class="ms" aria-hidden="true">event_note</span><span>Plan</span></button>
+      <button class="nav-item nav-add" id="add-open" type="button" title="Add a link or note"><span class="ms" aria-hidden="true">add_link</span><span>Add</span></button>
+      <button class="nav-item" data-go="progress" id="nav-progress"><span class="ms" aria-hidden="true">insights</span><span>Progress</span></button>
+      <button class="nav-item demo-only" data-go="eval" id="nav-eval"><span class="ms" aria-hidden="true">science</span><span>Blind test</span></button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- TODAY (home; the view id stays "setup") -->
+    <section id="view-setup" class="view">
+      <div class="hero">
+        <div class="hero-text">
+          <h1 class="display">From saved to <span class="script">learned</span>.</h1>
+          <p class="lede">Keep saving the way you do. Yaad turns it into a short lesson every day.</p>
+          <ol class="how" aria-label="How Yaadsi works">
+            <li><span class="ms" aria-hidden="true">link</span>Save</li>
+            <li><span class="ms" aria-hidden="true">auto_stories</span>Learn</li>
+            <li><span class="ms" aria-hidden="true">psychology</span>Remember</li>
+          </ol>
+        </div>
+        <div id="yaad-hero" class="yaad-slot hero-slot"></div>
+      </div>
+
+      <section id="backlog" class="backlog" aria-label="Your backlog" hidden>
+        <button class="bl" type="button" data-bl="saved" title="Everything you ever sent to Yaadsi"><span class="ms" aria-hidden="true">bookmarks</span><b id="bl-saved">0</b><span>Saved</span></button>
+        <button class="bl good" type="button" data-bl="learned" title="Studied and still fresh"><span class="ms" aria-hidden="true">school</span><b id="bl-learned">0</b><span>Learned</span></button>
+        <button class="bl" type="button" data-bl="waiting" title="Not studied yet"><span class="ms" aria-hidden="true">hourglass_top</span><b id="bl-waiting">0</b><span>Waiting</span></button>
+        <button class="bl warn" type="button" data-bl="fading" title="Starting to fade: a 2-minute review keeps them"><span class="ms" aria-hidden="true">replay</span><b id="bl-fading">0</b><span>Fading</span></button>
+        <button class="bl bad" type="button" data-bl="gone" title="Removed or made private before Yaadsi could save their notes"><span class="ms" aria-hidden="true">link_off</span><b id="bl-gone">0</b><span>Gone</span></button>
+      </section>
+      <p id="backlog-sub" class="hint backlog-sub"></p>
+
+      <section id="today-card" class="card today-card" aria-labelledby="today-h">
+        <div class="card-head">
+          <h2 id="today-h"><span class="ms" aria-hidden="true">wb_sunny</span><span id="today-title">Today</span></h2>
+          <span id="today-meta" class="muted small"></span>
+        </div>
+        <ul id="today-list" class="today-list"></ul>
+        <p id="today-line" class="muted small"></p>
+        <div class="today-actions">
+          <button id="today-start" class="primary" type="button"><span class="ms" aria-hidden="true">play_arrow</span>Start</button>
+          <button id="today-more" class="tonal" type="button" hidden><span class="ms" aria-hidden="true">add</span>Do one more</button>
+          <button id="today-review" class="tonal" type="button" hidden></button>
+        </div>
+        <div class="nudge"><span class="ms" aria-hidden="true">notifications</span><span>Daily nudge on WhatsApp at 8 pm</span><span class="soon">Coming in the Yaadsi app</span></div>
+      </section>
+
+      <section class="card brain-card" aria-labelledby="pick-h">
+        <div class="card-head">
+          <h2 id="pick-h">Your saves</h2>
+          <div class="head-tools">
+            <label class="icon-toggle" title="Show what you've mastered">
+              <input type="checkbox" id="mastery-toggle" class="sr-only"><span class="ms" aria-hidden="true">insights</span><span class="sr-only">Show my mastery</span>
+            </label>
+            <button id="brain-toggle" class="icon-btn" aria-pressed="false" title="List view"><span class="ms" aria-hidden="true">format_list_bulleted</span><span class="sr-only">List view</span></button>
+          </div>
+        </div>
+        <p id="brain-hint" class="hint">Every dot is something you saved. Tap a topic to plan just that.</p>
+        <div id="brain" class="brain" aria-describedby="brain-help"></div>
+        <p id="brain-help" class="sr-only">Topics are buttons; press Tab to move between them and Enter to choose one.</p>
+        <div id="topic-saves" class="topic-saves" hidden></div>
+        <div id="topics" class="chips" hidden></div>
+        <div id="topic-concepts" class="concepts"></div>
+        <div class="legend brain-legend" aria-label="Dot colours">
+          <span title="Reel"><i style="background:#ff5f7e"></i>Reel</span><span title="Instagram post"><i style="background:#ff9f5a"></i>Post</span>
+          <span title="LinkedIn"><i style="background:#4f8df7"></i>LinkedIn</span><span title="Web page"><i style="background:#3cc6a8"></i>Web</span>
+          <span title="Your own note"><i style="background:#f2c94c"></i>Note</span>
+        </div>
+      </section>
+
+      <details id="customise" class="customise">
+      <summary><span class="ms" aria-hidden="true">tune</span>Plan a topic instead <span class="muted small">(goal, deadline, depth)</span></summary>
+      <section class="card plan-card" aria-label="Your goal and your time">
+        <label class="search-field">
+          <span class="ms" aria-hidden="true">search</span>
+          <input id="goal" type="text" placeholder="What do you want to get better at?" maxlength="200" aria-label="Your goal">
+        </label>
+        <div class="controls">
+          <div class="control">
+            <span class="control-label"><span class="ms" aria-hidden="true">event</span>Finish by</span>
+            <div class="chips">
+              <button class="chip" data-days="7">1 week</button>
+              <button class="chip" data-days="14">2 weeks</button>
+              <button class="chip" data-days="30">1 month</button>
+              <input id="deadline" type="date" aria-label="Deadline" class="date-chip">
+            </div>
+          </div>
+          <div class="control">
+            <span class="control-label"><span class="ms" aria-hidden="true">schedule</span>Each day <b id="minutes-out">20 min</b></span>
+            <input id="minutes" type="range" min="5" max="60" step="5" value="20" aria-label="Minutes per day">
+          </div>
+          <div class="control">
+            <span class="control-label"><span class="ms" aria-hidden="true">layers</span>Depth <b id="depth-out"></b></span>
+            <input id="depth" type="range" min="1" max="5" step="1" value="2" class="sr-only" aria-label="How deep" tabindex="-1">
+            <div class="seg" id="depth-seg" role="radiogroup" aria-label="How deep">
+              <button type="button" role="radio" data-depth="1" title="Like I'm 10">1</button>
+              <button type="button" role="radio" data-depth="2" title="Beginner">2</button>
+              <button type="button" role="radio" data-depth="3" title="Summary notes">3</button>
+              <button type="button" role="radio" data-depth="4" title="Detailed">4</button>
+              <button type="button" role="radio" data-depth="5" title="Deep article">5</button>
+            </div>
+          </div>
+        </div>
+        <details class="more">
+          <summary><span class="ms" aria-hidden="true">tune</span>More options</summary>
+          <div class="chips" id="formats">
+            <label class="toggle"><input type="checkbox" value="diagram" checked> Flow diagram</label>
+            <label class="toggle"><input type="checkbox" value="quiz" checked> Quiz</label>
+            <label class="toggle"><input type="checkbox" value="figure" checked> Figure from your save</label>
+            <label class="toggle"><input type="checkbox" value="picture" checked> Simple picture</label>
+            <label class="toggle"><input type="checkbox" value="animation" checked> Animation</label>
+            <label class="toggle"><input type="checkbox" value="audio" checked> Listen</label>
+          </div>
+        </details>
+      </section>
+
+      <div class="build-bar">
+        <div id="preview" class="preview">Pick a topic to begin.</div>
+        <button id="start" class="primary" disabled>Start learning</button>
+      </div>
+      </details>
+    </section>
+
+    <!-- PLAN -->
+    <section id="view-plan" class="view" hidden>
+      <div class="plan-head card">
+        <div class="ring" id="plan-ring" role="img" aria-label="Plan progress">
+          <svg viewBox="0 0 36 36"><circle class="ring-bg" cx="18" cy="18" r="15.9"/><circle id="ring-fg" class="ring-fg" cx="18" cy="18" r="15.9"/></svg>
+          <b id="ring-text">0%</b>
+        </div>
+        <div>
+          <h1 id="plan-title"></h1>
+          <p id="plan-sub" class="muted"></p>
+          <div id="prewarm" class="prewarm" hidden aria-live="polite">
+            <span class="ms" aria-hidden="true">bolt</span><span id="prewarm-text" class="small"></span>
+            <div class="prewarm-bar" aria-hidden="true"><i id="prewarm-fill"></i></div>
+          </div>
+        </div>
+      </div>
+      <details id="learner-card" class="card learner">
+        <summary class="card-head"><h2><span class="mini-yaad" aria-hidden="true"></span>What Yaad knows about you</h2><span id="learner-meta" class="muted small"></span><span class="ms chev" aria-hidden="true">expand_more</span></summary>
+        <p id="learner-summary" class="muted"></p>
+        <ul id="learner-rules" class="rules"></ul>
+        <div id="learner-levels" class="chips small"></div>
+      </details>
+      <ol id="days" class="days"></ol>
+    </section>
+
+    <!-- PROGRESS -->
+    <section id="view-progress" class="view" hidden>
+      <h1>Progress</h1>
+      <p class="hint">Mastered = right on 3 different days.</p>
+      <div id="prog-stats" class="stats"></div>
+      <p id="prog-sub" class="muted small"></p>
+      <div id="demo-bar" class="demo-bar" hidden><button id="demo-advance" class="chip" type="button"><span class="ms" aria-hidden="true">fast_forward</span>+3 days (demo)</button><span id="demo-day" class="muted small"></span></div>
+      <div id="review-card" class="card review-card" hidden>
+        <div id="review-intro">
+          <h2><span class="ms" aria-hidden="true">replay</span>Review now</h2>
+          <p class="muted">These are fading. Two minutes keeps them.</p>
+          <ul id="review-list"></ul>
+          <button id="review-start" class="primary" type="button">Start 2-min review</button>
+        </div>
+        <div id="review-run" hidden></div>
+      </div>
+      <div class="cols">
+        <div class="card col"><h2><span class="ms learning" aria-hidden="true">spa</span>Learning</h2><div id="col-learning"></div></div>
+        <div class="card col"><h2><span class="ms review" aria-hidden="true">replay</span>To review</h2><div id="col-review"></div></div>
+        <div class="card col"><h2><span class="ms mastered" aria-hidden="true">emoji_events</span>Mastered</h2><div id="col-mastered"></div></div>
+      </div>
+      <div class="card"><h2>Topics</h2><div id="prog-topics" class="trows"></div>
+        <div class="legend"><span><i style="background:#3cc6a8"></i>Mastered</span><span><i style="background:#f2c94c"></i>Learning</span>
+          <span><i style="background:#ff5f7e"></i>To review</span><span><i style="background:var(--line)"></i>Not started</span></div></div>
+    </section>
+
+    <!-- CONNECT THE DOTS -->
+    <section id="view-masterclass" class="view" hidden>
+      <button class="text-btn" type="button" id="mc-back"><span class="ms" aria-hidden="true">arrow_back</span>Back</button>
+      <h1><span class="ms title-icon" aria-hidden="true">hub</span><span id="mc-topic"></span></h1>
+      <p class="hint">The big ideas, links, gaps and an order to learn them, from all your saves.</p>
+      <div id="mc-loading" class="card mc-loading" hidden aria-live="polite">
+        <div class="spinner"></div>
+        <p id="mc-line"></p>
+        <p class="muted small"><span id="mc-elapsed"></span> · You can leave; it keeps going.</p>
+      </div>
+      <div id="mc-error" class="error" hidden></div>
+      <div id="mc-body" hidden>
+        <h2 class="mc-h">5 big ideas</h2>
+        <div id="mc-ideas" class="mc-ideas"></div>
+        <div class="card"><h2><span class="ms" aria-hidden="true">share</span>How they connect</h2>
+          <div id="mc-ring" class="mc-ring"></div>
+          <p id="mc-link-hint" class="muted small"></p>
+          <ul id="mc-links" class="mc-links"></ul></div>
+        <div id="mc-disagree-box" class="card"><h2><span class="ms" aria-hidden="true">balance</span>Where they disagree</h2><ul id="mc-disagree" class="mc-list"></ul></div>
+        <div id="mc-gaps-box" class="card"><h2><span class="ms" aria-hidden="true">extension</span>What's missing</h2><div id="mc-gaps" class="mc-gaps"></div></div>
+        <div class="card"><h2><span class="ms" aria-hidden="true">format_list_numbered</span>Learn in this order</h2>
+          <ol id="mc-order" class="mc-order"></ol>
+          <button id="mc-plan" class="primary" type="button">Build a plan in this order</button>
+          <span id="mc-plan-status" class="muted small"></span></div>
+        <p id="mc-foot" class="muted small"></p>
+      </div>
+    </section>
+
+    <!-- BLIND TEST (demo only) -->
+    <section id="view-eval" class="view" hidden>
+      <h1>Blind test</h1>
+      <p class="muted">Each pair is the same saved link taught two ways. Pick the one that would teach you better.
+        You won't know which is the plain draft and which is the full system until you finish.</p>
+      <div id="eval-empty" class="card" hidden>No test pairs yet. Run <code>python eval.py build</code>.</div>
+      <div id="eval-pair" hidden>
+        <div class="eval-progress"><b id="eval-count"></b> · <span id="eval-source" class="muted"></span>
+          <button id="eval-back" class="link" hidden>← Change previous pick</button></div>
+        <div class="eval-grid">
+          <article class="card eval-col" id="eval-A"></article>
+          <article class="card eval-col" id="eval-B"></article>
+        </div>
+        <div class="eval-actions">
+          <button class="primary pick" data-choice="A">A teaches me better</button>
+          <button class="chip pick" data-choice="tie">About the same</button>
+          <button class="primary pick" data-choice="B">B teaches me better</button>
+        </div>
+      </div>
+      <div id="eval-results" hidden>
+        <div class="card">
+          <h2>Full system vs one plain draft</h2>
+          <p id="eval-def" class="muted small"></p>
+          <div id="eval-chart"></div>
+          <p id="eval-agree" class="muted"></p>
+        </div>
+        <div class="card"><h2>Pair by pair</h2><div id="eval-rows"></div></div>
+        <p class="muted small">Picks are final once revealed. A new blind round uses new saves: <code>python eval.py build</code>.</p>
+      </div>
+    </section>
+
+    <!-- LESSON -->
+    <section id="view-lesson" class="view" hidden>
+      <div id="lesson-loading" class="loading" hidden>
+        <div class="spinner"></div>
+        <p>Writing your lesson…</p>
+        <p id="lesson-thought" class="thought" aria-live="polite"></p>
+      </div>
+      <div id="lesson-error" class="error" hidden></div>
+      <article id="lesson" hidden>
+        <div class="lesson-meta muted" id="lesson-meta"></div>
+        <h1 id="lesson-title"></h1>
+        <div id="listen-bar" class="listen" hidden>
+          <button id="listen" class="tonal"><span class="ms" aria-hidden="true">volume_up</span>Listen</button>
+          <span id="listen-status" class="muted small"></span>
+          <button class="icon-btn voice-open" type="button" title="Voice settings"><span class="ms" aria-hidden="true">settings_voice</span><span class="sr-only">Voice settings</span></button>
+        </div>
+        <details id="judge-box" class="judge demo-only" hidden>
+          <summary id="judge-summary"></summary>
+          <p id="judge-why" class="muted small"></p>
+          <div id="judge-scores" class="muted small"></div>
+        </details>
+        <div id="lesson-sections"></div>
+        <div id="see-box" class="card" hidden>
+          <h2><span class="ms" aria-hidden="true">image</span>See it</h2>
+          <div class="see">
+            <figure id="fig-real" hidden>
+              <div class="frame"><div class="shimmer"></div><img alt="The figure from your save"></div>
+              <figcaption><span class="label">From your save</span> <a class="full" target="_blank" rel="noopener noreferrer" hidden>full slide</a>
+                <span class="whole" hidden><br>No single figure found, so this is the whole slide.</span></figcaption>
+            </figure>
+            <figure id="fig-simple" hidden>
+              <div class="frame"><div class="shimmer"></div><img alt="A simple picture of the idea"></div>
+              <figcaption>Simple picture</figcaption>
+            </figure>
+          </div>
+          <div id="see-note" class="muted small"></div>
+        </div>
+        <div id="quiz-box" class="card">
+          <h2><span class="ms" aria-hidden="true">quiz</span>Check yourself</h2>
+          <div id="quiz"></div>
+        </div>
+        <div class="card">
+          <h2><span class="ms" aria-hidden="true">bookmark</span>From your saves</h2>
+          <div id="sources" class="sources"></div>
+        </div>
+        <details id="more-ways" class="more-ways">
+          <summary><span class="ms" aria-hidden="true">expand_circle_down</span>More ways to learn <span class="muted small">(flow diagram, beyond your saves, teach it back)</span></summary>
+        <div id="diagram-box" class="card" hidden>
+          <div class="card-head">
+            <h2><span class="ms" aria-hidden="true">account_tree</span>How it fits together</h2>
+            <div id="player" class="player" hidden>
+              <button id="play" class="tonal"><span class="ms" aria-hidden="true">play_arrow</span>Play</button>
+              <label class="icon-toggle" title="Read aloud"><input type="checkbox" id="speak" class="sr-only"><span class="ms" aria-hidden="true">record_voice_over</span><span class="sr-only">Read aloud</span></label>
+            </div>
+          </div>
+          <div id="diagram"></div>
+          <div id="caption" class="caption" hidden></div>
+        </div>
+        <div id="extra-box" class="card subtle" hidden>
+          <h2><span class="ms" aria-hidden="true">travel_explore</span>Beyond your saves</h2>
+          <ul id="extra"></ul>
+        </div>
+        <div id="teach-card" class="card teach-card" hidden>
+          <h2><span class="ms" aria-hidden="true">record_voice_over</span>Teach it back</h2>
+          <p id="teach-title" class="muted"></p>
+          <textarea id="teach-text" rows="4" maxlength="1500" placeholder="In your own words: why it exists, what it solves, the trade-off…"></textarea>
+          <div class="teach-actions">
+            <button id="teach-mic" class="tonal" type="button" aria-label="Speak your explanation"><span class="ms" aria-hidden="true">mic</span>Speak</button>
+            <span id="teach-count" class="muted small"></span>
+            <button id="teach-go" class="primary" type="button" disabled>Check</button>
+          </div>
+          <div id="teach-status" class="muted small"></div>
+          <div id="teach-result" class="teach-result" hidden>
+            <div class="teach-top"><div id="teach-ring" class="teach-ring"><b id="teach-score"></b></div><h3 id="teach-verdict"></h3></div>
+            <div><h4><span class="ms good" aria-hidden="true">check_circle</span>You nailed</h4><ul id="teach-right"></ul></div>
+            <div><h4><span class="ms warn" aria-hidden="true">extension</span>You missed</h4><ul id="teach-missed"></ul></div>
+            <p id="teach-mis" class="teach-mis" hidden></p>
+            <p id="teach-q" class="teach-q"></p>
+            <div class="teach-actions"><button id="teach-again" class="primary" type="button">Try again</button>
+              <button id="teach-listen" class="tonal" type="button"><span class="ms" aria-hidden="true">volume_up</span>Listen</button></div>
+          </div>
+        </div>
+        </details>
+        <div id="done-card" class="card done-card" hidden>
+          <div class="done-head"><span class="ms done-icon" aria-hidden="true">celebration</span>
+            <div><h2 id="done-title"></h2><p id="done-sub" class="muted"></p></div></div>
+          <div id="done-next"></div>
+          <h3 class="discover-h">More like this</h3>
+          <div id="discover" class="discover"></div>
+          <div class="done-links">
+            <button id="done-brain" class="text-btn" type="button"><span class="ms" aria-hidden="true">bubble_chart</span>Explore in your brain</button>
+            <button class="text-btn" type="button" data-go="progress"><span class="ms" aria-hidden="true">insights</span>See progress</button>
+          </div>
+        </div>
+        <div class="feedback card">
+          <h2>How was this?</h2>
+          <div class="fb-row">
+            <button class="fb" data-kind="too_easy"><span class="ms" aria-hidden="true">sentiment_satisfied</span>Too easy</button>
+            <button class="fb" data-kind="just_right"><span class="ms" aria-hidden="true">sentiment_very_satisfied</span>Just right</button>
+            <button class="fb" data-kind="too_hard"><span class="ms" aria-hidden="true">sentiment_stressed</span>Too hard</button>
+          </div>
+          <div id="fb-result" class="muted"></div>
+          <button id="regen" class="primary" hidden></button>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <button id="ask-open" class="ask-fab" aria-expanded="false" aria-controls="ask-panel"><span class="ms" aria-hidden="true">mic</span><span>Ask</span></button>
+  <aside id="ask-panel" class="ask-panel" hidden aria-label="Ask your saves">
+    <div class="ask-head">
+      <b><span class="mini-yaad" aria-hidden="true"></span>Ask your saves</b>
+      <div class="head-tools">
+        <button class="icon-btn voice-open" type="button" title="Voice settings"><span class="ms" aria-hidden="true">settings_voice</span><span class="sr-only">Voice settings</span></button>
+        <button id="ask-close" class="icon-btn" aria-label="Close"><span class="ms" aria-hidden="true">close</span></button>
+      </div>
+    </div>
+    <div class="ask-mic">
+      <button id="mic" class="mic" aria-label="Record a question"><span class="ms" aria-hidden="true">mic</span></button>
+      <span id="mic-status" class="muted small">Tap to speak</span>
+    </div>
+    <form id="ask-form" class="ask-form">
+      <input id="ask-q" type="text" maxlength="300" placeholder="…or type a question" autocomplete="off">
+      <button class="primary icon-only" type="submit" aria-label="Ask"><span class="ms" aria-hidden="true">send</span></button>
+    </form>
+    <div id="ask-try" class="ask-try" hidden></div>
+    <label class="switch small"><input type="checkbox" id="ask-speak" checked> Read answers aloud</label>
+    <div id="ask-answer" class="ask-answer" hidden>
+      <p id="ask-text"></p>
+      <p id="ask-badge" class="badge-line" hidden></p>
+      <div id="ask-sources" class="sources"></div>
+      <button id="ask-follow" class="chip" hidden></button>
+    </div>
+  </aside>
+
+  <dialog id="add-dlg" class="add-dlg" aria-labelledby="add-h">
+    <div class="dlg-head">
+      <h2 id="add-h"><span class="ms" aria-hidden="true">add_link</span>Add to your brain</h2>
+      <button id="add-close" class="icon-btn" type="button" aria-label="Close"><span class="ms" aria-hidden="true">close</span></button>
+    </div>
+    <form id="add-form" novalidate>
+      <div id="add-link-fields">
+        <label class="search-field"><span class="ms" aria-hidden="true">link</span>
+          <input id="add-url" type="text" inputmode="url" autocomplete="off" placeholder="Paste a link you found" maxlength="2000" aria-label="Link"></label>
+        <input id="add-note" class="plain-field" type="text" maxlength="300" placeholder="Why did you save it? (optional)" aria-label="Why you saved it">
+      </div>
+      <textarea id="add-text" class="plain-field" rows="5" maxlength="5000" placeholder="Write or paste a note…" aria-label="Note" hidden></textarea>
+      <div class="dlg-actions">
+        <button id="add-mode" class="text-btn" type="button">Write a note instead</button>
+        <button id="add-go" class="primary" type="submit">Add to my brain</button>
+      </div>
+    </form>
+    <p id="add-status" class="thought" aria-live="polite"></p>
+    <div id="add-result" hidden></div>
+  </dialog>
+
+  <dialog id="gone-dlg" class="add-dlg" aria-labelledby="gone-h">
+    <div class="dlg-head">
+      <h2 id="gone-h"><span class="ms" aria-hidden="true">link_off</span>Gone from the internet</h2>
+      <button id="gone-close" class="icon-btn" type="button" aria-label="Close"><span class="ms" aria-hidden="true">close</span></button>
+    </div>
+    <p class="muted">These were removed or made private before Yaadsi could save their notes. From now on Yaad saves the notes the moment you save a link.</p>
+    <ul id="gone-list" class="gone-list"></ul>
+  </dialog>
+
+  <dialog id="voice-dlg" class="voice-dlg" aria-labelledby="voice-h">
+    <h2 id="voice-h">Yaad's voice</h2>
+    <label class="field"><span>Voice <small class="muted">(✨ = most natural)</small></span><select id="voice-name"></select></label>
+    <label class="field"><span>Speed</span><input id="voice-rate" type="range" min="0.8" max="1.3" step="0.05"></label>
+    <label class="field"><span>Pitch</span><input id="voice-pitch" type="range" min="0.8" max="1.3" step="0.05"></label>
+    <div class="chips"><button id="voice-test" class="primary" type="button"><span class="ms" aria-hidden="true">play_arrow</span>Test voice</button><button id="voice-close" class="tonal" type="button">Done</button></div>
+  </dialog>
+
+  <footer class="foot">Built with Muse Spark Open · Meta Model API · Baseten<span class="demo-only"> · <span id="spend"></span></span></footer>
+  <div id="yaad-dock" class="yaad-slot dock-slot"></div>
+  <script src="/static/yaad.js"></script>
+  <script src="/static/brain.js"></script>
+  <script src="/static/app.js"></script>
+  <script src="/static/progress.js"></script>
+  <script src="/static/masterclass.js"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "question": "What are the best free hosting platforms for developers?",
+  "answer": "You've got lots of great free options to try out, and your Instagram post on Free Hosting Platforms captures them nicely. You can use Fly.io for global edge deployment, Google Cloud's free tier, Netlify and Cloudflare Pages for simple static sites, plus Heroku, Koyeb, and Surge. They're perfect for showing off your work without paying at first.",
+  "follow_up": "What APIs can make my app feel premium?",
+  "cited": [
+    "DY_OCbUkuA0"
+  ],
+  "found": true,
+  "agent_trace": [],
+  "mode": "keyword",
+  "saves_read": 1
+}

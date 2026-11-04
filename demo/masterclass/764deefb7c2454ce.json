@@ -1,0 +1,348 @@
+{
+  "topic": "AI & Machine Learning",
+  "built_at": "2026-11-04T10:36:50",
+  "seconds": 22,
+  "saves_read": 22,
+  "focus": 11,
+  "core_ideas": [
+    {
+      "idea": "Prompt engineering is the control layer - from natural language to structured JSON and chat commands",
+      "why": "It lets beginners create and edit video without timelines, and get precise cinematic control in tools like Veo 3 just by typing",
+      "trade_off": "Natural prompts are easy but vague; JSON and advanced chat prompts are powerful but take time to learn and can still need manual fixing",
+      "saves": [
+        "DONQZcYE90_",
+        "DQr2EaKDDFn",
+        "DRcqa3UkTuo",
+        "DTg1Dnqk8tY"
+      ]
+    },
+    {
+      "idea": "RAG (Retrieval-Augmented Generation) gives LLMs fresh knowledge without retraining",
+      "why": "Instead of fine-tuning, you index your own docs, turn them into vector embeddings with tools like ChromaDB, and retrieve answers - as shown in the Obelisk MkDocs chatbot",
+      "trade_off": "Cheaper and faster than training, but quality depends on chunking, embeddings and retrieval - bad context means bad answers, plus extra latency",
+      "saves": [
+        "https-github-com-usrbinkat-obelisk",
+        "linkedin-com-feed-update-urn-li-activity-7421516454489088000",
+        "linkedin-com-feed-update-urn-li-activity-7428320533613780992"
+      ]
+    },
+    {
+      "idea": "Efficient fine-tuning with LoRA, QLoRA and quantization makes custom LLMs accessible",
+      "why": "You can adapt LLaMA, Mistral, Falcon etc. on consumer GPUs using 4-bit/8-bit training, LoRA adapters and SFTTrainer instead of full training",
+      "trade_off": "Much lower cost, but you still need clean datasets, careful evaluation, and you risk overfitting if data is small or biased",
+      "saves": [
+        "https-github-com-dvgodoy-finetuningllms",
+        "linkedin-com-feed-update-urn-li-activity-7428320533613780992"
+      ]
+    },
+    {
+      "idea": "Agentic AI is about choosing the right design pattern - single agent vs multi-agent",
+      "why": "For open-ended, multi-step tasks you need agents that can reason, use tools and work together; choice depends on task complexity, latency vs accuracy, cost and human oversight",
+      "trade_off": "More agents and autonomy handle harder work but add complexity, cost, latency and harder debugging compared to simple deterministic code",
+      "saves": [
+        "gle-com-architecture-choose-design-pattern-agentic-ai-system",
+        "https-google-github-io-adk-docs",
+        "linkedin-com-feed-update-urn-li-activity-7421516454489088000"
+      ]
+    },
+    {
+      "idea": "Production AI needs more than demos - open ecosystem, evaluation and deployment at scale",
+      "why": "The open-source AI landscape moves fast; Google ADK and the State of Open Source AI guide show how to combine deterministic logic with LLM reasoning, manage context, evaluate and deploy reliably",
+      "trade_off": "Open tools give flexibility and no vendor lock-in, but you must handle integration, maintenance, monitoring and scaling yourself",
+      "saves": [
+        "https-github-com-premai-io-state-of-open-source-ai",
+        "https-google-github-io-adk-docs",
+        "linkedin-com-feed-update-urn-li-activity-7428320533613780992"
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "a": "DONQZcYE90_",
+      "b": "DQr2EaKDDFn",
+      "reason": "Both show prompting replacing manual work - JSON for Veo 3 video generation and chat prompts for video editing",
+      "cross_topic": false
+    },
+    {
+      "a": "DQr2EaKDDFn",
+      "b": "DRcqa3UkTuo",
+      "reason": "Both curate the same HeyGen-style prompt-based editing tools that replace DaVinci/CapCut timeline editing",
+      "cross_topic": false
+    },
+    {
+      "a": "DTg1Dnqk8tY",
+      "b": "DONQZcYE90_",
+      "reason": "Learning DSA with 7 ChatGPT prompts uses the same prompt-engineering mindset needed for precise Veo 3 JSON prompts",
+      "cross_topic": false
+    },
+    {
+      "a": "gle-com-architecture-choose-design-pattern-agentic-ai-system",
+      "b": "https-google-github-io-adk-docs",
+      "reason": "Google's guide for choosing single vs multi-agent patterns is directly implemented with ADK's graph-based orchestration",
+      "cross_topic": false
+    },
+    {
+      "a": "https-github-com-usrbinkat-obelisk",
+      "b": "linkedin-com-feed-update-urn-li-activity-7428320533613780992",
+      "reason": "Obelisk's RAG pipeline with ChromaDB/Ollama is the hands-on version of the RAG and Knowledge Graph workflows in the 23 notebooks",
+      "cross_topic": false
+    },
+    {
+      "a": "https-github-com-dvgodoy-finetuningllms",
+      "b": "linkedin-com-feed-update-urn-li-activity-7428320533613780992",
+      "reason": "Both teach efficient fine-tuning with LoRA/QLoRA, quantization and Hugging Face - book provides theory, notebooks provide workflows",
+      "cross_topic": false
+    },
+    {
+      "a": "https-github-com-usrbinkat-obelisk",
+      "b": "https-github-com-dvgodoy-finetuningllms",
+      "reason": "Shows the key choice: use RAG retrieval to add knowledge vs fine-tune the model itself",
+      "cross_topic": false
+    },
+    {
+      "a": "linkedin-com-feed-update-urn-li-activity-7421516454489088000",
+      "b": "https-github-com-premai-io-state-of-open-source-ai",
+      "reason": "NVIDIA's 7 free courses on RAG agents and CUDA give structure to the big-picture overview in the open-source AI ebook",
+      "cross_topic": false
+    },
+    {
+      "a": "https-github-com-premai-io-state-of-open-source-ai",
+      "b": "https-google-github-io-adk-docs",
+      "reason": "The ebook maps the fast open-source ecosystem that ADK then helps you deploy in production",
+      "cross_topic": false
+    },
+    {
+      "a": "DQr2EaKDDFn",
+      "b": "DSNmIOgAYQ2",
+      "reason": "Prompt-based video tools make creation fast, but you still need the 50 storytelling hooks to make viewers stop scrolling",
+      "cross_topic": true
+    }
+  ],
+  "disagreements": [
+    {
+      "point": "Prompt-only hype vs deep building: video editing saves say 'RIP editing, just chat to edit' while fine-tuning saves say serious builders must go beyond prompting into LoRA, RAG and evaluation",
+      "saves": [
+        "DQr2EaKDDFn",
+        "DRcqa3UkTuo",
+        "linkedin-com-feed-update-urn-li-activity-7428320533613780992"
+      ]
+    },
+    {
+      "point": "RAG vs fine-tuning as the fix: Obelisk and agentic design saves present RAG as cheaper/better than retraining, while fine-tuning saves present LoRA/QLoRA as the way to customize models - pulling in opposite directions on when to retrieve vs when to train",
+      "saves": [
+        "https-github-com-usrbinkat-obelisk",
+        "https-github-com-dvgodoy-finetuningllms"
+      ]
+    }
+  ],
+  "gaps": [
+    {
+      "missing": "Evaluation, hallucination and safety for RAG and agents",
+      "why_it_matters": "You need to know if answers are grounded and agents aren't making things up before shipping to users"
+    },
+    {
+      "missing": "Dataset creation, cleaning and privacy for fine-tuning and RAG",
+      "why_it_matters": "LoRA and vector embeddings only work as well as the data you feed them - bad data means biased or leaky models"
+    },
+    {
+      "missing": "Cost, GPU sizing and latency optimization for production",
+      "why_it_matters": "Helps you choose between API calls, 4-bit local models, and multi-agent graphs without overspending"
+    },
+    {
+      "missing": "Ethics and copyright for AI-generated video, voice and avatar cloning",
+      "why_it_matters": "Tools like HeyGen and Veo 3 raise consent and ownership questions you must handle responsibly"
+    }
+  ],
+  "learning_order": [
+    {
+      "id": "https-github-com-premai-io-state-of-open-source-ai",
+      "why_here": "Start with big-picture map of open-source AI from evaluation to deployment so later tools make sense"
+    },
+    {
+      "id": "linkedin-com-feed-update-urn-li-activity-7421516454489088000",
+      "why_here": "Free NVIDIA courses give gentle foundations in generative AI, RAG and CUDA before hands-on work"
+    },
+    {
+      "id": "DTg1Dnqk8tY",
+      "why_here": "Practice prompt thinking in a familiar area (DSA) to build intuition for concept, debugging and complexity prompts"
+    },
+    {
+      "id": "DONQZcYE90_",
+      "why_here": "See how phrasing matters - natural vs JSON prompts in Veo 3 shows precision vs ease trade-off"
+    },
+    {
+      "id": "DQr2EaKDDFn",
+      "why_here": "Apply prompts to real editing - 13 chat-based tools that replace timeline workflows"
+    },
+    {
+      "id": "DRcqa3UkTuo",
+      "why_here": "Deepen the same idea with 12 tools breakdown, including HeyGen avatar cloning and auto-cuts"
+    },
+    {
+      "id": "https-github-com-usrbinkat-obelisk",
+      "why_here": "Build your first retrieval system - RAG chatbot over docs with ChromaDB and Ollama"
+    },
+    {
+      "id": "https-github-com-dvgodoy-finetuningllms",
+      "why_here": "Learn to customize models yourself with quantization, LoRA and SFTTrainer once you understand RAG limits"
+    },
+    {
+      "id": "linkedin-com-feed-update-urn-li-activity-7428320533613780992",
+      "why_here": "Go pro with 23 notebooks covering LoRA/QLoRA, RLHF, RAG + Knowledge Graphs and evaluation"
+    },
+    {
+      "id": "gle-com-architecture-choose-design-pattern-agentic-ai-system",
+      "why_here": "Zoom out to architecture - when to use single vs multi-agent and how to balance latency, cost and oversight"
+    },
+    {
+      "id": "https-google-github-io-adk-docs",
+      "why_here": "Capstone: build production-ready multi-agent systems with ADK, combining code and LLM reasoning at scale"
+    }
+  ],
+  "cards": {
+    "gle-com-architecture-choose-design-pattern-agentic-ai-system": {
+      "id": "gle-com-architecture-choose-design-pattern-agentic-ai-system",
+      "title": "Choosing Design Patterns for Agentic AI Systems",
+      "platform": "web",
+      "url": "https://cloud.google.com/architecture/choose-design-pattern-agentic-ai-system",
+      "summary": "Teaches how to choose a single or multi-agent pattern for Vertex AI based on task complexity, latency vs accuracy, cost, and human oversight needs.",
+      "note": "",
+      "minutes": 15,
+      "difficulty": 3,
+      "has_images": false,
+      "kept": true
+    },
+    "https-github-com-premai-io-state-of-open-source-ai": {
+      "id": "https-github-com-premai-io-state-of-open-source-ai",
+      "title": "The State of Open Source AI 2023",
+      "platform": "github-repo",
+      "url": "https://github.com/premAI-io/state-of-open-source-ai",
+      "summary": "An open ebook providing an overview of the open-source AI ecosystem, covering model evaluations through to deployment to help navigate fast-paced open-source innovation.",
+      "note": "",
+      "minutes": 90,
+      "difficulty": 2,
+      "has_images": false,
+      "kept": true
+    },
+    "linkedin-com-feed-update-urn-li-activity-7428320533613780992": {
+      "id": "linkedin-com-feed-update-urn-li-activity-7428320533613780992",
+      "title": "LLM Fine-Tuning Workflows with LoRA and RAG",
+      "platform": "linkedin",
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:7428320533613780992/",
+      "summary": "A repo of 23 notebooks covering full-stack LLM building beyond prompting: efficient fine-tuning with LoRA/QLoRA and quantization, alignment with RLHF, retrieval with RAG and Knowledge Graphs, plus evaluation and optimization workflows.",
+      "note": "",
+      "minutes": 90,
+      "difficulty": 4,
+      "has_images": false,
+      "kept": true
+    },
+    "DONQZcYE90_": {
+      "id": "DONQZcYE90_",
+      "title": "JSON vs Natural Prompts for Veo 3 Video",
+      "platform": "instagram-reel",
+      "url": "https://www.instagram.com/reel/DONQZcYE90_/",
+      "summary": "Compares standard natural-language prompts and structured JSON prompts in Google Veo 3 to create the same seamless fashion video transition, showing how JSON prompting offers more precise control over cinematic style, lighting, and cuts.",
+      "note": "",
+      "minutes": 8,
+      "difficulty": 2,
+      "has_images": true,
+      "kept": true
+    },
+    "DTg1Dnqk8tY": {
+      "id": "DTg1Dnqk8tY",
+      "title": "ChatGPT Prompts to Learn DSA Smarter",
+      "platform": "instagram-post",
+      "url": "https://www.instagram.com/p/DTg1Dnqk8tY/",
+      "summary": "Teaches 7 ChatGPT prompts to learn DSA personally instead of tutorials, covering concept intuition, code debugging, problem breakdown, curated practice, pattern recognition, and complexity analysis.",
+      "note": "",
+      "minutes": 15,
+      "difficulty": 2,
+      "has_images": true,
+      "kept": true
+    },
+    "https-github-com-dvgodoy-finetuningllms": {
+      "id": "https-github-com-dvgodoy-finetuningllms",
+      "title": "Hands-On Guide to Fine-Tuning LLMs",
+      "platform": "github-repo",
+      "url": "https://github.com/dvgodoy/FineTuningLLMs",
+      "summary": "Teaches how to fine-tune large language models using PyTorch and Hugging Face, covering quantization, LoRA adapters, dataset formatting, SFTTrainer, and local deployment.",
+      "note": "",
+      "minutes": 300,
+      "difficulty": 3,
+      "has_images": false,
+      "kept": true
+    },
+    "DQr2EaKDDFn": {
+      "id": "DQr2EaKDDFn",
+      "title": "Prompt-Based AI Video Editing Tools",
+      "platform": "instagram-post",
+      "url": "https://www.instagram.com/p/DQr2EaKDDFn/",
+      "summary": "Shows how to edit video by chatting with AI instead of timeline editing. Covers 13 tools for avatar cloning, text-to-video, transcript editing, auto-cuts, and chat commands as alternatives to DaVinci, iMovie, and CapCut.",
+      "note": "",
+      "minutes": 12,
+      "difficulty": 2,
+      "has_images": true,
+      "kept": true
+    },
+    "DRcqa3UkTuo": {
+      "id": "DRcqa3UkTuo",
+      "title": "12 AI Tools to Edit Video by Typing",
+      "platform": "instagram-post",
+      "url": "https://www.instagram.com/p/DRcqa3UkTuo/",
+      "summary": "Shows how AI replaces manual editing with text commands, curating 12 tools for avatar videos, text-to-video, transcript editing, auto-cuts, silence removal and chat-based video refinement.",
+      "note": "",
+      "minutes": 12,
+      "difficulty": 1,
+      "has_images": true,
+      "kept": true
+    },
+    "https-google-github-io-adk-docs": {
+      "id": "https-google-github-io-adk-docs",
+      "title": "Building Production Agents with Google ADK",
+      "platform": "web",
+      "url": "https://google.github.io/adk-docs/",
+      "summary": "Introduces Google's open-source ADK for building production multi-agent systems, covering how to combine deterministic logic with LLM reasoning, orchestrate agents via graphs, manage context efficiently, and deploy across languages and models.",
+      "note": "",
+      "minutes": 15,
+      "difficulty": 3,
+      "has_images": false,
+      "kept": true
+    },
+    "DSNmIOgAYQ2": {
+      "id": "DSNmIOgAYQ2",
+      "title": "50 Storytelling Hooks to Get Views",
+      "platform": "instagram-post",
+      "url": "https://www.instagram.com/p/DSNmIOgAYQ2/",
+      "summary": "Provides 50 fill-in-the-blank storytelling hook templates designed to grab attention in 3 seconds, stop scrolling, and increase engagement for Instagram and short-form content.",
+      "note": "",
+      "minutes": 10,
+      "difficulty": 1,
+      "has_images": true,
+      "kept": true
+    },
+    "linkedin-com-feed-update-urn-li-activity-7421516454489088000": {
+      "id": "linkedin-com-feed-update-urn-li-activity-7421516454489088000",
+      "title": "NVIDIA's Seven Free AI Courses",
+      "platform": "linkedin",
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:7421516454489088000/",
+      "summary": "Curated list of seven free NVIDIA courses covering generative AI basics, RAG models and agents, video AI apps, edge AI on Jetson Nano, digital fingerprinting, and CUDA GPU programming for building production-ready AI systems.",
+      "note": "",
+      "minutes": 5,
+      "difficulty": 2,
+      "has_images": false,
+      "kept": true
+    },
+    "https-github-com-usrbinkat-obelisk": {
+      "id": "https-github-com-usrbinkat-obelisk",
+      "title": "Obelisk RAG Chatbot for MkDocs Docs",
+      "platform": "github-repo",
+      "url": "https://github.com/usrbinkat/obelisk",
+      "summary": "Teaches how Obelisk builds a RAG chatbot over MkDocs docs with document indexing, vector embeddings via ChromaDB, local LLM support via Ollama, and an OpenAI-compatible API with CLI and Docker deployment.",
+      "note": "",
+      "minutes": 25,
+      "difficulty": 3,
+      "has_images": false,
+      "kept": true
+    }
+  }
+}

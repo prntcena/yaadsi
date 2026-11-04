@@ -1,0 +1,22 @@
+{
+  "id": "DTg1Dnqk8tY",
+  "hash": "7363cecd6e3ef50c",
+  "learnable": true,
+  "title": "ChatGPT Prompts to Learn DSA Smarter",
+  "summary": "Teaches 7 ChatGPT prompts to learn DSA personally instead of tutorials, covering concept intuition, code debugging, problem breakdown, curated practice, pattern recognition, and complexity analysis.",
+  "topics": [
+    "Data Structures & Algorithms",
+    "AI-assisted Learning",
+    "Interview Preparation"
+  ],
+  "concepts": [
+    "Prompt engineering for DSA tutoring",
+    "Personalized learning with AI",
+    "Problem breakdown and edge-case analysis",
+    "Pattern-based problem solving",
+    "Time and space complexity optimization"
+  ],
+  "difficulty": 2,
+  "minutes": 15,
+  "has_diagram": false
+}

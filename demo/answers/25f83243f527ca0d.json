@@ -1,0 +1,12 @@
+{
+  "question": "What are the different types of database indexes and when should I use each one?",
+  "answer": "You got it — your LinkedIn post on 15 Database Indexing Techniques breaks this down nicely. It's not one-size-fits-all. B-Tree and B+ Tree are great when you've got range queries and they're used in places like MySQL and Postgres. Hash is super fast if you just need exact matches, Bitmap works well for low-cardinality columns, and you've got specialized ones like Inverted for search, R-Tree for spatial data, and LSM for heavy writes.",
+  "follow_up": "What are the 16 core system design concepts I should know as a beginner?",
+  "cited": [
+    "linkedin-com-feed-update-urn-li-activity-7408755754494607360"
+  ],
+  "found": true,
+  "agent_trace": [],
+  "mode": "keyword",
+  "saves_read": 1
+}

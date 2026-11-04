@@ -1,0 +1,12 @@
+{
+  "question": "that reel about writing video prompts as JSON",
+  "answer": "Yeah that one was your Instagram reel on JSON vs Natural Prompts for Veo 3 — not just any video tip. It showed the same fashion video made two ways, with a normal prompt and a structured JSON prompt. The big takeaway was JSON gives you way more precise control over cinematic style, lighting, and those seamless invisible cuts.",
+  "follow_up": "How does JSON prompting give you better control in Veo 3?",
+  "cited": [
+    "DONQZcYE90_"
+  ],
+  "found": true,
+  "agent_trace": [],
+  "mode": "keyword",
+  "saves_read": 1
+}

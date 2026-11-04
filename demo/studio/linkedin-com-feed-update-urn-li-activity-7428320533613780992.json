@@ -1,0 +1,22 @@
+{
+  "id": "linkedin-com-feed-update-urn-li-activity-7428320533613780992",
+  "hash": "da96509986194886",
+  "learnable": true,
+  "title": "LLM Fine-Tuning Workflows with LoRA and RAG",
+  "summary": "A repo of 23 notebooks covering full-stack LLM building beyond prompting: efficient fine-tuning with LoRA/QLoRA and quantization, alignment with RLHF, retrieval with RAG and Knowledge Graphs, plus evaluation and optimization workflows.",
+  "topics": [
+    "LLMs",
+    "AI Engineering",
+    "MLOps"
+  ],
+  "concepts": [
+    "LoRA / QLoRA fine-tuning",
+    "4-bit / 8-bit quantization with bitsandbytes",
+    "RLHF on custom datasets",
+    "RAG pipelines with LangChain",
+    "MLflow evaluation workflows"
+  ],
+  "difficulty": 4,
+  "minutes": 90,
+  "has_diagram": false
+}

@@ -1,0 +1,21 @@
+{
+  "id": "https-google-github-io-adk-docs",
+  "hash": "4c99736cd8d1bd7f",
+  "learnable": true,
+  "title": "Building Production Agents with Google ADK",
+  "summary": "Introduces Google's open-source ADK for building production multi-agent systems, covering how to combine deterministic logic with LLM reasoning, orchestrate agents via graphs, manage context efficiently, and deploy across languages and models.",
+  "topics": [
+    "AI agents",
+    "System design"
+  ],
+  "concepts": [
+    "Multi-agent orchestration",
+    "Graph-based workflows",
+    "Hybrid deterministic and AI reasoning",
+    "Structured context management",
+    "Model-agnostic deployment"
+  ],
+  "difficulty": 3,
+  "minutes": 15,
+  "has_diagram": false
+}
