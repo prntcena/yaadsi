@@ -99,9 +99,41 @@ class FeedbackIn(BaseModel):
     detail: str = Field(default="", max_length=200)
 
 
+# MOCK AUTH: not security. One fixed demo account and a fixed cookie value, only so logged-out visitors see the landing
+# page first. The /api/* endpoints are not gated. Real accounts come later (the product's Slice 5 design: sessions, lockout).
+MOCK_USER, MOCK_PASSWORD = "admin", "admin"
+SESSION_COOKIE, SESSION_VALUE = "yaadsi_session", "mock"
+
+
+def _signed_in(request: Request) -> bool:
+    return request.cookies.get(SESSION_COOKIE) == SESSION_VALUE
+
+
 @app.get("/")
-def index() -> FileResponse:
-    return FileResponse(STATIC / "index.html")
+def index(request: Request) -> FileResponse:
+    """Logged out: the landing page (what Yaadsi is). Logged in: the app."""
+    return FileResponse(STATIC / ("index.html" if _signed_in(request) else "landing.html"))
+
+
+class LoginIn(BaseModel):
+    username: str = Field(max_length=100)
+    password: str = Field(max_length=200)
+
+
+@app.post("/api/login")
+def login(body: LoginIn) -> JSONResponse:
+    if (body.username.strip(), body.password) != (MOCK_USER, MOCK_PASSWORD):
+        raise HTTPException(401, "Wrong username or password.")
+    response = JSONResponse({"ok": True})
+    response.set_cookie(SESSION_COOKIE, SESSION_VALUE, max_age=30 * 24 * 3600, httponly=True, samesite="lax", path="/")
+    return response
+
+
+@app.post("/api/logout")
+def logout() -> JSONResponse:
+    response = JSONResponse({"ok": True})
+    response.delete_cookie(SESSION_COOKIE, path="/")
+    return response
 
 
 @app.get("/api/topics")

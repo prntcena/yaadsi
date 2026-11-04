@@ -1129,6 +1129,12 @@ $("#teach-listen").addEventListener("click", () => {
   say(parts.filter(Boolean).join(". "), ++answerSpeech.run, (r) => r === answerSpeech.run, () => releaseSpeech("answer"));
 });
 
+// ---------- mock log out (landing.html has the mock log in; no real authentication yet) ----------
+$("#logout").addEventListener("click", async () => {
+  try { await api("/api/logout", {}); } catch { /* the cookie clears on the next log in either way */ }
+  location.replace("/");
+});
+
 // ---------- boot ----------
 (async () => {
   syncLabels();

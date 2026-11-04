@@ -67,7 +67,8 @@ pip install -r requirements.txt
 TUTOR_DATA=demo python -m uvicorn app:app --port 8765    # PowerShell: $env:TUTOR_DATA="demo"; python -m uvicorn ...
 ```
 
-Open http://127.0.0.1:8765.
+Open http://127.0.0.1:8765 and press **Try the demo**. It uses a mock login (admin / admin) that only switches between the
+landing page and the app; there is no real authentication yet.
 
 - **Without keys** it runs in **replay mode**: the lessons, answers and Connect-the-dots that Yaad already made for the demo saves open instantly. Anything new asks for keys.
 - **To go live**, copy `.env.example` to `.env` and add a Baseten key (Muse Spark Open) and a Meta Model API key.
