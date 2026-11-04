@@ -1393,8 +1393,9 @@ function setYaadLine(line) {                             // Yaad's resting line 
   if (document.body.classList.contains("view-setup") && heroInView) Yaad?.setRest(line);   // never cut off a line being said
 }
 
-$("#today-start").addEventListener("click", () => {
-  if (!todayData?.backlog.saved) { $("#add-open").click(); return; }
+$("#today-start").addEventListener("click", () => {   // hidden until /api/today answers (renderToday shows it)
+  if (!todayData) return;
+  if (!todayData.backlog.saved) { $("#add-open").click(); return; }
   if (todayData.today.save_ids.length) openMini(todayData.today.save_ids, { from: "today" });
 });
 $("#today-more").addEventListener("click", () => { todayMore += 1; loadToday(); });
