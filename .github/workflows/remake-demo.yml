@@ -1,0 +1,46 @@
+# Re-judge the demo lessons and draw their pictures where the Meta API is reachable, then commit the results.
+# Run by hand: Actions -> "Remake demo lessons" -> Run workflow. Needs the META_API_KEY and BASETEN_API_KEY secrets.
+name: Remake demo lessons
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: remake-demo
+  cancel-in-progress: false
+
+jobs:
+  remake:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      TUTOR_DATA: demo
+      TUTOR_PICK_SEED: replay
+      TUTOR_PROFILE: ${{ runner.temp }}/remake-profile.json
+      META_API_KEY: ${{ secrets.META_API_KEY }}
+      BASETEN_API_KEY: ${{ secrets.BASETEN_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Re-judge the unjudged lessons
+        run: python scripts/rejudge_demo_lessons.py
+      - name: Draw the lesson pictures
+        run: python scripts/demo_pictures.py
+      - name: Check the demo is still clean
+        run: python make_demo.py --check
+      - name: Commit the results
+        run: |
+          git config user.name prntcena
+          git config user.email 26824757+prntcena@users.noreply.github.com
+          git add demo/lessons demo/media
+          if git diff --cached --quiet; then echo "nothing new"; exit 0; fi
+          git commit -m "Demo lessons judged by Muse Wonder, with their pictures" \
+                     -m "Made by the Remake demo lessons workflow."
+          git push
