@@ -171,7 +171,7 @@
       sim.force("y").y((n) => (n.kind === "topic" ? n.homeY : ids.has(n.id) ? n.ty : height / 2)).strength((n) => (n.kind === "topic" ? 1 : ids.has(n.id) ? 0.9 : 0.03));
       sim.force("link").strength((l) => (ids.has(endId(l.source)) || ids.has(endId(l.target)) ? 0 : l.kind === "topic" ? 0.25 : 0.03));
       refreshCollide();
-      sim.alpha(0.8).restart();
+      sim.alphaTarget(0).alpha(0.8).restart();   // settle, then hold still: moving labels are hard to tap
       camera(d3.zoomIdentity.translate(width / 2, height / 2).scale(scale).translate(-t.x, -t.y));
       back.hidden = false;
       onFocusChange?.(t, mine);
@@ -186,7 +186,7 @@
       sim.force("y").y((n) => (n.kind === "topic" ? n.homeY : height / 2)).strength((n) => (n.kind === "topic" ? 1 : 0.03));
       sim.force("link").strength((l) => (l.kind === "topic" ? 0.25 : 0.03));
       refreshCollide();
-      sim.alpha(0.6).restart();
+      sim.alphaTarget(drift).alpha(0.6).restart();
       camera(d3.zoomIdentity);
       back.hidden = true; pinned = null; tip.hidden = true;
       onFocusChange?.(null, []);
@@ -244,11 +244,12 @@
         topicSel.attr("transform", (t) => `translate(${t.x},${t.y})`);
       });
     const drift = reduceMotion ? 0 : 0.008;               // a gentle, endless drift: the brain is alive
+    const driftNow = () => (focused ? 0 : drift);          // ...but not while a topic is zoomed in
     sim.alphaDecay(0.03).alphaTarget(drift);
     topicSel.call(d3.drag().clickDistance(5)
       .on("start", (ev) => { if (!ev.active) sim.alphaTarget(0.2).restart(); })
       .on("drag", (ev, t) => { t.fx = t.homeX = ev.x; t.fy = t.homeY = ev.y; })
-      .on("end", (ev) => { if (!ev.active) sim.alphaTarget(drift); }));
+      .on("end", (ev) => { if (!ev.active) sim.alphaTarget(driftNow()); }));
 
     function refreshCollide() {                        // d3 caches radii; re-apply so focused cells get room
       sim.force("collide").radius((n) => (n.kind === "topic" ? n.r + 12 : focused && n.topics.includes(focused.id) ? 0 : 6));
@@ -256,7 +257,11 @@
 
     let running = true;
     const pause = () => { if (running) { running = false; sim.stop(); } };
-    const resume = () => { if (!running) { running = true; sim.alphaTarget(drift).restart(); } };
+    const resume = () => { if (!running) { running = true; sim.alphaTarget(driftNow()).restart(); } };
+    // a click anywhere outside the pinned card (and not on another save) closes it
+    document.addEventListener("pointerdown", (ev) => {
+      if (pinned && !tip.contains(ev.target) && !ev.target.closest?.("g.save")) closeTip();
+    });
     document.addEventListener("visibilitychange", () => (document.hidden ? pause() : !container.closest("[hidden]") && resume()));
 
     return {

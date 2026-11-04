@@ -65,7 +65,10 @@ async def guard_posts(request: Request, call_next):
             length = request.headers.get("content-length")
             if not length or not length.isdigit() or int(length) > UPLOAD_LIMIT:
                 return JSONResponse({"detail": "That recording is too long."}, status_code=413)
-    return await call_next(request)
+    response = await call_next(request)
+    if request.url.path == "/" or request.url.path.startswith("/static/"):
+        response.headers["Cache-Control"] = "no-cache"   # revalidate by ETag: never run yesterday's scripts
+    return response
 
 
 class PlanIn(BaseModel):
