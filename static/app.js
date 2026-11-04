@@ -132,7 +132,7 @@ async function loadTopics({ initial = true } = {}) {
   topicsData = topics;
   const box = $("#topics");
   box.replaceChildren(...topics.map((t) => {
-    const b = el("button", { class: "chip", onclick: () => { pickTopic(t.name); openCustomise(); } }, t.name, el("small", {}, `${t.saves}`));
+    const b = el("button", { class: "chip", onclick: () => { pickTopic(t.name); if (!brain) openCustomise(); } }, t.name, el("small", {}, `${t.saves}`));   // no graph: the chips are the planner
     b.dataset.topic = t.name;
     return b;
   }));
@@ -149,7 +149,7 @@ async function loadBrain() {
   try {
     const data = await api("/api/graph");
     brain = Brain.render($("#brain"), data, {
-      onSelect: (name) => { pickTopic(name); openCustomise(); },
+      onSelect: (name) => pickTopic(name),   // zoom in only; "Plan this topic" opens the planner
       onLearn: (id) => openMini(id),
       onHover: (t) => {
         if (!window.Yaad || !t) return;
@@ -176,7 +176,9 @@ function renderTopicSaves(t, mine) {
   box.hidden = !t;
   if (!t) { box.replaceChildren(); return; }
   box.replaceChildren(el("div", { class: "topic-saves-head" }, el("span", { class: "muted small" }, `Saves in ${t.name}`),
-    el("button", { class: "chip dots-btn", type: "button", onclick: () => window.Masterclass?.open(t.name, "setup") }, icon("hub"), "Connect the dots")),
+    el("span", { class: "topic-saves-actions" },
+      el("button", { class: "chip", type: "button", onclick: () => { pickTopic(t.name); openCustomise(); } }, icon("tune"), "Plan this topic"),
+      el("button", { class: "chip dots-btn", type: "button", onclick: () => window.Masterclass?.open(t.name, "setup") }, icon("hub"), "Connect the dots"))),
     el("div", { class: "chips small" },
     ...mine.map((s) => {
       const [dot, kind] = Brain.PLATFORM[s.platform] || Brain.PLATFORM.web;
@@ -1150,11 +1152,10 @@ $("#teach-listen").addEventListener("click", () => {
     $("#depth").value = s.level || p.depth || 2;
     document.querySelectorAll("#formats input").forEach((i) => { i.checked = state.formats.includes(i.value); });
     syncLabels();
-    renderPlan(s.plan, p.goal || "");
+    renderPlan(s.plan, p.goal || "");   // draws the plan (and shows it): Today is still the landing page
     pickTopic(p.topic);
-  } else {
-    show("setup");
   }
+  show("setup");
 })();
 
 

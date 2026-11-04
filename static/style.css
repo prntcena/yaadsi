@@ -903,3 +903,5 @@ body.view-setup:has(#customise[open]) .dock-slot { bottom: 96px; }
 /* in a zoomed topic the save labels are tap targets too (they open the same card as the dot) */
 .brain .has-focus .save.focus .save-label { pointer-events: auto; cursor: pointer; }
 .brain .has-focus .save.focus .cell { cursor: pointer; }
+/* a zoomed topic: plan it or connect the dots */
+.topic-saves-actions { display: inline-flex; gap: 6px; flex-wrap: wrap; }
