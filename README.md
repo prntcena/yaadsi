@@ -4,7 +4,9 @@
 
 Built for the Meta Global AI Developer Hackathon (Indie track, "Build for Your World") with Muse Spark Open.
 
-**Try it in one minute:** clone, `pip install -r requirements.txt`, run with `TUTOR_DATA=demo` (see [Run it](#run-it)), press **Try the demo**. No API keys needed.
+**Try it live: [yaadsi.vercel.app](https://yaadsi.vercel.app/)** and press **Try the demo**. It opens on 24 public demo saves. You can add your own link (LinkedIn, GitHub or an article; Instagram usually blocks cloud servers) and get a lesson from it in about 20 seconds. Everyone shares one demo space, it resets now and then, and live features stop for the day after a small spend cap.
+
+**Or run it locally in one minute:** clone, `pip install -r requirements.txt`, run with `TUTOR_DATA=demo` (see [Run it](#run-it)), press **Try the demo**. No API keys needed.
 
 | Landing | Today: your backlog and a 15-minute pick | A lesson from your saves |
 |---|---|---|
