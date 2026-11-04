@@ -202,8 +202,8 @@ def state() -> dict:
     p = learner.load()
     return {"profile": {k: p[k] for k in ("goal", "topic", "deadline", "minutes_per_day", "depth", "formats")},
             "plan": p.get("plan"), "level": learner.level(p, p["topic"]) if p["topic"] else None,
-            "done_days": done_days(p), "replay": (replay := not llm.has_keys()), "formats_chosen": bool(p.get("formats_chosen")),
-            "ask_examples": ask.examples(learner.level(p, p["topic"]) if p["topic"] else 2) if replay else []}
+            "done_days": done_days(p), "replay": not llm.has_keys(), "formats_chosen": bool(p.get("formats_chosen")),
+            "ask_examples": ask.examples(learner.level(p, p["topic"]) if p["topic"] else 2)}   # pre-made, so instant live too
 
 
 @app.post("/api/lesson")

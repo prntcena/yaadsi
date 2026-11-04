@@ -1217,7 +1217,7 @@ $("#logout").addEventListener("click", async () => {
     state.formats = s.profile.formats;
     document.querySelectorAll("#formats input").forEach((i) => { i.checked = state.formats.includes(i.value); });
   }
-  if (s.ask_examples?.length) {   // replay mode: offer the questions Yaad already answered
+  if (s.ask_examples?.length) {   // offer the questions Yaad already answered (instant, live or replay)
     $("#ask-try").replaceChildren(el("span", { class: "muted small" }, "Try:"),
       ...s.ask_examples.map((q) => el("button", { class: "chip", type: "button", onclick: () => { $("#ask-q").value = q; askQuestion(q); } }, q)));
     $("#ask-try").hidden = false;
