@@ -22,7 +22,7 @@ from dotenv import dotenv_values
 import thoughts
 
 HERE = Path(__file__).resolve().parent
-OUT = HERE / "out"
+OUT = Path(os.environ.get("TUTOR_OUT") or HERE / "out")   # the usage log; the hosted demo moves it to /tmp
 DATA = HERE / (os.environ.get("TUTOR_DATA") or "data")   # TUTOR_DATA=demo runs on the public demo corpus
 
 BASETEN_BASE_URL = "https://inference.baseten.co/v1"
@@ -94,6 +94,7 @@ _clients: dict[str, openai.OpenAI] = {}
 
 
 def _client(which: str) -> openai.OpenAI:
+    _check_budget()
     if which not in _clients:
         key_name, base_url = {"baseten": ("BASETEN_API_KEY", BASETEN_BASE_URL),
                               "meta": ("META_API_KEY", META_BASE_URL)}[which]
@@ -102,6 +103,28 @@ def _client(which: str) -> openai.OpenAI:
             raise NoKey(f"{key_name} is not set in tutor-lab/.env")
         _clients[which] = openai.OpenAI(api_key=key, base_url=base_url, timeout=180, max_retries=2)
     return _clients[which]
+
+
+class OverBudget(LLMError):
+    """The hosted demo's daily spend cap (TUTOR_DAILY_USD) is used up."""
+
+
+def _check_budget() -> None:
+    """A public demo with keys must not be drainable: stop calling models once today's logged spend reaches the cap."""
+    cap = setting("TUTOR_DAILY_USD")
+    if not cap:
+        return
+    day, spent, path = time.strftime("%Y-%m-%d"), 0.0, OUT / "usage.jsonl"
+    if path.exists():
+        for line in path.read_text(encoding="utf-8").splitlines():
+            try:
+                row = json.loads(line)
+            except ValueError:
+                continue
+            if row.get("ts", "").startswith(day):
+                spent += row.get("usd", 0.0)
+    if spent >= float(cap):
+        raise OverBudget("The live demo has used today's budget. Everything pre-made still works; try live features tomorrow.")
 
 
 def _log(model: str, purpose: str, usage: Any, seconds: float, ok: bool = True, note: str = "") -> None:
@@ -305,6 +328,7 @@ def transcribe(wav: bytes, *, purpose: str) -> str:
     key = setting("META_API_KEY")
     if not key:
         raise NoKey("META_API_KEY is not set in tutor-lab/.env")
+    _check_budget()
     for attempt in range(2):   # one retry: the corporate proxy drops TLS now and then
         started = time.time()
         try:

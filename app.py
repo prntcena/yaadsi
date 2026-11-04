@@ -7,6 +7,7 @@ from __future__ import annotations
 import json
 import os
 import re
+import shutil
 import threading
 import time
 from concurrent.futures import ThreadPoolExecutor
@@ -20,11 +21,21 @@ from fastapi.staticfiles import StaticFiles
 from starlette.middleware.trustedhost import TrustedHostMiddleware
 from pydantic import BaseModel, Field
 
-HOSTED = bool(os.environ.get("VERCEL"))   # the hosted replay demo: set by Vercel itself, before the modules below read it
-if HOSTED:   # the public corpus, no background builds, and a throwaway learner in the only writable folder
-    os.environ.setdefault("TUTOR_DATA", "demo")
+HOSTED = bool(os.environ.get("VERCEL"))   # the hosted demo: set by Vercel itself, before the modules below read it
+if HOSTED:   # the public corpus, today's pre-made picks, no background builds, a throwaway learner in /tmp
+    os.environ.setdefault("TUTOR_PICK_SEED", "replay")
     os.environ.setdefault("TUTOR_PREWARM", "0")
     os.environ.setdefault("TUTOR_PROFILE", "/tmp/yaadsi-profile.json")
+    if os.environ.get("BASETEN_API_KEY") or os.environ.get("META_API_KEY"):
+        # Live: new lessons, answers and added links are written, and only /tmp is writable, so work on a copy
+        # of the demo there (one per instance, gone when it recycles). The login is a public mock, so cap the spend.
+        os.environ.setdefault("TUTOR_DATA", "/tmp/yaadsi-demo")
+        os.environ.setdefault("TUTOR_OUT", "/tmp/yaadsi-out")
+        os.environ.setdefault("TUTOR_DAILY_USD", "3")
+        if not os.path.isdir(os.environ["TUTOR_DATA"]):
+            shutil.copytree(os.path.join(os.path.dirname(os.path.abspath(__file__)), "demo"), os.environ["TUTOR_DATA"])
+    else:
+        os.environ.setdefault("TUTOR_DATA", "demo")
 
 import ask  # noqa: E402  (after the hosted defaults)
 import eval as evaluation
@@ -43,13 +54,10 @@ import tools
 import visuals
 from lesson import cache_key, is_cached, make_lesson
 
-if HOSTED and llm.has_keys():   # the login is a published mock, so a hosted key would be anyone's to spend
-    raise RuntimeError("The hosted demo runs in replay mode: remove the API keys from the Vercel project.")
-
 STATIC = llm.HERE / "static"
 app = FastAPI(title="Yaadsi Tutor")
 # Local-only app: reject other Host headers so a DNS-rebinding page cannot drive the paid endpoints.
-# The hosted demo also answers on Vercel's domain; it runs with no keys, so nothing there is paid.
+# The hosted demo also answers on Vercel's domain; with keys, its spend is capped per day (TUTOR_DAILY_USD).
 app.add_middleware(TrustedHostMiddleware,
                    allowed_hosts=["127.0.0.1", "localhost"] + (["*.vercel.app"] if HOSTED else []))
 app.mount("/static", StaticFiles(directory=STATIC), name="static")
@@ -61,8 +69,12 @@ REPLAY_MSG = llm.REPLAY_MSG
 
 
 def _model_error(exc: Exception, message: str) -> HTTPException:
-    """A missing key is the judge's setup, not a failure: say so instead of \"try again\"."""
-    return HTTPException(400, REPLAY_MSG) if isinstance(exc, llm.NoKey) else HTTPException(502, message)
+    """A missing key is the judge's setup, not a failure: say so instead of \"try again\". So is a spent daily cap."""
+    if isinstance(exc, llm.NoKey):
+        return HTTPException(400, REPLAY_MSG)
+    if isinstance(exc, llm.OverBudget):
+        return HTTPException(429, str(exc))
+    return HTTPException(502, message)
 
 
 @app.middleware("http")
