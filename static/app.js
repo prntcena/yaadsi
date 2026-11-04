@@ -383,11 +383,30 @@ function paragraphs(body) {
   return out;
 }
 
+const ANALOGY = /^(think of|imagine|picture|it's like|like a|like an)\b/i;
+function readMinutes(l) { return Math.max(1, Math.round((l.words || 0) / 220)); }
+
 async function renderLesson(l) {
-  $("#lesson-meta").textContent = `Day ${l.day} · ${DEPTH[l.level]} (level ${l.level}) · ${l.words} words`;
+  const saves = (l.source_cards || []).length;
+  $("#lesson-meta").textContent = [l.mini ? "" : `Day ${l.day}`, saves ? `from your ${saves === 1 ? "save" : `${saves} saves`}` : "",
+    `${readMinutes(l)} min read`, DEPTH[l.level]].filter(Boolean).join(" · ");
   $("#lesson-title").textContent = l.title;
+  $("#lesson-subtitle").textContent = l.subtitle || ""; $("#lesson-subtitle").hidden = !l.subtitle;
   renderJudge(l);
-  $("#lesson-sections").replaceChildren(...l.sections.map((s, i) => el("div", { class: "section" }, sectionHead(s, i), ...paragraphs(s.body))));
+  const sections = l.sections.map((s, i) => el("div", { class: "section" }, sectionHead(s, i), ...paragraphs(s.body)));
+  const analogy = sections.flatMap((s) => [...s.querySelectorAll(":scope > p")]).find((p) => ANALOGY.test(p.textContent));
+  analogy?.classList.add("art-analogy");                // one soft callout: the lesson's analogy
+  const body = [];
+  if (l.intro) body.push(el("p", { class: "art-intro" }, l.intro));
+  sections.forEach((s, i) => {
+    body.push(s);
+    if (i === 0) body.push($("#see-box"));               // the real slide and the simple picture, inline
+    if (i === Math.min(1, sections.length - 1)) {
+      if (l.takeaway) body.push(el("blockquote", { class: "art-takeaway" }, el("p", {}, l.takeaway)));
+      body.push($("#diagram-box"));                      // the flow diagram as a figure in the article
+    }
+  });
+  $("#lesson-sections").replaceChildren(...body);
 
   stopPlayer();
   const wantDiagram = state.formats.includes("diagram") && !!l.mermaid;
@@ -436,6 +455,7 @@ async function renderLesson(l) {
   resetTeach(l);
   document.querySelectorAll(".fb").forEach((b) => b.classList.remove("on"));
   $("#fb-result").textContent = ""; $("#regen").hidden = true;
+  renderShape(l);
   $("#lesson").hidden = false;
   refreshSpend();
 }
@@ -465,7 +485,7 @@ async function loadVisuals(l) {
   layoutSee();
   $("#see-note").textContent = [wantFigure && "SAM 3.1 is finding the figure in your save", wantPicture && "Muse Image is drawing…"].filter(Boolean).join(" · ");
   try {
-    const v = await api("/api/visuals", { lesson_id: l.id });
+    const v = await api("/api/visuals", { lesson_id: l.id, formats: state.formats });
     if (state.lesson !== l) return;            // the learner moved on
     if (v.figure) {
       setFigure("#fig-real", v.figure);
@@ -552,11 +572,60 @@ document.querySelectorAll(".fb").forEach((b) => b.addEventListener("click", asyn
     const regen = $("#regen");
     regen.textContent = `Redo this lesson as "${DEPTH[level]}"`;
     regen.hidden = false;
-    regen.onclick = () => openLesson(state.day, { level });
+    regen.onclick = () => rebuildLesson(level);
   } else {
     $("#fb-result").textContent = "Thanks — keeping this level.";
   }
 }));
+
+// ---------- Make it your way: formats and depth for this lesson ----------
+const shape = { level: 2 };
+function rebuildLesson(level) {                     // the same saves (or plan day) at another depth
+  const l = state.lesson;
+  if (!l) return;
+  if (l.mini) openMini(l.save_ids, { from: state.lessonFrom, level });
+  else openLesson(l.day, { level });
+}
+function shapeFormats() { return [...document.querySelectorAll("#shape-formats input:checked")].map((i) => i.value); }
+function syncShape() {
+  document.querySelectorAll("#shape-depth [data-depth]").forEach((b) => {
+    const on = +b.dataset.depth === shape.level;
+    b.classList.toggle("on", on); b.setAttribute("aria-checked", String(on)); b.tabIndex = on ? 0 : -1;
+  });
+  $("#shape-depth-out").textContent = DEPTH[shape.level];
+  const changedFormats = shapeFormats().sort().join() !== [...state.formats].sort().join();
+  const changedDepth = !!state.lesson && shape.level !== state.lesson.level;
+  $("#shape-apply").disabled = !changedFormats && !changedDepth;
+  $("#shape-apply").textContent = changedDepth ? `Rebuild as "${DEPTH[shape.level]}"` : "Apply";
+}
+function renderShape(l) {
+  shape.level = l.level;
+  document.querySelectorAll("#shape-formats input").forEach((i) => { i.checked = state.formats.includes(i.value); });
+  $("#shape-note").textContent = "";
+  syncShape();
+}
+document.querySelectorAll("#shape-formats input").forEach((i) => i.addEventListener("change", syncShape));
+document.querySelectorAll("#shape-depth [data-depth]").forEach((b) => b.addEventListener("click", () => { shape.level = +b.dataset.depth; syncShape(); }));
+$("#shape-depth").addEventListener("keydown", (ev) => {   // radio group: arrows move the choice
+  const step = { ArrowRight: 1, ArrowUp: 1, ArrowLeft: -1, ArrowDown: -1 }[ev.key];
+  if (!step) return;
+  ev.preventDefault();
+  shape.level = Math.min(5, Math.max(1, shape.level + step)); syncShape();
+  $(`#shape-depth [data-depth="${shape.level}"]`).focus();
+});
+$("#shape-apply").addEventListener("click", async () => {
+  const l = state.lesson, formats = shapeFormats();
+  if (!l) return;
+  if (formats.sort().join() !== [...state.formats].sort().join()) {
+    state.formats = ALL_FORMATS.filter((f) => formats.includes(f));
+    document.querySelectorAll("#formats input").forEach((i) => { i.checked = state.formats.includes(i.value); });   // Customise agrees
+    api("/api/prefs", { formats: state.formats }).catch(() => {});                                         // and the next lessons
+  }
+  if (shape.level !== l.level) { rebuildLesson(shape.level); return; }
+  await renderLesson(l);
+  $("#shape-note").textContent = "Updated. New lessons will look like this too.";
+  $("#lesson-title").scrollIntoView({ block: "start", behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+});
 
 async function refreshSpend() {
   if (!DEMO) return;
@@ -829,7 +898,8 @@ function sectionHead(s, i) {
       await sendFeedback(kind, s.heading || `section ${i + 1}`);
     } }, icon(name)));
   }
-  return el("div", { class: "sec-head" }, el("h2", {}, s.heading || ""), thumbs);
+  const heading = String(s.heading || "").replace(/\?\s*:\s*(\S)/, (_, c) => `? ${c.toUpperCase()}`);
+  return el("div", { class: "sec-head" }, el("h2", {}, heading), thumbs);
 }
 
 const DRAFT_STYLE = (t) => (t <= 0.5 ? "careful" : t <= 0.85 ? "balanced" : "creative");
@@ -1041,7 +1111,7 @@ async function loadDiscover(l) {
   } catch { $("#discover").replaceChildren(); }
 }
 
-async function openMini(saveId, { from = "mini" } = {}) {
+async function openMini(saveId, { from = "mini", level = null } = {}) {
   const ids = Array.isArray(saveId) ? saveId : [saveId];
   state.lessonFrom = from;
   const seq = ++state.openSeq;
@@ -1050,11 +1120,11 @@ async function openMini(saveId, { from = "mini" } = {}) {
   $("#lesson").hidden = true; $("#lesson-error").hidden = true; $("#lesson-loading").hidden = false;
   $("#lesson-thought").textContent = "";
   try {
-    const lesson = await streamApi("/api/lesson/stream", { save_ids: ids }, (t) => { if (seq === state.openSeq) liveThought(t); });
+    const lesson = await streamApi("/api/lesson/stream", { save_ids: ids, ...(level ? { level } : {}) }, (t) => { if (seq === state.openSeq) liveThought(t); });
     if (seq !== state.openSeq) return;
     state.lesson = lesson; state.level = lesson.level;
     renderLesson(lesson);
-    $("#lesson-meta").textContent = `Mini lesson · ${DEPTH[lesson.level]} · ${lesson.words} words`;
+    Yaad?.say("Here's your lesson. Enjoy the read!", 3000);
   } catch (e) {
     if (seq === state.openSeq) { $("#lesson-error").textContent = e.message; $("#lesson-error").hidden = false; }
   } finally { if (seq === state.openSeq) { $("#lesson-loading").hidden = true; Yaad?.think(false); } }
@@ -1143,6 +1213,10 @@ $("#logout").addEventListener("click", async () => {
   const s = await api("/api/state");
   state.doneDays = s.done_days || [];
   $("#replay-chip").hidden = !s.replay;
+  if (s.formats_chosen && !s.plan && s.profile.formats?.length) {   // chosen in "Make it your way"
+    state.formats = s.profile.formats;
+    document.querySelectorAll("#formats input").forEach((i) => { i.checked = state.formats.includes(i.value); });
+  }
   if (s.ask_examples?.length) {   // replay mode: offer the questions Yaad already answered
     $("#ask-try").replaceChildren(el("span", { class: "muted small" }, "Try:"),
       ...s.ask_examples.map((q) => el("button", { class: "chip", type: "button", onclick: () => { $("#ask-q").value = q; askQuestion(q); } }, q)));
@@ -1354,7 +1428,7 @@ function openCustomise() {                               // the optional topic p
 // "More ways to learn" only appears when it has something inside
 const MORE_WAYS = ["#diagram-box", "#extra-box", "#teach-card"];
 function syncMoreWays() {
-  const empty = MORE_WAYS.every((s) => $(s).hidden);
+  const empty = MORE_WAYS.every((s) => $(s).hidden || !$("#more-ways").contains($(s)));
   if ($("#more-ways").hidden !== empty) $("#more-ways").hidden = empty;   // only write on a real change
 }
 // watch only the three cards (watching #more-ways itself would observe its own change and loop forever)

@@ -1,0 +1,190 @@
+{
+  "title": "How Engineers Think Beyond Code",
+  "subtitle": "It's not just code — it's the decisions from keypress to server.",
+  "intro": "You type google.com and press enter. What actually happens in that one second?",
+  "takeaway": "Great engineering is tracing every decision from your keypress to the server and back.",
+  "sections": [
+    {
+      "heading": "Analogy: sending a letter across a city",
+      "body": "Think of your browser like you mailing a letter. You write an address (google.com), the post office looks up the real street address, and couriers carry it across town.\n\nA server is just another computer waiting to answer letters. The network is the roads in between.\n\nThis trip looks simple, but each handoff can fail — which is why engineers study it step by step."
+    },
+    {
+      "heading": "Why it exists: to see the hidden steps",
+      "body": "The repo github.com/alex/what-happens-when exists to answer that one interview question in full detail. It starts when the 'g' key is pressed and follows the signal through your keyboard, operating system, and browser.\n\nIt then shows how the browser parses the URL, checks if it's a search term, looks up the address, and sends a request. Engineers use this to learn how systems connect, not just how to code.\n\nOnce you see the chain, you start asking better questions about what could break."
+    },
+    {
+      "heading": "What can go wrong: when one link breaks",
+      "body": "If any step is unclear, bugs hide there. A wrong URL parse sends you to search instead of a site. A missed network lookup means no server is found.\n\nProduction architecture decisions and test automation strategies exist to catch these failures early. Without them, one small miss breaks the whole journey.\n\nLearn the flow first, then you can fix it when it fails."
+    }
+  ],
+  "diagram": {
+    "nodes": [
+      {
+        "id": "keypress",
+        "label": "Keypress g"
+      },
+      {
+        "id": "os",
+        "label": "OS event"
+      },
+      {
+        "id": "browser",
+        "label": "Browser parses URL"
+      },
+      {
+        "id": "network",
+        "label": "Network lookup"
+      },
+      {
+        "id": "server",
+        "label": "Server answers"
+      }
+    ],
+    "edges": [
+      [
+        "keypress",
+        "os",
+        ""
+      ],
+      [
+        "os",
+        "browser",
+        ""
+      ],
+      [
+        "browser",
+        "network",
+        ""
+      ],
+      [
+        "network",
+        "server",
+        ""
+      ]
+    ]
+  },
+  "steps": [
+    {
+      "node_id": "keypress",
+      "narration": "You press g — the keyboard sends a signal."
+    },
+    {
+      "node_id": "os",
+      "narration": "Your OS turns it into a key event for the app."
+    },
+    {
+      "node_id": "browser",
+      "narration": "Browser checks: is this a URL or search?"
+    },
+    {
+      "node_id": "network",
+      "narration": "Browser looks up the real server address."
+    },
+    {
+      "node_id": "server",
+      "narration": "Request travels the network and server replies."
+    }
+  ],
+  "quiz": [
+    {
+      "q": "What does the 'what-happens-when' repo teach you?",
+      "options": [
+        "Only how to type faster",
+        "The full browser-to-server flow step by step",
+        "How to design logos",
+        "Only command line shortcuts"
+      ],
+      "answer_index": 1,
+      "why": "It traces from keypress through OS, browser parsing, and networking to the server."
+    },
+    {
+      "q": "What fails first if usage grows 100x and you have no tests or architecture plan?",
+      "options": [
+        "Your keyboard stops working",
+        "Hidden handoffs like URL parsing and network lookups break under load",
+        "Google disappears",
+        "The repo deletes itself"
+      ],
+      "answer_index": 1,
+      "why": "Without production decisions and test strategies, small steps fail first when traffic spikes."
+    },
+    {
+      "q": "What is a server in this story?",
+      "options": [
+        "A person who serves food",
+        "Another computer waiting to answer your browser's request",
+        "A part of your keyboard",
+        "A type of browser tab"
+      ],
+      "answer_index": 1,
+      "why": "A server is a remote computer that receives your request over the network and sends back a response."
+    }
+  ],
+  "sources": [
+    "DV02icRE1Z0"
+  ],
+  "extra": [
+    "The repo is community-maintained under Creative Commons Zero and translated into Chinese, Japanese, Korean and Spanish."
+  ],
+  "level": 2,
+  "topic": "Software Engineering & Systems",
+  "save_ids": [
+    "DV02icRE1Z0"
+  ],
+  "words": 223,
+  "word_limit": 200,
+  "mermaid": "flowchart TD\n  n0[\"Keypress g\"]\n  n1[\"OS event\"]\n  n2[\"Browser parses URL\"]\n  n3[\"Network lookup\"]\n  n4[\"Server answers\"]\n  n0 --> n1\n  n1 --> n2\n  n2 --> n3\n  n3 --> n4",
+  "animation": [
+    {
+      "node": "n0",
+      "narration": "You press g — the keyboard sends a signal."
+    },
+    {
+      "node": "n1",
+      "narration": "Your OS turns it into a key event for the app."
+    },
+    {
+      "node": "n2",
+      "narration": "Browser checks: is this a URL or search?"
+    },
+    {
+      "node": "n3",
+      "narration": "Browser looks up the real server address."
+    },
+    {
+      "node": "n4",
+      "narration": "Request travels the network and server replies."
+    }
+  ],
+  "rules_used": [],
+  "agent_trace": [
+    {
+      "tool": "search_saves",
+      "args": {
+        "query": "software engineering systems browser to server flow"
+      }
+    },
+    {
+      "tool": "read_save",
+      "args": {
+        "save_id": "DV02icRE1Z0"
+      }
+    }
+  ],
+  "judge": {
+    "drafts": 3,
+    "best": "D1",
+    "why": "",
+    "scores": {
+      "D1": null,
+      "D2": null,
+      "D3": null
+    },
+    "temperatures": [
+      0.4,
+      0.8,
+      1.0
+    ]
+  },
+  "id": "195d84415f4ee96b"
+}

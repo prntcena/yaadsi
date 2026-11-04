@@ -988,3 +988,50 @@ html:has(body.landing) { scroll-behavior: smooth; }
 .top-logout { margin-left: 4px; }
 .top:has(.top-logout) .nav { margin-left: auto; }
 .lp-vision .lp-h2, .lp-final h2 { justify-content: center; text-align: center; flex-wrap: wrap; }   /* h2 is flex app-wide */
+
+/* ===== the lesson as an article (Medium-like reading) ===== */
+:root { --font-reading: Charter, "Bitstream Charter", "Sitka Text", "Iowan Old Style", Cambria, Georgia, serif; }
+.article { max-width: 700px; margin: 0 auto; }
+.art-head { margin: 12px 0 30px; }
+.article #lesson-title { font-size: clamp(2rem, 4.6vw, 2.75rem); line-height: 1.15; letter-spacing: -.01em; margin: 0 0 12px; }
+.art-sub { font-family: var(--font-reading); font-size: 1.3rem; line-height: 1.45; color: var(--muted); margin: 0 0 22px; }
+.byline { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; padding: 12px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.byline-avatar.brand-dot { width: 34px; height: 30px; flex-shrink: 0; }
+.byline-text { display: flex; flex-direction: column; flex: 1; min-width: 0; line-height: 1.35; font-size: .9rem; }
+.byline-text b { font-family: var(--font-display); font-weight: 600; }
+.byline .listen { margin: 0 0 0 auto; }
+#lesson-sections p, #lesson-sections li { font-family: var(--font-reading); font-size: 1.25rem; line-height: 1.65; color: var(--ink); }
+#lesson-sections p { margin: 0 0 1.05em; }
+#lesson-sections ul { padding-left: 1.3em; margin: 0 0 1.05em; }
+#lesson-sections .art-intro { font-size: 1.32rem; margin-bottom: 1.4em; }
+.article .section { margin: 2.1em 0 0; }
+.article .section .sec-head { align-items: baseline; }
+.article .section .sec-head h2 { font-size: 1.55rem; line-height: 1.3; font-weight: 700; margin: 0 0 .45em; }
+.article .thumbs { opacity: 0; transition: opacity .2s; }
+.article .section:hover .thumbs, .article .section:focus-within .thumbs, .article .thumbs:has(.on) { opacity: 1; }
+@media (hover: none) { .article .thumbs { opacity: .55; } }
+#lesson-sections p.art-analogy { border-left: 3px solid var(--primary); padding-left: 18px; font-style: italic; }
+.art-takeaway { margin: 2.2em 0; padding: 0 12px; text-align: center; }
+.art-takeaway::before { content: "\201C"; display: block; font-family: var(--font-reading); font-size: 3.4rem; line-height: .7; color: var(--primary); opacity: .45; }
+#lesson-sections .art-takeaway p { font-size: 1.6rem; line-height: 1.4; font-style: italic; color: var(--primary); margin: 0; }
+.art-break { display: flex; justify-content: center; gap: 22px; margin: 48px 0 36px; }
+.art-break span { width: 5px; height: 5px; border-radius: 50%; background: var(--ink); opacity: .45; }
+/* figures inline in the article: no card chrome, centred captions */
+#lesson-sections #see-box, #lesson-sections #diagram-box { background: none; border: 0; box-shadow: none; padding: 0; margin: 2em 0; }
+#lesson-sections #see-box > h2 { display: none; }
+#lesson-sections #diagram-box h2 { font-size: .95rem; color: var(--muted); font-weight: 600; }
+#lesson-sections .see figcaption, #lesson-sections #caption { text-align: center; font-family: var(--font-body); }
+#lesson-sections #see-note { text-align: center; }
+/* Make it your way */
+.shape-card #shape-formats { margin: 4px 0 14px; }
+.shape-depth { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
+.shape-actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 8px; }
+.shape-card .fb-h { margin: 18px 0 8px; font-size: 1rem; }
+@media (max-width: 600px) {
+  #lesson-sections p, #lesson-sections li { font-size: 1.125rem; }
+  #lesson-sections .art-intro { font-size: 1.18rem; }
+  .art-sub { font-size: 1.12rem; }
+  .article .section .sec-head h2 { font-size: 1.3rem; }
+  #lesson-sections .art-takeaway p { font-size: 1.3rem; }
+}
+#lesson-sections #diagram svg { display: block; margin: 0 auto; }

@@ -1,0 +1,185 @@
+{
+  "title": "Stop the Scroll: Design Stories That Stick",
+  "subtitle": "Hooks get the click, structure keeps the watch",
+  "intro": "Give me 9 minutes and I'll improve your story — but you only have 3 seconds to stop someone from scrolling. How do you earn the other 8 minutes and 57 seconds?",
+  "takeaway": "A hook earns 3 seconds of attention, story structure earns the rest — never promise what you don't deliver.",
+  "sections": [
+    {
+      "heading": "Analogy: your story is a doorway",
+      "body": "Think of your Instagram Reel like a busy hallway. People walk past fast. A story hook is the open door that makes them stop and look inside. Story structure is the hallway inside — it guides them from start to finish without getting lost. Without that door and hallway, no one stays."
+    },
+    {
+      "heading": "Why does this exist?: stop the scroll in 3 seconds",
+      "body": "You have 3 seconds before someone scrolls. That's why hooks exist. A hook is a first line that creates curiosity, like the 50 fill-in-the-blank templates that promise a quick win — \"Give me 9 minutes and I'll improve your story.\" Audience engagement means they stay, watch, and comment. Good structure then delivers the promise step by step."
+    },
+    {
+      "heading": "What can go wrong?: hooks without a story",
+      "body": "What breaks if you only chase hooks? You get views but no trust. If your 9-minute tip doesn't actually help, people leave and don't come back. Another trap: using the same loud hook 50 times. Your audience gets tired and scrolls anyway. Hooks must match the real story inside, or engagement drops fast."
+    }
+  ],
+  "diagram": {
+    "nodes": [
+      {
+        "id": "scroll",
+        "label": "Viewer Scrolling"
+      },
+      {
+        "id": "hook",
+        "label": "Story Hook (3 sec)"
+      },
+      {
+        "id": "structure",
+        "label": "Story Structure"
+      },
+      {
+        "id": "engagement",
+        "label": "Audience Engagement"
+      },
+      {
+        "id": "trust",
+        "label": "Trust or Drop-off"
+      }
+    ],
+    "edges": [
+      [
+        "scroll",
+        "hook",
+        "stop"
+      ],
+      [
+        "hook",
+        "structure",
+        "enter"
+      ],
+      [
+        "structure",
+        "engagement",
+        "keep"
+      ],
+      [
+        "engagement",
+        "trust",
+        "deliver?"
+      ]
+    ]
+  },
+  "steps": [
+    {
+      "node_id": "scroll",
+      "narration": "Viewer is scrolling fast in a busy feed."
+    },
+    {
+      "node_id": "hook",
+      "narration": "Your hook stops them in 3 seconds with curiosity."
+    },
+    {
+      "node_id": "structure",
+      "narration": "Story structure guides them from start to finish."
+    },
+    {
+      "node_id": "engagement",
+      "narration": "They stay, watch, and engage if promise holds."
+    },
+    {
+      "node_id": "trust",
+      "narration": "Deliver value and you earn trust, or you lose them."
+    }
+  ],
+  "quiz": [
+    {
+      "q": "What is a story hook in plain words?",
+      "options": [
+        "The open door that makes someone stop scrolling in 3 seconds",
+        "The hashtags you add after posting",
+        "The camera you use to film",
+        "The time of day you post"
+      ],
+      "answer_index": 0,
+      "why": "A hook is the first line that creates curiosity and stops the scroll, like the 50 templates in your saves."
+    },
+    {
+      "q": "What fails first if you use hooks without good story structure?",
+      "options": [
+        "You get views but people leave quickly and trust drops",
+        "Instagram deletes your account instantly",
+        "Your video becomes longer automatically",
+        "Hooks stop working for everyone else"
+      ],
+      "answer_index": 0,
+      "why": "Hooks earn 3 seconds, but without structure that delivers the promise, engagement and trust break."
+    },
+    {
+      "q": "Why does the 'Give me 9 minutes' promise work only if you deliver?",
+      "options": [
+        "Because audience engagement means staying only if the tip actually helps",
+        "Because Instagram pays you per minute",
+        "Because 9 minutes is the maximum Reel length",
+        "Because viewers cannot scroll after 9 minutes"
+      ],
+      "answer_index": 0,
+      "why": "Engagement is staying, watching, commenting — that only happens when structure delivers on the hook's promise."
+    }
+  ],
+  "sources": [
+    "DUWMqQfCMCb",
+    "DSNmIOgAYQ2"
+  ],
+  "extra": [
+    "Kittl.com offers AI generation and mockup tools as a Canva alternative for designing hook visuals."
+  ],
+  "level": 2,
+  "topic": "Design, Content Creation & Marketing",
+  "save_ids": [
+    "DUWMqQfCMCb"
+  ],
+  "words": 194,
+  "word_limit": 200,
+  "mermaid": "flowchart TD\n  n0[\"Viewer Scrolling\"]\n  n1[\"Story Hook (3 sec)\"]\n  n2[\"Story Structure\"]\n  n3[\"Audience Engagement\"]\n  n4[\"Trust or Drop-off\"]\n  n0 -->|\"stop\"| n1\n  n1 -->|\"enter\"| n2\n  n2 -->|\"keep\"| n3\n  n3 -->|\"deliver?\"| n4",
+  "animation": [
+    {
+      "node": "n0",
+      "narration": "Viewer is scrolling fast in a busy feed."
+    },
+    {
+      "node": "n1",
+      "narration": "Your hook stops them in 3 seconds with curiosity."
+    },
+    {
+      "node": "n2",
+      "narration": "Story structure guides them from start to finish."
+    },
+    {
+      "node": "n3",
+      "narration": "They stay, watch, and engage if promise holds."
+    },
+    {
+      "node": "n4",
+      "narration": "Deliver value and you earn trust, or you lose them."
+    }
+  ],
+  "rules_used": [],
+  "agent_trace": [
+    {
+      "tool": "search_saves",
+      "args": {
+        "query": "storytelling design content creation marketing"
+      }
+    }
+  ],
+  "judge": {
+    "drafts": 3,
+    "best": "D1",
+    "why": "",
+    "scores": {
+      "D1": null,
+      "D2": null,
+      "D3": null
+    },
+    "temperatures": [
+      0.4,
+      0.8,
+      1.0
+    ]
+  },
+  "id": "983e104a317a9353"
+}

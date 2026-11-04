@@ -11,6 +11,7 @@ import threading
 import time
 from concurrent.futures import ThreadPoolExecutor
 from datetime import date
+from typing import Literal
 
 from fastapi import BackgroundTasks, FastAPI, File, HTTPException, Request, UploadFile
 from fastapi.concurrency import run_in_threadpool
@@ -178,7 +179,7 @@ def state() -> dict:
     p = learner.load()
     return {"profile": {k: p[k] for k in ("goal", "topic", "deadline", "minutes_per_day", "depth", "formats")},
             "plan": p.get("plan"), "level": learner.level(p, p["topic"]) if p["topic"] else None,
-            "done_days": done_days(p), "replay": (replay := not llm.has_keys()),
+            "done_days": done_days(p), "replay": (replay := not llm.has_keys()), "formats_chosen": bool(p.get("formats_chosen")),
             "ask_examples": ask.examples(learner.level(p, p["topic"]) if p["topic"] else 2) if replay else []}
 
 
@@ -279,8 +280,26 @@ def learner_view() -> dict:
             "updates": len(p.get("rules_history", []))}
 
 
+FORMATS = ("diagram", "quiz", "figure", "picture", "animation", "audio")   # the lesson formats the page can show
+Format = Literal["diagram", "quiz", "figure", "picture", "animation", "audio"]
+
+
 class VisualsIn(BaseModel):
     lesson_id: str = Field(pattern=r"^[0-9a-f]{16}$")
+    formats: list[Format] | None = Field(default=None, max_length=len(FORMATS))   # what the page shows right now
+
+
+class PrefsIn(BaseModel):
+    formats: list[Format] = Field(max_length=len(FORMATS))
+
+
+@app.post("/api/prefs")
+def save_prefs(body: PrefsIn) -> dict:
+    """The formats chosen at the end of a lesson ("Make it your way") become the learner's default."""
+    with learner.editing() as p:
+        p["formats"] = [f for f in FORMATS if f in body.formats]
+        p["formats_chosen"] = True
+        return {"formats": p["formats"]}
 
 
 def _safe_visual(fn, *args) -> tuple[dict | None, str]:
@@ -296,7 +315,7 @@ def lesson_visuals(body: VisualsIn) -> dict:
     if not path.exists():
         raise HTTPException(404, "Lesson not found.")
     lesson_data = json.loads(path.read_text(encoding="utf-8"))
-    formats = set(learner.load().get("formats") or [])
+    formats = set(body.formats if body.formats is not None else learner.load().get("formats") or [])
     jobs = {}
     with ThreadPoolExecutor(2) as pool:
         if "figure" in formats:      # the real figure from the save (SAM crop)

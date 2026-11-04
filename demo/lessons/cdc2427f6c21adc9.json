@@ -1,0 +1,191 @@
+{
+  "title": "Stop Solving More Problems. Start Thinking Better.",
+  "subtitle": "Five hidden sites that trade easy wins for real engineering instinct",
+  "intro": "Popular platforms give you problems. Hidden ones build how you think — and that’s why tutorials stop working for you.",
+  "takeaway": "Real growth comes from seeing, breaking down, and cleaning your thinking — not just solving more problems.",
+  "sections": [
+    {
+      "heading": "Analogy: learning to cook, not just following recipes",
+      "body": "Imagine you only follow recipes. You can make one dish, but you can't fix it if it tastes wrong.\n\nReal cooking is seeing what heat does, tasting as you go, and cleaning up as you cook. Coding is the same. VisuAlgo lets you watch an algorithm move step by step, like watching heat spread in a pan.\n\nOnce you can see it, you can start to ask why we need this kind of practice at all."
+    },
+    {
+      "heading": "Why does this exist?: depth over dopamine",
+      "body": "These five sites exist because easy practice feels productive but doesn't build instinct.\n\nProject Euler forces mathematical thinking and problem decomposition — breaking a big puzzle into small steps. Exercism and Refactoring Guru teach clean code, which means code a human can read and change safely. Codewars uses kata training, short repeated drills that force you to handle edge cases.\n\nThat depth is powerful, but it has a cost when you use it wrong."
+    },
+    {
+      "heading": "What can go wrong: practicing without feedback",
+      "body": "If you just collect solutions, you stay stuck. Design patterns intuition means knowing when to reuse a proven shape for a problem, not memorizing names.\n\nWhat breaks first if you chase all five sites at once? You skim, you don't refactor, and you never learn to read other people's code.\n\nPick one weakness this week and go deep there."
+    }
+  ],
+  "diagram": {
+    "nodes": [
+      {
+        "id": "see",
+        "label": "See it: VisuAlgo"
+      },
+      {
+        "id": "break",
+        "label": "Break it: Project Euler"
+      },
+      {
+        "id": "clean",
+        "label": "Clean it: Exercism / Refactoring Guru"
+      },
+      {
+        "id": "drill",
+        "label": "Drill it: Codewars katas"
+      },
+      {
+        "id": "instinct",
+        "label": "Instinct built"
+      }
+    ],
+    "edges": [
+      [
+        "see",
+        "break",
+        ""
+      ],
+      [
+        "break",
+        "clean",
+        ""
+      ],
+      [
+        "clean",
+        "drill",
+        ""
+      ],
+      [
+        "drill",
+        "instinct",
+        ""
+      ]
+    ]
+  },
+  "steps": [
+    {
+      "node_id": "see",
+      "narration": "Watch how an algorithm actually moves on VisuAlgo."
+    },
+    {
+      "node_id": "break",
+      "narration": "Break hard math puzzles into tiny steps on Project Euler."
+    },
+    {
+      "node_id": "clean",
+      "narration": "Learn to make code readable with Exercism and Refactoring Guru."
+    },
+    {
+      "node_id": "drill",
+      "narration": "Drill edge cases with short katas on Codewars."
+    },
+    {
+      "node_id": "instinct",
+      "narration": "Repeat and you build instinct, not just answers."
+    }
+  ],
+  "quiz": [
+    {
+      "q": "What does VisuAlgo mainly help you build?",
+      "options": [
+        "Algorithm intuition by watching steps",
+        "Faster typing speed",
+        "Viral social media posts",
+        "Automatic code deployment"
+      ],
+      "answer_index": 0,
+      "why": "VisuAlgo is for algorithm visualization — seeing how it works step by step."
+    },
+    {
+      "q": "What does 'clean code' mean in this lesson?",
+      "options": [
+        "Code that runs the fastest",
+        "Code a human can read and change safely",
+        "Code with no comments",
+        "Code written only by seniors"
+      ],
+      "answer_index": 1,
+      "why": "Exercism and Refactoring Guru teach readability and safe refactoring."
+    },
+    {
+      "q": "What breaks first if you try all five sites at once without focus?",
+      "options": [
+        "You learn design patterns faster",
+        "You skim and never build deep refactoring skill",
+        "Your computer runs out of memory",
+        "VisuAlgo stops working"
+      ],
+      "answer_index": 1,
+      "why": "Depth needs focus — chasing everything at once means no real feedback or retention."
+    }
+  ],
+  "sources": [
+    "DUaCif-kfOt"
+  ],
+  "extra": [
+    "Spaced repetition helps katas stick better than binge-solving."
+  ],
+  "level": 2,
+  "topic": "Software Engineering & Systems",
+  "save_ids": [
+    "DUaCif-kfOt"
+  ],
+  "words": 229,
+  "word_limit": 200,
+  "mermaid": "flowchart TD\n  n0[\"See it: VisuAlgo\"]\n  n1[\"Break it: Project Euler\"]\n  n2[\"Clean it: Exercism / Refactoring Guru\"]\n  n3[\"Drill it: Codewars katas\"]\n  n4[\"Instinct built\"]\n  n0 --> n1\n  n1 --> n2\n  n2 --> n3\n  n3 --> n4",
+  "animation": [
+    {
+      "node": "n0",
+      "narration": "Watch how an algorithm actually moves on VisuAlgo."
+    },
+    {
+      "node": "n1",
+      "narration": "Break hard math puzzles into tiny steps on Project Euler."
+    },
+    {
+      "node": "n2",
+      "narration": "Learn to make code readable with Exercism and Refactoring Guru."
+    },
+    {
+      "node": "n3",
+      "narration": "Drill edge cases with short katas on Codewars."
+    },
+    {
+      "node": "n4",
+      "narration": "Repeat and you build instinct, not just answers."
+    }
+  ],
+  "rules_used": [],
+  "agent_trace": [
+    {
+      "tool": "read_save",
+      "args": {
+        "save_id": "DUaCif-kfOt"
+      }
+    },
+    {
+      "tool": "search_saves",
+      "args": {
+        "query": "software engineering systems design patterns clean code",
+        "topic": "Software Engineering & Systems"
+      }
+    }
+  ],
+  "judge": {
+    "drafts": 3,
+    "best": "D1",
+    "why": "",
+    "scores": {
+      "D1": null,
+      "D2": null,
+      "D3": null
+    },
+    "temperatures": [
+      0.4,
+      0.8,
+      1.0
+    ]
+  },
+  "id": "cdc2427f6c21adc9"
+}

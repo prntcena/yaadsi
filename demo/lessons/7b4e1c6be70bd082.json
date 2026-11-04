@@ -1,0 +1,204 @@
+{
+  "title": "One Agent or a Team?",
+  "subtitle": "How to pick the right pattern for your agentic AI system",
+  "intro": "You asked an AI to plan a trip. Should one smart assistant do it all, or a team of specialists split the work?",
+  "takeaway": "Pick your agent pattern by task complexity, latency, cost, and risk — not hype.",
+  "sections": [
+    {
+      "heading": "Analogy: one chef vs a kitchen crew",
+      "body": "Think of a food truck with one chef. One person takes the order, cooks, and serves. It's fast and cheap.\n\nA big restaurant has a crew: a host, line cooks, a pastry chef. Slower to coordinate, but better for a complex menu.\n\nAn agentic AI system is the same choice: one agent doing the whole workflow, or multiple agents orchestrated together. That choice shapes everything next."
+    },
+    {
+      "heading": "Why it exists: to match pattern to problem",
+      "body": "An agent design pattern is a framework for organizing components and orchestrating agents to hit a goal with some autonomy.\n\nYou use it for open-ended, multi-step, knowledge-intensive tasks that need real-time data — not simple chat.\n\nYour save says choose by requirements: use single-agent when speed and low cost matter; use multi-agent when accuracy on complex tasks matters more than latency."
+    },
+    {
+      "heading": "What can go wrong: when the pattern doesn't fit",
+      "body": "A single agent fails on complex work — it forgets steps and makes more mistakes.\n\nA multi-agent team fails differently: every extra agent means extra inference calls, so cost and latency climb fast.\n\nFor high-stakes tasks, both fail without human-in-the-loop oversight. Pick cheap and fast, or accurate and costly — you can't have both."
+    }
+  ],
+  "diagram": {
+    "nodes": [
+      {
+        "id": "task",
+        "label": "Your Task"
+      },
+      {
+        "id": "check",
+        "label": "Check: Complex?"
+      },
+      {
+        "id": "single",
+        "label": "Single Agent: Fast & Cheap"
+      },
+      {
+        "id": "multi",
+        "label": "Multi-Agent Team: Accurate"
+      },
+      {
+        "id": "cost",
+        "label": "Cost & Latency Tradeoff"
+      },
+      {
+        "id": "human",
+        "label": "Human-in-the-loop if High Stakes"
+      }
+    ],
+    "edges": [
+      [
+        "task",
+        "check",
+        ""
+      ],
+      [
+        "check",
+        "single",
+        "simple"
+      ],
+      [
+        "check",
+        "multi",
+        "complex"
+      ],
+      [
+        "single",
+        "cost",
+        ""
+      ],
+      [
+        "multi",
+        "cost",
+        ""
+      ],
+      [
+        "cost",
+        "human",
+        ""
+      ]
+    ]
+  },
+  "steps": [
+    {
+      "node_id": "task",
+      "narration": "Start with your goal and workflow."
+    },
+    {
+      "node_id": "check",
+      "narration": "Ask: is it open-ended and multi-step?"
+    },
+    {
+      "node_id": "single",
+      "narration": "If simple, one agent is faster and cheaper."
+    },
+    {
+      "node_id": "multi",
+      "narration": "If complex, a team of agents is more accurate."
+    },
+    {
+      "node_id": "cost",
+      "narration": "More agents means more inference calls, cost, and latency."
+    },
+    {
+      "node_id": "human",
+      "narration": "Add human oversight for high-stakes decisions."
+    }
+  ],
+  "quiz": [
+    {
+      "q": "When should you use an AI agent instead of a simple assistant?",
+      "options": [
+        "For open-ended, multi-step tasks needing autonomy and real-time data",
+        "For any simple one-answer question",
+        "Only to save money",
+        "Never, assistants are always better"
+      ],
+      "answer_index": 0,
+      "why": "Your save says agents excel at goal-focused, autonomous, knowledge-intensive workflows, not simple assistive tasks."
+    },
+    {
+      "q": "What fails first if usage grows 100x with a multi-agent pattern?",
+      "options": [
+        "Cost and latency explode from many inference calls",
+        "The model gets smarter automatically",
+        "Human oversight is no longer needed",
+        "Single-agent would be slower"
+      ],
+      "answer_index": 0,
+      "why": "Each agent adds inference calls. At scale, cost and latency are the first tradeoffs to break."
+    },
+    {
+      "q": "You need high accuracy for a complex legal review. What pattern fits best?",
+      "options": [
+        "Single-agent with no oversight",
+        "Multi-agent team with human-in-the-loop",
+        "No agent, just autocomplete",
+        "Single-agent because it's cheapest"
+      ],
+      "answer_index": 1,
+      "why": "Complex tasks favor multi-agent for accuracy, and high-stakes tasks need human oversight per your save."
+    }
+  ],
+  "sources": [
+    "gle-com-architecture-choose-design-pattern-agentic-ai-system"
+  ],
+  "extra": [],
+  "level": 2,
+  "topic": "AI & Machine Learning",
+  "save_ids": [
+    "gle-com-architecture-choose-design-pattern-agentic-ai-system"
+  ],
+  "words": 204,
+  "word_limit": 200,
+  "mermaid": "flowchart TD\n  n0[\"Your Task\"]\n  n1[\"Check: Complex?\"]\n  n2[\"Single Agent: Fast   Cheap\"]\n  n3[\"Multi-Agent Team: Accurate\"]\n  n4[\"Cost   Latency Tradeoff\"]\n  n5[\"Human-in-the-loop if High Stakes\"]\n  n0 --> n1\n  n1 -->|\"simple\"| n2\n  n1 -->|\"complex\"| n3\n  n2 --> n4\n  n3 --> n4\n  n4 --> n5",
+  "animation": [
+    {
+      "node": "n0",
+      "narration": "Start with your goal and workflow."
+    },
+    {
+      "node": "n1",
+      "narration": "Ask: is it open-ended and multi-step?"
+    },
+    {
+      "node": "n2",
+      "narration": "If simple, one agent is faster and cheaper."
+    },
+    {
+      "node": "n3",
+      "narration": "If complex, a team of agents is more accurate."
+    },
+    {
+      "node": "n4",
+      "narration": "More agents means more inference calls, cost, and latency."
+    },
+    {
+      "node": "n5",
+      "narration": "Add human oversight for high-stakes decisions."
+    }
+  ],
+  "rules_used": [],
+  "agent_trace": [
+    {
+      "tool": "read_save",
+      "args": {
+        "save_id": "gle-com-architecture-choose-design-pattern-agentic-ai-system"
+      }
+    }
+  ],
+  "judge": {
+    "drafts": 3,
+    "best": "D1",
+    "why": "",
+    "scores": {
+      "D1": null,
+      "D2": null,
+      "D3": null
+    },
+    "temperatures": [
+      0.4,
+      0.8,
+      1.0
+    ]
+  },
+  "id": "7b4e1c6be70bd082"
+}

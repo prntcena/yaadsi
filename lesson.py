@@ -17,7 +17,7 @@ import tools
 
 CACHE = llm.DATA / "lessons"
 MAX_STEPS = 6
-PROMPT_VERSION = 4   # bump when the lesson schema/prompt changes so cached lessons regenerate
+PROMPT_VERSION = 5   # bump when the lesson schema/prompt changes so cached lessons regenerate
 WORD_LIMITS = {1: 120, 2: 200, 3: 300, 4: 550, 5: 900}
 LEVEL_STYLE = {
     1: "Explain like the learner is 10 years old. Start with an everyday analogy. Very short sentences, no jargon.",
@@ -31,12 +31,17 @@ SYSTEM = """You are a patient tutor who teaches one person from the links they s
 Teaching level {level}/5: {style}
 The whole lesson (all section bodies together) must be at most {words} words - count them. Aim for about {minutes} minutes.
 Write short paragraphs separated by a blank line; lists use lines starting with "- ". No markdown headings or bold.
+Write it like a clear Medium explainer: open with a hook taken from the saves (a surprising fact, a question or a tiny scene); speak to "you"; one idea per paragraph, 1-3 sentences; one concrete example with real numbers or names from the saves; at most ONE analogy in the whole lesson (never one per section); end each section with a line that leads into the next. Headings keep their required words and may add a short hook, e.g. "Trade-offs: cheap model or smart system?" or "Why does this exist? Speed you don't pay for twice".
+{example}
 Ground everything in the saves. If you add something that is not in the saves, put it in "extra", not in sections.
 Teach from first principles: {shape}
 One of the 3 quiz questions must ask what breaks or goes wrong (e.g. "What fails first if usage grows 100x?").
 {rules}
 You may call search_saves / read_save to connect related saves. When ready, reply with ONLY this JSON:
 {{"title": str,
+ "subtitle": str,                                       // one line under the title, at most 20 words
+ "intro": str,                                          // the hook: 1-3 sentences before the first section
+ "takeaway": str,                                       // the one sentence to remember
  "sections": [{{"heading": str, "body": str}}],        // follow the first-principles shape above
  "diagram": {{"nodes": [{{"id": str, "label": str}}], "edges": [[from_id, to_id, optional_label]]}},  // 3-8 nodes showing how the idea flows
  "steps": [{{"node_id": str, "narration": str}}],      // walk the diagram nodes in teaching order, one short sentence each, at the same level
@@ -54,6 +59,14 @@ SHAPE = {
              '. For topics that are not technical, adapt the last one (e.g. "What breaks when you misuse it?"). '
              "Each section must come from the saves."),
 }
+
+
+# Self-written (not copied from anywhere): shows the rhythm only; the topic is unrelated on purpose.
+EXAMPLE = """For example, the opening of a good lesson on caching reads like this:
+intro: "Your app answered the same question 40,000 times yesterday. Each time it went all the way to the database."
+section "Why does this exist? Speed you don't pay for twice": "A cache is a short-term memory next to your app. The first answer is slow; every repeat is nearly free.\n\nThat sounds like pure win. It isn't, and the next part shows why."
+takeaway: "A cache trades freshness for speed, so decide how stale is too stale before you add one."
+Match that rhythm, not that topic."""
 
 
 def shape_for(level: int) -> str:
@@ -76,10 +89,19 @@ def cache_key(save_ids: list[str], level: int, rules: list[str], topic: str, min
     return hashlib.sha256(raw.encode("utf-8")).hexdigest()[:16]
 
 
+ARTICLE_FIELDS = {"subtitle": 160, "intro": 400, "takeaway": 220}   # character caps
+
+
 def validate(lesson: dict, known: set[str]) -> list[str]:
     problems = []
     if not lesson.get("title"):
         problems.append("missing title")
+    for key, limit in ARTICLE_FIELDS.items():   # optional: keep a clean string or drop it
+        value = lesson.get(key)
+        if isinstance(value, str) and value.strip():
+            lesson[key] = " ".join(value.split())[:limit]
+        else:
+            lesson.pop(key, None)
     sections = lesson.get("sections")
     if not isinstance(sections, list) or not sections or not all(isinstance(s, dict) and s.get("body") for s in sections):
         problems.append("sections must be a non-empty list of {heading, body}")
@@ -111,7 +133,8 @@ def animation_steps(lesson: dict, node_ids: dict[str, str]) -> list[dict]:
 
 
 def word_count(lesson: dict) -> int:
-    return sum(len(str(s.get("body", "")).split()) for s in lesson.get("sections", []))
+    return len(str(lesson.get("intro", "")).split()) + \
+        sum(len(str(s.get("body", "")).split()) for s in lesson.get("sections", []))
 
 
 def make_lesson(save_ids: list[str], level: int, topic: str, minutes: int, rules: list[str] | None = None,
@@ -163,7 +186,7 @@ def draft(save_ids: list[str], level: int, topic: str, minutes: int, rules: list
     rule_text = ("What you know about this learner:\n- " + "\n- ".join(rules)) if rules else ""
     messages = [
         {"role": "system", "content": SYSTEM.format(level=level, style=LEVEL_STYLE[level], words=WORD_LIMITS[level], shape=shape_for(level),
-                                                     minutes=minutes, rules=rule_text)},
+                                                     minutes=minutes, rules=rule_text, example=EXAMPLE)},
         {"role": "user", "content": f"Topic: {topic}\nToday's saves:\n{json.dumps(material, ensure_ascii=False)}"},
     ]
     lesson, trace = agent.run(messages, purpose="lesson", max_steps=MAX_STEPS, temperature=temperature)

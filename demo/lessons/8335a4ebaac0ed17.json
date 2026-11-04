@@ -1,0 +1,206 @@
+{
+  "title": "RIP Canva? How All-in-One Design Tools Work",
+  "subtitle": "Why Kittl bundles AI, templates, and mockups in one place",
+  "intro": "Your reel said \"Rip canva this tool does it all!!\" — Kittl.com promising AI generation, templates, text effects and mockups in one tab. Why bundle everything instead of using separate apps?",
+  "takeaway": "All-in-one tools like Kittl trade a little depth for a lot of speed by bundling templates, AI, and mockups together.",
+  "sections": [
+    {
+      "heading": "Analogy: the craft room vs. the craft cart",
+      "body": "Imagine Canva as a big craft room with every tool on different tables.\n\nKittl is like a rolling cart that brings your favorites to you: AI image generation to create a starting picture, customizable templates to skip blank-page work, text effects to style words in one click, and mockup creation to see it on a shirt or poster.\n\nOne cart means you finish faster, which leads to why it exists."
+    },
+    {
+      "heading": "Why does this exist?: speed you don't pay for twice",
+      "body": "An all-in-one tool exists to remove switching. A template is a pre-made layout you edit. AI generation is typing a prompt to get an image. Mockup creation is placing your design on a product photo automatically.\n\nKittl bundles them so you ideate, design, and present without exporting between apps.\n\nThat speed is great until you hit its limits."
+    },
+    {
+      "heading": "What can go wrong: when all-in-one means not-enough",
+      "body": "What breaks first if you grow 100x?\n\n- Templates start looking the same as everyone else's\n- AI images need heavy fixing for brand details\n- Advanced text effects or mockups hit paywalls or quality limits\n\nYou gain speed, you lose uniqueness and control. Use the bundle to start fast, then customize outside it when your brand needs more."
+    }
+  ],
+  "diagram": {
+    "nodes": [
+      {
+        "id": "idea",
+        "label": "Your idea"
+      },
+      {
+        "id": "ai",
+        "label": "AI generation"
+      },
+      {
+        "id": "template",
+        "label": "Customizable template"
+      },
+      {
+        "id": "effects",
+        "label": "Text effects"
+      },
+      {
+        "id": "mockup",
+        "label": "Mockup creation"
+      },
+      {
+        "id": "publish",
+        "label": "Publish"
+      }
+    ],
+    "edges": [
+      [
+        "idea",
+        "ai",
+        ""
+      ],
+      [
+        "ai",
+        "template",
+        ""
+      ],
+      [
+        "template",
+        "effects",
+        ""
+      ],
+      [
+        "effects",
+        "mockup",
+        ""
+      ],
+      [
+        "mockup",
+        "publish",
+        ""
+      ]
+    ]
+  },
+  "steps": [
+    {
+      "node_id": "idea",
+      "narration": "You start with an idea, not a blank canvas."
+    },
+    {
+      "node_id": "ai",
+      "narration": "Kittl's AI turns your prompt into a starter image."
+    },
+    {
+      "node_id": "template",
+      "narration": "You drop it into a customizable template."
+    },
+    {
+      "node_id": "effects",
+      "narration": "One-click text effects style your message."
+    },
+    {
+      "node_id": "mockup",
+      "narration": "Mockup tools show it on a real product instantly."
+    },
+    {
+      "node_id": "publish",
+      "narration": "You publish without switching apps — until you outgrow the bundle."
+    }
+  ],
+  "quiz": [
+    {
+      "q": "What does Kittl bundle together as a Canva alternative?",
+      "options": [
+        "AI generation, templates, text effects, and mockups",
+        "Only video editing and coding tools",
+        "Only stock photos with no editing",
+        "Only printing and shipping"
+      ],
+      "answer_index": 0,
+      "why": "Your save shows Kittl demos AI generation, customizable templates, text effects, and mockup tools in one place."
+    },
+    {
+      "q": "Why does an all-in-one tool exist?",
+      "options": [
+        "To make you switch apps more often",
+        "To remove switching and finish ideate-to-present faster",
+        "To make designs take longer",
+        "To delete templates"
+      ],
+      "answer_index": 1,
+      "why": "Bundling removes exporting between separate apps for AI, layout, and mockups."
+    },
+    {
+      "q": "What breaks or goes wrong first if usage grows 100x?",
+      "options": [
+        "Designs stay 100% unique forever",
+        "Templates look generic, AI needs fixing, and advanced features hit limits",
+        "Mockups become more accurate automatically",
+        "You never need customization"
+      ],
+      "answer_index": 1,
+      "why": "All-in-one trades depth for speed — at scale you lose uniqueness and control and need outside customization."
+    }
+  ],
+  "sources": [
+    "DPbgEw8CBgv"
+  ],
+  "extra": [],
+  "level": 2,
+  "topic": "Design, Content Creation & Marketing",
+  "save_ids": [
+    "DPbgEw8CBgv"
+  ],
+  "words": 218,
+  "word_limit": 200,
+  "mermaid": "flowchart TD\n  n0[\"Your idea\"]\n  n1[\"AI generation\"]\n  n2[\"Customizable template\"]\n  n3[\"Text effects\"]\n  n4[\"Mockup creation\"]\n  n5[\"Publish\"]\n  n0 --> n1\n  n1 --> n2\n  n2 --> n3\n  n3 --> n4\n  n4 --> n5",
+  "animation": [
+    {
+      "node": "n0",
+      "narration": "You start with an idea, not a blank canvas."
+    },
+    {
+      "node": "n1",
+      "narration": "Kittl's AI turns your prompt into a starter image."
+    },
+    {
+      "node": "n2",
+      "narration": "You drop it into a customizable template."
+    },
+    {
+      "node": "n3",
+      "narration": "One-click text effects style your message."
+    },
+    {
+      "node": "n4",
+      "narration": "Mockup tools show it on a real product instantly."
+    },
+    {
+      "node": "n5",
+      "narration": "You publish without switching apps — until you outgrow the bundle."
+    }
+  ],
+  "rules_used": [],
+  "agent_trace": [
+    {
+      "tool": "read_save",
+      "args": {
+        "save_id": "DPbgEw8CBgv"
+      }
+    },
+    {
+      "tool": "search_saves",
+      "args": {
+        "query": "Canva Kittl design templates AI generation",
+        "topic": "Design, Content Creation & Marketing"
+      }
+    }
+  ],
+  "judge": {
+    "drafts": 3,
+    "best": "D1",
+    "why": "",
+    "scores": {
+      "D1": null,
+      "D2": null,
+      "D3": null
+    },
+    "temperatures": [
+      0.4,
+      0.8,
+      1.0
+    ]
+  },
+  "id": "8335a4ebaac0ed17"
+}

@@ -1,0 +1,176 @@
+{
+  "title": "Open Source AI Without the FOMO",
+  "subtitle": "From model evaluation to deployment, in plain words",
+  "intro": "New open-source AI models drop every week. The State of Open Source AI (2023) ebook calls it a fast-paced mess — and offers clarity from evaluation to deployment.",
+  "takeaway": "Open-source AI gives you shared models to evaluate and deploy, but you must check quality and run it yourself.",
+  "sections": [
+    {
+      "heading": "Analogy: a community recipe book",
+      "body": "Think of open-source AI like a public recipe book. Anyone can copy a recipe (a model), taste-test it, and improve it.\n\nA model is the learned recipe. Evaluation is the taste test. Deployment is serving it in your own kitchen. Open-source licensing means you can use and share it freely.\n\nThis sharing is why it exists, as you'll see next."
+    },
+    {
+      "heading": "Why does this exist?: clarity in the chaos",
+      "body": "Closed AI keeps the recipe secret. Open-source AI publishes it so you can inspect, compare, and build on it.\n\nThe ebook from premAI-io guides you from model evaluations (how good is it?) to deployment (how to run it for users). That helps you cure FOMO and pick what fits.\n\nBut sharing freely also creates risks, which is what can go wrong."
+    },
+    {
+      "heading": "What can go wrong: when sharing breaks",
+      "body": "A public recipe can be untested, outdated, or unsafe. A model might score well in evaluation but fail in your deployment.\n\nYou also take on the work: hosting, updates, and checking the license (like CC-BY-4.0 or Apache-2.0). If you skip evaluation, you serve a bad dish to users."
+    }
+  ],
+  "diagram": {
+    "nodes": [
+      {
+        "id": "1",
+        "label": "Open Model Shared"
+      },
+      {
+        "id": "2",
+        "label": "Evaluation: Test It"
+      },
+      {
+        "id": "3",
+        "label": "Deployment: Run It"
+      },
+      {
+        "id": "4",
+        "label": "Community Improves"
+      }
+    ],
+    "edges": [
+      [
+        "1",
+        "2",
+        ""
+      ],
+      [
+        "2",
+        "3",
+        ""
+      ],
+      [
+        "3",
+        "4",
+        ""
+      ],
+      [
+        "4",
+        "1",
+        "share back"
+      ]
+    ]
+  },
+  "steps": [
+    {
+      "node_id": "1",
+      "narration": "Someone shares a trained model openly."
+    },
+    {
+      "node_id": "2",
+      "narration": "You evaluate it on your task."
+    },
+    {
+      "node_id": "3",
+      "narration": "You deploy the winner yourself."
+    },
+    {
+      "node_id": "4",
+      "narration": "You share fixes back to the community."
+    }
+  ],
+  "quiz": [
+    {
+      "q": "What does 'model evaluation' mean in open-source AI?",
+      "options": [
+        "Writing a license for the model",
+        "Testing how well a model performs before using it",
+        "Deploying the model to users",
+        "Deleting old models"
+      ],
+      "answer_index": 1,
+      "why": "Evaluation is the taste-test to compare models before you deploy."
+    },
+    {
+      "q": "Why does open-source AI exist according to the ebook?",
+      "options": [
+        "To keep AI recipes secret",
+        "To provide clarity and shared building blocks from evaluation to deployment",
+        "To stop anyone from deploying models",
+        "To replace all closed models overnight"
+      ],
+      "answer_index": 1,
+      "why": "It offers an overview from evaluation to deployment to navigate fast innovation together."
+    },
+    {
+      "q": "What breaks first if you deploy an open model without evaluation?",
+      "options": [
+        "The license automatically fixes bugs",
+        "You may serve bad or unsafe answers to users",
+        "Deployment becomes free forever",
+        "The community stops sharing"
+      ],
+      "answer_index": 1,
+      "why": "Skipping evaluation means you miss failures that only show up on your data."
+    }
+  ],
+  "sources": [
+    "https-github-com-premai-io-state-of-open-source-ai"
+  ],
+  "extra": [],
+  "level": 2,
+  "topic": "AI & Machine Learning",
+  "save_ids": [
+    "https-github-com-premai-io-state-of-open-source-ai"
+  ],
+  "words": 197,
+  "word_limit": 200,
+  "mermaid": "flowchart TD\n  n0[\"Open Model Shared\"]\n  n1[\"Evaluation: Test It\"]\n  n2[\"Deployment: Run It\"]\n  n3[\"Community Improves\"]\n  n0 --> n1\n  n1 --> n2\n  n2 --> n3\n  n3 -->|\"share back\"| n0",
+  "animation": [
+    {
+      "node": "n0",
+      "narration": "Someone shares a trained model openly."
+    },
+    {
+      "node": "n1",
+      "narration": "You evaluate it on your task."
+    },
+    {
+      "node": "n2",
+      "narration": "You deploy the winner yourself."
+    },
+    {
+      "node": "n3",
+      "narration": "You share fixes back to the community."
+    }
+  ],
+  "rules_used": [],
+  "agent_trace": [
+    {
+      "tool": "read_save",
+      "args": {
+        "save_id": "https-github-com-premai-io-state-of-open-source-ai"
+      }
+    },
+    {
+      "tool": "search_saves",
+      "args": {
+        "query": "open source AI model evaluation deployment"
+      }
+    }
+  ],
+  "judge": {
+    "drafts": 3,
+    "best": "D1",
+    "why": "",
+    "scores": {
+      "D1": null,
+      "D2": null,
+      "D3": null
+    },
+    "temperatures": [
+      0.4,
+      0.8,
+      1.0
+    ]
+  },
+  "id": "8870fa674f91a16e"
+}

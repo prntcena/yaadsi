@@ -1,0 +1,193 @@
+{
+  "title": "Edit Video by Typing",
+  "subtitle": "How AI turns chat prompts into cuts, clones, and transitions",
+  "intro": "Your video editor just got a tombstone: RIP Video Editing 1985-2025. Now you edit by chatting, not dragging clips.",
+  "takeaway": "Prompt-based editing trades hands-on control for speed, so use words for rough cuts and hands for final polish.",
+  "sections": [
+    {
+      "heading": "Analogy: your talking assistant editor",
+      "body": "Imagine you hire an assistant who edits video for you. You say 'remove silences, add smooth cuts, make an avatar say this line' and they do it. You don't drag clips on a timeline anymore; you give instructions in plain text.\n\nThat's prompt-based editing. But why would you trust words instead of your hands?"
+    },
+    {
+      "heading": "Why does this exist?: speed you don't pay for twice",
+      "body": "Manual editing in DaVinci, iMovie or CapCut takes hours of cutting and syncing. AI tools like HeyGen turn text into video with a cloned avatar — one creator got 50M+ views with 'AI René'.\n\nTranscript-based editing lets you delete a word and the video cut follows. Veo 3 even lets you use JSON prompts for precise lighting and invisible cuts. That speed is powerful, but speed hides a cost."
+    },
+    {
+      "heading": "What can go wrong: when words guess wrong",
+      "body": "AI guesses what 'make it cinematic' means, and two prompts can give two different styles for the same idea. Avatar clones can look fake, auto-cuts can remove the wrong pause, and JSON control only helps if you know what to specify.\n\nIf you rely only on chat commands, you lose fine control. So learn when to type and when to tweak by hand."
+    }
+  ],
+  "diagram": {
+    "nodes": [
+      {
+        "id": "prompt",
+        "label": "You type prompt"
+      },
+      {
+        "id": "ai",
+        "label": "AI interprets"
+      },
+      {
+        "id": "edit",
+        "label": "Auto edit / avatar / cut"
+      },
+      {
+        "id": "review",
+        "label": "You review & fix"
+      }
+    ],
+    "edges": [
+      [
+        "prompt",
+        "ai",
+        "text or JSON"
+      ],
+      [
+        "ai",
+        "edit",
+        "generates"
+      ],
+      [
+        "edit",
+        "review",
+        "check"
+      ],
+      [
+        "review",
+        "prompt",
+        "refine"
+      ]
+    ]
+  },
+  "steps": [
+    {
+      "node_id": "prompt",
+      "narration": "You describe the edit in words, not timeline drags."
+    },
+    {
+      "node_id": "ai",
+      "narration": "The AI turns your text or JSON into editing actions."
+    },
+    {
+      "node_id": "edit",
+      "narration": "It creates avatar video, cuts silences, or seamless transitions."
+    },
+    {
+      "node_id": "review",
+      "narration": "You check the result and re-prompt where it guessed wrong."
+    }
+  ],
+  "quiz": [
+    {
+      "q": "What does transcript-based editing let you do?",
+      "options": [
+        "Delete a word in text to cut the video",
+        "Automatically buy stock footage",
+        "Render 3D animation from scratch",
+        "Clone your voice without permission"
+      ],
+      "answer_index": 0,
+      "why": "Your saves show transcript editing links text deletions directly to video cuts."
+    },
+    {
+      "q": "Why use a JSON prompt in Veo 3 instead of a normal prompt?",
+      "options": [
+        "It makes files smaller",
+        "It gives precise control over lighting, style and cuts",
+        "It works without internet",
+        "It is required for all videos"
+      ],
+      "answer_index": 1,
+      "why": "The Veo 3 save compares normal vs JSON prompts and shows JSON gives more precise cinematic control."
+    },
+    {
+      "q": "What breaks or goes wrong if you rely only on chat commands?",
+      "options": [
+        "AI always picks the exact style you wanted",
+        "You lose fine control — clones look fake and auto-cuts remove wrong pauses",
+        "Your computer edits faster forever",
+        "JSON prompts fix everything automatically"
+      ],
+      "answer_index": 1,
+      "why": "AI guesses meaning, so same idea can render in different styles and auto-edits can cut the wrong moment."
+    }
+  ],
+  "sources": [
+    "DRcqa3UkTuo",
+    "DQr2EaKDDFn",
+    "DONQZcYE90_"
+  ],
+  "extra": [
+    "HeyGen example of 50M+ views shows avatar cloning at scale, but likeness rights and disclosure matter."
+  ],
+  "level": 2,
+  "topic": "AI & Machine Learning",
+  "save_ids": [
+    "DRcqa3UkTuo"
+  ],
+  "words": 205,
+  "word_limit": 200,
+  "mermaid": "flowchart TD\n  n0[\"You type prompt\"]\n  n1[\"AI interprets\"]\n  n2[\"Auto edit / avatar / cut\"]\n  n3[\"You review   fix\"]\n  n0 -->|\"text or JSON\"| n1\n  n1 -->|\"generates\"| n2\n  n2 -->|\"check\"| n3\n  n3 -->|\"refine\"| n0",
+  "animation": [
+    {
+      "node": "n0",
+      "narration": "You describe the edit in words, not timeline drags."
+    },
+    {
+      "node": "n1",
+      "narration": "The AI turns your text or JSON into editing actions."
+    },
+    {
+      "node": "n2",
+      "narration": "It creates avatar video, cuts silences, or seamless transitions."
+    },
+    {
+      "node": "n3",
+      "narration": "You check the result and re-prompt where it guessed wrong."
+    }
+  ],
+  "rules_used": [],
+  "agent_trace": [
+    {
+      "tool": "search_saves",
+      "args": {
+        "query": "AI machine learning video editing tools",
+        "topic": "AI & Machine Learning"
+      }
+    },
+    {
+      "tool": "read_save",
+      "args": {
+        "save_id": "DRcqa3UkTuo"
+      }
+    },
+    {
+      "tool": "read_save",
+      "args": {
+        "save_id": "DQr2EaKDDFn"
+      }
+    },
+    {
+      "tool": "read_save",
+      "args": {
+        "save_id": "DONQZcYE90_"
+      }
+    }
+  ],
+  "judge": {
+    "drafts": 3,
+    "best": "D1",
+    "why": "",
+    "scores": {
+      "D1": null,
+      "D2": null,
+      "D3": null
+    },
+    "temperatures": [
+      0.4,
+      0.8,
+      1.0
+    ]
+  },
+  "id": "71d57912b56ea176"
+}

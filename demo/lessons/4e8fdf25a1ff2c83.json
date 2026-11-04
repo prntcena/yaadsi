@@ -1,0 +1,191 @@
+{
+  "title": "Stop the Scroll in 3 Seconds",
+  "subtitle": "How a simple hook turns strangers into viewers",
+  "intro": "You have 3 seconds before someone scrolls past you. How do you make them stop?",
+  "takeaway": "A hook earns you 3 seconds of attention so your story can earn the rest.",
+  "sections": [
+    {
+      "heading": "Everyday analogy: the shop window",
+      "body": "Think of your post like a shop window on a busy street.\n\nPeople walk fast and look at dozens of windows. A hook is the one bright sign that makes them stop and look inside.\n\nWithout it, even a great shop gets ignored. With it, you get a chance to invite them in."
+    },
+    {
+      "heading": "Why it exists: attention you have to earn",
+      "body": "A storytelling hook is the first line of your video or post, designed to grab attention instantly.\n\nTemplates make this easy. For example: \"I didn't plan to talk about this, but pretending (insert situation) was fine wasn't working anymore.\" You just fill in the blank with your story.\n\nYou use it because attention is short. The hook stops the scroll so engagement can start."
+    },
+    {
+      "heading": "What can go wrong: when hooks backfire",
+      "body": "A hook only works if the story behind it delivers.\n\nIf you use a dramatic line like \"This looks like a normal moment, but it changed my life completely\" and then share something boring, viewers feel tricked and leave.\n\n- Too vague: no one knows what you're talking about\n- Too clickbaity: promise is bigger than payoff\n\nMatch the hook to a real payoff, or trust breaks."
+    }
+  ],
+  "diagram": {
+    "nodes": [
+      {
+        "id": "scroll",
+        "label": "Viewer scrolling"
+      },
+      {
+        "id": "hook",
+        "label": "Hook in 3 seconds"
+      },
+      {
+        "id": "stop",
+        "label": "Stop & watch"
+      },
+      {
+        "id": "story",
+        "label": "Story delivers"
+      },
+      {
+        "id": "engage",
+        "label": "Like / comment / follow"
+      }
+    ],
+    "edges": [
+      [
+        "scroll",
+        "hook",
+        ""
+      ],
+      [
+        "hook",
+        "stop",
+        ""
+      ],
+      [
+        "stop",
+        "story",
+        ""
+      ],
+      [
+        "story",
+        "engage",
+        ""
+      ]
+    ]
+  },
+  "steps": [
+    {
+      "node_id": "scroll",
+      "narration": "Everyone is scrolling fast past your post."
+    },
+    {
+      "node_id": "hook",
+      "narration": "Your first line uses a fill-in-the-blank hook template."
+    },
+    {
+      "node_id": "stop",
+      "narration": "The hook makes them pause for 3 seconds."
+    },
+    {
+      "node_id": "story",
+      "narration": "Your real story keeps the promise."
+    },
+    {
+      "node_id": "engage",
+      "narration": "They engage because you earned their attention."
+    }
+  ],
+  "quiz": [
+    {
+      "q": "What is a storytelling hook?",
+      "options": [
+        "A 3-second opening line to stop scrolling",
+        "A hashtag to get more followers",
+        "A filter for your video",
+        "A way to post automatically"
+      ],
+      "answer_index": 0,
+      "why": "A hook is the opening line designed to grab attention in about 3 seconds."
+    },
+    {
+      "q": "What fails first if you use a strong hook but your story is weak?",
+      "options": [
+        "Viewers feel tricked and leave",
+        "Instagram deletes your post",
+        "You get more views forever",
+        "The hook gets longer"
+      ],
+      "answer_index": 0,
+      "why": "If the payoff doesn't match the promise, trust breaks and people scroll away."
+    },
+    {
+      "q": "How do fill-in-the-blank templates help?",
+      "options": [
+        "They let you plug your own story into a proven structure",
+        "They write your whole video for you",
+        "They guarantee viral views",
+        "They replace the need for a story"
+      ],
+      "answer_index": 0,
+      "why": "Templates like 'I used to think (trait) was my weakness...' give you structure; you add the real details."
+    }
+  ],
+  "sources": [
+    "DSNmIOgAYQ2"
+  ],
+  "extra": [
+    "Test 3 different hooks for the same story to see which 3-second opener keeps viewers longest."
+  ],
+  "level": 2,
+  "topic": "Design, Content Creation & Marketing",
+  "save_ids": [
+    "DSNmIOgAYQ2"
+  ],
+  "words": 199,
+  "word_limit": 200,
+  "mermaid": "flowchart TD\n  n0[\"Viewer scrolling\"]\n  n1[\"Hook in 3 seconds\"]\n  n2[\"Stop   watch\"]\n  n3[\"Story delivers\"]\n  n4[\"Like / comment / follow\"]\n  n0 --> n1\n  n1 --> n2\n  n2 --> n3\n  n3 --> n4",
+  "animation": [
+    {
+      "node": "n0",
+      "narration": "Everyone is scrolling fast past your post."
+    },
+    {
+      "node": "n1",
+      "narration": "Your first line uses a fill-in-the-blank hook template."
+    },
+    {
+      "node": "n2",
+      "narration": "The hook makes them pause for 3 seconds."
+    },
+    {
+      "node": "n3",
+      "narration": "Your real story keeps the promise."
+    },
+    {
+      "node": "n4",
+      "narration": "They engage because you earned their attention."
+    }
+  ],
+  "rules_used": [],
+  "agent_trace": [
+    {
+      "tool": "search_saves",
+      "args": {
+        "query": "Design Content Creation Marketing hooks storytelling",
+        "topic": "Design, Content Creation & Marketing"
+      }
+    },
+    {
+      "tool": "read_save",
+      "args": {
+        "save_id": "DSNmIOgAYQ2"
+      }
+    }
+  ],
+  "judge": {
+    "drafts": 3,
+    "best": "D1",
+    "why": "",
+    "scores": {
+      "D1": null,
+      "D2": null,
+      "D3": null
+    },
+    "temperatures": [
+      0.4,
+      0.8,
+      1.0
+    ]
+  },
+  "id": "4e8fdf25a1ff2c83"
+}

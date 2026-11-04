@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0..1,0&display=block">
-  <link rel="stylesheet" href="/static/style.css?v=20261104e">
+  <link rel="stylesheet" href="/static/style.css?v=20261104g">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.1/mermaid.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
 </head>
@@ -260,14 +260,20 @@
         <p id="lesson-thought" class="thought" aria-live="polite"></p>
       </div>
       <div id="lesson-error" class="error" hidden></div>
-      <article id="lesson" hidden>
-        <div class="lesson-meta muted" id="lesson-meta"></div>
+      <article id="lesson" class="article" hidden>
+        <header class="art-head">
         <h1 id="lesson-title"></h1>
+        <p id="lesson-subtitle" class="art-sub" hidden></p>
+        <div class="byline">
+          <span class="brand-dot byline-avatar" aria-hidden="true"></span>
+          <div class="byline-text"><b>Yaad</b><span id="lesson-meta" class="muted"></span></div>
         <div id="listen-bar" class="listen" hidden>
           <button id="listen" class="tonal"><span class="ms" aria-hidden="true">volume_up</span>Listen</button>
           <span id="listen-status" class="muted small"></span>
           <button class="icon-btn voice-open" type="button" title="Voice settings"><span class="ms" aria-hidden="true">settings_voice</span><span class="sr-only">Voice settings</span></button>
         </div>
+        </div>
+        </header>
         <details id="judge-box" class="judge demo-only" hidden>
           <summary id="judge-summary"></summary>
           <p id="judge-why" class="muted small"></p>
@@ -284,11 +290,12 @@
             </figure>
             <figure id="fig-simple" hidden>
               <div class="frame"><div class="shimmer"></div><img alt="A simple picture of the idea"></div>
-              <figcaption>Simple picture</figcaption>
+              <figcaption>Drawn by Muse Image</figcaption>
             </figure>
           </div>
           <div id="see-note" class="muted small"></div>
         </div>
+        <div class="art-break" aria-hidden="true"><span></span><span></span><span></span></div>
         <div id="quiz-box" class="card">
           <h2><span class="ms" aria-hidden="true">quiz</span>Check yourself</h2>
           <div id="quiz"></div>
@@ -346,8 +353,29 @@
             <button class="text-btn" type="button" data-go="progress"><span class="ms" aria-hidden="true">insights</span>See progress</button>
           </div>
         </div>
-        <div class="feedback card">
-          <h2>How was this?</h2>
+        <div class="feedback card shape-card">
+          <h2><span class="ms" aria-hidden="true">tune</span>Make it your way</h2>
+          <div class="chips" id="shape-formats" role="group" aria-label="Show in this lesson">
+            <label class="toggle"><input type="checkbox" value="figure"> Real slide</label>
+            <label class="toggle"><input type="checkbox" value="picture"> Simple picture</label>
+            <label class="toggle"><input type="checkbox" value="diagram"> Diagram</label>
+            <label class="toggle"><input type="checkbox" value="animation"> Animation</label>
+            <label class="toggle"><input type="checkbox" value="audio"> Listen</label>
+            <label class="toggle"><input type="checkbox" value="quiz"> Quiz</label>
+          </div>
+          <div class="shape-depth">
+            <span class="control-label"><span class="ms" aria-hidden="true">layers</span>Depth <b id="shape-depth-out"></b></span>
+            <div class="seg" id="shape-depth" role="radiogroup" aria-label="Depth of this lesson">
+              <button type="button" role="radio" data-depth="1" title="Like I'm 10">1</button>
+              <button type="button" role="radio" data-depth="2" title="Beginner">2</button>
+              <button type="button" role="radio" data-depth="3" title="Summary notes">3</button>
+              <button type="button" role="radio" data-depth="4" title="Detailed">4</button>
+              <button type="button" role="radio" data-depth="5" title="Deep article">5</button>
+            </div>
+          </div>
+          <div class="shape-actions"><button id="shape-apply" class="primary" type="button" disabled>Apply</button>
+            <span id="shape-note" class="muted small" aria-live="polite"></span></div>
+          <h3 class="fb-h">How was this?</h3>
           <div class="fb-row">
             <button class="fb" data-kind="too_easy"><span class="ms" aria-hidden="true">sentiment_satisfied</span>Too easy</button>
             <button class="fb" data-kind="just_right"><span class="ms" aria-hidden="true">sentiment_very_satisfied</span>Just right</button>
@@ -427,10 +455,10 @@
 
   <footer class="foot">Built with Muse Spark Open · Meta Model API · Baseten<span class="demo-only"> · <span id="spend"></span></span></footer>
   <div id="yaad-dock" class="yaad-slot dock-slot"></div>
-  <script src="/static/yaad.js?v=20261104e"></script>
-  <script src="/static/brain.js?v=20261104e"></script>
-  <script src="/static/app.js?v=20261104e"></script>
-  <script src="/static/progress.js?v=20261104e"></script>
-  <script src="/static/masterclass.js?v=20261104e"></script>
+  <script src="/static/yaad.js?v=20261104g"></script>
+  <script src="/static/brain.js?v=20261104g"></script>
+  <script src="/static/app.js?v=20261104g"></script>
+  <script src="/static/progress.js?v=20261104g"></script>
+  <script src="/static/masterclass.js?v=20261104g"></script>
 </body>
 </html>

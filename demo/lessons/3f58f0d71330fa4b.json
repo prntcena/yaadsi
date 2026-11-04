@@ -1,0 +1,162 @@
+{
+  "title": "Chat to Edit: How AI Turns Prompts Into Video",
+  "subtitle": "From timeline clicks to chatting with your editor",
+  "intro": "That tombstone says RIP VIDEO EDITING 1985-2025. Now you can clone yourself with HeyGen and get 50M+ views without touching DaVinci or CapCut.",
+  "takeaway": "Prompt-based editing trades manual control for speed, but you still need RAG and guardrails to keep it accurate.",
+  "sections": [
+    {
+      "heading": "Analogy: your chatty assistant editor",
+      "body": "Imagine you tell a human editor: \"cut the silences, add captions.\" You don't drag clips yourself.\n\nPrompt-based video editing is that assistant. A prompt is your text instruction. Transcript-based editing lets you delete words to cut video. Text-to-video generation builds clips from text alone.\n\nThis leads to why we built it this way."
+    },
+    {
+      "heading": "Why does this exist?: from timelines to talking",
+      "body": "Traditional tools like DaVinci Resolve and iMovie need manual timeline work.\n\nAI tools like HeyGen offer avatar cloning and auto-cuts so you chat instead of click. NVIDIA's 7 free courses teach the engine behind it: Generative AI basics, RAG, and Video AI apps.\n\nRAG means Retrieval-Augmented Generation - the AI looks up real facts before answering. CUDA is how code runs fast on NVIDIA GPUs. Edge AI on Jetson Nano runs that AI on a small device.\n\nSpeed is great, until accuracy slips."
+    },
+    {
+      "heading": "What can go wrong?: when chat edits fail",
+      "body": "- Hallucination: RAG without good retrieval invents facts in your video voiceover.\n- Clone misuse: avatar cloning can fake you saying things you didn't - that's why digital fingerprinting exists to protect content.\n- Auto-cut errors: silence removal can cut dramatic pauses or overlapping speech.\n\nYou gain speed but lose fine control."
+    }
+  ],
+  "diagram": {
+    "nodes": [
+      {
+        "id": "prompt",
+        "label": "Your prompt"
+      },
+      {
+        "id": "rag",
+        "label": "RAG looks up facts"
+      },
+      {
+        "id": "gpu",
+        "label": "CUDA GPU builds video"
+      },
+      {
+        "id": "check",
+        "label": "Fingerprint check"
+      }
+    ],
+    "edges": [
+      [
+        "prompt",
+        "rag",
+        ""
+      ],
+      [
+        "rag",
+        "gpu",
+        ""
+      ],
+      [
+        "gpu",
+        "check",
+        ""
+      ]
+    ]
+  },
+  "steps": [
+    {
+      "node_id": "prompt",
+      "narration": "You type: edit by chatting, not dragging."
+    },
+    {
+      "node_id": "rag",
+      "narration": "RAG retrieves real info so the AI doesn't guess."
+    },
+    {
+      "node_id": "gpu",
+      "narration": "CUDA on GPU turns text and avatar into video fast."
+    },
+    {
+      "node_id": "check",
+      "narration": "Digital fingerprint verifies the clone is allowed."
+    }
+  ],
+  "quiz": [
+    {
+      "q": "What does RAG do in video AI?",
+      "options": [
+        "Looks up facts before generating",
+        "Removes silences automatically",
+        "Clones your avatar voice",
+        "Edits on Jetson Nano only"
+      ],
+      "answer_index": 0,
+      "why": "RAG = Retrieval-Augmented Generation, from NVIDIA's LLM with RAG course."
+    },
+    {
+      "q": "What fails first if usage grows 100x with prompt editing?",
+      "options": [
+        "GPU cost and hallucinations spike without retrieval guardrails",
+        "Timeline becomes more precise",
+        "Avatars need less data",
+        "CUDA gets slower per video"
+      ],
+      "answer_index": 0,
+      "why": "More prompts = more GPU load and more chances to invent facts if RAG is weak."
+    },
+    {
+      "q": "Why does digital fingerprinting exist?",
+      "options": [
+        "To protect AI content from fake clones",
+        "To speed up CUDA code",
+        "To auto-cut silences",
+        "To teach generative AI basics"
+      ],
+      "answer_index": 0,
+      "why": "NVIDIA lists it as security fundamentals for AI content."
+    }
+  ],
+  "sources": [
+    "DQr2EaKDDFn",
+    "linkedin-com-feed-update-urn-li-activity-7421516454489088000"
+  ],
+  "extra": [
+    "HeyGen example cited 50M+ views with AI René clone"
+  ],
+  "level": 2,
+  "topic": "AI & Machine Learning",
+  "save_ids": [
+    "DQr2EaKDDFn",
+    "linkedin-com-feed-update-urn-li-activity-7421516454489088000"
+  ],
+  "words": 211,
+  "word_limit": 200,
+  "mermaid": "flowchart TD\n  n0[\"Your prompt\"]\n  n1[\"RAG looks up facts\"]\n  n2[\"CUDA GPU builds video\"]\n  n3[\"Fingerprint check\"]\n  n0 --> n1\n  n1 --> n2\n  n2 --> n3",
+  "animation": [
+    {
+      "node": "n0",
+      "narration": "You type: edit by chatting, not dragging."
+    },
+    {
+      "node": "n1",
+      "narration": "RAG retrieves real info so the AI doesn't guess."
+    },
+    {
+      "node": "n2",
+      "narration": "CUDA on GPU turns text and avatar into video fast."
+    },
+    {
+      "node": "n3",
+      "narration": "Digital fingerprint verifies the clone is allowed."
+    }
+  ],
+  "rules_used": [],
+  "agent_trace": [],
+  "judge": {
+    "drafts": 3,
+    "best": "D1",
+    "why": "",
+    "scores": {
+      "D1": null,
+      "D2": null,
+      "D3": null
+    },
+    "temperatures": [
+      0.4,
+      0.8,
+      1.0
+    ]
+  },
+  "id": "3f58f0d71330fa4b"
+}

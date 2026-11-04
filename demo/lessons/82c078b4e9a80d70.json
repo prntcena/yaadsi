@@ -1,0 +1,217 @@
+{
+  "title": "From Prompt to Production: How Modern AI Actually Works",
+  "subtitle": "RAG, video AI, and the hardware that makes it real",
+  "intro": "You can now edit video by chatting instead of dragging a timeline — and one creator cloned himself with HeyGen to get 50M+ views. That magic isn't just prompting.",
+  "takeaway": "Prompting is the interface, RAG is the memory, and CUDA is the engine — you need all three to ship real AI.",
+  "sections": [
+    {
+      "heading": "Why does this exist? From chat to creation",
+      "body": "You used to learn DaVinci Resolve, iMovie or CapCut to cut video. Now tools like HeyGen let you type \"make an avatar say this\" and get a finished clip.\n\nNVIDIA's free courses exist for the same reason: generative AI turned from research demo into production tool. You need to know what AI does, not just how to prompt it.\n\nThat shift from timeline to text is powerful, but it hides how the AI knows what to say next — which is where the real problem starts."
+    },
+    {
+      "heading": "What problem does it solve? Giving AI a memory",
+      "body": "A large language model alone is a frozen brain. It can't see your docs, your videos, or yesterday's data.\n\nRetrieval-Augmented Generation (RAG) fixes this. Obelisk shows the pattern: index your MkDocs docs, embed them into ChromaDB vectors, retrieve the relevant chunks, then let Ollama or an OpenAI-compatible model generate an answer grounded in your content.\n\nNVIDIA teaches this as \"LLM with RAG Model\" and \"Building RAG Agents\" — smarter systems that retrieve before they reply. The 23-notebook repo you saved goes further with RAG pipelines via LangChain plus Knowledge Graphs in Neo4j.\n\nMemory solves hallucinations, but memory has a cost — and that's the trade-off."
+    },
+    {
+      "heading": "Trade-offs: Fast to prompt, hard to perfect",
+      "body": "Prompt-based editing is instant and cheap to try. Fine-tuning with LoRA/QLoRA and 4-bit quantization is slower but makes LLaMA, Mistral or Falcon truly yours.\n\nThink of it like renting vs renovating: RAG is renting knowledge — fast, reversible, you swap ChromaDB entries anytime. Fine-tuning with RLHF is renovating the model itself — deeper, but expensive and hard to undo.\n\nThe repo you saved lists both: LoRA fine-tuning, BNB quantization, RLHF alignment, plus MLflow evaluation and even Cache-Augmented Generation. You choose speed or ownership.\n\nOwnership only matters if you can run it at scale — and scale breaks on hardware."
+    },
+    {
+      "heading": "What breaks at scale? When GPUs become the bottleneck",
+      "body": "Video AI apps that process every frame, RAG agents serving thousands of users, and edge AI on Jetson Nano all hit the same wall: compute.\n\nThat's why NVIDIA teaches CUDA GPU programming and digital fingerprinting alongside RAG. Without CUDA acceleration, your production-ready code is just a slow demo. Without fingerprinting, your AI-generated video can't be trusted.\n\nAt 100x usage, vector search slows, embeddings drift as docs change, local Ollama instances run out of VRAM, and costs spike. Obelisk tries to help with real-time document monitoring and Docker deployment, but you still need to plan for indexing, caching, and GPU scheduling.\n\nMaster the stack — retrieval, generation, and acceleration — and chatting to edit video stops being a trick and becomes a system."
+    }
+  ],
+  "diagram": {
+    "nodes": [
+      {
+        "id": "prompt",
+        "label": "Prompt / Chat"
+      },
+      {
+        "id": "rag",
+        "label": "RAG Retrieval (ChromaDB)"
+      },
+      {
+        "id": "llm",
+        "label": "LLM Generation (Ollama/OpenAI)"
+      },
+      {
+        "id": "video",
+        "label": "Video AI App"
+      },
+      {
+        "id": "cuda",
+        "label": "CUDA / Jetson Acceleration"
+      }
+    ],
+    "edges": [
+      [
+        "prompt",
+        "rag",
+        "needs context"
+      ],
+      [
+        "rag",
+        "llm",
+        "grounded chunks"
+      ],
+      [
+        "llm",
+        "video",
+        "creates/edits"
+      ],
+      [
+        "video",
+        "cuda",
+        "accelerated by"
+      ],
+      [
+        "cuda",
+        "prompt",
+        "enables scale"
+      ]
+    ]
+  },
+  "steps": [
+    {
+      "node_id": "prompt",
+      "narration": "You type a chat command instead of using a timeline."
+    },
+    {
+      "node_id": "rag",
+      "narration": "System retrieves relevant docs/vectors from ChromaDB."
+    },
+    {
+      "node_id": "llm",
+      "narration": "LLM generates answer or edit grounded in retrieved context."
+    },
+    {
+      "node_id": "video",
+      "narration": "Video AI app renders avatar, cuts, or transcript edit."
+    },
+    {
+      "node_id": "cuda",
+      "narration": "CUDA on GPUs or Jetson Nano makes it fast enough to ship."
+    }
+  ],
+  "quiz": [
+    {
+      "q": "Why use RAG instead of just prompting a base LLM?",
+      "options": [
+        "To make the model smaller",
+        "To give it access to your private, up-to-date documents",
+        "To remove the need for GPUs",
+        "To automatically edit video timelines"
+      ],
+      "answer_index": 1,
+      "why": "RAG retrieves from your own vector store (like ChromaDB in Obelisk) so answers are grounded in current docs, reducing hallucinations."
+    },
+    {
+      "q": "What is the key trade-off between RAG and LoRA/QLoRA fine-tuning?",
+      "options": [
+        "RAG is slower to update than fine-tuning",
+        "Fine-tuning is cheaper than RAG",
+        "RAG is fast and reversible; fine-tuning is deeper but expensive and hard to undo",
+        "Both require no evaluation"
+      ],
+      "answer_index": 2,
+      "why": "Your saved repo shows LoRA/QLoRA + RLHF renovates the model itself, while RAG just rents knowledge via retrieval — faster to change."
+    },
+    {
+      "q": "What breaks first if your RAG video agent grows 100x?",
+      "options": [
+        "Prompts get shorter",
+        "Vector search, embedding freshness, and GPU VRAM become bottlenecks",
+        "DaVinci Resolve stops working",
+        "Digital fingerprinting makes videos faster"
+      ],
+      "answer_index": 1,
+      "why": "At scale, ChromaDB retrieval slows, document monitoring lags, and Ollama/CUDA GPUs run out of memory without proper indexing and scheduling."
+    }
+  ],
+  "sources": [
+    "DQr2EaKDDFn",
+    "linkedin-com-feed-update-urn-li-activity-7421516454489088000",
+    "linkedin-com-feed-update-urn-li-activity-7428320533613780992",
+    "https-github-com-usrbinkat-obelisk",
+    "DRcqa3UkTuo"
+  ],
+  "extra": [
+    "NVIDIA Jetson Nano allows edge deployment of video AI without cloud GPUs",
+    "HeyGen example demonstrates avatar cloning as production use case for generative video"
+  ],
+  "level": 4,
+  "topic": "AI & Machine Learning",
+  "save_ids": [
+    "DQr2EaKDDFn",
+    "linkedin-com-feed-update-urn-li-activity-7421516454489088000"
+  ],
+  "words": 441,
+  "word_limit": 550,
+  "mermaid": "flowchart TD\n  n0[\"Prompt / Chat\"]\n  n1[\"RAG Retrieval (ChromaDB)\"]\n  n2[\"LLM Generation (Ollama/OpenAI)\"]\n  n3[\"Video AI App\"]\n  n4[\"CUDA / Jetson Acceleration\"]\n  n0 -->|\"needs context\"| n1\n  n1 -->|\"grounded chunks\"| n2\n  n2 -->|\"creates/edits\"| n3\n  n3 -->|\"accelerated by\"| n4\n  n4 -->|\"enables scale\"| n0",
+  "animation": [
+    {
+      "node": "n0",
+      "narration": "You type a chat command instead of using a timeline."
+    },
+    {
+      "node": "n1",
+      "narration": "System retrieves relevant docs/vectors from ChromaDB."
+    },
+    {
+      "node": "n2",
+      "narration": "LLM generates answer or edit grounded in retrieved context."
+    },
+    {
+      "node": "n3",
+      "narration": "Video AI app renders avatar, cuts, or transcript edit."
+    },
+    {
+      "node": "n4",
+      "narration": "CUDA on GPUs or Jetson Nano makes it fast enough to ship."
+    }
+  ],
+  "rules_used": [],
+  "agent_trace": [
+    {
+      "tool": "search_saves",
+      "args": {
+        "query": "RAG CUDA video AI prompt editing"
+      }
+    },
+    {
+      "tool": "read_save",
+      "args": {
+        "save_id": "linkedin-com-feed-update-urn-li-activity-7428320533613780992"
+      }
+    },
+    {
+      "tool": "read_save",
+      "args": {
+        "save_id": "https-github-com-usrbinkat-obelisk"
+      }
+    },
+    {
+      "tool": "read_save",
+      "args": {
+        "save_id": "DRcqa3UkTuo"
+      }
+    }
+  ],
+  "judge": {
+    "drafts": 3,
+    "best": "D1",
+    "why": "",
+    "scores": {
+      "D1": null,
+      "D2": null,
+      "D3": null
+    },
+    "temperatures": [
+      0.4,
+      0.8,
+      1.0
+    ]
+  },
+  "id": "82c078b4e9a80d70"
+}

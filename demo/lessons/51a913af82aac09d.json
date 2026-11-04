@@ -1,0 +1,177 @@
+{
+  "title": "From Chat to Doing: How Modern AI Learns to Look Things Up",
+  "subtitle": "Your saved NVIDIA courses point to one shift: AI that retrieves, acts, and runs anywhere.",
+  "intro": "You saved 7 free NVIDIA courses that promise production-ready AI, not just chat. The secret isn't a bigger brain — it's giving AI tools to look things up and act.",
+  "takeaway": "Modern AI wins by combining a language model with retrieval and specialized hardware, but only if you check what it found.",
+  "sections": [
+    {
+      "heading": "Analogy: the intern with a library card",
+      "body": "Think of an intern who sounds smart but forgets details. Give them tools and they become useful. In AI, the intern is a Large Language Model (LLM) — a text-prediction system. Retrieval-Augmented Generation (RAG) is the library card to search your documents. An Agent is the phone to call tools. CUDA and Jetson Nano are the workshop to run AI fast."
+    },
+    {
+      "heading": "Why does this exist?: answers that stay current",
+      "body": "Retraining an LLM is slow and expensive. RAG keeps knowledge outside the model instead. You ask -> it retrieves relevant docs -> the LLM answers using them. Example from your saves: a Video AI App can answer about your own videos without retraining. Edge AI on Jetson Nano — a tiny edge device — can do this on-device, not just in the cloud."
+    },
+    {
+      "heading": "What can go wrong?: confident, wrong, and leaky",
+      "body": "A RAG Agent can still fail predictably. Bad retrieval means it finds the wrong document and hallucinates — sounds confident but is wrong. Stale or private data means outdated or leaked files cause bad answers. Hardware limits mean CUDA helps speed, but Jetson Nano has little memory — too much video at once crashes. Always check sources."
+    }
+  ],
+  "diagram": {
+    "nodes": [
+      {
+        "id": "user",
+        "label": "You ask"
+      },
+      {
+        "id": "rag",
+        "label": "RAG retrieval"
+      },
+      {
+        "id": "llm",
+        "label": "LLM writes answer"
+      },
+      {
+        "id": "agent",
+        "label": "Agent takes action"
+      },
+      {
+        "id": "hardware",
+        "label": "CUDA / Jetson runs it"
+      }
+    ],
+    "edges": [
+      [
+        "user",
+        "rag",
+        "search docs"
+      ],
+      [
+        "rag",
+        "llm",
+        "provides context"
+      ],
+      [
+        "llm",
+        "agent",
+        "decides tool"
+      ],
+      [
+        "agent",
+        "hardware",
+        "executes"
+      ]
+    ]
+  },
+  "steps": [
+    {
+      "node_id": "user",
+      "narration": "You ask a question that needs current, private knowledge."
+    },
+    {
+      "node_id": "rag",
+      "narration": "RAG searches your documents for relevant passages."
+    },
+    {
+      "node_id": "llm",
+      "narration": "The LLM drafts an answer grounded in what was retrieved."
+    },
+    {
+      "node_id": "agent",
+      "narration": "A RAG Agent can then call tools or run video AI steps."
+    },
+    {
+      "node_id": "hardware",
+      "narration": "CUDA on GPUs or Jetson Nano at the edge makes it run fast enough to use."
+    }
+  ],
+  "quiz": [
+    {
+      "q": "What does RAG do for an LLM?",
+      "options": [
+        "It lets the model search external documents before answering",
+        "It deletes the model's training data",
+        "It replaces the GPU with a CPU",
+        "It automatically makes answers private"
+      ],
+      "answer_index": 0,
+      "why": "RAG = Retrieval-Augmented Generation. It retrieves relevant docs first, so answers stay current without retraining."
+    },
+    {
+      "q": "What fails first if usage grows 100x on a Jetson Nano edge device?",
+      "options": [
+        "The model becomes more accurate automatically",
+        "Memory and compute run out, causing crashes or slowdowns",
+        "Digital fingerprinting improves",
+        "CUDA stops being needed"
+      ],
+      "answer_index": 1,
+      "why": "Edge devices like Jetson Nano have limited memory and GPU power. Scaling video AI 100x overwhelms them first."
+    },
+    {
+      "q": "Why add digital fingerprinting to AI content?",
+      "options": [
+        "To make models train faster",
+        "To identify and protect AI-generated content",
+        "To replace RAG retrieval",
+        "To remove the need for CUDA"
+      ],
+      "answer_index": 1,
+      "why": "Fingerprinting helps track provenance and security — knowing what was AI-made, as listed in your NVIDIA courses."
+    }
+  ],
+  "sources": [
+    "linkedin-com-feed-update-urn-li-activity-7421516454489088000"
+  ],
+  "extra": [
+    "NVIDIA Jetson Nano is a small edge AI computer often used for video AI demos with limited RAM."
+  ],
+  "level": 2,
+  "topic": "AI & Machine Learning",
+  "save_ids": [
+    "linkedin-com-feed-update-urn-li-activity-7421516454489088000"
+  ],
+  "words": 211,
+  "word_limit": 200,
+  "mermaid": "flowchart TD\n  n0[\"You ask\"]\n  n1[\"RAG retrieval\"]\n  n2[\"LLM writes answer\"]\n  n3[\"Agent takes action\"]\n  n4[\"CUDA / Jetson runs it\"]\n  n0 -->|\"search docs\"| n1\n  n1 -->|\"provides context\"| n2\n  n2 -->|\"decides tool\"| n3\n  n3 -->|\"executes\"| n4",
+  "animation": [
+    {
+      "node": "n0",
+      "narration": "You ask a question that needs current, private knowledge."
+    },
+    {
+      "node": "n1",
+      "narration": "RAG searches your documents for relevant passages."
+    },
+    {
+      "node": "n2",
+      "narration": "The LLM drafts an answer grounded in what was retrieved."
+    },
+    {
+      "node": "n3",
+      "narration": "A RAG Agent can then call tools or run video AI steps."
+    },
+    {
+      "node": "n4",
+      "narration": "CUDA on GPUs or Jetson Nano at the edge makes it run fast enough to use."
+    }
+  ],
+  "rules_used": [],
+  "agent_trace": [],
+  "judge": {
+    "drafts": 3,
+    "best": "D1",
+    "why": "",
+    "scores": {
+      "D1": null,
+      "D2": null,
+      "D3": null
+    },
+    "temperatures": [
+      0.4,
+      0.8,
+      1.0
+    ]
+  },
+  "id": "51a913af82aac09d"
+}

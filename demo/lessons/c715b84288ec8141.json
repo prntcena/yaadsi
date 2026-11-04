@@ -1,0 +1,177 @@
+{
+  "title": "Fine-Tuning LLMs Without Breaking Your Laptop",
+  "subtitle": "How quantization and tiny adapters make big models personal",
+  "intro": "A giant language model knows everything, but not your job. What if you could teach it your style on one GPU?",
+  "takeaway": "Fine-tuning adds a tiny, trainable adapter to a shrunken model so it learns your task cheaply.",
+  "sections": [
+    {
+      "heading": "Analogy: the frozen chef and the sticky note",
+      "body": "Think of a pre-trained LLM as a master chef who already knows every recipe. You don't retrain the chef from scratch.\n\nYou freeze the chef and just add a sticky note with your tweaks. That sticky note is LoRA, a Low-Rank Adaptation. It is a small add-on you train instead of the whole model.\n\nThis idea is called PEFT, Parameter-Efficient Fine-Tuning, and it leads to why we do it this way."
+    },
+    {
+      "heading": "Why it exists: make it small enough to teach",
+      "body": "A full model is too big for most computers. Quantization with bitsandbytes shrinks it from 16-bit to 4-bit so it fits in memory.\n\nThen you format your data into prompt templates and train only the LoRA adapter with SFTTrainer from Hugging Face. You get a custom assistant you can run locally with Ollama.\n\nCheap and local sounds perfect, but shrinking and shortcuts have costs."
+    },
+    {
+      "heading": "What can go wrong: when the shortcut fails",
+      "body": "If your dataset formatting is messy, the adapter learns the wrong pattern and repeats it.\n\nIf you quantize too aggressively, the model loses accuracy and gives fuzzy answers. And a tiny LoRA cannot fix a base model that never knew your domain.\n\nSo check your data and test the shrunken model before you trust it."
+    }
+  ],
+  "diagram": {
+    "nodes": [
+      {
+        "id": "base",
+        "label": "Base LLM (frozen)"
+      },
+      {
+        "id": "quant",
+        "label": "Quantize to 4-bit"
+      },
+      {
+        "id": "lora",
+        "label": "Add LoRA adapter"
+      },
+      {
+        "id": "train",
+        "label": "Train with SFTTrainer"
+      },
+      {
+        "id": "deploy",
+        "label": "Run locally via Ollama"
+      }
+    ],
+    "edges": [
+      [
+        "base",
+        "quant",
+        ""
+      ],
+      [
+        "quant",
+        "lora",
+        ""
+      ],
+      [
+        "lora",
+        "train",
+        ""
+      ],
+      [
+        "train",
+        "deploy",
+        ""
+      ]
+    ]
+  },
+  "steps": [
+    {
+      "node_id": "base",
+      "narration": "Start with a frozen pre-trained LLM."
+    },
+    {
+      "node_id": "quant",
+      "narration": "Shrink it with bitsandbytes quantization to fit your GPU."
+    },
+    {
+      "node_id": "lora",
+      "narration": "Attach a small trainable LoRA adapter."
+    },
+    {
+      "node_id": "train",
+      "narration": "Train just the adapter on your formatted dataset with SFTTrainer."
+    },
+    {
+      "node_id": "deploy",
+      "narration": "Deploy the combined model locally with Ollama."
+    }
+  ],
+  "quiz": [
+    {
+      "q": "What does LoRA do in PEFT?",
+      "options": [
+        "Retrains every parameter of the base model",
+        "Adds a small trainable adapter while freezing the base model",
+        "Deletes the base model to save space",
+        "Converts text to images"
+      ],
+      "answer_index": 1,
+      "why": "LoRA freezes the big model and trains only a tiny low-rank adapter, which is the core of PEFT."
+    },
+    {
+      "q": "Why use quantization with bitsandbytes before fine-tuning?",
+      "options": [
+        "To make the model larger and slower",
+        "To shrink the model to 4-bit so it fits on limited GPU memory",
+        "To automatically format your dataset",
+        "To deploy to Ollama without training"
+      ],
+      "answer_index": 1,
+      "why": "Quantization reduces memory use so you can load and fine-tune a large model on a single consumer GPU."
+    },
+    {
+      "q": "What breaks first if you fine-tune on a messy, poorly formatted dataset?",
+      "options": [
+        "The GPU gets faster",
+        "The LoRA adapter learns and repeats the wrong patterns",
+        "Quantization is automatically fixed",
+        "Ollama adds more memory"
+      ],
+      "answer_index": 1,
+      "why": "The adapter only learns what you show it; bad formatting teaches bad behavior that persists after deployment."
+    }
+  ],
+  "sources": [
+    "https-github-com-dvgodoy-finetuningllms"
+  ],
+  "extra": [
+    "QLoRA combines 4-bit quantization with LoRA to fine-tune 65B models on a single 48GB GPU."
+  ],
+  "level": 2,
+  "topic": "AI & Machine Learning",
+  "save_ids": [
+    "https-github-com-dvgodoy-finetuningllms"
+  ],
+  "words": 211,
+  "word_limit": 200,
+  "mermaid": "flowchart TD\n  n0[\"Base LLM (frozen)\"]\n  n1[\"Quantize to 4-bit\"]\n  n2[\"Add LoRA adapter\"]\n  n3[\"Train with SFTTrainer\"]\n  n4[\"Run locally via Ollama\"]\n  n0 --> n1\n  n1 --> n2\n  n2 --> n3\n  n3 --> n4",
+  "animation": [
+    {
+      "node": "n0",
+      "narration": "Start with a frozen pre-trained LLM."
+    },
+    {
+      "node": "n1",
+      "narration": "Shrink it with bitsandbytes quantization to fit your GPU."
+    },
+    {
+      "node": "n2",
+      "narration": "Attach a small trainable LoRA adapter."
+    },
+    {
+      "node": "n3",
+      "narration": "Train just the adapter on your formatted dataset with SFTTrainer."
+    },
+    {
+      "node": "n4",
+      "narration": "Deploy the combined model locally with Ollama."
+    }
+  ],
+  "rules_used": [],
+  "agent_trace": [],
+  "judge": {
+    "drafts": 3,
+    "best": "D1",
+    "why": "",
+    "scores": {
+      "D1": null,
+      "D2": null,
+      "D3": null
+    },
+    "temperatures": [
+      0.4,
+      0.8,
+      1.0
+    ]
+  },
+  "id": "c715b84288ec8141"
+}

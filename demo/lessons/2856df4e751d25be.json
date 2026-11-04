@@ -1,0 +1,194 @@
+{
+  "title": "16 System Design Ideas That Keep Apps Alive",
+  "subtitle": "From idempotent APIs to Bloom filters, the beginner map for 2026",
+  "intro": "You saved Neo Kim's list of 16 system design concepts for 2026 — the same playbook 200K+ engineers get in his newsletter. Where do you even start?",
+  "takeaway": "System design is choosing trade-offs so your app stays fast, correct, and available as it grows.",
+  "sections": [
+    {
+      "heading": "Analogy: a city, not a single building",
+      "body": "Think of your app like a city. One building is one server; a city is many buildings with roads. A distributed system is that city — many computers working together over a network to act like one app. Service discovery is the address book that helps them find each other."
+    },
+    {
+      "heading": "Why it exists: speed, safety, and scale",
+      "body": "Why use these ideas? To stay fast and correct as more people join. An idempotent API means retrying the same request has the same effect as doing it once — tap pay twice, pay once. Consistent hashing is a way to spread users evenly across servers when you add more. A Bloom filter is a quick check for \"have we seen this?\" to skip slow lookups. JWT authentication is a signed pass that proves who you are."
+    },
+    {
+      "heading": "What can go wrong: when the city jams",
+      "body": "What can go wrong? Coordination. The saga pattern breaks a big job into steps with undo actions — if an undo fails, data stays mismatched. RPC is when one service calls another directly; it can time out and, without idempotency, retries create duplicates. Bloom filters can also give false positives, saying \"maybe yes\" when the answer is no."
+    }
+  ],
+  "diagram": {
+    "nodes": [
+      {
+        "id": "user",
+        "label": "You (retry tap)"
+      },
+      {
+        "id": "api",
+        "label": "Idempotent API"
+      },
+      {
+        "id": "discovery",
+        "label": "Service Discovery"
+      },
+      {
+        "id": "hash",
+        "label": "Consistent Hashing"
+      },
+      {
+        "id": "filter",
+        "label": "Bloom Filter check"
+      },
+      {
+        "id": "auth",
+        "label": "JWT pass"
+      }
+    ],
+    "edges": [
+      [
+        "user",
+        "api",
+        "retry safe"
+      ],
+      [
+        "api",
+        "discovery",
+        "find service"
+      ],
+      [
+        "discovery",
+        "hash",
+        "pick server"
+      ],
+      [
+        "hash",
+        "filter",
+        "skip DB?"
+      ],
+      [
+        "filter",
+        "auth",
+        "verify"
+      ]
+    ]
+  },
+  "steps": [
+    {
+      "node_id": "user",
+      "narration": "You tap pay twice; network may send it twice."
+    },
+    {
+      "node_id": "api",
+      "narration": "Idempotent API ensures second tap does not double-charge."
+    },
+    {
+      "node_id": "discovery",
+      "narration": "Service discovery finds which server can handle it."
+    },
+    {
+      "node_id": "hash",
+      "narration": "Consistent hashing picks the right server evenly."
+    },
+    {
+      "node_id": "filter",
+      "narration": "Bloom filter quickly checks if we've seen this payment."
+    },
+    {
+      "node_id": "auth",
+      "narration": "JWT proves who you are without extra DB call."
+    }
+  ],
+  "quiz": [
+    {
+      "q": "What does an idempotent API guarantee?",
+      "options": [
+        "First request is faster",
+        "Retrying the same request has the same effect as once",
+        "Passwords are encrypted",
+        "Servers never fail"
+      ],
+      "answer_index": 1,
+      "why": "Idempotency means safe retries — duplicates don't create extra side effects like double charges."
+    },
+    {
+      "q": "What fails first if usage grows 100x without consistent hashing?",
+      "options": [
+        "JWT expires faster",
+        "Adding servers reshuffles most users to new machines, causing hot spots and cache misses",
+        "Bloom filters become 100% accurate",
+        "Saga pattern is no longer needed"
+      ],
+      "answer_index": 1,
+      "why": "Without consistent hashing, scaling out remaps many keys, overloading new nodes and breaking locality."
+    },
+    {
+      "q": "What is a key limit of Bloom filters?",
+      "options": [
+        "They store passwords securely",
+        "They can give false positives — saying maybe present when not",
+        "They replace service discovery",
+        "They make APIs idempotent"
+      ],
+      "answer_index": 1,
+      "why": "Bloom filters are fast probabilistic checks; they never miss a true present item but can falsely say maybe."
+    }
+  ],
+  "sources": [
+    "linkedin-com-feed-update-urn-li-activity-7405595393402556416"
+  ],
+  "extra": [
+    "Saga pattern is often used as alternative to two-phase commit for long-lived transactions across microservices."
+  ],
+  "level": 2,
+  "topic": "Software Engineering & Systems",
+  "save_ids": [
+    "linkedin-com-feed-update-urn-li-activity-7405595393402556416"
+  ],
+  "words": 212,
+  "word_limit": 200,
+  "mermaid": "flowchart TD\n  n0[\"You (retry tap)\"]\n  n1[\"Idempotent API\"]\n  n2[\"Service Discovery\"]\n  n3[\"Consistent Hashing\"]\n  n4[\"Bloom Filter check\"]\n  n5[\"JWT pass\"]\n  n0 -->|\"retry safe\"| n1\n  n1 -->|\"find service\"| n2\n  n2 -->|\"pick server\"| n3\n  n3 -->|\"skip DB?\"| n4\n  n4 -->|\"verify\"| n5",
+  "animation": [
+    {
+      "node": "n0",
+      "narration": "You tap pay twice; network may send it twice."
+    },
+    {
+      "node": "n1",
+      "narration": "Idempotent API ensures second tap does not double-charge."
+    },
+    {
+      "node": "n2",
+      "narration": "Service discovery finds which server can handle it."
+    },
+    {
+      "node": "n3",
+      "narration": "Consistent hashing picks the right server evenly."
+    },
+    {
+      "node": "n4",
+      "narration": "Bloom filter quickly checks if we've seen this payment."
+    },
+    {
+      "node": "n5",
+      "narration": "JWT proves who you are without extra DB call."
+    }
+  ],
+  "rules_used": [],
+  "agent_trace": [],
+  "judge": {
+    "drafts": 3,
+    "best": "D1",
+    "why": "",
+    "scores": {
+      "D1": null,
+      "D2": null,
+      "D3": null
+    },
+    "temperatures": [
+      0.4,
+      0.8,
+      1.0
+    ]
+  },
+  "id": "2856df4e751d25be"
+}

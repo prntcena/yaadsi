@@ -1,0 +1,189 @@
+{
+  "title": "Beyond Prompting: How Real LLM Systems Are Built",
+  "subtitle": "23 notebooks show the full stack from training to retrieval",
+  "intro": "You saved 23 notebooks with 3K stars that go beyond prompting. Most people stop at chat; serious builders train, align, and connect knowledge.",
+  "takeaway": "Real LLM systems combine cheap fine-tuning, outside knowledge, and careful evaluation — not just bigger prompts.",
+  "sections": [
+    {
+      "heading": "Analogy: the library intern",
+      "body": "Think of a base LLM like a smart intern who read the whole library once.\n\nFine-tuning is short job training. LoRA means you don't retrain the whole brain, you add a tiny adapter — a few sticky notes that teach a new skill.\n\nRAG is giving the intern a walkie-talkie to the library. Instead of guessing, they look up fresh pages when you ask.\n\nThat sets up why builders need both tricks."
+    },
+    {
+      "heading": "Why does this exist?: beyond prompting",
+      "body": "Prompting alone can't teach private data or keep facts fresh.\n\nThe repo shows the full stack: Training with LoRA/QLoRA and 4-bit quantization — quantization means shrinking model weights from 16-bit to 4-bit so LLaMA or Mistral fits on one GPU. Alignment with RLHF — RLHF means learning from human thumbs-up/down on custom datasets. Retrieval with RAG pipelines via LangChain and Knowledge Graphs.\n\nExample: fine-tune Phi on your docs with QLoRA, then add RAG so it cites Neo4j.\n\nBut cheap and clever has limits."
+    },
+    {
+      "heading": "What can go wrong?: when shortcuts break",
+      "body": "Quantization saves memory but can blur accuracy. A 1-bit model is tiny but forgets nuance.\n\nLoRA adapters can overfit your small dataset and fail on new questions.\n\nRAG can retrieve the wrong page and the LLM will confidently quote it. Without MLflow evaluation — MLflow means tracking scores over time — you won't notice.\n\nSo builders test every step: training, alignment, retrieval, and optimization."
+    }
+  ],
+  "diagram": {
+    "nodes": [
+      {
+        "id": "base",
+        "label": "Base LLM"
+      },
+      {
+        "id": "finetune",
+        "label": "LoRA/QLoRA Fine-tune"
+      },
+      {
+        "id": "align",
+        "label": "RLHF Alignment"
+      },
+      {
+        "id": "rag",
+        "label": "RAG Retrieval"
+      },
+      {
+        "id": "eval",
+        "label": "MLflow Evaluation"
+      }
+    ],
+    "edges": [
+      [
+        "base",
+        "finetune",
+        ""
+      ],
+      [
+        "finetune",
+        "align",
+        ""
+      ],
+      [
+        "align",
+        "rag",
+        ""
+      ],
+      [
+        "rag",
+        "eval",
+        ""
+      ]
+    ]
+  },
+  "steps": [
+    {
+      "node_id": "base",
+      "narration": "Start with base model like LLaMA or Mistral."
+    },
+    {
+      "node_id": "finetune",
+      "narration": "Add LoRA adapter with 4-bit quantization to teach cheaply."
+    },
+    {
+      "node_id": "align",
+      "narration": "Align outputs with RLHF on your human ratings."
+    },
+    {
+      "node_id": "rag",
+      "narration": "Connect RAG to fetch fresh docs at ask time."
+    },
+    {
+      "node_id": "eval",
+      "narration": "Track quality with MLflow before shipping."
+    }
+  ],
+  "quiz": [
+    {
+      "q": "What does LoRA do?",
+      "options": [
+        "Retrains all billions of weights",
+        "Adds a small trainable adapter on top",
+        "Deletes the base model",
+        "Only changes the prompt"
+      ],
+      "answer_index": 1,
+      "why": "LoRA freezes the base model and trains tiny adapter weights, making fine-tuning cheap."
+    },
+    {
+      "q": "What fails first if usage grows 100x and you rely only on 4-bit QLoRA without RAG or evaluation?",
+      "options": [
+        "Model stays perfectly accurate",
+        "Hallucinations and stale facts grow unnoticed",
+        "GPUs get cheaper automatically",
+        "RAG fixes itself"
+      ],
+      "answer_index": 1,
+      "why": "Without retrieval and MLflow checks, quantization errors and outdated knowledge compound at scale."
+    },
+    {
+      "q": "What is RAG for?",
+      "options": [
+        "Making the model smaller",
+        "Letting the model look up external documents when answering",
+        "Replacing human feedback",
+        "Training with 1-bit only"
+      ],
+      "answer_index": 1,
+      "why": "RAG pipelines fetch relevant docs via LangChain/ChromaDB so answers stay fresh and grounded."
+    }
+  ],
+  "sources": [
+    "linkedin-com-feed-update-urn-li-activity-7428320533613780992"
+  ],
+  "extra": [],
+  "level": 2,
+  "topic": "AI & Machine Learning",
+  "save_ids": [
+    "linkedin-com-feed-update-urn-li-activity-7428320533613780992"
+  ],
+  "words": 242,
+  "word_limit": 200,
+  "mermaid": "flowchart TD\n  n0[\"Base LLM\"]\n  n1[\"LoRA/QLoRA Fine-tune\"]\n  n2[\"RLHF Alignment\"]\n  n3[\"RAG Retrieval\"]\n  n4[\"MLflow Evaluation\"]\n  n0 --> n1\n  n1 --> n2\n  n2 --> n3\n  n3 --> n4",
+  "animation": [
+    {
+      "node": "n0",
+      "narration": "Start with base model like LLaMA or Mistral."
+    },
+    {
+      "node": "n1",
+      "narration": "Add LoRA adapter with 4-bit quantization to teach cheaply."
+    },
+    {
+      "node": "n2",
+      "narration": "Align outputs with RLHF on your human ratings."
+    },
+    {
+      "node": "n3",
+      "narration": "Connect RAG to fetch fresh docs at ask time."
+    },
+    {
+      "node": "n4",
+      "narration": "Track quality with MLflow before shipping."
+    }
+  ],
+  "rules_used": [],
+  "agent_trace": [
+    {
+      "tool": "read_save",
+      "args": {
+        "save_id": "linkedin-com-feed-update-urn-li-activity-7428320533613780992"
+      }
+    },
+    {
+      "tool": "search_saves",
+      "args": {
+        "query": "LLM fine-tuning LoRA RAG quantization",
+        "topic": "AI & Machine Learning"
+      }
+    }
+  ],
+  "judge": {
+    "drafts": 3,
+    "best": "D1",
+    "why": "",
+    "scores": {
+      "D1": null,
+      "D2": null,
+      "D3": null
+    },
+    "temperatures": [
+      0.4,
+      0.8,
+      1.0
+    ]
+  },
+  "id": "2f0dc8d388a4ffc0"
+}

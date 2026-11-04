@@ -1,0 +1,187 @@
+{
+  "title": "Edit Video by Chatting",
+  "subtitle": "You type what you want, AI cuts the video for you",
+  "intro": "Your saves say RIP to DaVinci, iMovie and CapCut. You can now edit just by chatting with AI.",
+  "takeaway": "Prompt-based editing trades timeline control for speed, so check what the AI guessed wrong.",
+  "sections": [
+    {
+      "heading": "Analogy: talking to an editor",
+      "body": "Think of AI editing like texting a human editor instead of moving clips yourself.\n\nYou say \"remove silences, add captions, make me an avatar\" and it does it. One prompt replaces dozens of clicks.\n\nThat sounds like magic, but why did we need it?"
+    },
+    {
+      "heading": "Why it exists: speed you don't pay for twice",
+      "body": "A prompt is an instruction in plain words. Transcript-based editing turns your speech into text you can delete to cut video.\n\nYour saves show HeyGen cloning a creator to 50M+ views from just text, image or audio. Veo 3 even lets you use JSON prompts for precise control of lighting and cuts.\n\nFast is great until the AI misunderstands you."
+    },
+    {
+      "heading": "What can go wrong: when chatting breaks",
+      "body": "AI guesses what you meant. Vague prompts give wrong cuts, weird avatar mouths, or off-brand styles.\n\nJSON helps, but more detail means more to fix if you typo. You still need to review every auto-cut.\n\nSo start simple, then add control only where it matters."
+    }
+  ],
+  "diagram": {
+    "nodes": [
+      {
+        "id": "prompt",
+        "label": "You type prompt"
+      },
+      {
+        "id": "transcript",
+        "label": "AI reads transcript"
+      },
+      {
+        "id": "generate",
+        "label": "AI cuts / generates video"
+      },
+      {
+        "id": "review",
+        "label": "You review & fix"
+      }
+    ],
+    "edges": [
+      [
+        "prompt",
+        "transcript",
+        "send"
+      ],
+      [
+        "transcript",
+        "generate",
+        "edit"
+      ],
+      [
+        "generate",
+        "review",
+        "check"
+      ]
+    ]
+  },
+  "steps": [
+    {
+      "node_id": "prompt",
+      "narration": "You write what you want in words or JSON."
+    },
+    {
+      "node_id": "transcript",
+      "narration": "AI turns speech to editable text."
+    },
+    {
+      "node_id": "generate",
+      "narration": "AI makes cuts, avatar, or new video."
+    },
+    {
+      "node_id": "review",
+      "narration": "You spot what it got wrong."
+    }
+  ],
+  "quiz": [
+    {
+      "q": "What does prompt-based editing replace?",
+      "options": [
+        "Typing timeline clicks with chat commands",
+        "Buying a camera",
+        "Uploading to YouTube",
+        "Learning to act"
+      ],
+      "answer_index": 0,
+      "why": "Your saves show 12-13 tools that replace manual timeline editing with text prompts and transcript edits."
+    },
+    {
+      "q": "Why use a JSON prompt in Veo 3 instead of a normal prompt?",
+      "options": [
+        "It is shorter",
+        "It gives precise control over lighting, style and cuts",
+        "It is free",
+        "It removes watermarks"
+      ],
+      "answer_index": 1,
+      "why": "The Veo 3 save compares normal vs JSON prompts for the same fashion transition, JSON gives more cinematic control."
+    },
+    {
+      "q": "What breaks first if you rely only on vague prompts for 100 videos?",
+      "options": [
+        "AI makes wrong cuts and inconsistent style you must re-edit",
+        "Your computer runs out of battery",
+        "YouTube deletes your account",
+        "Videos get longer automatically"
+      ],
+      "answer_index": 0,
+      "why": "Vague prompts cause AI to guess, leading to errors in cuts, avatars and style at scale."
+    }
+  ],
+  "sources": [
+    "DQr2EaKDDFn",
+    "DRcqa3UkTuo",
+    "DONQZcYE90_"
+  ],
+  "extra": [
+    "HeyGen pricing starts free with paid avatar cloning tiers."
+  ],
+  "level": 2,
+  "topic": "AI & Machine Learning",
+  "save_ids": [
+    "DQr2EaKDDFn"
+  ],
+  "words": 167,
+  "word_limit": 200,
+  "mermaid": "flowchart TD\n  n0[\"You type prompt\"]\n  n1[\"AI reads transcript\"]\n  n2[\"AI cuts / generates video\"]\n  n3[\"You review   fix\"]\n  n0 -->|\"send\"| n1\n  n1 -->|\"edit\"| n2\n  n2 -->|\"check\"| n3",
+  "animation": [
+    {
+      "node": "n0",
+      "narration": "You write what you want in words or JSON."
+    },
+    {
+      "node": "n1",
+      "narration": "AI turns speech to editable text."
+    },
+    {
+      "node": "n2",
+      "narration": "AI makes cuts, avatar, or new video."
+    },
+    {
+      "node": "n3",
+      "narration": "You spot what it got wrong."
+    }
+  ],
+  "rules_used": [],
+  "agent_trace": [
+    {
+      "tool": "read_save",
+      "args": {
+        "save_id": "DQr2EaKDDFn"
+      }
+    },
+    {
+      "tool": "search_saves",
+      "args": {
+        "query": "AI machine learning prompt video editing"
+      }
+    },
+    {
+      "tool": "read_save",
+      "args": {
+        "save_id": "DRcqa3UkTuo"
+      }
+    },
+    {
+      "tool": "read_save",
+      "args": {
+        "save_id": "DONQZcYE90_"
+      }
+    }
+  ],
+  "judge": {
+    "drafts": 3,
+    "best": "D1",
+    "why": "",
+    "scores": {
+      "D1": null,
+      "D2": null,
+      "D3": null
+    },
+    "temperatures": [
+      0.4,
+      0.8,
+      1.0
+    ]
+  },
+  "id": "fc2face7b276efd5"
+}

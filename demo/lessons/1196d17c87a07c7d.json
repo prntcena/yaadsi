@@ -1,0 +1,214 @@
+{
+  "title": "How Databases Find Anything Instantly",
+  "subtitle": "15 indexes, one job: skip the full scan",
+  "intro": "Without an index, your database reads every row to answer one question. A good index can make that 1000x faster — a bad one makes everything slower.",
+  "takeaway": "An index is a shortcut for a specific question; pick the shortcut that matches your query pattern.",
+  "sections": [
+    {
+      "heading": "Analogy: the library card catalog",
+      "body": "Imagine a huge library with no help — to find a book on volcanoes, you walk every shelf.\n\nA card catalog sorted by topic fixes this. You look up 'volcanoes' and it points to the exact shelf.\n\nA database index is that catalog. It is a separate, sorted structure that points to where the real data lives. Different questions need different catalogs."
+    },
+    {
+      "heading": "Why does this exist?: skip scanning everything",
+      "body": "Different indexes are different catalogs for different questions:\n\nA B-Tree is a balanced tree that keeps values sorted, so range queries like age 20 to 30 are fast. A B+ Tree is a B-Tree where the bottom leaves are linked for even faster scans — used by MySQL and PostgreSQL.\n\nA Hash Index turns a key into a location with a hash, a math shortcut, so equality checks like id = 42 are instant, but it cannot do ranges.\n\nAn LSM Tree batches writes to handle many writes fast, used by Cassandra. An Inverted Index maps word -> documents for text search, used by Elasticsearch."
+    },
+    {
+      "heading": "What can go wrong?: the wrong shortcut hurts",
+      "body": "An index is not free. Every write must update every index, so too many indexes slow inserts and use storage.\n\nThe wrong type also fails: a Hash Index cannot help range queries, a B-Tree cannot do full-text search, and a Bitmap Index wastes space on high-cardinality, or many-unique-value, columns like email.\n\nYou trade write speed and storage for read speed — so match the index to your query pattern."
+    }
+  ],
+  "diagram": {
+    "nodes": [
+      {
+        "id": "q",
+        "label": "Your Query"
+      },
+      {
+        "id": "btree",
+        "label": "B+ Tree: range scan"
+      },
+      {
+        "id": "hash",
+        "label": "Hash: equality lookup"
+      },
+      {
+        "id": "lsm",
+        "label": "LSM: high writes"
+      },
+      {
+        "id": "inv",
+        "label": "Inverted: text search"
+      },
+      {
+        "id": "data",
+        "label": "Data Rows"
+      }
+    ],
+    "edges": [
+      [
+        "q",
+        "btree",
+        "age 20-30"
+      ],
+      [
+        "q",
+        "hash",
+        "id=42"
+      ],
+      [
+        "q",
+        "lsm",
+        "many writes"
+      ],
+      [
+        "q",
+        "inv",
+        "word match"
+      ],
+      [
+        "btree",
+        "data",
+        ""
+      ],
+      [
+        "hash",
+        "data",
+        ""
+      ],
+      [
+        "lsm",
+        "data",
+        ""
+      ],
+      [
+        "inv",
+        "data",
+        ""
+      ]
+    ]
+  },
+  "steps": [
+    {
+      "node_id": "q",
+      "narration": "You ask a question: range, equality, or text search?"
+    },
+    {
+      "node_id": "btree",
+      "narration": "For ranges, B+ Tree walks its sorted, linked leaves."
+    },
+    {
+      "node_id": "hash",
+      "narration": "For exact match, Hash jumps directly via hash."
+    },
+    {
+      "node_id": "lsm",
+      "narration": "For heavy writes, LSM buffers and flushes sequentially."
+    },
+    {
+      "node_id": "inv",
+      "narration": "For keywords, Inverted looks up word to doc list."
+    },
+    {
+      "node_id": "data",
+      "narration": "Each index points to the same rows, just faster for its pattern."
+    }
+  ],
+  "quiz": [
+    {
+      "q": "Why does a B+ Tree help range queries like price 10 to 50?",
+      "options": [
+        "It hashes prices to random spots",
+        "Its linked leaf nodes let you scan sorted values in order",
+        "It stores full text of documents",
+        "It ignores disk layout"
+      ],
+      "answer_index": 1,
+      "why": "B+ Tree keeps leaves sorted and linked, so range scans walk in order without scanning the whole table."
+    },
+    {
+      "q": "What fails first if you use a Hash Index for range queries and add 100x more data?",
+      "options": [
+        "Hash will still do fast range scans",
+        "Range queries fall back to full scans and get much slower",
+        "Writes become free",
+        "Text search improves"
+      ],
+      "answer_index": 1,
+      "why": "Hash only supports equality; ranges can't use it, so the database must scan many rows."
+    },
+    {
+      "q": "When would you pick an LSM Tree like in Cassandra over a B-Tree?",
+      "options": [
+        "When you need autocomplete",
+        "When you have very high write throughput",
+        "When you need geospatial R-Tree queries",
+        "When you filter low-cardinality columns"
+      ],
+      "answer_index": 1,
+      "why": "LSM uses sequential writes and batching, trading some read cost for much higher write throughput."
+    }
+  ],
+  "sources": [
+    "linkedin-com-feed-update-urn-li-activity-7408755754494607360"
+  ],
+  "extra": [],
+  "level": 2,
+  "topic": "Software Engineering & Systems",
+  "save_ids": [
+    "linkedin-com-feed-update-urn-li-activity-7408755754494607360"
+  ],
+  "words": 263,
+  "word_limit": 200,
+  "mermaid": "flowchart TD\n  n0[\"Your Query\"]\n  n1[\"B+ Tree: range scan\"]\n  n2[\"Hash: equality lookup\"]\n  n3[\"LSM: high writes\"]\n  n4[\"Inverted: text search\"]\n  n5[\"Data Rows\"]\n  n0 -->|\"age 20-30\"| n1\n  n0 -->|\"id=42\"| n2\n  n0 -->|\"many writes\"| n3\n  n0 -->|\"word match\"| n4\n  n1 --> n5\n  n2 --> n5\n  n3 --> n5\n  n4 --> n5",
+  "animation": [
+    {
+      "node": "n0",
+      "narration": "You ask a question: range, equality, or text search?"
+    },
+    {
+      "node": "n1",
+      "narration": "For ranges, B+ Tree walks its sorted, linked leaves."
+    },
+    {
+      "node": "n2",
+      "narration": "For exact match, Hash jumps directly via hash."
+    },
+    {
+      "node": "n3",
+      "narration": "For heavy writes, LSM buffers and flushes sequentially."
+    },
+    {
+      "node": "n4",
+      "narration": "For keywords, Inverted looks up word to doc list."
+    },
+    {
+      "node": "n5",
+      "narration": "Each index points to the same rows, just faster for its pattern."
+    }
+  ],
+  "rules_used": [],
+  "agent_trace": [
+    {
+      "tool": "search_saves",
+      "args": {
+        "query": "database indexing B-Tree Hash LSM"
+      }
+    }
+  ],
+  "judge": {
+    "drafts": 3,
+    "best": "D1",
+    "why": "",
+    "scores": {
+      "D1": null,
+      "D2": null,
+      "D3": null
+    },
+    "temperatures": [
+      0.4,
+      0.8,
+      1.0
+    ]
+  },
+  "id": "1196d17c87a07c7d"
+}

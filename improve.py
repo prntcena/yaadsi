@@ -20,7 +20,8 @@ Target level {level}/5 ({style}); at most {words} words.{rules}
 Score every draft 1-10 on:
 - grounding: claims come from the source material (anything else is clearly marked as extra);
 - level_fit: matches the target level and length;
-- clarity: easy to follow, good example or analogy, the quiz checks real understanding.
+- clarity: easy to follow, good example or analogy, the quiz checks real understanding; reads like a good article
+  (a hook, a clear flow from section to section, no repeated analogies).
 Reply with ONLY JSON: {{"scores": {{"<draft id>": {{"grounding": int, "level_fit": int, "clarity": int}}}},
 "best": "<draft id>", "why": str}}"""
 
@@ -41,7 +42,7 @@ def _rules_text(rules: list[str]) -> str:
 
 def _public(lesson: dict) -> dict:
     """What a judge sees: the teaching content, not our bookkeeping."""
-    return {k: lesson.get(k) for k in ("title", "sections", "quiz", "extra")}
+    return {k: lesson.get(k) for k in ("title", "subtitle", "intro", "sections", "takeaway", "quiz", "extra") if k in lesson}
 
 
 def _material(save_ids: list[str]) -> list[dict]:

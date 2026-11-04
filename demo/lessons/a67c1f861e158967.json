@@ -1,0 +1,180 @@
+{
+  "title": "How to Think Like a System Designer",
+  "subtitle": "From bouncers to databases: the plan behind apps that serve millions",
+  "intro": "Your save lists 25 system design questions — from Rate Limiter to YouTube — all asking the same thing: how would you build this for millions?",
+  "takeaway": "System design is planning how parts scale and fail together before you write code.",
+  "sections": [
+    {
+      "heading": "Analogy: designing a city before building it",
+      "body": "Imagine you run a busy restaurant. You need a bouncer at the door, a fast kitchen, and labeled shelves.\n\nSystem design is that plan for apps. A Rate Limiter is the bouncer, a Distributed Key-Value Store — a database spread across many machines — is the shelves.\n\nYou draw this plan before coding, which is why it matters next."
+    },
+    {
+      "heading": "Why it exists: handling millions without breaking",
+      "body": "You need this because one computer cannot serve millions. Your save lists 25 interview designs like URL Shortener, YouTube Video Streaming, and WhatsApp Chat.\n\nEach handles scale differently. A News Feed must rank posts for millions, Streaming must send huge video without buffering.\n\nWithout this plan your app crashes under load, and even with it things can still go wrong."
+    },
+    {
+      "heading": "What can go wrong: when good plans fail",
+      "body": "Even good designs break. If your Rate Limiter is too strict, real users get blocked; too loose and bots flood you.\n\nIf your Key-Value Store loses sync, one Instagram user sees an old photo while another sees the new one. Notification queues can overflow and delay chats.\n\nSo you must trade speed, freshness, and cost before you build."
+    }
+  ],
+  "diagram": {
+    "nodes": [
+      {
+        "id": "users",
+        "label": "Users"
+      },
+      {
+        "id": "limiter",
+        "label": "Rate Limiter\n(bouncer)"
+      },
+      {
+        "id": "app",
+        "label": "App Logic\n(Feed / Chat / Video)"
+      },
+      {
+        "id": "store",
+        "label": "Distributed Key-Value Store"
+      },
+      {
+        "id": "queue",
+        "label": "Notification Queue"
+      }
+    ],
+    "edges": [
+      [
+        "users",
+        "limiter",
+        ""
+      ],
+      [
+        "limiter",
+        "app",
+        ""
+      ],
+      [
+        "app",
+        "store",
+        ""
+      ],
+      [
+        "app",
+        "queue",
+        ""
+      ],
+      [
+        "queue",
+        "users",
+        "push"
+      ]
+    ]
+  },
+  "steps": [
+    {
+      "node_id": "users",
+      "narration": "Millions of users hit your app at once."
+    },
+    {
+      "node_id": "limiter",
+      "narration": "Rate Limiter decides who gets in now."
+    },
+    {
+      "node_id": "app",
+      "narration": "App builds Feed, Chat, or Video response."
+    },
+    {
+      "node_id": "store",
+      "narration": "Distributed Store fetches data from many machines."
+    },
+    {
+      "node_id": "queue",
+      "narration": "Queue sends notifications without blocking users."
+    }
+  ],
+  "quiz": [
+    {
+      "q": "What does a Rate Limiter do in system design?",
+      "options": [
+        "Stores photos forever",
+        "Controls how many requests get in",
+        "Ranks your News Feed",
+        "Compresses video files"
+      ],
+      "answer_index": 1,
+      "why": "Like a bouncer, it protects the system from being flooded."
+    },
+    {
+      "q": "What fails first if usage grows 100x without good design?",
+      "options": [
+        "The logo color fades",
+        "One server overloads and requests queue or crash",
+        "Users get faster phones",
+        "The database becomes cheaper"
+      ],
+      "answer_index": 1,
+      "why": "One machine cannot handle millions; queues overflow and sync breaks."
+    },
+    {
+      "q": "Why is a Distributed Key-Value Store spread across many machines?",
+      "options": [
+        "To make the app look pretty",
+        "To store more and stay available if one machine fails",
+        "To send emails",
+        "To block bots"
+      ],
+      "answer_index": 1,
+      "why": "Distribution gives scale and resilience, but can cause temporary inconsistency."
+    }
+  ],
+  "sources": [
+    "ww-linkedin-com-feed-update-urn-li-share-7516022880535527424"
+  ],
+  "extra": [],
+  "level": 2,
+  "topic": "Software Engineering & Systems",
+  "save_ids": [
+    "ww-linkedin-com-feed-update-urn-li-share-7516022880535527424"
+  ],
+  "words": 203,
+  "word_limit": 200,
+  "mermaid": "flowchart TD\n  n0[\"Users\"]\n  n1[\"Rate Limiter\n(bouncer)\"]\n  n2[\"App Logic\n(Feed / Chat / Video)\"]\n  n3[\"Distributed Key-Value Store\"]\n  n4[\"Notification Queue\"]\n  n0 --> n1\n  n1 --> n2\n  n2 --> n3\n  n2 --> n4\n  n4 -->|\"push\"| n0",
+  "animation": [
+    {
+      "node": "n0",
+      "narration": "Millions of users hit your app at once."
+    },
+    {
+      "node": "n1",
+      "narration": "Rate Limiter decides who gets in now."
+    },
+    {
+      "node": "n2",
+      "narration": "App builds Feed, Chat, or Video response."
+    },
+    {
+      "node": "n3",
+      "narration": "Distributed Store fetches data from many machines."
+    },
+    {
+      "node": "n4",
+      "narration": "Queue sends notifications without blocking users."
+    }
+  ],
+  "rules_used": [],
+  "agent_trace": [],
+  "judge": {
+    "drafts": 3,
+    "best": "D1",
+    "why": "",
+    "scores": {
+      "D1": null,
+      "D2": null,
+      "D3": null
+    },
+    "temperatures": [
+      0.4,
+      0.8,
+      1.0
+    ]
+  },
+  "id": "a67c1f861e158967"
+}
