@@ -1,20 +1,20 @@
 {
-  "title": "From One Chatbot to a Team of Agents",
-  "subtitle": "How Google ADK turns prototypes into production teams",
-  "intro": "You asked one AI to do everything and it got confused. What if you gave it a team with a clear org chart instead?",
-  "takeaway": "Production agents work as a team: deterministic code handles the predictable paths, AI handles the judgment calls.",
+  "title": "From One Smart Bot to a Kitchen Crew",
+  "subtitle": "How Google ADK turns prototypes into production multi-agent systems",
+  "intro": "Your single AI assistant answered 40,000 requests yesterday. Each time it tried to do everything alone — and slowed down.",
+  "takeaway": "ADK lets you split work across specialized agents with predictable graph paths, but you must manage context or the crew stalls.",
   "sections": [
     {
-      "heading": "Everyday analogy: the restaurant kitchen",
-      "body": "Think of a restaurant kitchen. One cook doing everything is slow and messy.\n\nA real kitchen has stations: one chops, one grills, one plates. A ticket (graph) tells each dish where to go next.\n\nGoogle's ADK builds AI the same way: small specialist agents linked by a graph-based workflow, not one giant prompt. That leads to why this exists."
+      "heading": "The analogy: a restaurant kitchen crew",
+      "body": "Imagine one chef doing everything versus a kitchen crew. One chef takes orders, cooks, and serves — slow and messy. A crew splits jobs: one greets, one cooks, one checks quality. An agent is an AI helper with one job and tools. Orchestration is the head chef deciding who acts next. Powerful, but only if organized — which is the next puzzle."
     },
     {
-      "heading": "Why does this exist?: reliable logic plus smart reasoning",
-      "body": "A production agent needs two things. Deterministic logic means code that always follows the same rule, like check inventory first. LLM reasoning means the AI can adapt and decide in open-ended situations.\n\nADK lets you weave them together and orchestrate agents via graphs with explicit execution paths. You also get structured context management, so each agent only sees what it needs.\n\nIt is open-source and model-agnostic, available in Python, TypeScript, Go, Java and Kotlin. But even a good kitchen can fail."
+      "heading": "Why does this exist? From prototypes to production",
+      "body": "That is why Google's ADK exists. ADK is an open-source Agent Development Kit for production agents, not prototypes. It weaves deterministic code — fixed rules like 'always check ID' — with LLM reasoning, flexible AI thinking. Work is a graph: explicit paths like A -> B -> C for predictable outcomes. It works in Python, TypeScript, Go, Java, Kotlin and scales to enterprise services. More agents, more to manage."
     },
     {
-      "heading": "What can go wrong: when the team breaks down",
-      "body": "If your graph is too complex, tasks loop or stall and latency spikes.\n\nIf context is managed poorly, agents lose memory or leak private data to the wrong station.\n\nIf you rely only on AI reasoning with no deterministic checks, outcomes become unpredictable and hard to debug at enterprise scale."
+      "heading": "What can go wrong? When your crew gets confused",
+      "body": "What breaks if usage grows 100x? Context. Context is each agent's short-term memory of the conversation. If every agent saves everything, memory bloats, costs spike, and agents use stale info. Even with graphs, a loop or missed handoff can stall the system. ADK lets you test, evaluate, and debug paths before deploy, so handoffs stay predictable, not just smart."
     }
   ],
   "diagram": {
@@ -25,23 +25,23 @@
       },
       {
         "id": "orchestrator",
-        "label": "Orchestrator Graph"
+        "label": "Orchestrator (Head Chef)"
       },
       {
-        "id": "deterministic",
-        "label": "Deterministic Agent (rules)"
+        "id": "agentA",
+        "label": "Agent A: Greeter"
       },
       {
-        "id": "ai",
-        "label": "AI Reasoning Agent"
+        "id": "agentB",
+        "label": "Agent B: Worker"
+      },
+      {
+        "id": "graph",
+        "label": "Graph Path A->B->C"
       },
       {
         "id": "context",
-        "label": "Structured Context"
-      },
-      {
-        "id": "deploy",
-        "label": "Deployed App"
+        "label": "Shared Context"
       }
     ],
     "edges": [
@@ -52,27 +52,27 @@
       ],
       [
         "orchestrator",
-        "deterministic",
+        "agentA",
         ""
       ],
       [
         "orchestrator",
-        "ai",
+        "agentB",
         ""
       ],
       [
-        "deterministic",
-        "context",
+        "agentA",
+        "graph",
         ""
       ],
       [
-        "ai",
-        "context",
+        "agentB",
+        "graph",
         ""
       ],
       [
+        "graph",
         "context",
-        "deploy",
         ""
       ]
     ]
@@ -80,119 +80,139 @@
   "steps": [
     {
       "node_id": "user",
-      "narration": "User sends a task that is too complex for one prompt."
+      "narration": "User request arrives and needs multiple skills."
     },
     {
       "node_id": "orchestrator",
-      "narration": "Orchestrator graph splits work and sets explicit paths."
+      "narration": "Orchestrator decides which agent acts next."
     },
     {
-      "node_id": "deterministic",
-      "narration": "Deterministic agent runs reliable checks."
+      "node_id": "agentA",
+      "narration": "Specialist Agent A handles its job with tools."
     },
     {
-      "node_id": "ai",
-      "narration": "AI agent handles judgment calls."
+      "node_id": "agentB",
+      "narration": "Specialist Agent B handles the next job."
+    },
+    {
+      "node_id": "graph",
+      "narration": "Graph defines explicit A -> B -> C path for predictability."
     },
     {
       "node_id": "context",
-      "narration": "Structured context shares only needed memory."
-    },
-    {
-      "node_id": "deploy",
-      "narration": "ADK deploys team across models and languages."
+      "narration": "Shared context passes only needed memory between agents."
     }
   ],
   "quiz": [
     {
-      "q": "What does ADK mainly help you build?",
+      "q": "What is orchestration in a multi-agent system?",
       "options": [
-        "Single prompts for prototypes",
-        "Production multi-agent systems with graphs",
-        "Only image generation models",
-        "Manual databases with no AI"
+        "One big model doing everything",
+        "The head-chef logic deciding which agent acts next",
+        "Storing all chat history forever",
+        "Choosing a programming language"
       ],
       "answer_index": 1,
-      "why": "ADK is for building, debugging and deploying reliable multi-agent systems with graph-based orchestration."
+      "why": "Orchestration is coordinating who does what and when, not just having smarter models."
     },
     {
-      "q": "What fails first if usage grows 100x without good design?",
+      "q": "What fails first if usage grows 100x?",
       "options": [
-        "Graphs become too simple",
-        "Context overload, loops, and unpredictable latency",
-        "Deterministic code gets smarter",
-        "You need fewer languages"
+        "Python stops working",
+        "Context/memory bloat leading to cost and stale info",
+        "Graphs make answers more creative",
+        "ADK removes deterministic code"
       ],
       "answer_index": 1,
-      "why": "At scale, poor context management and overly complex graphs cause stalls, leaks, and latency."
+      "why": "If every agent keeps everything, context bloats, costs spike, and handoffs use stale info."
     },
     {
-      "q": "What does hybrid deterministic + AI reasoning mean?",
+      "q": "Why weave deterministic code with LLM reasoning?",
       "options": [
-        "Use only LLM for everything",
-        "Use only hard-coded rules",
-        "Weave predictable code paths with adaptive AI decisions",
-        "Deploy without any orchestration"
+        "To make every answer random",
+        "To combine predictable rules with flexible thinking",
+        "To avoid testing",
+        "To use only one language"
       ],
-      "answer_index": 2,
-      "why": "ADK weaves deterministic code for predictable outcomes with LLM reasoning for adaptability."
+      "answer_index": 1,
+      "why": "ADK's idea is reliable logic plus adaptive reasoning for predictable yet intelligent outcomes."
     }
   ],
   "sources": [
     "https-google-github-io-adk-docs"
   ],
-  "extra": [],
+  "extra": [
+    "ADK 2.0 adds Agents CLI to scaffold, test, and deploy agents from your IDE."
+  ],
   "level": 2,
   "topic": "AI & Machine Learning",
   "save_ids": [
     "https-google-github-io-adk-docs"
   ],
-  "words": 214,
+  "words": 210,
   "word_limit": 200,
-  "mermaid": "flowchart TD\n  n0[\"User Request\"]\n  n1[\"Orchestrator Graph\"]\n  n2[\"Deterministic Agent (rules)\"]\n  n3[\"AI Reasoning Agent\"]\n  n4[\"Structured Context\"]\n  n5[\"Deployed App\"]\n  n0 --> n1\n  n1 --> n2\n  n1 --> n3\n  n2 --> n4\n  n3 --> n4\n  n4 --> n5",
+  "mermaid": "flowchart TD\n  n0[\"User Request\"]\n  n1[\"Orchestrator (Head Chef)\"]\n  n2[\"Agent A: Greeter\"]\n  n3[\"Agent B: Worker\"]\n  n4[\"Graph Path A- B- C\"]\n  n5[\"Shared Context\"]\n  n0 --> n1\n  n1 --> n2\n  n1 --> n3\n  n2 --> n4\n  n3 --> n4\n  n4 --> n5",
   "animation": [
     {
       "node": "n0",
-      "narration": "User sends a task that is too complex for one prompt."
+      "narration": "User request arrives and needs multiple skills."
     },
     {
       "node": "n1",
-      "narration": "Orchestrator graph splits work and sets explicit paths."
+      "narration": "Orchestrator decides which agent acts next."
     },
     {
       "node": "n2",
-      "narration": "Deterministic agent runs reliable checks."
+      "narration": "Specialist Agent A handles its job with tools."
     },
     {
       "node": "n3",
-      "narration": "AI agent handles judgment calls."
+      "narration": "Specialist Agent B handles the next job."
     },
     {
       "node": "n4",
-      "narration": "Structured context shares only needed memory."
+      "narration": "Graph defines explicit A -> B -> C path for predictability."
     },
     {
       "node": "n5",
-      "narration": "ADK deploys team across models and languages."
+      "narration": "Shared context passes only needed memory between agents."
     }
   ],
   "rules_used": [],
   "agent_trace": [
     {
+      "tool": "read_save",
+      "args": {
+        "save_id": "https-google-github-io-adk-docs"
+      }
+    },
+    {
       "tool": "search_saves",
       "args": {
-        "query": "Google ADK multi-agent orchestration"
+        "query": "multi-agent orchestration ADK"
       }
     }
   ],
   "judge": {
     "drafts": 3,
-    "best": "D1",
-    "why": "",
+    "best": "D2",
+    "why": "D2 best matches beginner level: starts with an everyday kitchen analogy, defines agent, orchestration, deterministic code, and context in plain words, and sticks closest to the source while clearly listing an extra.",
     "scores": {
-      "D1": null,
-      "D2": null,
-      "D3": null
+      "D1": {
+        "grounding": 7,
+        "level_fit": 6,
+        "clarity": 7
+      },
+      "D2": {
+        "grounding": 8,
+        "level_fit": 7,
+        "clarity": 8
+      },
+      "D3": {
+        "grounding": 6,
+        "level_fit": 7,
+        "clarity": 8
+      }
     },
     "temperatures": [
       0.4,

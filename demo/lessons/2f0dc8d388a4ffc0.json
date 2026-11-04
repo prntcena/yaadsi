@@ -1,123 +1,115 @@
 {
-  "title": "Beyond Prompting: How Real LLM Systems Are Built",
-  "subtitle": "23 notebooks show the full stack from training to retrieval",
-  "intro": "You saved 23 notebooks with 3K stars that go beyond prompting. Most people stop at chat; serious builders train, align, and connect knowledge.",
-  "takeaway": "Real LLM systems combine cheap fine-tuning, outside knowledge, and careful evaluation — not just bigger prompts.",
+  "title": "Beyond Prompting: How Builders Actually Train LLMs",
+  "subtitle": "LoRA, RAG and the cheap way to teach giant models",
+  "intro": "Your save got 3,000 stars for 23 notebooks that go beyond prompting. The trick isn't retraining a giant - it's teaching it cheaply.",
+  "takeaway": "You don't retrain the giant model, you add a tiny adapter and a searchable notebook, then measure if it helped.",
   "sections": [
     {
-      "heading": "Analogy: the library intern",
-      "body": "Think of a base LLM like a smart intern who read the whole library once.\n\nFine-tuning is short job training. LoRA means you don't retrain the whole brain, you add a tiny adapter — a few sticky notes that teach a new skill.\n\nRAG is giving the intern a walkie-talkie to the library. Instead of guessing, they look up fresh pages when you ask.\n\nThat sets up why builders need both tricks."
+      "heading": "Analogy: teaching a master chef your recipe",
+      "body": "Imagine a master chef who knows every cuisine. You want your grandma's soup, exactly your way.\n\nYou don't send the chef back to cooking school. You give a small recipe card: \"add more salt, simmer longer.\" A LoRA adapter is that card — a tiny add-on you train while the big model, the base LLM like LLaMA or Mistral, stays frozen."
     },
     {
-      "heading": "Why does this exist?: beyond prompting",
-      "body": "Prompting alone can't teach private data or keep facts fresh.\n\nThe repo shows the full stack: Training with LoRA/QLoRA and 4-bit quantization — quantization means shrinking model weights from 16-bit to 4-bit so LLaMA or Mistral fits on one GPU. Alignment with RLHF — RLHF means learning from human thumbs-up/down on custom datasets. Retrieval with RAG pipelines via LangChain and Knowledge Graphs.\n\nExample: fine-tune Phi on your docs with QLoRA, then add RAG so it cites Neo4j.\n\nBut cheap and clever has limits."
+      "heading": "Why does this exist? Making giants affordable",
+      "body": "Training a giant LLM from scratch costs millions.\n\nLoRA fixes that by training only the small card. QLoRA uses quantization — squishing weights from 16-bit to 4-bit with bitsandbytes — so it fits on one cheap GPU.\n\nRAG is different. RAG means Retrieval-Augmented Generation — letting the model look up fresh facts in your notes with LangChain and a Knowledge Graph like Neo4j, instead of memorizing them."
     },
     {
-      "heading": "What can go wrong?: when shortcuts break",
-      "body": "Quantization saves memory but can blur accuracy. A 1-bit model is tiny but forgets nuance.\n\nLoRA adapters can overfit your small dataset and fail on new questions.\n\nRAG can retrieve the wrong page and the LLM will confidently quote it. Without MLflow evaluation — MLflow means tracking scores over time — you won't notice.\n\nSo builders test every step: training, alignment, retrieval, and optimization."
+      "heading": "What can go wrong? When the card and cookbook fail",
+      "body": "If you train the card too long on too little data, it overfits — it memorizes your examples and forgets general skills.\n\n4-bit squishing can make answers less precise. RAG can pull the wrong document and the model will quote it confidently. RLHF, learning from human preferences, can learn the wrong preference if ratings are messy.\n\nThat's why the repo uses MLflow evaluation to test before you trust."
     }
   ],
   "diagram": {
     "nodes": [
       {
         "id": "base",
-        "label": "Base LLM"
+        "label": "Base LLM (LLaMA/Mistral)"
       },
       {
-        "id": "finetune",
-        "label": "LoRA/QLoRA Fine-tune"
-      },
-      {
-        "id": "align",
-        "label": "RLHF Alignment"
+        "id": "lora",
+        "label": "LoRA Card (QLoRA 4-bit)"
       },
       {
         "id": "rag",
-        "label": "RAG Retrieval"
+        "label": "RAG Cookbook (LangChain + Neo4j)"
       },
       {
         "id": "eval",
-        "label": "MLflow Evaluation"
+        "label": "MLflow Check"
       }
     ],
     "edges": [
       [
         "base",
-        "finetune",
-        ""
+        "lora",
+        "add card"
       ],
       [
-        "finetune",
-        "align",
-        ""
-      ],
-      [
-        "align",
+        "base",
         "rag",
-        ""
+        "look up"
+      ],
+      [
+        "lora",
+        "eval",
+        "test"
       ],
       [
         "rag",
         "eval",
-        ""
+        "test"
       ]
     ]
   },
   "steps": [
     {
       "node_id": "base",
-      "narration": "Start with base model like LLaMA or Mistral."
+      "narration": "Start with a giant base LLM that already knows language."
     },
     {
-      "node_id": "finetune",
-      "narration": "Add LoRA adapter with 4-bit quantization to teach cheaply."
-    },
-    {
-      "node_id": "align",
-      "narration": "Align outputs with RLHF on your human ratings."
+      "node_id": "lora",
+      "narration": "Add a tiny LoRA card, squeezed to 4-bit so it fits cheaply."
     },
     {
       "node_id": "rag",
-      "narration": "Connect RAG to fetch fresh docs at ask time."
+      "narration": "Give it a RAG cookbook to look up fresh facts instead of memorizing."
     },
     {
       "node_id": "eval",
-      "narration": "Track quality with MLflow before shipping."
+      "narration": "Run MLflow checks to see if answers actually improved."
     }
   ],
   "quiz": [
     {
-      "q": "What does LoRA do?",
+      "q": "What is a LoRA adapter in plain words?",
       "options": [
-        "Retrains all billions of weights",
-        "Adds a small trainable adapter on top",
-        "Deletes the base model",
-        "Only changes the prompt"
+        "A full retrain of the giant model",
+        "A tiny recipe card you train while the big model stays frozen",
+        "A database for looking up facts",
+        "A way to delete the base model"
       ],
       "answer_index": 1,
-      "why": "LoRA freezes the base model and trains tiny adapter weights, making fine-tuning cheap."
+      "why": "LoRA freezes the base LLM and only trains a small added layer, which is cheap and fast."
     },
     {
-      "q": "What fails first if usage grows 100x and you rely only on 4-bit QLoRA without RAG or evaluation?",
+      "q": "Why use RAG instead of just more fine-tuning?",
       "options": [
-        "Model stays perfectly accurate",
-        "Hallucinations and stale facts grow unnoticed",
-        "GPUs get cheaper automatically",
-        "RAG fixes itself"
+        "RAG makes the model remember everything forever",
+        "RAG lets the model look up fresh, private facts at answer time",
+        "RAG replaces the GPU",
+        "RAG is only for images"
       ],
       "answer_index": 1,
-      "why": "Without retrieval and MLflow checks, quantization errors and outdated knowledge compound at scale."
+      "why": "RAG pipelines let the model retrieve current info from your own docs instead of baking it into weights."
     },
     {
-      "q": "What is RAG for?",
+      "q": "What breaks or goes wrong if you fine-tune too much and skip evaluation?",
       "options": [
-        "Making the model smaller",
-        "Letting the model look up external documents when answering",
-        "Replacing human feedback",
-        "Training with 1-bit only"
+        "The model automatically gets faster and more accurate",
+        "It overfits, forgets general skills, and you won't notice without MLflow checks",
+        "Quantization stops costing any memory",
+        "RAG will automatically fix all mistakes"
       ],
       "answer_index": 1,
-      "why": "RAG pipelines fetch relevant docs via LangChain/ChromaDB so answers stay fresh and grounded."
+      "why": "Over-training on small data causes overfitting and forgetting, and without evaluation you ship a worse model."
     }
   ],
   "sources": [
@@ -129,55 +121,49 @@
   "save_ids": [
     "linkedin-com-feed-update-urn-li-activity-7428320533613780992"
   ],
-  "words": 242,
+  "words": 219,
   "word_limit": 200,
-  "mermaid": "flowchart TD\n  n0[\"Base LLM\"]\n  n1[\"LoRA/QLoRA Fine-tune\"]\n  n2[\"RLHF Alignment\"]\n  n3[\"RAG Retrieval\"]\n  n4[\"MLflow Evaluation\"]\n  n0 --> n1\n  n1 --> n2\n  n2 --> n3\n  n3 --> n4",
+  "mermaid": "flowchart TD\n  n0[\"Base LLM (LLaMA/Mistral)\"]\n  n1[\"LoRA Card (QLoRA 4-bit)\"]\n  n2[\"RAG Cookbook (LangChain + Neo4j)\"]\n  n3[\"MLflow Check\"]\n  n0 -->|\"add card\"| n1\n  n0 -->|\"look up\"| n2\n  n1 -->|\"test\"| n3\n  n2 -->|\"test\"| n3",
   "animation": [
     {
       "node": "n0",
-      "narration": "Start with base model like LLaMA or Mistral."
+      "narration": "Start with a giant base LLM that already knows language."
     },
     {
       "node": "n1",
-      "narration": "Add LoRA adapter with 4-bit quantization to teach cheaply."
+      "narration": "Add a tiny LoRA card, squeezed to 4-bit so it fits cheaply."
     },
     {
       "node": "n2",
-      "narration": "Align outputs with RLHF on your human ratings."
+      "narration": "Give it a RAG cookbook to look up fresh facts instead of memorizing."
     },
     {
       "node": "n3",
-      "narration": "Connect RAG to fetch fresh docs at ask time."
-    },
-    {
-      "node": "n4",
-      "narration": "Track quality with MLflow before shipping."
+      "narration": "Run MLflow checks to see if answers actually improved."
     }
   ],
   "rules_used": [],
-  "agent_trace": [
-    {
-      "tool": "read_save",
-      "args": {
-        "save_id": "linkedin-com-feed-update-urn-li-activity-7428320533613780992"
-      }
-    },
-    {
-      "tool": "search_saves",
-      "args": {
-        "query": "LLM fine-tuning LoRA RAG quantization",
-        "topic": "AI & Machine Learning"
-      }
-    }
-  ],
+  "agent_trace": [],
   "judge": {
     "drafts": 3,
-    "best": "D1",
-    "why": "",
+    "best": "D2",
+    "why": "D2 best fits a beginner: one clear chef analogy, plain definitions of LoRA, QLoRA, quantization, RAG and RLHF, and quizzes that test understanding. It exceeds 200 words and adds unmarked extras like training costs and overfitting, lowering grounding.",
     "scores": {
-      "D1": null,
-      "D2": null,
-      "D3": null
+      "D1": {
+        "grounding": 7,
+        "level_fit": 5,
+        "clarity": 6
+      },
+      "D2": {
+        "grounding": 6,
+        "level_fit": 7,
+        "clarity": 8
+      },
+      "D3": {
+        "grounding": 8,
+        "level_fit": 6,
+        "clarity": 7
+      }
     },
     "temperatures": [
       0.4,

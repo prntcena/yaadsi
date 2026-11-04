@@ -1,27 +1,27 @@
 {
-  "title": "16 System Design Ideas That Keep Apps Alive",
-  "subtitle": "From idempotent APIs to Bloom filters, the beginner map for 2026",
-  "intro": "You saved Neo Kim's list of 16 system design concepts for 2026 — the same playbook 200K+ engineers get in his newsletter. Where do you even start?",
-  "takeaway": "System design is choosing trade-offs so your app stays fast, correct, and available as it grows.",
+  "title": "16 System Ideas That Keep the Internet From Breaking",
+  "subtitle": "A beginner map to idempotency, sagas, hashing and more",
+  "intro": "You tap \"pay\" once but your phone sends it twice. Should you be charged twice? Good systems say no.",
+  "takeaway": "System design is how many small services act like one reliable app, even when networks and machines fail.",
   "sections": [
     {
-      "heading": "Analogy: a city, not a single building",
-      "body": "Think of your app like a city. One building is one server; a city is many buildings with roads. A distributed system is that city — many computers working together over a network to act like one app. Service discovery is the address book that helps them find each other."
+      "heading": "Everyday analogy: a busy restaurant kitchen",
+      "body": "Think of an app like a restaurant. Orders (API calls), chefs (services), storage rooms (databases) and runners (networks) must work together.\n\nService Discovery is the host who knows which chef is free. Consistent Hashing decides which fridge stores what. Idempotent APIs mean re-sending the same order doesn't cook it twice.\n\nBloom Filters are a quick \"we definitely don't have it\" checklist before searching the pantry. JWT Authentication is your stamped wristband to prove you paid.\n\nThat kitchen only works if parts can fail safely, which is why these ideas exist."
     },
     {
-      "heading": "Why it exists: speed, safety, and scale",
-      "body": "Why use these ideas? To stay fast and correct as more people join. An idempotent API means retrying the same request has the same effect as doing it once — tap pay twice, pay once. Consistent hashing is a way to spread users evenly across servers when you add more. A Bloom filter is a quick check for \"have we seen this?\" to skip slow lookups. JWT authentication is a signed pass that proves who you are."
+      "heading": "Why does this exist? To stay up when pieces fail",
+      "body": "Distributed Systems split work across many machines so one failure doesn't stop everyone.\n\n- RPC lets one service call another like a function, even far away.\n- Saga Design Pattern breaks a big transaction into small steps with undo plans if one step fails.\n\nYou need this because phones retry, servers crash, and data grows. It leads to a new risk: complexity itself can break you."
     },
     {
-      "heading": "What can go wrong: when the city jams",
-      "body": "What can go wrong? Coordination. The saga pattern breaks a big job into steps with undo actions — if an undo fails, data stays mismatched. RPC is when one service calls another directly; it can time out and, without idempotency, retries create duplicates. Bloom filters can also give false positives, saying \"maybe yes\" when the answer is no."
+      "heading": "What can go wrong? The fixes become the bugs",
+      "body": "More pieces mean more places to fail.\n\n- A bad hash ring sends all traffic to one server.\n- Service Discovery with stale info sends you to dead machines.\n- A broken saga leaves half an order paid and half not.\n\nSimple beats clever early. Start with clear API Design and add patterns only when you feel real pain."
     }
   ],
   "diagram": {
     "nodes": [
       {
         "id": "user",
-        "label": "You (retry tap)"
+        "label": "You tap Pay"
       },
       {
         "id": "api",
@@ -32,16 +32,16 @@
         "label": "Service Discovery"
       },
       {
-        "id": "hash",
-        "label": "Consistent Hashing"
+        "id": "service",
+        "label": "Services via RPC"
       },
       {
-        "id": "filter",
-        "label": "Bloom Filter check"
+        "id": "saga",
+        "label": "Saga steps + JWT check"
       },
       {
-        "id": "auth",
-        "label": "JWT pass"
+        "id": "store",
+        "label": "Data: Hash Ring + Bloom Filter"
       }
     ],
     "edges": [
@@ -53,136 +53,146 @@
       [
         "api",
         "discovery",
-        "find service"
+        ""
       ],
       [
         "discovery",
-        "hash",
-        "pick server"
+        "service",
+        "find healthy"
       ],
       [
-        "hash",
-        "filter",
-        "skip DB?"
+        "service",
+        "saga",
+        ""
       ],
       [
-        "filter",
-        "auth",
-        "verify"
+        "saga",
+        "store",
+        "store safely"
       ]
     ]
   },
   "steps": [
     {
       "node_id": "user",
-      "narration": "You tap pay twice; network may send it twice."
+      "narration": "You send a request; network may duplicate it."
     },
     {
       "node_id": "api",
-      "narration": "Idempotent API ensures second tap does not double-charge."
+      "narration": "Idempotent API ensures twice = once."
     },
     {
       "node_id": "discovery",
-      "narration": "Service discovery finds which server can handle it."
+      "narration": "Discovery finds a healthy service instance."
     },
     {
-      "node_id": "hash",
-      "narration": "Consistent hashing picks the right server evenly."
+      "node_id": "service",
+      "narration": "Services talk via RPC to do work."
     },
     {
-      "node_id": "filter",
-      "narration": "Bloom filter quickly checks if we've seen this payment."
+      "node_id": "saga",
+      "narration": "Saga with JWT ensures steps are authorized and reversible."
     },
     {
-      "node_id": "auth",
-      "narration": "JWT proves who you are without extra DB call."
+      "node_id": "store",
+      "narration": "Consistent hashing places data; Bloom filter avoids wasted lookups."
     }
   ],
   "quiz": [
     {
-      "q": "What does an idempotent API guarantee?",
+      "q": "What does an Idempotent API guarantee?",
       "options": [
-        "First request is faster",
-        "Retrying the same request has the same effect as once",
-        "Passwords are encrypted",
-        "Servers never fail"
+        "First call is always fastest",
+        "Same request twice has same effect as once",
+        "Passwords are never stored",
+        "Data is always on one machine"
       ],
       "answer_index": 1,
-      "why": "Idempotency means safe retries — duplicates don't create extra side effects like double charges."
+      "why": "Idempotency prevents double-charging on retries."
     },
     {
-      "q": "What fails first if usage grows 100x without consistent hashing?",
+      "q": "What can go wrong if usage grows 100x quickly?",
       "options": [
-        "JWT expires faster",
-        "Adding servers reshuffles most users to new machines, causing hot spots and cache misses",
-        "Bloom filters become 100% accurate",
-        "Saga pattern is no longer needed"
+        "JWT wristbands become more secure",
+        "Consistent hashing and discovery can overload one server or route to dead ones",
+        "Bloom filters make databases disappear",
+        "Sagas remove need for networks"
       ],
       "answer_index": 1,
-      "why": "Without consistent hashing, scaling out remaps many keys, overloading new nodes and breaking locality."
+      "why": "Hot spots and stale discovery are classic scale failures."
     },
     {
-      "q": "What is a key limit of Bloom filters?",
+      "q": "What is the Saga pattern for?",
       "options": [
-        "They store passwords securely",
-        "They can give false positives — saying maybe present when not",
-        "They replace service discovery",
-        "They make APIs idempotent"
+        "Encrypting passwords",
+        "Managing a multi-service transaction with compensating steps",
+        "Caching frontend code",
+        "Replacing API versioning"
       ],
       "answer_index": 1,
-      "why": "Bloom filters are fast probabilistic checks; they never miss a true present item but can falsely say maybe."
+      "why": "Sagas handle distributed transactions without one giant lock."
     }
   ],
   "sources": [
     "linkedin-com-feed-update-urn-li-activity-7405595393402556416"
   ],
-  "extra": [
-    "Saga pattern is often used as alternative to two-phase commit for long-lived transactions across microservices."
-  ],
+  "extra": [],
   "level": 2,
   "topic": "Software Engineering & Systems",
   "save_ids": [
     "linkedin-com-feed-update-urn-li-activity-7405595393402556416"
   ],
-  "words": 212,
+  "words": 234,
   "word_limit": 200,
-  "mermaid": "flowchart TD\n  n0[\"You (retry tap)\"]\n  n1[\"Idempotent API\"]\n  n2[\"Service Discovery\"]\n  n3[\"Consistent Hashing\"]\n  n4[\"Bloom Filter check\"]\n  n5[\"JWT pass\"]\n  n0 -->|\"retry safe\"| n1\n  n1 -->|\"find service\"| n2\n  n2 -->|\"pick server\"| n3\n  n3 -->|\"skip DB?\"| n4\n  n4 -->|\"verify\"| n5",
+  "mermaid": "flowchart TD\n  n0[\"You tap Pay\"]\n  n1[\"Idempotent API\"]\n  n2[\"Service Discovery\"]\n  n3[\"Services via RPC\"]\n  n4[\"Saga steps + JWT check\"]\n  n5[\"Data: Hash Ring + Bloom Filter\"]\n  n0 -->|\"retry safe\"| n1\n  n1 --> n2\n  n2 -->|\"find healthy\"| n3\n  n3 --> n4\n  n4 -->|\"store safely\"| n5",
   "animation": [
     {
       "node": "n0",
-      "narration": "You tap pay twice; network may send it twice."
+      "narration": "You send a request; network may duplicate it."
     },
     {
       "node": "n1",
-      "narration": "Idempotent API ensures second tap does not double-charge."
+      "narration": "Idempotent API ensures twice = once."
     },
     {
       "node": "n2",
-      "narration": "Service discovery finds which server can handle it."
+      "narration": "Discovery finds a healthy service instance."
     },
     {
       "node": "n3",
-      "narration": "Consistent hashing picks the right server evenly."
+      "narration": "Services talk via RPC to do work."
     },
     {
       "node": "n4",
-      "narration": "Bloom filter quickly checks if we've seen this payment."
+      "narration": "Saga with JWT ensures steps are authorized and reversible."
     },
     {
       "node": "n5",
-      "narration": "JWT proves who you are without extra DB call."
+      "narration": "Consistent hashing places data; Bloom filter avoids wasted lookups."
     }
   ],
   "rules_used": [],
   "agent_trace": [],
   "judge": {
     "drafts": 3,
-    "best": "D1",
-    "why": "",
+    "best": "D3",
+    "why": "D3 has the strongest beginner hook, one consistent kitchen analogy, plain definitions for the listed concepts, and a clear flow into failure modes with understanding-focused quiz questions; all drafts exceed 200 words and add unmarked definitions beyond the list-only source.",
     "scores": {
-      "D1": null,
-      "D2": null,
-      "D3": null
+      "D1": {
+        "grounding": 5,
+        "level_fit": 5,
+        "clarity": 7
+      },
+      "D2": {
+        "grounding": 5,
+        "level_fit": 5,
+        "clarity": 7
+      },
+      "D3": {
+        "grounding": 4,
+        "level_fit": 5,
+        "clarity": 8
+      }
     },
     "temperatures": [
       0.4,

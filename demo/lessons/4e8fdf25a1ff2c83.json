@@ -1,170 +1,163 @@
 {
   "title": "Stop the Scroll in 3 Seconds",
-  "subtitle": "How a simple hook turns strangers into viewers",
-  "intro": "You have 3 seconds before someone scrolls past you. How do you make them stop?",
-  "takeaway": "A hook earns you 3 seconds of attention so your story can earn the rest.",
+  "subtitle": "How 50 fill-in-the-blank hooks turn strangers into viewers",
+  "intro": "You have 3 seconds before someone scrolls past you. Your saved post promises 50 lines that can freeze that thumb.",
+  "takeaway": "A good hook earns 3 seconds of attention so your story can earn the next 30.",
   "sections": [
     {
       "heading": "Everyday analogy: the shop window",
-      "body": "Think of your post like a shop window on a busy street.\n\nPeople walk fast and look at dozens of windows. A hook is the one bright sign that makes them stop and look inside.\n\nWithout it, even a great shop gets ignored. With it, you get a chance to invite them in."
+      "body": "Think of your video like a shop on a busy street. A hook is the window display that makes you stop walking.\n\nYou don't see the whole store yet, just one surprising sign. That sign decides if you walk in.\n\nYour Instagram feed is that street, and the hook is your sign — so let's see why you need one."
     },
     {
-      "heading": "Why it exists: attention you have to earn",
-      "body": "A storytelling hook is the first line of your video or post, designed to grab attention instantly.\n\nTemplates make this easy. For example: \"I didn't plan to talk about this, but pretending (insert situation) was fine wasn't working anymore.\" You just fill in the blank with your story.\n\nYou use it because attention is short. The hook stops the scroll so engagement can start."
+      "heading": "Why does this exist? Attention you can't waste",
+      "body": "Attention-grabbing hook means the first line that stops scrolling. Storytelling template means a fill-in-the-blank sentence you reuse.\n\nYour save gives you 10 examples like: \"I wasted (insert time period) doing (insert habit)...\" You just add your story.\n\nThat works because people decide in 3 seconds if they'll stay. A ready template saves you from guessing every time — but copy-paste alone can backfire, which is next."
     },
     {
-      "heading": "What can go wrong: when hooks backfire",
-      "body": "A hook only works if the story behind it delivers.\n\nIf you use a dramatic line like \"This looks like a normal moment, but it changed my life completely\" and then share something boring, viewers feel tricked and leave.\n\n- Too vague: no one knows what you're talking about\n- Too clickbaity: promise is bigger than payoff\n\nMatch the hook to a real payoff, or trust breaks."
+      "heading": "What can go wrong? When hooks flop",
+      "body": "If your hook promises drama but your story is flat, viewers feel tricked and leave.\n\nIf you use the same hook as everyone else — like \"Nobody talks about this phase...\" — you blend in instead of standing out.\n\nFix it by matching the hook to a real moment from your life, then delivering the payoff fast."
     }
   ],
   "diagram": {
     "nodes": [
       {
         "id": "scroll",
-        "label": "Viewer scrolling"
+        "label": "Person scrolling fast"
       },
       {
         "id": "hook",
-        "label": "Hook in 3 seconds"
-      },
-      {
-        "id": "stop",
-        "label": "Stop & watch"
+        "label": "Hook stops them (3 sec)"
       },
       {
         "id": "story",
-        "label": "Story delivers"
+        "label": "Story keeps them"
       },
       {
-        "id": "engage",
-        "label": "Like / comment / follow"
+        "id": "action",
+        "label": "Like / follow / comment"
+      },
+      {
+        "id": "flop",
+        "label": "Mismatch = scroll away"
       }
     ],
     "edges": [
       [
         "scroll",
         "hook",
+        "see hook"
+      ],
+      [
+        "hook",
+        "story",
+        "if relevant"
+      ],
+      [
+        "story",
+        "action",
         ""
       ],
       [
         "hook",
-        "stop",
-        ""
-      ],
-      [
-        "stop",
-        "story",
-        ""
-      ],
-      [
-        "story",
-        "engage",
-        ""
+        "flop",
+        "if clickbait"
       ]
     ]
   },
   "steps": [
     {
       "node_id": "scroll",
-      "narration": "Everyone is scrolling fast past your post."
+      "narration": "You are scrolling fast past dozens of posts."
     },
     {
       "node_id": "hook",
-      "narration": "Your first line uses a fill-in-the-blank hook template."
-    },
-    {
-      "node_id": "stop",
-      "narration": "The hook makes them pause for 3 seconds."
+      "narration": "A hook like 'I did everything right and still failed' makes you pause."
     },
     {
       "node_id": "story",
-      "narration": "Your real story keeps the promise."
+      "narration": "The next lines must deliver the real story you promised."
     },
     {
-      "node_id": "engage",
-      "narration": "They engage because you earned their attention."
+      "node_id": "action",
+      "narration": "If it delivers, you engage instead of scrolling."
+    },
+    {
+      "node_id": "flop",
+      "narration": "If it doesn't match, you leave and trust drops."
     }
   ],
   "quiz": [
     {
-      "q": "What is a storytelling hook?",
+      "q": "What is a storytelling hook in plain words?",
       "options": [
-        "A 3-second opening line to stop scrolling",
-        "A hashtag to get more followers",
-        "A filter for your video",
-        "A way to post automatically"
+        "The hashtags at the end of a post",
+        "The first line that makes you stop scrolling",
+        "The filter you use on video",
+        "The time you post each day"
       ],
-      "answer_index": 0,
-      "why": "A hook is the opening line designed to grab attention in about 3 seconds."
+      "answer_index": 1,
+      "why": "A hook's job is to earn the first 3 seconds of attention so the rest can be watched."
     },
     {
-      "q": "What fails first if you use a strong hook but your story is weak?",
+      "q": "What can go wrong if you copy a fill-in-the-blank hook exactly?",
       "options": [
-        "Viewers feel tricked and leave",
-        "Instagram deletes your post",
-        "You get more views forever",
-        "The hook gets longer"
+        "Instagram will delete your account",
+        "You will get more views no matter what",
+        "Viewers may feel tricked or bored if it doesn't fit your story",
+        "Your phone battery drains faster"
       ],
-      "answer_index": 0,
-      "why": "If the payoff doesn't match the promise, trust breaks and people scroll away."
+      "answer_index": 2,
+      "why": "The save gives templates, but if the hook doesn't match your real story, people scroll away."
     },
     {
-      "q": "How do fill-in-the-blank templates help?",
+      "q": "What fails first if you use the same viral hook as everyone else?",
       "options": [
-        "They let you plug your own story into a proven structure",
-        "They write your whole video for you",
-        "They guarantee viral views",
-        "They replace the need for a story"
+        "You blend in and get ignored",
+        "Your video gets longer automatically",
+        "You get banned from using templates",
+        "Your followers double instantly"
       ],
       "answer_index": 0,
-      "why": "Templates like 'I used to think (trait) was my weakness...' give you structure; you add the real details."
+      "why": "When thousands use 'Nobody talks about this...' it stops feeling surprising."
     }
   ],
   "sources": [
     "DSNmIOgAYQ2"
   ],
   "extra": [
-    "Test 3 different hooks for the same story to see which 3-second opener keeps viewers longest."
+    "Test hooks by writing 3 versions of the same story and seeing which keeps viewers past the 3-second mark."
   ],
   "level": 2,
   "topic": "Design, Content Creation & Marketing",
   "save_ids": [
     "DSNmIOgAYQ2"
   ],
-  "words": 199,
+  "words": 203,
   "word_limit": 200,
-  "mermaid": "flowchart TD\n  n0[\"Viewer scrolling\"]\n  n1[\"Hook in 3 seconds\"]\n  n2[\"Stop   watch\"]\n  n3[\"Story delivers\"]\n  n4[\"Like / comment / follow\"]\n  n0 --> n1\n  n1 --> n2\n  n2 --> n3\n  n3 --> n4",
+  "mermaid": "flowchart TD\n  n0[\"Person scrolling fast\"]\n  n1[\"Hook stops them (3 sec)\"]\n  n2[\"Story keeps them\"]\n  n3[\"Like / follow / comment\"]\n  n4[\"Mismatch = scroll away\"]\n  n0 -->|\"see hook\"| n1\n  n1 -->|\"if relevant\"| n2\n  n2 --> n3\n  n1 -->|\"if clickbait\"| n4",
   "animation": [
     {
       "node": "n0",
-      "narration": "Everyone is scrolling fast past your post."
+      "narration": "You are scrolling fast past dozens of posts."
     },
     {
       "node": "n1",
-      "narration": "Your first line uses a fill-in-the-blank hook template."
+      "narration": "A hook like 'I did everything right and still failed' makes you pause."
     },
     {
       "node": "n2",
-      "narration": "The hook makes them pause for 3 seconds."
+      "narration": "The next lines must deliver the real story you promised."
     },
     {
       "node": "n3",
-      "narration": "Your real story keeps the promise."
+      "narration": "If it delivers, you engage instead of scrolling."
     },
     {
       "node": "n4",
-      "narration": "They engage because you earned their attention."
+      "narration": "If it doesn't match, you leave and trust drops."
     }
   ],
   "rules_used": [],
   "agent_trace": [
-    {
-      "tool": "search_saves",
-      "args": {
-        "query": "Design Content Creation Marketing hooks storytelling",
-        "topic": "Design, Content Creation & Marketing"
-      }
-    },
     {
       "tool": "read_save",
       "args": {
@@ -174,12 +167,24 @@
   ],
   "judge": {
     "drafts": 3,
-    "best": "D1",
-    "why": "",
+    "best": "D2",
+    "why": "D2 is the most beginner-friendly and concise, defines key terms in plain words, uses one clear shop-window analogy with good flow, grounds its examples in the saved hooks, and clearly marks its testing tip as extra; its quiz checks understanding rather than recall.",
     "scores": {
-      "D1": null,
-      "D2": null,
-      "D3": null
+      "D1": {
+        "grounding": 6,
+        "level_fit": 5,
+        "clarity": 7
+      },
+      "D2": {
+        "grounding": 7,
+        "level_fit": 6,
+        "clarity": 8
+      },
+      "D3": {
+        "grounding": 6,
+        "level_fit": 6,
+        "clarity": 8
+      }
     },
     "temperatures": [
       0.4,

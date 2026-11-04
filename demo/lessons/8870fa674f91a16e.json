@@ -1,115 +1,110 @@
 {
   "title": "Open Source AI Without the FOMO",
-  "subtitle": "From model evaluation to deployment, in plain words",
-  "intro": "New open-source AI models drop every week. The State of Open Source AI (2023) ebook calls it a fast-paced mess — and offers clarity from evaluation to deployment.",
-  "takeaway": "Open-source AI gives you shared models to evaluate and deploy, but you must check quality and run it yourself.",
+  "subtitle": "From evaluation to deployment, in plain English",
+  "intro": "New AI models drop every week. Your save calls it a \"fast-paced mess\" — and an open ebook promises clarity from evaluation to deployment.",
+  "takeaway": "Open source AI lets you test, share, and ship models faster, but only if you evaluate honestly and track licenses.",
   "sections": [
     {
-      "heading": "Analogy: a community recipe book",
-      "body": "Think of open-source AI like a public recipe book. Anyone can copy a recipe (a model), taste-test it, and improve it.\n\nA model is the learned recipe. Evaluation is the taste test. Deployment is serving it in your own kitchen. Open-source licensing means you can use and share it freely.\n\nThis sharing is why it exists, as you'll see next."
+      "heading": "Analogy: a community kitchen",
+      "body": "Think of open source AI like a community kitchen. Recipes (models) are posted for anyone to copy, taste, and improve.\n\nYou can borrow a recipe, test it in your kitchen, and serve it to guests. That sharing is why it moves so fast.\n\nBut a good kitchen still needs taste-tests and labels, which is where the next idea comes in."
     },
     {
-      "heading": "Why does this exist?: clarity in the chaos",
-      "body": "Closed AI keeps the recipe secret. Open-source AI publishes it so you can inspect, compare, and build on it.\n\nThe ebook from premAI-io guides you from model evaluations (how good is it?) to deployment (how to run it for users). That helps you cure FOMO and pick what fits.\n\nBut sharing freely also creates risks, which is what can go wrong."
+      "heading": "Why does this exist? Clarity from evaluation to deployment",
+      "body": "Open source AI exists to let anyone build on shared work.\n\n- Model evaluation means taste-testing: does this model actually work for your task?\n- AI deployment means serving it safely to real users.\n- Licensing like CC-BY-4.0 and Apache-2.0 tells you what you can reuse and how to credit.\n\nThe ebook The State of Open Source AI (2023) maps this whole path so you don't chase every new release.\n\nEven with a map, sharing creates risks, as you'll see next."
     },
     {
-      "heading": "What can go wrong: when sharing breaks",
-      "body": "A public recipe can be untested, outdated, or unsafe. A model might score well in evaluation but fail in your deployment.\n\nYou also take on the work: hosting, updates, and checking the license (like CC-BY-4.0 or Apache-2.0). If you skip evaluation, you serve a bad dish to users."
+      "heading": "What can go wrong? When sharing breaks",
+      "body": "Sharing without checks goes wrong fast.\n\n- A model scores well in a demo but fails on your data because evaluation was skipped.\n- You deploy without tracking licenses and get stuck legally.\n- Everyone forks the latest model, so nothing stays maintained.\n\nThe fix is simple: evaluate before you trust, check the license before you ship."
     }
   ],
   "diagram": {
     "nodes": [
       {
-        "id": "1",
-        "label": "Open Model Shared"
+        "id": "share",
+        "label": "Shared model"
       },
       {
-        "id": "2",
-        "label": "Evaluation: Test It"
+        "id": "eval",
+        "label": "Evaluate"
       },
       {
-        "id": "3",
-        "label": "Deployment: Run It"
+        "id": "license",
+        "label": "Check license"
       },
       {
-        "id": "4",
-        "label": "Community Improves"
+        "id": "deploy",
+        "label": "Deploy"
       }
     ],
     "edges": [
       [
-        "1",
-        "2",
-        ""
+        "share",
+        "eval",
+        "test"
       ],
       [
-        "2",
-        "3",
-        ""
+        "eval",
+        "license",
+        "clear?"
       ],
       [
-        "3",
-        "4",
-        ""
-      ],
-      [
-        "4",
-        "1",
-        "share back"
+        "license",
+        "deploy",
+        "ship"
       ]
     ]
   },
   "steps": [
     {
-      "node_id": "1",
-      "narration": "Someone shares a trained model openly."
+      "node_id": "share",
+      "narration": "Start with a shared open model from the community."
     },
     {
-      "node_id": "2",
-      "narration": "You evaluate it on your task."
+      "node_id": "eval",
+      "narration": "Evaluate if it works on your task, not just the demo."
     },
     {
-      "node_id": "3",
-      "narration": "You deploy the winner yourself."
+      "node_id": "license",
+      "narration": "Check CC-BY-4.0 or Apache-2.0 rules for reuse."
     },
     {
-      "node_id": "4",
-      "narration": "You share fixes back to the community."
+      "node_id": "deploy",
+      "narration": "Deploy only after tests and license pass."
     }
   ],
   "quiz": [
     {
-      "q": "What does 'model evaluation' mean in open-source AI?",
+      "q": "What does model evaluation do in open source AI?",
       "options": [
-        "Writing a license for the model",
-        "Testing how well a model performs before using it",
-        "Deploying the model to users",
-        "Deleting old models"
+        "It taste-tests if a model works for your task",
+        "It automatically deploys the model",
+        "It creates a new license",
+        "It deletes old models"
       ],
-      "answer_index": 1,
-      "why": "Evaluation is the taste-test to compare models before you deploy."
+      "answer_index": 0,
+      "why": "Evaluation is the taste-test before you serve — the ebook puts it before deployment."
     },
     {
-      "q": "Why does open-source AI exist according to the ebook?",
+      "q": "What fails first if you skip evaluation and deploy the trending model?",
       "options": [
-        "To keep AI recipes secret",
-        "To provide clarity and shared building blocks from evaluation to deployment",
-        "To stop anyone from deploying models",
-        "To replace all closed models overnight"
+        "It works perfectly for everyone",
+        "It may fail on your real data and users",
+        "Licenses become unnecessary",
+        "Deployment gets cheaper"
       ],
       "answer_index": 1,
-      "why": "It offers an overview from evaluation to deployment to navigate fast innovation together."
+      "why": "Demo scores don't guarantee your use case — skipping evaluation is the top failure mode."
     },
     {
-      "q": "What breaks first if you deploy an open model without evaluation?",
+      "q": "What does an open license like Apache-2.0 tell you?",
       "options": [
-        "The license automatically fixes bugs",
-        "You may serve bad or unsafe answers to users",
-        "Deployment becomes free forever",
-        "The community stops sharing"
+        "What you can reuse and how to credit",
+        "How accurate the model is",
+        "How fast deployment will be",
+        "Who won the benchmark"
       ],
-      "answer_index": 1,
-      "why": "Skipping evaluation means you miss failures that only show up on your data."
+      "answer_index": 0,
+      "why": "Licenses govern reuse and credit, not performance."
     }
   ],
   "sources": [
@@ -121,25 +116,25 @@
   "save_ids": [
     "https-github-com-premai-io-state-of-open-source-ai"
   ],
-  "words": 197,
+  "words": 222,
   "word_limit": 200,
-  "mermaid": "flowchart TD\n  n0[\"Open Model Shared\"]\n  n1[\"Evaluation: Test It\"]\n  n2[\"Deployment: Run It\"]\n  n3[\"Community Improves\"]\n  n0 --> n1\n  n1 --> n2\n  n2 --> n3\n  n3 -->|\"share back\"| n0",
+  "mermaid": "flowchart TD\n  n0[\"Shared model\"]\n  n1[\"Evaluate\"]\n  n2[\"Check license\"]\n  n3[\"Deploy\"]\n  n0 -->|\"test\"| n1\n  n1 -->|\"clear?\"| n2\n  n2 -->|\"ship\"| n3",
   "animation": [
     {
       "node": "n0",
-      "narration": "Someone shares a trained model openly."
+      "narration": "Start with a shared open model from the community."
     },
     {
       "node": "n1",
-      "narration": "You evaluate it on your task."
+      "narration": "Evaluate if it works on your task, not just the demo."
     },
     {
       "node": "n2",
-      "narration": "You deploy the winner yourself."
+      "narration": "Check CC-BY-4.0 or Apache-2.0 rules for reuse."
     },
     {
       "node": "n3",
-      "narration": "You share fixes back to the community."
+      "narration": "Deploy only after tests and license pass."
     }
   ],
   "rules_used": [],
@@ -149,22 +144,28 @@
       "args": {
         "save_id": "https-github-com-premai-io-state-of-open-source-ai"
       }
-    },
-    {
-      "tool": "search_saves",
-      "args": {
-        "query": "open source AI model evaluation deployment"
-      }
     }
   ],
   "judge": {
     "drafts": 3,
-    "best": "D1",
-    "why": "",
+    "best": "D2",
+    "why": "D2 is the most beginner-friendly and concise, starts with a single clear analogy, defines evaluation, deployment and licensing in plain words, flows logically to risks, and its quiz checks those core ideas.",
     "scores": {
-      "D1": null,
-      "D2": null,
-      "D3": null
+      "D1": {
+        "grounding": 5,
+        "level_fit": 5,
+        "clarity": 6
+      },
+      "D2": {
+        "grounding": 6,
+        "level_fit": 7,
+        "clarity": 8
+      },
+      "D3": {
+        "grounding": 6,
+        "level_fit": 6,
+        "clarity": 7
+      }
     },
     "temperatures": [
       0.4,

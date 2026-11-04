@@ -1,187 +1,171 @@
 {
   "title": "Edit Video by Typing",
-  "subtitle": "How AI turns chat prompts into cuts, clones, and transitions",
-  "intro": "Your video editor just got a tombstone: RIP Video Editing 1985-2025. Now you edit by chatting, not dragging clips.",
-  "takeaway": "Prompt-based editing trades hands-on control for speed, so use words for rough cuts and hands for final polish.",
+  "subtitle": "How AI turns text commands into finished video",
+  "intro": "You saved a post that says \"RIP Video Editing\" — 12 tools now let you edit just by typing. How does typing replace dragging clips on a timeline?",
+  "takeaway": "AI video editing turns your words into edits, so you type what you want instead of cutting it by hand.",
   "sections": [
     {
-      "heading": "Analogy: your talking assistant editor",
-      "body": "Imagine you hire an assistant who edits video for you. You say 'remove silences, add smooth cuts, make an avatar say this line' and they do it. You don't drag clips on a timeline anymore; you give instructions in plain text.\n\nThat's prompt-based editing. But why would you trust words instead of your hands?"
+      "heading": "Everyday analogy: editing video like a Word doc",
+      "body": "Imagine your video is a Word document. Instead of cutting film with scissors, you just delete a sentence and the video updates.\n\nThat is transcript-based editing. The AI writes out what was said as text, and when you edit the text, it edits the video to match.\n\nThis one idea powers the rest, so let's see why it exists."
     },
     {
-      "heading": "Why does this exist?: speed you don't pay for twice",
-      "body": "Manual editing in DaVinci, iMovie or CapCut takes hours of cutting and syncing. AI tools like HeyGen turn text into video with a cloned avatar — one creator got 50M+ views with 'AI René'.\n\nTranscript-based editing lets you delete a word and the video cut follows. Veo 3 even lets you use JSON prompts for precise lighting and invisible cuts. That speed is powerful, but speed hides a cost."
+      "heading": "Why does this exist? From hours of clicks to one sentence",
+      "body": "Normal editing means manual cuts, removing silences, and syncing. AI does this from a command.\n\n- Text-to-video generation: you type a prompt and the AI makes new video from it.\n- AI avatar cloning: you type a script and a tool like HeyGen speaks it as your digital double — the creator in your save got 50M+ views this way.\n- Chat-style editing: you type \"remove silences\" or \"pick a smooth style\" and a tool like Mirage does the cuts.\n\nFaster is great, but typing has limits."
     },
     {
-      "heading": "What can go wrong: when words guess wrong",
-      "body": "AI guesses what 'make it cinematic' means, and two prompts can give two different styles for the same idea. Avatar clones can look fake, auto-cuts can remove the wrong pause, and JSON control only helps if you know what to specify.\n\nIf you rely only on chat commands, you lose fine control. So learn when to type and when to tweak by hand."
+      "heading": "What can go wrong? When the AI guesses wrong",
+      "body": "An AI avatar is a computer copy of a face and voice that says your script. It can look fake if lighting or emotion is off.\n\nText-to-video can also mishear you and add the wrong clip, and auto-cuts can remove a pause you wanted for drama.\n\nSo you still need to check the result, because speed without control can hurt your story."
     }
   ],
   "diagram": {
     "nodes": [
       {
-        "id": "prompt",
-        "label": "You type prompt"
+        "id": "1",
+        "label": "You type command"
       },
       {
-        "id": "ai",
-        "label": "AI interprets"
+        "id": "2",
+        "label": "AI reads transcript"
       },
       {
-        "id": "edit",
-        "label": "Auto edit / avatar / cut"
+        "id": "3",
+        "label": "AI edits / generates"
       },
       {
-        "id": "review",
-        "label": "You review & fix"
+        "id": "4",
+        "label": "You review video"
       }
     ],
     "edges": [
       [
-        "prompt",
-        "ai",
-        "text or JSON"
+        "1",
+        "2",
+        ""
       ],
       [
-        "ai",
-        "edit",
-        "generates"
+        "2",
+        "3",
+        ""
       ],
       [
-        "edit",
-        "review",
-        "check"
-      ],
-      [
-        "review",
-        "prompt",
-        "refine"
+        "3",
+        "4",
+        ""
       ]
     ]
   },
   "steps": [
     {
-      "node_id": "prompt",
-      "narration": "You describe the edit in words, not timeline drags."
+      "node_id": "1",
+      "narration": "You type: remove silence or make avatar say this."
     },
     {
-      "node_id": "ai",
-      "narration": "The AI turns your text or JSON into editing actions."
+      "node_id": "2",
+      "narration": "AI matches your words to the transcript of the video."
     },
     {
-      "node_id": "edit",
-      "narration": "It creates avatar video, cuts silences, or seamless transitions."
+      "node_id": "3",
+      "narration": "AI cuts, generates, or clones the avatar to match."
     },
     {
-      "node_id": "review",
-      "narration": "You check the result and re-prompt where it guessed wrong."
+      "node_id": "4",
+      "narration": "You watch and fix where AI guessed wrong."
     }
   ],
   "quiz": [
     {
       "q": "What does transcript-based editing let you do?",
       "options": [
-        "Delete a word in text to cut the video",
-        "Automatically buy stock footage",
-        "Render 3D animation from scratch",
-        "Clone your voice without permission"
+        "Edit video by editing its written text",
+        "Film with a better camera",
+        "Add more storage to your laptop",
+        "Translate without AI"
       ],
       "answer_index": 0,
-      "why": "Your saves show transcript editing links text deletions directly to video cuts."
+      "why": "The AI transcribes speech to text, so deleting text deletes that video part."
     },
     {
-      "q": "Why use a JSON prompt in Veo 3 instead of a normal prompt?",
+      "q": "What can go wrong if you rely only on typing commands?",
       "options": [
-        "It makes files smaller",
-        "It gives precise control over lighting, style and cuts",
-        "It works without internet",
-        "It is required for all videos"
+        "AI may cut important pauses or make avatar look fake",
+        "Your keyboard will break",
+        "Video files get smaller automatically",
+        "You get 50M views guaranteed"
       ],
-      "answer_index": 1,
-      "why": "The Veo 3 save compares normal vs JSON prompts and shows JSON gives more precise cinematic control."
+      "answer_index": 0,
+      "why": "Auto silence removal and generation can misinterpret intent and need human review."
     },
     {
-      "q": "What breaks or goes wrong if you rely only on chat commands?",
+      "q": "What is AI avatar cloning as shown with HeyGen?",
       "options": [
-        "AI always picks the exact style you wanted",
-        "You lose fine control — clones look fake and auto-cuts remove wrong pauses",
-        "Your computer edits faster forever",
-        "JSON prompts fix everything automatically"
+        "Typing a script for a digital copy of you to speak",
+        "Hiring an actor to mimic you",
+        "Drawing yourself by hand",
+        "Turning off your camera"
       ],
-      "answer_index": 1,
-      "why": "AI guesses meaning, so same idea can render in different styles and auto-edits can cut the wrong moment."
+      "answer_index": 0,
+      "why": "HeyGen lets you clone yourself so the avatar speaks your typed text."
     }
   ],
   "sources": [
-    "DRcqa3UkTuo",
-    "DQr2EaKDDFn",
-    "DONQZcYE90_"
+    "DRcqa3UkTuo"
   ],
-  "extra": [
-    "HeyGen example of 50M+ views shows avatar cloning at scale, but likeness rights and disclosure matter."
-  ],
+  "extra": [],
   "level": 2,
   "topic": "AI & Machine Learning",
   "save_ids": [
     "DRcqa3UkTuo"
   ],
-  "words": 205,
+  "words": 236,
   "word_limit": 200,
-  "mermaid": "flowchart TD\n  n0[\"You type prompt\"]\n  n1[\"AI interprets\"]\n  n2[\"Auto edit / avatar / cut\"]\n  n3[\"You review   fix\"]\n  n0 -->|\"text or JSON\"| n1\n  n1 -->|\"generates\"| n2\n  n2 -->|\"check\"| n3\n  n3 -->|\"refine\"| n0",
+  "mermaid": "flowchart TD\n  n0[\"You type command\"]\n  n1[\"AI reads transcript\"]\n  n2[\"AI edits / generates\"]\n  n3[\"You review video\"]\n  n0 --> n1\n  n1 --> n2\n  n2 --> n3",
   "animation": [
     {
       "node": "n0",
-      "narration": "You describe the edit in words, not timeline drags."
+      "narration": "You type: remove silence or make avatar say this."
     },
     {
       "node": "n1",
-      "narration": "The AI turns your text or JSON into editing actions."
+      "narration": "AI matches your words to the transcript of the video."
     },
     {
       "node": "n2",
-      "narration": "It creates avatar video, cuts silences, or seamless transitions."
+      "narration": "AI cuts, generates, or clones the avatar to match."
     },
     {
       "node": "n3",
-      "narration": "You check the result and re-prompt where it guessed wrong."
+      "narration": "You watch and fix where AI guessed wrong."
     }
   ],
   "rules_used": [],
   "agent_trace": [
     {
-      "tool": "search_saves",
-      "args": {
-        "query": "AI machine learning video editing tools",
-        "topic": "AI & Machine Learning"
-      }
-    },
-    {
       "tool": "read_save",
       "args": {
         "save_id": "DRcqa3UkTuo"
-      }
-    },
-    {
-      "tool": "read_save",
-      "args": {
-        "save_id": "DQr2EaKDDFn"
-      }
-    },
-    {
-      "tool": "read_save",
-      "args": {
-        "save_id": "DONQZcYE90_"
       }
     }
   ],
   "judge": {
     "drafts": 3,
     "best": "D1",
-    "why": "",
+    "why": "D1 is most grounded in HeyGen, Mirage, transcript editing and silence removal, with the clearest beginner analogy, defined terms, coherent flow and understanding-focused quiz, though it exceeds the 200-word limit.",
     "scores": {
-      "D1": null,
-      "D2": null,
-      "D3": null
+      "D1": {
+        "grounding": 8,
+        "level_fit": 6,
+        "clarity": 9
+      },
+      "D2": {
+        "grounding": 6,
+        "level_fit": 6,
+        "clarity": 8
+      },
+      "D3": {
+        "grounding": 7,
+        "level_fit": 8,
+        "clarity": 7
+      }
     },
     "temperatures": [
       0.4,

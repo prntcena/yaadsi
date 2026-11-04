@@ -1,31 +1,27 @@
 {
-  "title": "How Engineers Think Beyond Code",
-  "subtitle": "It's not just code — it's the decisions from keypress to server.",
-  "intro": "You type google.com and press enter. What actually happens in that one second?",
-  "takeaway": "Great engineering is tracing every decision from your keypress to the server and back.",
+  "title": "How Engineers Think About Systems",
+  "subtitle": "It's not just code, it's the decisions behind what happens when you press enter.",
+  "intro": "You type google.com and press enter. In one second, your key press travels from a keyboard chip to a data center and back.",
+  "takeaway": "Great engineering is tracing what happens step by step, from key press to server response.",
   "sections": [
     {
       "heading": "Analogy: sending a letter across a city",
-      "body": "Think of your browser like you mailing a letter. You write an address (google.com), the post office looks up the real street address, and couriers carry it across town.\n\nA server is just another computer waiting to answer letters. The network is the roads in between.\n\nThis trip looks simple, but each handoff can fail — which is why engineers study it step by step."
+      "body": "Think of your browser request like mailing a letter.\n\nYou write the address (google.com), hand it to a local post office (your router), it travels through sorting hubs (the internet), reaches the destination building (Google's server), and a reply comes back along the same chain.\n\nEvery stop has a job, and if one stop is confused, the letter is lost. That chain is what engineers study next."
     },
     {
-      "heading": "Why it exists: to see the hidden steps",
-      "body": "The repo github.com/alex/what-happens-when exists to answer that one interview question in full detail. It starts when the 'g' key is pressed and follows the signal through your keyboard, operating system, and browser.\n\nIt then shows how the browser parses the URL, checks if it's a search term, looks up the address, and sends a request. Engineers use this to learn how systems connect, not just how to code.\n\nOnce you see the chain, you start asking better questions about what could break."
+      "heading": "Why does this exist? To see the hidden steps",
+      "body": "The repo github.com/alex/what-happens-when exists to answer one interview question in full detail: what happens when you type google.com and press enter?\n\nA distributed system is many computers working together like one. A browser is your app for viewing the web. Networking is the rules they use to talk.\n\nThe repo lists every tiny step: the 'g' key press, an interrupt line, a KeyPress event, parsing the URL, and checking if it's a search term.\n\nSeeing all steps helps you debug faster, but what if one step breaks?"
     },
     {
-      "heading": "What can go wrong: when one link breaks",
-      "body": "If any step is unclear, bugs hide there. A wrong URL parse sends you to search instead of a site. A missed network lookup means no server is found.\n\nProduction architecture decisions and test automation strategies exist to catch these failures early. Without them, one small miss breaks the whole journey.\n\nLearn the flow first, then you can fix it when it fails."
+      "heading": "What can go wrong? One missing detail breaks the flow",
+      "body": "Real systems fail in small places you skipped.\n\n- The URL parse fails and you search instead of navigating\n- The network drops before the server answers\n- The server reply is slow, so the browser waits\n\nProduction architecture is how companies design for these failures. Test automation is programs that check failures for you.\n\nLearn the full path first, then you can predict where it will break."
     }
   ],
   "diagram": {
     "nodes": [
       {
-        "id": "keypress",
-        "label": "Keypress g"
-      },
-      {
-        "id": "os",
-        "label": "OS event"
+        "id": "key",
+        "label": "Key press 'g'"
       },
       {
         "id": "browser",
@@ -33,152 +29,158 @@
       },
       {
         "id": "network",
-        "label": "Network lookup"
+        "label": "Network / Internet"
       },
       {
         "id": "server",
-        "label": "Server answers"
+        "label": "Google Server"
+      },
+      {
+        "id": "response",
+        "label": "Response back"
       }
     ],
     "edges": [
       [
-        "keypress",
-        "os",
-        ""
-      ],
-      [
-        "os",
+        "key",
         "browser",
-        ""
+        "event"
       ],
       [
         "browser",
         "network",
-        ""
+        "request"
       ],
       [
         "network",
         "server",
         ""
+      ],
+      [
+        "server",
+        "response",
+        "reply"
+      ],
+      [
+        "response",
+        "browser",
+        "render"
       ]
     ]
   },
   "steps": [
     {
-      "node_id": "keypress",
-      "narration": "You press g — the keyboard sends a signal."
-    },
-    {
-      "node_id": "os",
-      "narration": "Your OS turns it into a key event for the app."
+      "node_id": "key",
+      "narration": "You press 'g' and the keyboard sends an interrupt signal."
     },
     {
       "node_id": "browser",
-      "narration": "Browser checks: is this a URL or search?"
+      "narration": "Browser receives KeyPress event and parses google.com as URL."
     },
     {
       "node_id": "network",
-      "narration": "Browser looks up the real server address."
+      "narration": "Request travels through your router and internet hubs."
     },
     {
       "node_id": "server",
-      "narration": "Request travels the network and server replies."
+      "narration": "Google's server receives request and prepares response."
+    },
+    {
+      "node_id": "response",
+      "narration": "Response travels back and browser renders the page."
     }
   ],
   "quiz": [
     {
-      "q": "What does the 'what-happens-when' repo teach you?",
+      "q": "Why does the 'what-happens-when' repo list every tiny step from key press to server?",
       "options": [
-        "Only how to type faster",
-        "The full browser-to-server flow step by step",
-        "How to design logos",
-        "Only command line shortcuts"
+        "To memorize code syntax",
+        "To understand decisions and flow across systems",
+        "To sell browsers",
+        "To avoid using the command line"
       ],
       "answer_index": 1,
-      "why": "It traces from keypress through OS, browser parsing, and networking to the server."
+      "why": "The repo teaches engineering reasoning, not just code, by tracing the full browser-to-server chain."
     },
     {
-      "q": "What fails first if usage grows 100x and you have no tests or architecture plan?",
+      "q": "What fails first if usage grows 100x and you never traced the network steps?",
       "options": [
         "Your keyboard stops working",
-        "Hidden handoffs like URL parsing and network lookups break under load",
-        "Google disappears",
-        "The repo deletes itself"
+        "Network or server bottlenecks cause slow or dropped requests",
+        "URLs become invalid",
+        "The browser forgets history"
       ],
       "answer_index": 1,
-      "why": "Without production decisions and test strategies, small steps fail first when traffic spikes."
+      "why": "Without understanding networking and distributed systems, traffic overloads routers and servers first."
     },
     {
-      "q": "What is a server in this story?",
+      "q": "What is a distributed system in plain words?",
       "options": [
-        "A person who serves food",
-        "Another computer waiting to answer your browser's request",
-        "A part of your keyboard",
-        "A type of browser tab"
+        "One big computer",
+        "Many computers working together like one system",
+        "A browser plugin",
+        "A type of keyboard"
       ],
       "answer_index": 1,
-      "why": "A server is a remote computer that receives your request over the network and sends back a response."
+      "why": "It's many machines coordinating over a network to act as a single service."
     }
   ],
   "sources": [
     "DV02icRE1Z0"
   ],
-  "extra": [
-    "The repo is community-maintained under Creative Commons Zero and translated into Chinese, Japanese, Korean and Spanish."
-  ],
+  "extra": [],
   "level": 2,
   "topic": "Software Engineering & Systems",
   "save_ids": [
     "DV02icRE1Z0"
   ],
-  "words": 223,
+  "words": 245,
   "word_limit": 200,
-  "mermaid": "flowchart TD\n  n0[\"Keypress g\"]\n  n1[\"OS event\"]\n  n2[\"Browser parses URL\"]\n  n3[\"Network lookup\"]\n  n4[\"Server answers\"]\n  n0 --> n1\n  n1 --> n2\n  n2 --> n3\n  n3 --> n4",
+  "mermaid": "flowchart TD\n  n0[\"Key press 'g'\"]\n  n1[\"Browser parses URL\"]\n  n2[\"Network / Internet\"]\n  n3[\"Google Server\"]\n  n4[\"Response back\"]\n  n0 -->|\"event\"| n1\n  n1 -->|\"request\"| n2\n  n2 --> n3\n  n3 -->|\"reply\"| n4\n  n4 -->|\"render\"| n1",
   "animation": [
     {
       "node": "n0",
-      "narration": "You press g — the keyboard sends a signal."
+      "narration": "You press 'g' and the keyboard sends an interrupt signal."
     },
     {
       "node": "n1",
-      "narration": "Your OS turns it into a key event for the app."
+      "narration": "Browser receives KeyPress event and parses google.com as URL."
     },
     {
       "node": "n2",
-      "narration": "Browser checks: is this a URL or search?"
+      "narration": "Request travels through your router and internet hubs."
     },
     {
       "node": "n3",
-      "narration": "Browser looks up the real server address."
+      "narration": "Google's server receives request and prepares response."
     },
     {
       "node": "n4",
-      "narration": "Request travels the network and server replies."
+      "narration": "Response travels back and browser renders the page."
     }
   ],
   "rules_used": [],
-  "agent_trace": [
-    {
-      "tool": "search_saves",
-      "args": {
-        "query": "software engineering systems browser to server flow"
-      }
-    },
-    {
-      "tool": "read_save",
-      "args": {
-        "save_id": "DV02icRE1Z0"
-      }
-    }
-  ],
+  "agent_trace": [],
   "judge": {
     "drafts": 3,
-    "best": "D1",
-    "why": "",
+    "best": "D2",
+    "why": "D2 starts with the everyday letter analogy, defines browser, networking and distributed system in plain words, and traces source-listed steps with a clear flow and understanding-based quiz.",
     "scores": {
-      "D1": null,
-      "D2": null,
-      "D3": null
+      "D1": {
+        "grounding": 8,
+        "level_fit": 5,
+        "clarity": 7
+      },
+      "D2": {
+        "grounding": 7,
+        "level_fit": 6,
+        "clarity": 8
+      },
+      "D3": {
+        "grounding": 5,
+        "level_fit": 7,
+        "clarity": 8
+      }
     },
     "temperatures": [
       0.4,

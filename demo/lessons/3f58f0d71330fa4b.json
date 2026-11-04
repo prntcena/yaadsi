@@ -1,110 +1,128 @@
 {
-  "title": "Chat to Edit: How AI Turns Prompts Into Video",
-  "subtitle": "From timeline clicks to chatting with your editor",
-  "intro": "That tombstone says RIP VIDEO EDITING 1985-2025. Now you can clone yourself with HeyGen and get 50M+ views without touching DaVinci or CapCut.",
-  "takeaway": "Prompt-based editing trades manual control for speed, but you still need RAG and guardrails to keep it accurate.",
+  "title": "From Chatting to Building: How Modern AI Actually Works",
+  "subtitle": "Edit by prompt, answer with facts — the two skills behind today's AI",
+  "intro": "You saved a tombstone for DaVinci Resolve and a creator who cloned himself with HeyGen for 50M+ views. You can now edit video just by chatting.",
+  "takeaway": "AI is powerful when it can edit with prompts and answer with retrieved facts, not just memory.",
   "sections": [
     {
-      "heading": "Analogy: your chatty assistant editor",
-      "body": "Imagine you tell a human editor: \"cut the silences, add captions.\" You don't drag clips yourself.\n\nPrompt-based video editing is that assistant. A prompt is your text instruction. Transcript-based editing lets you delete words to cut video. Text-to-video generation builds clips from text alone.\n\nThis leads to why we built it this way."
+      "heading": "An everyday analogy: the helpful intern",
+      "body": "Think of AI like a new intern.\n\nThe intern follows instructions like \"cut the silences\" very fast. A RAG model is an intern who can also look things up in company files before answering.\n\nRAG means Retrieval-Augmented Generation. It retrieves documents first, then generates an answer from them."
     },
     {
-      "heading": "Why does this exist?: from timelines to talking",
-      "body": "Traditional tools like DaVinci Resolve and iMovie need manual timeline work.\n\nAI tools like HeyGen offer avatar cloning and auto-cuts so you chat instead of click. NVIDIA's 7 free courses teach the engine behind it: Generative AI basics, RAG, and Video AI apps.\n\nRAG means Retrieval-Augmented Generation - the AI looks up real facts before answering. CUDA is how code runs fast on NVIDIA GPUs. Edge AI on Jetson Nano runs that AI on a small device.\n\nSpeed is great, until accuracy slips."
+      "heading": "Why does this exist? From prompts to trusted answers",
+      "body": "Prompt-based video editing means no timeline needed. You type \"make an avatar say this\" and tools like HeyGen make the video with voiceover and translation.\n\nRAG means the AI doesn't guess from memory. It searches your data, then answers. An RAG Agent does this search-and-answer loop by itself to finish tasks."
     },
     {
-      "heading": "What can go wrong?: when chat edits fail",
-      "body": "- Hallucination: RAG without good retrieval invents facts in your video voiceover.\n- Clone misuse: avatar cloning can fake you saying things you didn't - that's why digital fingerprinting exists to protect content.\n- Auto-cut errors: silence removal can cut dramatic pauses or overlapping speech.\n\nYou gain speed but lose fine control."
+      "heading": "What can go wrong? When the intern gets it wrong",
+      "body": "Three things can go wrong:\n- Bad retrieval: wrong file means wrong answer.\n- Bad prompt: \"make it better\" is too vague. Be specific.\n- No checking: avatar clones or auto-cuts can look fake.\n\nFix it with good files, clear prompts, and a human check."
     }
   ],
   "diagram": {
     "nodes": [
       {
+        "id": "you",
+        "label": "You chat"
+      },
+      {
         "id": "prompt",
-        "label": "Your prompt"
+        "label": "Prompt tools\n(HeyGen)"
       },
       {
         "id": "rag",
-        "label": "RAG looks up facts"
+        "label": "RAG retrieves files"
       },
       {
-        "id": "gpu",
-        "label": "CUDA GPU builds video"
+        "id": "agent",
+        "label": "Agent generates answer/video"
       },
       {
         "id": "check",
-        "label": "Fingerprint check"
+        "label": "You check"
       }
     ],
     "edges": [
       [
+        "you",
         "prompt",
+        "edit video"
+      ],
+      [
+        "you",
         "rag",
-        ""
+        "ask question"
       ],
       [
         "rag",
-        "gpu",
+        "agent",
         ""
       ],
       [
-        "gpu",
+        "prompt",
+        "agent",
+        ""
+      ],
+      [
+        "agent",
         "check",
-        ""
+        "review"
       ]
     ]
   },
   "steps": [
     {
+      "node_id": "you",
+      "narration": "You start by chatting instead of clicking timelines."
+    },
+    {
       "node_id": "prompt",
-      "narration": "You type: edit by chatting, not dragging."
+      "narration": "Prompt tools translate chat to edits, like HeyGen cloning."
     },
     {
       "node_id": "rag",
-      "narration": "RAG retrieves real info so the AI doesn't guess."
+      "narration": "For facts, RAG retrieves documents first."
     },
     {
-      "node_id": "gpu",
-      "narration": "CUDA on GPU turns text and avatar into video fast."
+      "node_id": "agent",
+      "narration": "An agent generates the final video or answer."
     },
     {
       "node_id": "check",
-      "narration": "Digital fingerprint verifies the clone is allowed."
+      "narration": "You check before publishing."
     }
   ],
   "quiz": [
     {
-      "q": "What does RAG do in video AI?",
+      "q": "What does RAG do differently from a normal chatbot?",
       "options": [
-        "Looks up facts before generating",
-        "Removes silences automatically",
-        "Clones your avatar voice",
-        "Edits on Jetson Nano only"
+        "It edits video faster",
+        "It retrieves documents before answering",
+        "It only works on Jetson Nano",
+        "It clones your avatar"
       ],
-      "answer_index": 0,
-      "why": "RAG = Retrieval-Augmented Generation, from NVIDIA's LLM with RAG course."
+      "answer_index": 1,
+      "why": "RAG = Retrieval-Augmented Generation: retrieve first, then generate with those facts."
     },
     {
-      "q": "What fails first if usage grows 100x with prompt editing?",
+      "q": "What fails first if usage grows 100x?",
       "options": [
-        "GPU cost and hallucinations spike without retrieval guardrails",
-        "Timeline becomes more precise",
-        "Avatars need less data",
-        "CUDA gets slower per video"
+        "Your laptop screen",
+        "Retrieval: wrong or slow files lead to wrong answers",
+        "Prompts get shorter",
+        "HeyGen stops cloning"
       ],
-      "answer_index": 0,
-      "why": "More prompts = more GPU load and more chances to invent facts if RAG is weak."
+      "answer_index": 1,
+      "why": "At scale, bad retrieval is the first break - if search fails, the answer fails."
     },
     {
-      "q": "Why does digital fingerprinting exist?",
+      "q": "Which prompt is better for AI video editing?",
       "options": [
-        "To protect AI content from fake clones",
-        "To speed up CUDA code",
-        "To auto-cut silences",
-        "To teach generative AI basics"
+        "Make it better",
+        "Do your thing",
+        "Remove silences from 0:10-0:15 and add captions",
+        "Surprise me"
       ],
-      "answer_index": 0,
-      "why": "NVIDIA lists it as security fundamentals for AI content."
+      "answer_index": 2,
+      "why": "Clear, specific prompts give predictable edits; vague prompts give random results."
     }
   ],
   "sources": [
@@ -112,7 +130,7 @@
     "linkedin-com-feed-update-urn-li-activity-7421516454489088000"
   ],
   "extra": [
-    "HeyGen example cited 50M+ views with AI René clone"
+    "NVIDIA Jetson Nano course shows how to run small AI models on edge devices outside the cloud."
   ],
   "level": 2,
   "topic": "AI & Machine Learning",
@@ -120,37 +138,53 @@
     "DQr2EaKDDFn",
     "linkedin-com-feed-update-urn-li-activity-7421516454489088000"
   ],
-  "words": 211,
+  "words": 170,
   "word_limit": 200,
-  "mermaid": "flowchart TD\n  n0[\"Your prompt\"]\n  n1[\"RAG looks up facts\"]\n  n2[\"CUDA GPU builds video\"]\n  n3[\"Fingerprint check\"]\n  n0 --> n1\n  n1 --> n2\n  n2 --> n3",
+  "mermaid": "flowchart TD\n  n0[\"You chat\"]\n  n1[\"Prompt tools\n(HeyGen)\"]\n  n2[\"RAG retrieves files\"]\n  n3[\"Agent generates answer/video\"]\n  n4[\"You check\"]\n  n0 -->|\"edit video\"| n1\n  n0 -->|\"ask question\"| n2\n  n2 --> n3\n  n1 --> n3\n  n3 -->|\"review\"| n4",
   "animation": [
     {
       "node": "n0",
-      "narration": "You type: edit by chatting, not dragging."
+      "narration": "You start by chatting instead of clicking timelines."
     },
     {
       "node": "n1",
-      "narration": "RAG retrieves real info so the AI doesn't guess."
+      "narration": "Prompt tools translate chat to edits, like HeyGen cloning."
     },
     {
       "node": "n2",
-      "narration": "CUDA on GPU turns text and avatar into video fast."
+      "narration": "For facts, RAG retrieves documents first."
     },
     {
       "node": "n3",
-      "narration": "Digital fingerprint verifies the clone is allowed."
+      "narration": "An agent generates the final video or answer."
+    },
+    {
+      "node": "n4",
+      "narration": "You check before publishing."
     }
   ],
   "rules_used": [],
   "agent_trace": [],
   "judge": {
     "drafts": 3,
-    "best": "D1",
-    "why": "",
+    "best": "D3",
+    "why": "D3 is closest to beginner level: one consistent intern analogy, plain definitions of RAG and prompt editing, clear flow, and a quiz testing retrieval and prompt specificity. It adds fewer unmarked claims than D1/D2, though all drafts exceed 200 words.",
     "scores": {
-      "D1": null,
-      "D2": null,
-      "D3": null
+      "D1": {
+        "grounding": 5,
+        "level_fit": 4,
+        "clarity": 5
+      },
+      "D2": {
+        "grounding": 5,
+        "level_fit": 4,
+        "clarity": 6
+      },
+      "D3": {
+        "grounding": 7,
+        "level_fit": 6,
+        "clarity": 8
+      }
     },
     "temperatures": [
       0.4,

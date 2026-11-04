@@ -1,181 +1,186 @@
 {
   "title": "Edit Video by Chatting",
-  "subtitle": "You type what you want, AI cuts the video for you",
-  "intro": "Your saves say RIP to DaVinci, iMovie and CapCut. You can now edit just by chatting with AI.",
-  "takeaway": "Prompt-based editing trades timeline control for speed, so check what the AI guessed wrong.",
+  "subtitle": "How prompt-based AI turns words into cuts, clones, and clips",
+  "intro": "A tombstone says \"RIP VIDEO EDITING 1985-2025\" — DaVinci, iMovie, CapCut included. Now one creator got 50M+ views by cloning himself and editing just by chatting.",
+  "takeaway": "Prompt-based editing trades manual control for speed, so check what the AI guessed before you publish.",
   "sections": [
     {
-      "heading": "Analogy: talking to an editor",
-      "body": "Think of AI editing like texting a human editor instead of moving clips yourself.\n\nYou say \"remove silences, add captions, make me an avatar\" and it does it. One prompt replaces dozens of clicks.\n\nThat sounds like magic, but why did we need it?"
+      "heading": "Analogy: editing by talking, not clicking",
+      "body": "Imagine telling a chef \"make it shorter, remove the quiet parts\" instead of cooking yourself. A prompt is just that instruction in plain words.\n\nPrompt-based video editing means you type what you want and the AI does the cuts. That leads to why this exists at all."
     },
     {
-      "heading": "Why it exists: speed you don't pay for twice",
-      "body": "A prompt is an instruction in plain words. Transcript-based editing turns your speech into text you can delete to cut video.\n\nYour saves show HeyGen cloning a creator to 50M+ views from just text, image or audio. Veo 3 even lets you use JSON prompts for precise control of lighting and cuts.\n\nFast is great until the AI misunderstands you."
+      "heading": "Why does this exist? From timelines to chat",
+      "body": "Traditional editing means dragging clips on a timeline. It is powerful but slow to learn.\n\nThese 13 tools exist to skip that. Text-to-video generation creates video from words, transcript-based editing lets you cut video by editing text, and AI avatar cloning makes a digital double that speaks for you.\n\nSpeed is the win, but speed has a cost, which is what can go wrong."
     },
     {
-      "heading": "What can go wrong: when chatting breaks",
-      "body": "AI guesses what you meant. Vague prompts give wrong cuts, weird avatar mouths, or off-brand styles.\n\nJSON helps, but more detail means more to fix if you typo. You still need to review every auto-cut.\n\nSo start simple, then add control only where it matters."
+      "heading": "What can go wrong? When the AI guesses wrong",
+      "body": "An AI video agent follows your prompt, not your intent. It can cut the wrong silence, clone your voice with weird tone, or invent footage you didn't ask for.\n\nIf you trust every auto-cut, you publish mistakes at scale. Always preview before you post."
     }
   ],
   "diagram": {
     "nodes": [
       {
         "id": "prompt",
-        "label": "You type prompt"
+        "label": "Your Prompt"
+      },
+      {
+        "id": "ai",
+        "label": "AI Editor"
       },
       {
         "id": "transcript",
-        "label": "AI reads transcript"
+        "label": "Transcript / Timeline"
       },
       {
-        "id": "generate",
-        "label": "AI cuts / generates video"
+        "id": "avatar",
+        "label": "Avatar Clone"
       },
       {
-        "id": "review",
-        "label": "You review & fix"
+        "id": "video",
+        "label": "Final Video"
       }
     ],
     "edges": [
       [
         "prompt",
+        "ai",
+        "instructs"
+      ],
+      [
+        "ai",
         "transcript",
-        "send"
+        "edits"
+      ],
+      [
+        "ai",
+        "avatar",
+        "generates"
       ],
       [
         "transcript",
-        "generate",
-        "edit"
+        "video",
+        ""
       ],
       [
-        "generate",
-        "review",
-        "check"
+        "avatar",
+        "video",
+        ""
       ]
     ]
   },
   "steps": [
     {
       "node_id": "prompt",
-      "narration": "You write what you want in words or JSON."
+      "narration": "You type a plain instruction like 'remove silences'."
+    },
+    {
+      "node_id": "ai",
+      "narration": "The AI editor interprets your words."
     },
     {
       "node_id": "transcript",
-      "narration": "AI turns speech to editable text."
+      "narration": "It edits the transcript to cut the video."
     },
     {
-      "node_id": "generate",
-      "narration": "AI makes cuts, avatar, or new video."
+      "node_id": "avatar",
+      "narration": "It can also generate your cloned avatar to speak."
     },
     {
-      "node_id": "review",
-      "narration": "You spot what it got wrong."
+      "node_id": "video",
+      "narration": "It renders the final video for you to review."
     }
   ],
   "quiz": [
     {
-      "q": "What does prompt-based editing replace?",
+      "q": "What does prompt-based video editing mean?",
       "options": [
-        "Typing timeline clicks with chat commands",
-        "Buying a camera",
-        "Uploading to YouTube",
-        "Learning to act"
+        "Typing instructions for AI to edit",
+        "Dragging clips manually on a timeline",
+        "Buying a new camera",
+        "Hiring a human editor only"
       ],
       "answer_index": 0,
-      "why": "Your saves show 12-13 tools that replace manual timeline editing with text prompts and transcript edits."
+      "why": "The save shows editing by chatting with AI instead of timeline editing."
     },
     {
-      "q": "Why use a JSON prompt in Veo 3 instead of a normal prompt?",
+      "q": "What fails first if you use auto-cuts on 100 videos without checking?",
       "options": [
-        "It is shorter",
-        "It gives precise control over lighting, style and cuts",
-        "It is free",
-        "It removes watermarks"
-      ],
-      "answer_index": 1,
-      "why": "The Veo 3 save compares normal vs JSON prompts for the same fashion transition, JSON gives more cinematic control."
-    },
-    {
-      "q": "What breaks first if you rely only on vague prompts for 100 videos?",
-      "options": [
-        "AI makes wrong cuts and inconsistent style you must re-edit",
-        "Your computer runs out of battery",
-        "YouTube deletes your account",
-        "Videos get longer automatically"
+        "AI publishes wrong cuts and fake-sounding clones at scale",
+        "Your computer gets faster",
+        "Viewers automatically love all videos",
+        "Traditional tools disappear forever"
       ],
       "answer_index": 0,
-      "why": "Vague prompts cause AI to guess, leading to errors in cuts, avatars and style at scale."
+      "why": "AI follows the prompt literally and can misinterpret silences, tone, or footage."
+    },
+    {
+      "q": "What is AI avatar cloning in this context?",
+      "options": [
+        "Creating a digital double that can speak as you",
+        "Deleting your videos",
+        "Making your timeline longer",
+        "Turning video back into text only"
+      ],
+      "answer_index": 0,
+      "why": "HeyGen example cloned the creator and got 50M+ views with AI René."
     }
   ],
   "sources": [
-    "DQr2EaKDDFn",
-    "DRcqa3UkTuo",
-    "DONQZcYE90_"
+    "DQr2EaKDDFn"
   ],
-  "extra": [
-    "HeyGen pricing starts free with paid avatar cloning tiers."
-  ],
+  "extra": [],
   "level": 2,
   "topic": "AI & Machine Learning",
   "save_ids": [
     "DQr2EaKDDFn"
   ],
-  "words": 167,
+  "words": 181,
   "word_limit": 200,
-  "mermaid": "flowchart TD\n  n0[\"You type prompt\"]\n  n1[\"AI reads transcript\"]\n  n2[\"AI cuts / generates video\"]\n  n3[\"You review   fix\"]\n  n0 -->|\"send\"| n1\n  n1 -->|\"edit\"| n2\n  n2 -->|\"check\"| n3",
+  "mermaid": "flowchart TD\n  n0[\"Your Prompt\"]\n  n1[\"AI Editor\"]\n  n2[\"Transcript / Timeline\"]\n  n3[\"Avatar Clone\"]\n  n4[\"Final Video\"]\n  n0 -->|\"instructs\"| n1\n  n1 -->|\"edits\"| n2\n  n1 -->|\"generates\"| n3\n  n2 --> n4\n  n3 --> n4",
   "animation": [
     {
       "node": "n0",
-      "narration": "You write what you want in words or JSON."
+      "narration": "You type a plain instruction like 'remove silences'."
     },
     {
       "node": "n1",
-      "narration": "AI turns speech to editable text."
+      "narration": "The AI editor interprets your words."
     },
     {
       "node": "n2",
-      "narration": "AI makes cuts, avatar, or new video."
+      "narration": "It edits the transcript to cut the video."
     },
     {
       "node": "n3",
-      "narration": "You spot what it got wrong."
+      "narration": "It can also generate your cloned avatar to speak."
+    },
+    {
+      "node": "n4",
+      "narration": "It renders the final video for you to review."
     }
   ],
   "rules_used": [],
-  "agent_trace": [
-    {
-      "tool": "read_save",
-      "args": {
-        "save_id": "DQr2EaKDDFn"
-      }
-    },
-    {
-      "tool": "search_saves",
-      "args": {
-        "query": "AI machine learning prompt video editing"
-      }
-    },
-    {
-      "tool": "read_save",
-      "args": {
-        "save_id": "DRcqa3UkTuo"
-      }
-    },
-    {
-      "tool": "read_save",
-      "args": {
-        "save_id": "DONQZcYE90_"
-      }
-    }
-  ],
+  "agent_trace": [],
   "judge": {
     "drafts": 3,
     "best": "D1",
-    "why": "",
+    "why": "D1 stays closest to the source (13 tools, HeyGen cloning/50M+ views, transcript editing, text-to-video, auto-cuts), opens with the tombstone hook then a clear everyday analogy, defines prompts in plain words, and has a logical flow with quizzes that test real understanding.",
     "scores": {
-      "D1": null,
-      "D2": null,
-      "D3": null
+      "D1": {
+        "grounding": 9,
+        "level_fit": 8,
+        "clarity": 8
+      },
+      "D2": {
+        "grounding": 4,
+        "level_fit": 7,
+        "clarity": 7
+      },
+      "D3": {
+        "grounding": 3,
+        "level_fit": 5,
+        "clarity": 5
+      }
     },
     "temperatures": [
       0.4,

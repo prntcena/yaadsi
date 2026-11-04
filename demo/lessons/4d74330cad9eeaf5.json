@@ -1,176 +1,162 @@
 {
-  "title": "Don't Study Alone for Interviews",
-  "subtitle": "Four free tools turn solo prep into real practice",
-  "intro": "You saved a post that says interview prep feels harder until you find the right tools. What if you could rehearse the real thing for free, before it counts?",
-  "takeaway": "Tech interviews reward practiced performance, so use peer, expert, and AI feedback to rehearse like it's real.",
+  "title": "Don't Practice Alone",
+  "subtitle": "Four free tools that turn interview anxiety into muscle memory",
+  "intro": "You saved a post that said interview prep feels harder until you find the right tools. It listed four you wish you knew earlier.",
+  "takeaway": "Practice interviews like performances: rehearse with people, frameworks, and feedback before the real stage.",
   "sections": [
     {
-      "heading": "Analogy: like rehearsing with a band before the concert",
-      "body": "Learning songs alone is not the same as playing on stage with lights on.\n\nInterview prep is the same. A peer mock interview is a practice round with another person acting as interviewer, so you feel the pressure before the real day.\n\nThat rehearsal is why these tools exist, as you'll see next."
+      "heading": "Analogy: Dress rehearsal before opening night",
+      "body": "Think of a tech interview like a live show. You wouldn't open on Broadway without rehearsals.\n\nPramp is your rehearsal partner, Google Warmup is your voice coach, Exponent shows you the script from ex-FAANG directors, and InterviewBit is your daily scales. That setup leads to why these tools exist."
     },
     {
-      "heading": "Why does this exist?: interviews test how you perform under pressure",
-      "body": "Knowing answers isn't enough. You need to explain them clearly and solve live.\n\nThat's why your save lists four helpers: Pramp matches you with peers for free live coding sessions, Exponent gives FAANG interview frameworks - step-by-step ways ex-FAANG interviewers evaluate you - and real questions, Google Interview Warmup gives AI speech feedback on your spoken answers, and InterviewBit gives structured coding paths.\n\nEach one adds feedback you can't get alone. But feedback can fail too."
+      "heading": "Why does this exist? Practice you can't get from books",
+      "body": "Books can't give you nerves, timing, or feedback. These tools can.\n\n- Pramp matches you with peers for live mock coding sessions with instant feedback\n- Exponent gives video lessons and frameworks from ex-FAANG interviewers with real questions\n- Google Interview Warmup uses AI to check your spoken answers\n\nBut tools alone don't guarantee a job, which is what can break."
     },
     {
-      "heading": "What can go wrong: when practice doesn't make you better",
-      "body": "If you only do easy problems on InterviewBit, or ignore the AI feedback from Warmup, you repeat mistakes.\n\nIf you treat Pramp casually or watch Exponent without practicing out loud, you won't improve under stress.\n\nUse all four together: structure, expert patterns, live pressure, and voice coaching."
+      "heading": "What can go wrong? Rehearsing the wrong play",
+      "body": "If you only grind InterviewBit problems but never speak out loud, you freeze on Google Warmup.\n\nIf you only watch Exponent without peer pressure from Pramp, you miss timing and nerves. Use all four in a loop: learn, code, speak, perform with a human."
     }
   ],
   "diagram": {
     "nodes": [
       {
-        "id": "solo",
-        "label": "Solo Study"
+        "id": "learn",
+        "label": "Exponent: Learn framework"
       },
       {
-        "id": "pramp",
-        "label": "Pramp: Peer Mock"
+        "id": "code",
+        "label": "InterviewBit: Drill code"
       },
       {
-        "id": "exponent",
-        "label": "Exponent: FAANG Frameworks"
+        "id": "speak",
+        "label": "Google Warmup: Speak answer"
       },
       {
-        "id": "warmup",
-        "label": "Google Warmup: AI Voice Feedback"
+        "id": "perform",
+        "label": "Pramp: Mock with peer"
       },
       {
-        "id": "ibit",
-        "label": "InterviewBit: Structured Path"
-      },
-      {
-        "id": "ready",
-        "label": "Real Interview Ready"
+        "id": "feedback",
+        "label": "Feedback loop"
       }
     ],
     "edges": [
       [
-        "solo",
-        "ibit",
-        "structure"
+        "learn",
+        "code",
+        ""
       ],
       [
-        "ibit",
-        "exponent",
-        "learn patterns"
+        "code",
+        "speak",
+        ""
       ],
       [
-        "exponent",
-        "pramp",
-        "practice live"
+        "speak",
+        "perform",
+        ""
       ],
       [
-        "pramp",
-        "warmup",
-        "polish speaking"
+        "perform",
+        "feedback",
+        ""
       ],
       [
-        "warmup",
-        "ready",
-        "perform"
+        "feedback",
+        "learn",
+        "improve"
       ]
     ]
   },
   "steps": [
     {
-      "node_id": "solo",
-      "narration": "You start studying alone and know answers but haven't performed them."
+      "node_id": "learn",
+      "narration": "Start with Exponent to learn how FAANG interviewers think."
     },
     {
-      "node_id": "ibit",
-      "narration": "InterviewBit gives you a structured coding path to build basics in order."
+      "node_id": "code",
+      "narration": "Drill the pattern on InterviewBit until it's automatic."
     },
     {
-      "node_id": "exponent",
-      "narration": "Exponent shows you FAANG frameworks so you know how interviewers score you."
+      "node_id": "speak",
+      "narration": "Say your approach aloud and get AI feedback on Google Warmup."
     },
     {
-      "node_id": "pramp",
-      "narration": "Pramp pairs you with a peer for a live mock with instant feedback."
+      "node_id": "perform",
+      "narration": "Test it live with a peer on Pramp under real pressure."
     },
     {
-      "node_id": "warmup",
-      "narration": "Google Warmup listens to your spoken answers and coaches your delivery."
-    },
-    {
-      "node_id": "ready",
-      "narration": "You arrive ready to perform, not just recite."
+      "node_id": "feedback",
+      "narration": "Use feedback to fix one thing and loop again."
     }
   ],
   "quiz": [
     {
-      "q": "What is the main job of Pramp in your saves?",
+      "q": "What does Pramp give you that the other three don't?",
       "options": [
-        "Give you FAANG video lessons",
-        "Match you with peers for free live mock coding sessions",
-        "Give AI feedback on your voice",
-        "Provide structured coding paths"
+        "Video lessons from ex-FAANG interviewers",
+        "Live mock sessions with a real peer and instant feedback",
+        "AI analysis of your spoken voice",
+        "Structured coding practice paths"
       ],
       "answer_index": 1,
-      "why": "Pramp is described as practicing live interviews with real people for free with instant feedback."
+      "why": "The save says Pramp matches you with peers for live mock coding sessions with instant feedback."
     },
     {
-      "q": "What fails first if you only watch Exponent videos but never do live mocks?",
+      "q": "What breaks first if you only watch Exponent videos and never use Pramp or Warmup?",
       "options": [
-        "You will know frameworks but freeze under live pressure and speaking",
-        "You will lose your InterviewBit account",
-        "Google Warmup will stop working",
-        "FAANG companies will change questions"
+        "You will know frameworks but freeze when you must code and speak under pressure",
+        "You will run out of coding problems to practice",
+        "Google Warmup will delete your account",
+        "Pramp will charge you money"
       ],
       "answer_index": 0,
-      "why": "Knowing frameworks without live performance practice leaves you unprepared for pressure, which is what Pramp and Warmup solve."
+      "why": "Watching without speaking or performing live misses timing, nerves, and feedback - so you fail in the real interview."
     },
     {
-      "q": "Why use Google Interview Warmup?",
+      "q": "When should you use Google Interview Warmup?",
       "options": [
-        "To get peer coding partners",
-        "To practice common interview questions with AI speech feedback",
-        "To watch ex-FAANG lessons",
-        "To get a job guarantee"
+        "To practice common interview questions and get AI speech feedback",
+        "To get matched for peer coding mocks",
+        "To find structured coding paths",
+        "To book a FAANG interview"
       ],
-      "answer_index": 1,
-      "why": "Warmup is Google's free AI tool that lets you practice common interview questions and get feedback on how you speak."
+      "answer_index": 0,
+      "why": "The save describes it as Google's free AI tool that lets you practice common interview questions with voice feedback."
     }
   ],
   "sources": [
     "DTh_CT8k_gj"
   ],
-  "extra": [
-    "Exponent and InterviewBit also offer paid premium tiers beyond the free content mentioned in the save."
-  ],
+  "extra": [],
   "level": 2,
   "topic": "Career Development & Interview Prep",
   "save_ids": [
     "DTh_CT8k_gj"
   ],
-  "words": 205,
+  "words": 178,
   "word_limit": 200,
-  "mermaid": "flowchart TD\n  n0[\"Solo Study\"]\n  n1[\"Pramp: Peer Mock\"]\n  n2[\"Exponent: FAANG Frameworks\"]\n  n3[\"Google Warmup: AI Voice Feedback\"]\n  n4[\"InterviewBit: Structured Path\"]\n  n5[\"Real Interview Ready\"]\n  n0 -->|\"structure\"| n4\n  n4 -->|\"learn patterns\"| n2\n  n2 -->|\"practice live\"| n1\n  n1 -->|\"polish speaking\"| n3\n  n3 -->|\"perform\"| n5",
+  "mermaid": "flowchart TD\n  n0[\"Exponent: Learn framework\"]\n  n1[\"InterviewBit: Drill code\"]\n  n2[\"Google Warmup: Speak answer\"]\n  n3[\"Pramp: Mock with peer\"]\n  n4[\"Feedback loop\"]\n  n0 --> n1\n  n1 --> n2\n  n2 --> n3\n  n3 --> n4\n  n4 -->|\"improve\"| n0",
   "animation": [
     {
       "node": "n0",
-      "narration": "You start studying alone and know answers but haven't performed them."
-    },
-    {
-      "node": "n4",
-      "narration": "InterviewBit gives you a structured coding path to build basics in order."
-    },
-    {
-      "node": "n2",
-      "narration": "Exponent shows you FAANG frameworks so you know how interviewers score you."
+      "narration": "Start with Exponent to learn how FAANG interviewers think."
     },
     {
       "node": "n1",
-      "narration": "Pramp pairs you with a peer for a live mock with instant feedback."
+      "narration": "Drill the pattern on InterviewBit until it's automatic."
+    },
+    {
+      "node": "n2",
+      "narration": "Say your approach aloud and get AI feedback on Google Warmup."
     },
     {
       "node": "n3",
-      "narration": "Google Warmup listens to your spoken answers and coaches your delivery."
+      "narration": "Test it live with a peer on Pramp under real pressure."
     },
     {
-      "node": "n5",
-      "narration": "You arrive ready to perform, not just recite."
+      "node": "n4",
+      "narration": "Use feedback to fix one thing and loop again."
     }
   ],
   "rules_used": [],
@@ -184,12 +170,24 @@
   ],
   "judge": {
     "drafts": 3,
-    "best": "D1",
-    "why": "",
+    "best": "D2",
+    "why": "D2 best fits the 200-word beginner target: it opens with a clear everyday analogy, uses plain language, stays closest to the four sourced tools, and its quiz checks matching each tool to its real function.",
     "scores": {
-      "D1": null,
-      "D2": null,
-      "D3": null
+      "D1": {
+        "grounding": 8,
+        "level_fit": 6,
+        "clarity": 8
+      },
+      "D2": {
+        "grounding": 8,
+        "level_fit": 9,
+        "clarity": 8
+      },
+      "D3": {
+        "grounding": 7,
+        "level_fit": 6,
+        "clarity": 9
+      }
     },
     "temperatures": [
       0.4,

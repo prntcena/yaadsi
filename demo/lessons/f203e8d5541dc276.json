@@ -1,55 +1,55 @@
 {
-  "title": "Host for Free, Then Pay with Limits",
-  "subtitle": "How free hosting gets your project live in minutes",
-  "intro": "You built a project. Now you want the world to see it without paying for a server first.",
-  "takeaway": "Free hosting trades money for limits, so pick the right home for your project type before you deploy.",
+  "title": "Free Hosting: Ship Your Code Without Buying Servers",
+  "subtitle": "How Fly.io, Netlify and others let you deploy in seconds — and where free stops",
+  "intro": "You finished a project. How do you put it on the internet without renting a whole computer?",
+  "takeaway": "Free hosting lets you deploy fast on someone else's servers, but watch the limits before traffic grows.",
   "sections": [
     {
-      "heading": "Analogy: free hosting is like a free food court stall",
-      "body": "Imagine a food court gives you a tiny stall for free to test your recipe. You get a table, power, and customers walking by.\n\nFree hosting is the same. A hosting platform is a computer on the internet that shows your site to others. A free tier is a small free slice of that computer.\n\nYou push your code with Git-based deployment, which means every git push can auto-publish your site. That leads to why this exists."
+      "heading": "Analogy: free hosting is like a free table at a food park",
+      "body": "Imagine you baked cookies to sell. Instead of buying a shop, a food park lets you set up a table for free. Free hosting is the same: someone else owns the computers (servers) and lets you put your site there. Deployment means copying your code onto their server so anyone can visit it."
     },
     {
-      "heading": "Why does this exist?: show work fast without servers",
-      "body": "Developers need to deploy, which means putting your code live on a public URL, without buying servers.\n\nFor a static site, which is just HTML, CSS and images with no server code, use Netlify, Cloudflare Pages, or Surge. For a backend or full app, use Fly.io with global edge deployment, which runs your code close to users, or Google Cloud free tier.\n\nThis is perfect for portfolios and demos. But free is not infinite, which is what breaks next."
+      "heading": "Why does this exist? Ship without buying the building",
+      "body": "You want to show your work fast, not manage computers. Platforms like Fly.io run your app close to users (edge deployment), and Netlify or Cloudflare Pages publish static sites straight from Git. You push to GitHub, they build and go live in seconds.\n\nThat speed is powerful. But free tables are small, and that's where it breaks."
     },
     {
-      "heading": "What can go wrong: the free stall gets crowded",
-      "body": "Free tiers have hard limits to prevent abuse.\n\n- Sleep: Heroku-style free apps turn off when idle and wake slowly\n- Caps: bandwidth, build minutes, or hours per month run out\n- No guarantees: no uptime promise and your site can be removed\n\nIf 10,000 people visit at once, your free Fly.io or Netlify site may throttle, sleep, or show an error page. Start free to learn, then plan to upgrade when real users arrive."
+      "heading": "What can go wrong? Free has limits",
+      "body": "Free tier means a limited free allowance: maybe your site sleeps, has slow servers, or caps visitors. If 10,000 people visit at once, it can crash or charge you. JAMstack sites handle this better because they are pre-built files, not live computers.\n\nSo start free, but watch limits before you grow."
     }
   ],
   "diagram": {
     "nodes": [
       {
         "id": "code",
-        "label": "Your Code on GitHub"
+        "label": "Your code on GitHub"
       },
       {
-        "id": "push",
-        "label": "Git Push"
+        "id": "deploy",
+        "label": "Git-based deployment"
       },
       {
         "id": "host",
-        "label": "Free Host (Netlify / Fly.io)"
+        "label": "Host server (Fly.io / Netlify)"
       },
       {
         "id": "edge",
-        "label": "Edge Servers Near Users"
+        "label": "Edge deployment near users"
       },
       {
         "id": "limit",
-        "label": "Free Tier Limits Hit"
+        "label": "Free tier limit"
       }
     ],
     "edges": [
       [
         "code",
-        "push",
-        "commit"
+        "deploy",
+        "push"
       ],
       [
-        "push",
+        "deploy",
         "host",
-        "deploy"
+        "build"
       ],
       [
         "host",
@@ -57,129 +57,127 @@
         "serve"
       ],
       [
-        "edge",
+        "host",
         "limit",
-        "if traffic spikes"
+        "caps"
       ]
     ]
   },
   "steps": [
     {
       "node_id": "code",
-      "narration": "You have a project on your laptop and GitHub."
+      "narration": "You push your project to GitHub."
     },
     {
-      "node_id": "push",
-      "narration": "You push, and the host auto-builds it."
+      "node_id": "deploy",
+      "narration": "The host detects the push and builds your site automatically."
     },
     {
       "node_id": "host",
-      "narration": "Free host publishes it to a public URL."
+      "narration": "Your site now lives on their server, not your laptop."
     },
     {
       "node_id": "edge",
-      "narration": "Edge servers copy it close to users for speed."
+      "narration": "Edge deployment copies it close to visitors for speed."
     },
     {
       "node_id": "limit",
-      "narration": "Too much traffic hits the free cap and slows or sleeps."
+      "narration": "If traffic spikes, free limits can throttle or sleep your app."
     }
   ],
   "quiz": [
     {
-      "q": "What does \"deploy\" mean here?",
+      "q": "What does 'deployment' mean in this context?",
       "options": [
-        "Buying a domain name",
-        "Putting your code live on a public URL",
-        "Writing code locally",
-        "Deleting old code"
+        "Buying a laptop",
+        "Copying your code onto a host server so others can visit it",
+        "Deleting your GitHub repo",
+        "Paying for a domain forever"
       ],
       "answer_index": 1,
-      "why": "Deploy means publishing your project so others can visit it via a hosting platform."
+      "why": "Deployment is putting your code on a server that serves it to the internet, like Netlify or Fly.io do."
     },
     {
-      "q": "Which free host fits which project?",
+      "q": "Why does free hosting exist?",
       "options": [
-        "Fly.io for static HTML only, Netlify for databases",
-        "Netlify/Cloudflare Pages for static sites, Fly.io/Google Cloud for backends",
-        "Surge for running AI models",
-        "All hosts are identical"
+        "To make your code run faster on your laptop",
+        "To let you showcase projects without managing servers",
+        "To replace GitHub",
+        "To hide your site from users"
       ],
       "answer_index": 1,
-      "why": "Static site hosts serve files; Fly.io and Google Cloud run server code and edge apps."
+      "why": "It lets developers ship and share work quickly without buying or maintaining servers."
     },
     {
       "q": "What breaks first if usage grows 100x on a free tier?",
       "options": [
-        "Your code gets faster automatically",
-        "You hit caps: sleep, bandwidth limits, or throttling",
-        "Git stops working",
-        "Edge deployment removes bugs"
+        "Your GitHub password expires",
+        "The free allowance caps, site sleeps, slows or crashes",
+        "Edge deployment makes it 100x faster for free",
+        "JAMstack stops working entirely"
       ],
       "answer_index": 1,
-      "why": "Free tiers limit hours, bandwidth and builds, so spikes cause sleep or errors before you upgrade."
+      "why": "Free tiers cap CPU, bandwidth or uptime; sudden traffic can cause sleeping, throttling or charges."
     }
   ],
   "sources": [
     "DY_OCbUkuA0"
   ],
   "extra": [
-    "Free tiers often require adding a credit card for verification even if cost is $0."
+    "Google Cloud free tier also offers limited always-free VMs for small backends."
   ],
   "level": 2,
   "topic": "Software Engineering & Systems",
   "save_ids": [
     "DY_OCbUkuA0"
   ],
-  "words": 249,
+  "words": 178,
   "word_limit": 200,
-  "mermaid": "flowchart TD\n  n0[\"Your Code on GitHub\"]\n  n1[\"Git Push\"]\n  n2[\"Free Host (Netlify / Fly.io)\"]\n  n3[\"Edge Servers Near Users\"]\n  n4[\"Free Tier Limits Hit\"]\n  n0 -->|\"commit\"| n1\n  n1 -->|\"deploy\"| n2\n  n2 -->|\"serve\"| n3\n  n3 -->|\"if traffic spikes\"| n4",
+  "mermaid": "flowchart TD\n  n0[\"Your code on GitHub\"]\n  n1[\"Git-based deployment\"]\n  n2[\"Host server (Fly.io / Netlify)\"]\n  n3[\"Edge deployment near users\"]\n  n4[\"Free tier limit\"]\n  n0 -->|\"push\"| n1\n  n1 -->|\"build\"| n2\n  n2 -->|\"serve\"| n3\n  n2 -->|\"caps\"| n4",
   "animation": [
     {
       "node": "n0",
-      "narration": "You have a project on your laptop and GitHub."
+      "narration": "You push your project to GitHub."
     },
     {
       "node": "n1",
-      "narration": "You push, and the host auto-builds it."
+      "narration": "The host detects the push and builds your site automatically."
     },
     {
       "node": "n2",
-      "narration": "Free host publishes it to a public URL."
+      "narration": "Your site now lives on their server, not your laptop."
     },
     {
       "node": "n3",
-      "narration": "Edge servers copy it close to users for speed."
+      "narration": "Edge deployment copies it close to visitors for speed."
     },
     {
       "node": "n4",
-      "narration": "Too much traffic hits the free cap and slows or sleeps."
+      "narration": "If traffic spikes, free limits can throttle or sleep your app."
     }
   ],
   "rules_used": [],
-  "agent_trace": [
-    {
-      "tool": "read_save",
-      "args": {
-        "save_id": "DY_OCbUkuA0"
-      }
-    },
-    {
-      "tool": "search_saves",
-      "args": {
-        "query": "free hosting deployment edge",
-        "topic": "Software Engineering & Systems"
-      }
-    }
-  ],
+  "agent_trace": [],
   "judge": {
     "drafts": 3,
-    "best": "D1",
-    "why": "",
+    "best": "D2",
+    "why": "D2 gives the clearest beginner analogy, defines key terms in plain words, flows logically to free-tier limits, and has the strongest quiz with varied answers; its main ungrounded detail is placed in extra, though all drafts add some unsupported limit claims and exceed the word target.",
     "scores": {
-      "D1": null,
-      "D2": null,
-      "D3": null
+      "D1": {
+        "grounding": 5,
+        "level_fit": 5,
+        "clarity": 6
+      },
+      "D2": {
+        "grounding": 6,
+        "level_fit": 7,
+        "clarity": 8
+      },
+      "D3": {
+        "grounding": 5,
+        "level_fit": 6,
+        "clarity": 7
+      }
     },
     "temperatures": [
       0.4,

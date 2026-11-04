@@ -1,176 +1,186 @@
 {
-  "title": "JSON vs Natural Prompts in Veo 3",
-  "subtitle": "Same idea, two ways to tell the AI what you want",
-  "intro": "You asked Veo 3 for the same seamless fashion transition — a model in a red fur coat, dark ornate backdrop — and got two different videos. The only change was how you asked.",
-  "takeaway": "Natural prompts are fast and flexible, JSON prompts trade that speed for precise control over style, light, and cuts.",
+  "title": "Why Talking to AI Isn't Always Enough",
+  "subtitle": "Normal words for ideas, JSON for precise control.",
+  "intro": "Same idea in Veo 3 — a model in a long shaggy red fur coat, dark red-lit room — but one video looked exactly cinematic. The difference? How the prompt was written.",
+  "takeaway": "Use natural prompts to explore ideas, and JSON prompts when you need precise, repeatable control over an AI video.",
   "sections": [
     {
-      "heading": "Analogy: ordering coffee vs filling a form",
-      "body": "Think of a natural prompt like telling a barista \"make me something cozy and red-themed.\" You get something nice, but you don't control every detail.\n\nA JSON prompt is like a form with boxes: drink = latte, milk = oat, temp = hot, art = heart. JSON (JavaScript Object Notation) just means labeled boxes the computer can read exactly.\n\nThat difference explains why Veo 3 gives you two styles from the same idea."
+      "heading": "Everyday analogy: filming a friend",
+      "body": "Imagine you tell a friend \"make it cool and red.\" They will guess. If you hand them a shot list — lighting: red, coat: long shaggy fur, cut: invisible — they follow it.\n\nJSON prompting is that shot list for AI. JSON (JavaScript Object Notation) just means labeled boxes for each choice, so the model doesn't have to guess.\n\nBut why bother with a list instead of just talking?"
     },
     {
-      "heading": "Why it exists: control over cinematic style",
-      "body": "Veo 3 is Google's video generator. A natural prompt leaves choices like lighting, camera move, and invisible cuts up to the model.\n\nA JSON prompt lets you set each choice: e.g., lighting: \"red-lit\", transition: \"invisible cut\", style: \"cinematic\". You get repeatable, precise results.\n\nBut more control means more work to write, which is where things can go wrong."
+      "heading": "Why does this exist? Control you can repeat",
+      "body": "You use natural prompts to explore. You use JSON prompts to control.\n\nIn Google Veo 3, both made the same dark red fashion scene, but the JSON version let the creator set style, lighting, and invisible cuts as separate dials instead of one dice roll.\n\nMore control feels like a superpower, but it creates a new problem."
     },
     {
-      "heading": "What can go wrong: when precision backfires",
-      "body": "If you add too many boxes, small errors break the video — a typo in \"lighting\" or conflicting cuts can give a worse result than a simple sentence.\n\nIt also takes longer to write and test, so for quick ideas natural language wins.\n\nUse natural for exploring, JSON for locking the final look."
+      "heading": "What can go wrong? When precision traps you",
+      "body": "What fails if you over-control? Your JSON prompt gets rigid — one small change breaks the look and is hard to fix.\n\nYou can also waste hours tweaking fields for a seamless transition that a simple sentence could have made.\n\nSo explore with natural language first, then switch to JSON only when you need that exact look."
     }
   ],
   "diagram": {
     "nodes": [
       {
-        "id": "idea",
-        "label": "Your idea: red coat transition"
+        "id": "you",
+        "label": "You"
       },
       {
         "id": "natural",
-        "label": "Natural prompt: one sentence"
+        "label": "Natural prompt: 'make it red and cinematic'"
       },
       {
         "id": "json",
-        "label": "JSON prompt: labeled boxes"
+        "label": "JSON prompt: {lighting: red, coat: fur, cut: invisible}"
       },
       {
-        "id": "veo3",
-        "label": "Veo 3 generates video"
+        "id": "veo",
+        "label": "Veo 3 model"
       },
       {
-        "id": "result",
-        "label": "Two styles, different control"
+        "id": "video",
+        "label": "Video output"
       }
     ],
     "edges": [
       [
-        "idea",
+        "you",
         "natural",
         ""
       ],
       [
-        "idea",
+        "you",
         "json",
         ""
       ],
       [
         "natural",
-        "veo3",
-        "flexible"
+        "veo",
+        "guess"
       ],
       [
         "json",
-        "veo3",
+        "veo",
         "precise"
       ],
       [
-        "veo3",
-        "result",
+        "veo",
+        "video",
         ""
       ]
     ]
   },
   "steps": [
     {
-      "node_id": "idea",
-      "narration": "You start with one concept: seamless transition in red fur coat."
+      "node_id": "you",
+      "narration": "You want a dark red fashion video."
     },
     {
       "node_id": "natural",
-      "narration": "Natural prompt describes it in plain English and lets Veo 3 fill gaps."
+      "narration": "A natural prompt leaves choices to the model to guess."
     },
     {
       "node_id": "json",
-      "narration": "JSON prompt splits it into labeled fields for light, style, and cuts."
+      "narration": "A JSON prompt labels each choice so nothing is guessed."
     },
     {
-      "node_id": "veo3",
-      "narration": "Veo 3 reads either input and renders the video."
+      "node_id": "veo",
+      "narration": "Veo 3 reads either and generates the scene."
     },
     {
-      "node_id": "result",
-      "narration": "Same idea, but JSON gives tighter control over the final look."
+      "node_id": "video",
+      "narration": "Natural gives variety, JSON gives repeatable control."
     }
   ],
   "quiz": [
     {
-      "q": "What is the main benefit of JSON prompting in Veo 3 shown in the save?",
+      "q": "What is a JSON prompt in this context?",
       "options": [
-        "It makes videos render faster",
-        "It gives precise control over lighting, style, and cuts",
-        "It removes the need for prompts",
-        "It only works for photos"
+        "A labeled shot list for the AI, with separate fields for lighting, style, and cuts",
+        "A longer natural sentence with more adjectives",
+        "A video file that Veo 3 copies",
+        "A filter you add after the video is made"
       ],
-      "answer_index": 1,
-      "why": "The save shows the same seamless transition made two ways, with JSON offering more precise control over cinematic style, lighting, and cuts."
+      "answer_index": 0,
+      "why": "The save shows JSON prompting as structured control over cinematic style, lighting, and cuts vs a normal sentence."
     },
     {
-      "q": "What can go wrong if you over-use JSON prompting?",
+      "q": "When should you prefer JSON over a natural prompt?",
       "options": [
-        "The video will always be perfect",
-        "Typos or conflicting fields can break the result and take longer to fix",
-        "Veo 3 will delete your account",
-        "Natural prompts stop working"
+        "Always, because it is more professional",
+        "When you need precise, repeatable control over the look",
+        "When you want the AI to be more creative",
+        "When you have no idea what you want"
       ],
       "answer_index": 1,
-      "why": "More fields mean more chances for errors and more time testing, sometimes worse than a simple natural prompt."
+      "why": "JSON trades exploration for control — useful when you know the exact look you need."
     },
     {
-      "q": "When should you use a natural prompt instead?",
+      "q": "What can go wrong if you use a huge JSON prompt for everything?",
       "options": [
-        "When you need exact repeatable cuts",
-        "When you are quickly exploring ideas",
-        "When you want to control every light",
-        "Never"
+        "The video will render faster no matter the prompt",
+        "It can become rigid, hard to fix, and waste time when a simple sentence would work",
+        "Google Veo 3 will refuse natural prompts forever",
+        "Your JSON will automatically improve the model's quality"
       ],
       "answer_index": 1,
-      "why": "Natural prompts are faster and more flexible for exploration; JSON is for locking a final look."
+      "why": "Over-specifying makes prompts brittle and time-consuming — precision is not always needed."
     }
   ],
   "sources": [
     "DONQZcYE90_"
   ],
-  "extra": [
-    "Veo 3 also supports audio generation alongside video, which benefits even more from structured JSON timing cues."
-  ],
+  "extra": [],
   "level": 2,
   "topic": "AI & Machine Learning",
   "save_ids": [
     "DONQZcYE90_"
   ],
-  "words": 218,
+  "words": 215,
   "word_limit": 200,
-  "mermaid": "flowchart TD\n  n0[\"Your idea: red coat transition\"]\n  n1[\"Natural prompt: one sentence\"]\n  n2[\"JSON prompt: labeled boxes\"]\n  n3[\"Veo 3 generates video\"]\n  n4[\"Two styles, different control\"]\n  n0 --> n1\n  n0 --> n2\n  n1 -->|\"flexible\"| n3\n  n2 -->|\"precise\"| n3\n  n3 --> n4",
+  "mermaid": "flowchart TD\n  n0[\"You\"]\n  n1[\"Natural prompt: 'make it red and cinematic'\"]\n  n2[\"JSON prompt:  lighting: red, coat: fur, cut: invisible\"]\n  n3[\"Veo 3 model\"]\n  n4[\"Video output\"]\n  n0 --> n1\n  n0 --> n2\n  n1 -->|\"guess\"| n3\n  n2 -->|\"precise\"| n3\n  n3 --> n4",
   "animation": [
     {
       "node": "n0",
-      "narration": "You start with one concept: seamless transition in red fur coat."
+      "narration": "You want a dark red fashion video."
     },
     {
       "node": "n1",
-      "narration": "Natural prompt describes it in plain English and lets Veo 3 fill gaps."
+      "narration": "A natural prompt leaves choices to the model to guess."
     },
     {
       "node": "n2",
-      "narration": "JSON prompt splits it into labeled fields for light, style, and cuts."
+      "narration": "A JSON prompt labels each choice so nothing is guessed."
     },
     {
       "node": "n3",
-      "narration": "Veo 3 reads either input and renders the video."
+      "narration": "Veo 3 reads either and generates the scene."
     },
     {
       "node": "n4",
-      "narration": "Same idea, but JSON gives tighter control over the final look."
+      "narration": "Natural gives variety, JSON gives repeatable control."
     }
   ],
   "rules_used": [],
   "agent_trace": [],
   "judge": {
     "drafts": 3,
-    "best": "D1",
-    "why": "",
+    "best": "D3",
+    "why": "D3 best fits beginner level: it opens with a concrete scene, uses one clear shot-list analogy, defines JSON in plain words, flows logically to trade-offs, and its quiz tests when and why to use JSON.",
     "scores": {
-      "D1": null,
-      "D2": null,
-      "D3": null
+      "D1": {
+        "grounding": 5,
+        "level_fit": 6,
+        "clarity": 6
+      },
+      "D2": {
+        "grounding": 6,
+        "level_fit": 6,
+        "clarity": 7
+      },
+      "D3": {
+        "grounding": 6,
+        "level_fit": 7,
+        "clarity": 8
+      }
     },
     "temperatures": [
       0.4,

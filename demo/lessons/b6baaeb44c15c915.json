@@ -1,141 +1,136 @@
 {
-  "title": "How a RAG Chatbot Answers From Your Docs",
-  "subtitle": "Turn MkDocs into a chat assistant that cites what it read",
-  "intro": "Your MkDocs site knows every answer, but users still ask the chatbot and get made-up replies. What if it could look things up first?",
-  "takeaway": "RAG makes the chatbot retrieve real doc chunks before it writes, so answers stay grounded in your docs.",
+  "title": "How a Chatbot Reads Your Docs Before It Answers",
+  "subtitle": "RAG gives your docs a librarian, a memory, and a local brain",
+  "intro": "You ask your docs chatbot a question and it answers like it actually read everything. It didn't memorize it — it looked it up first.",
+  "takeaway": "RAG lets a chatbot retrieve your docs first, then generate an answer from them.",
   "sections": [
     {
-      "heading": "Analogy: a librarian with sticky notes",
-      "body": "Imagine a librarian who answers questions by first pulling sticky notes from books, then writing the answer using only those notes.\n\nA RAG pipeline does the same. RAG means Retrieval-Augmented Generation: retrieve relevant text, then generate an answer. Vector storage means turning text into numbers (embeddings) so similar meanings sit close together.\n\nObelisk does this for MkDocs: it indexes your docs, stores embeddings in ChromaDB, and watches for changes in real time.\n\nThat setup explains why you would add retrieval at all."
+      "heading": "Everyday analogy: the librarian with sticky notes",
+      "body": "Imagine a librarian who doesn't memorize books. She puts a sticky note on every paragraph about what it means. When you ask a question, she matches it to the best notes, pulls those pages, and gives them to a writer to answer. That's RAG — Retrieval-Augmented Generation. Retrieval means finding pages first. Generation means writing the answer from them."
     },
     {
-      "heading": "Why does this exist?: stop hallucinating, start citing",
-      "body": "A plain LLM guesses from memory. A RAG system grounds it in your docs.\n\nObelisk's flow is: document processing -> embedding via Ollama or OpenAI -> vector storage in ChromaDB -> retrieval -> generation via Ollama or an OpenAI-compatible API. You get a drop-in OpenAI-compatible endpoint and Docker deployment.\n\nExample: you ask \"how to install?\" It retrieves the Installation chunk with \"poetry install\" and Python 3.12+ prerequisites, then answers with those steps.\n\nGrounding helps, but the retrieval step can still fail."
+      "heading": "Why does this exist? Don't just trust the AI's memory",
+      "body": "A language model alone doesn't know your MkDocs docs. Obelisk fixes that. First it chunks your docs. Then Ollama creates vector embeddings — number lists that capture meaning. These go into ChromaDB — a vector storage you can search by meaning, not just keywords. At ask time, it retrieves the closest chunks and sends them plus your question to the language model to write a grounded answer. It also offers an OpenAI-compatible API."
     },
     {
-      "heading": "What can go wrong?: when retrieval misses",
-      "body": "If indexing is stale, answers cite old docs. Obelisk adds real-time document monitoring to re-index on change.\n\nOther failures:\n- Bad chunking splits an answer across two notes, so nothing matches well.\n- Wrong embeddings make \"install\" look like \"uninstall\".\n- Too few retrieved chunks starves the LLM; too many drowns it with noise.\n\nFix by testing retrieval first, then generation."
+      "heading": "What can go wrong? Wrong notes, stale pages",
+      "body": "If embeddings are poor, retrieval pulls wrong paragraphs and the answer sounds confident but wrong. If docs change and indexing lags, it answers from old pages. Obelisk watches files and re-indexes them quickly. Running local models with Ollama also needs enough computer power and Docker setup, or answers get slow. Always check: did it retrieve the right source first?"
     }
   ],
   "diagram": {
     "nodes": [
       {
         "id": "docs",
-        "label": "MkDocs Docs"
+        "label": "Your MkDocs Docs"
       },
       {
-        "id": "index",
-        "label": "Index & Embed"
+        "id": "embed",
+        "label": "Embed with Ollama"
       },
       {
         "id": "store",
-        "label": "ChromaDB Vectors"
+        "label": "Store in ChromaDB"
       },
       {
         "id": "query",
-        "label": "User Question"
+        "label": "Your Question"
       },
       {
         "id": "retrieve",
-        "label": "Retrieve Chunks"
+        "label": "Retrieve Top Docs"
       },
       {
         "id": "generate",
-        "label": "Ollama/OpenAI Generate"
+        "label": "Generate Answer via API"
       }
     ],
     "edges": [
       [
         "docs",
-        "index",
+        "embed",
         "process"
       ],
       [
-        "index",
+        "embed",
         "store",
-        "save"
+        "vectors"
       ],
       [
         "query",
         "retrieve",
-        "embed & search"
+        "ask"
       ],
       [
         "store",
         "retrieve",
-        "match"
+        "search"
       ],
       [
         "retrieve",
         "generate",
-        "context"
-      ],
-      [
-        "docs",
-        "store",
-        "monitor updates"
+        "context+question"
       ]
     ]
   },
   "steps": [
     {
       "node_id": "docs",
-      "narration": "Start with your MkDocs markdown files as the source of truth."
+      "narration": "Start with your MkDocs docs — the knowledge you want searchable."
     },
     {
-      "node_id": "index",
-      "narration": "Split docs into chunks and turn each into a vector embedding."
+      "node_id": "embed",
+      "narration": "Ollama turns each chunk into a vector embedding, a meaning sticky note."
     },
     {
       "node_id": "store",
-      "narration": "Save vectors in ChromaDB for fast similarity search."
+      "narration": "ChromaDB stores those vectors so you can search by meaning."
     },
     {
       "node_id": "query",
-      "narration": "User asks a question via the OpenAI-compatible API."
+      "narration": "You ask a question in plain language."
     },
     {
       "node_id": "retrieve",
-      "narration": "Embed the question and pull the closest doc chunks."
+      "narration": "The system retrieves the most similar chunks."
     },
     {
       "node_id": "generate",
-      "narration": "Ollama generates the answer using only those retrieved chunks."
+      "narration": "The LLM generates an answer using your question plus retrieved context."
     }
   ],
   "quiz": [
     {
-      "q": "What does RAG do first when you ask a question?",
+      "q": "What does Retrieval-Augmented Generation mainly do?",
       "options": [
-        "Generates an answer from memory, then searches docs",
-        "Retrieves relevant doc chunks, then generates an answer",
-        "Retrains the LLM on your MkDocs site",
-        "Deletes old vectors from ChromaDB"
-      ],
-      "answer_index": 1,
-      "why": "RAG = Retrieval-Augmented Generation: retrieve grounded context, then generate."
-    },
-    {
-      "q": "What fails first if usage grows 100x?",
-      "options": [
-        "ChromaDB retrieval slows and embeddings cost spikes",
-        "MkDocs deletes all markdown files",
-        "Ollama stops needing embeddings",
-        "Docker makes answers more accurate"
+        "It finds your docs first, then writes an answer from them",
+        "It deletes old docs automatically",
+        "It trains a new LLM from scratch",
+        "It only checks spelling in docs"
       ],
       "answer_index": 0,
-      "why": "Vector search and embedding generation become bottlenecks under high query volume."
+      "why": "RAG = retrieval step to find relevant docs, then generation step to answer using them as context."
     },
     {
-      "q": "Why use an OpenAI-compatible API in Obelisk?",
+      "q": "What fails first if you have 100x more docs and bad embeddings?",
       "options": [
-        "To make docs unreadable",
-        "To let existing OpenAI clients point to your local RAG without code changes",
-        "To remove need for vector storage",
-        "To disable real-time monitoring"
+        "The API key expires",
+        "Retrieval pulls wrong pages and answers become wrong",
+        "Docker stops working completely",
+        "ChromaDB makes answers faster"
       ],
       "answer_index": 1,
-      "why": "It acts as a drop-in replacement so apps can use local Ollama-backed RAG easily."
+      "why": "With more docs, poor embeddings cause mismatched search — the LLM then generates from wrong context."
+    },
+    {
+      "q": "Why does Obelisk use Ollama and ChromaDB?",
+      "options": [
+        "Ollama creates meaning vectors and generates locally; ChromaDB stores and searches them",
+        "They are needed to write Markdown",
+        "They replace the need for any docs",
+        "They only handle Docker deployment"
+      ],
+      "answer_index": 0,
+      "why": "Obelisk uses Ollama for local embeddings and generation, and ChromaDB as vector storage for semantic search."
     }
   ],
   "sources": [
@@ -147,45 +142,64 @@
   "save_ids": [
     "https-github-com-usrbinkat-obelisk"
   ],
-  "words": 248,
+  "words": 216,
   "word_limit": 200,
-  "mermaid": "flowchart TD\n  n0[\"MkDocs Docs\"]\n  n1[\"Index   Embed\"]\n  n2[\"ChromaDB Vectors\"]\n  n3[\"User Question\"]\n  n4[\"Retrieve Chunks\"]\n  n5[\"Ollama/OpenAI Generate\"]\n  n0 -->|\"process\"| n1\n  n1 -->|\"save\"| n2\n  n3 -->|\"embed   search\"| n4\n  n2 -->|\"match\"| n4\n  n4 -->|\"context\"| n5\n  n0 -->|\"monitor updates\"| n2",
+  "mermaid": "flowchart TD\n  n0[\"Your MkDocs Docs\"]\n  n1[\"Embed with Ollama\"]\n  n2[\"Store in ChromaDB\"]\n  n3[\"Your Question\"]\n  n4[\"Retrieve Top Docs\"]\n  n5[\"Generate Answer via API\"]\n  n0 -->|\"process\"| n1\n  n1 -->|\"vectors\"| n2\n  n3 -->|\"ask\"| n4\n  n2 -->|\"search\"| n4\n  n4 -->|\"context+question\"| n5",
   "animation": [
     {
       "node": "n0",
-      "narration": "Start with your MkDocs markdown files as the source of truth."
+      "narration": "Start with your MkDocs docs — the knowledge you want searchable."
     },
     {
       "node": "n1",
-      "narration": "Split docs into chunks and turn each into a vector embedding."
+      "narration": "Ollama turns each chunk into a vector embedding, a meaning sticky note."
     },
     {
       "node": "n2",
-      "narration": "Save vectors in ChromaDB for fast similarity search."
+      "narration": "ChromaDB stores those vectors so you can search by meaning."
     },
     {
       "node": "n3",
-      "narration": "User asks a question via the OpenAI-compatible API."
+      "narration": "You ask a question in plain language."
     },
     {
       "node": "n4",
-      "narration": "Embed the question and pull the closest doc chunks."
+      "narration": "The system retrieves the most similar chunks."
     },
     {
       "node": "n5",
-      "narration": "Ollama generates the answer using only those retrieved chunks."
+      "narration": "The LLM generates an answer using your question plus retrieved context."
     }
   ],
   "rules_used": [],
-  "agent_trace": [],
+  "agent_trace": [
+    {
+      "tool": "read_save",
+      "args": {
+        "save_id": "https-github-com-usrbinkat-obelisk"
+      }
+    }
+  ],
   "judge": {
     "drafts": 3,
-    "best": "D1",
-    "why": "",
+    "best": "D2",
+    "why": "D2 best fits a beginner: clear sticky-note librarian analogy, plain definitions of RAG, embeddings, ChromaDB and Ollama, smooth flow, and quiz questions that test retrieval failure.",
     "scores": {
-      "D1": null,
-      "D2": null,
-      "D3": null
+      "D1": {
+        "grounding": 6,
+        "level_fit": 6,
+        "clarity": 7
+      },
+      "D2": {
+        "grounding": 7,
+        "level_fit": 7,
+        "clarity": 8
+      },
+      "D3": {
+        "grounding": 8,
+        "level_fit": 6,
+        "clarity": 7
+      }
     },
     "temperatures": [
       0.4,

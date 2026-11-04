@@ -1,27 +1,27 @@
 {
-  "title": "Why Premium Apps Feel Like Lego, Not Magic",
-  "subtitle": "You don't code maps and email from scratch — you plug in specialists.",
-  "intro": "Your app needs maps, logins, chat, email, and fast images. Building all five yourself would take months. Premium apps cheat — in a smart way.",
-  "takeaway": "Use specialist APIs to feel premium fast, but remember every API is a dependency you pay for and must handle when it fails.",
+  "title": "Why Premium Apps Don't Build Everything Themselves",
+  "subtitle": "5 borrowed powers that make your app feel expensive",
+  "intro": "Your app needs maps, login, emails, chat, and perfect images. Building all five yourself would take months. Premium apps just borrow them.",
+  "takeaway": "Use specialist APIs for hard features, so you ship a premium feel without building it all.",
   "sections": [
     {
-      "heading": "Everyday analogy: a food truck with helpers",
-      "body": "Think of your app like a food truck. You cook the main dish, but you hire helpers for the rest.\n\nOne helper draws your beautiful menu board. Another handles payments. Another delivers flyers. You focus on food, they handle their specialty.\n\nAPIs are those helpers for apps. Next, see why you need them."
+      "heading": "Everyday analogy: the food court, not the solo kitchen",
+      "body": "Think of your app as a food court, not one giant kitchen. You run the court, but each stall is a specialist.\n\nAn API is a window where you order a job: \"give me a map\" or \"send this email.\" You don't need to know how their kitchen works.\n\nThat division is the whole idea, and the next part shows why it exists."
     },
     {
-      "heading": "Why does this exist?: don't rebuild what experts do best",
-      "body": "Why does this exist? Because some features are hard to build well.\n\nAn API is a ready-made service your app can call. Instead of building maps, email, or login from zero, you plug one in:\n- Mapbox for custom maps and real-time location\n- Clerk for login and user management with polished UI\n- Resend for transactional email that avoids spam folders\n- Stream for chat, feeds, and video\n- Cloudinary for image and video optimization via CDN\n\nYou ship faster and it looks premium. But helpers can cause problems."
+      "heading": "Why does this exist? Buy polish, build your core",
+      "body": "Some features need huge expertise to feel premium. Mapbox handles custom maps and live location, Clerk handles logins with polished UI, Resend makes transactional emails land in inboxes.\n\nStream adds real-time chat and feeds, Cloudinary optimizes images and video via its CDN. You call their API and get that polish in a day.\n\nIt feels like a win, but every window you add creates risk, which is next."
     },
     {
-      "heading": "What can go wrong: when helpers cost or quit",
-      "body": "What can go wrong? Every helper adds risk.\n\nIf you add five APIs, you have five bills, five places that can go down, and five sets of user data leaving your app.\n\nIf Mapbox is slow, your maps are slow. If Resend fails, no password emails go out. If you send every image through Cloudinary without limits, costs spike.\n\nSo use APIs for hard, non-core features, and always plan for failure."
+      "heading": "What can go wrong? When borrowed power breaks",
+      "body": "Every API is a dependency - another service you rely on to stay up. If it goes down, your feature goes down too.\n\nCosts, limits, and data rules stack up. Five APIs mean five bills, five outages to watch, and user data flowing to five places."
     }
   ],
   "diagram": {
     "nodes": [
       {
         "id": "app",
-        "label": "Your App (core idea)"
+        "label": "Your App"
       },
       {
         "id": "mapbox",
@@ -37,61 +37,61 @@
       },
       {
         "id": "stream",
-        "label": "Stream: Chat/Feeds"
+        "label": "Stream: Chat/Feed"
       },
       {
         "id": "cloudinary",
-        "label": "Cloudinary: Images/CDN"
+        "label": "Cloudinary: Media CDN"
       }
     ],
     "edges": [
       [
         "app",
         "mapbox",
-        "calls"
+        "API call"
       ],
       [
         "app",
         "clerk",
-        "calls"
+        "API call"
       ],
       [
         "app",
         "resend",
-        "calls"
+        "API call"
       ],
       [
         "app",
         "stream",
-        "calls"
+        "API call"
       ],
       [
         "app",
         "cloudinary",
-        "calls"
+        "API call"
       ]
     ]
   },
   "steps": [
     {
       "node_id": "app",
-      "narration": "You build only your core app idea."
-    },
-    {
-      "node_id": "mapbox",
-      "narration": "You call Mapbox when you need a custom map."
+      "narration": "You keep your core app and borrow hard features via APIs."
     },
     {
       "node_id": "clerk",
-      "narration": "Clerk handles login so you don't store passwords badly."
+      "narration": "Clerk handles login so you don't build auth."
+    },
+    {
+      "node_id": "mapbox",
+      "narration": "Mapbox delivers the premium map."
     },
     {
       "node_id": "resend",
-      "narration": "Resend sends the welcome email reliably."
+      "narration": "Resend sends the receipt email reliably."
     },
     {
       "node_id": "stream",
-      "narration": "Stream adds chat without you building real-time servers."
+      "narration": "Stream powers chat without you building real-time."
     },
     {
       "node_id": "cloudinary",
@@ -100,73 +100,71 @@
   ],
   "quiz": [
     {
-      "q": "What is an API in this lesson?",
+      "q": "What is an API in this food-court analogy?",
       "options": [
-        "A ready-made service your app can call for a specific job",
-        "A new programming language for premium apps",
-        "A design tool that only makes logos",
-        "A database you must host yourself"
+        "A window to order a specific job from a specialist",
+        "Your app's database",
+        "A design color palette",
+        "A phone's battery"
       ],
       "answer_index": 0,
-      "why": "APIs like Mapbox or Clerk are specialist services you plug in instead of building from scratch."
+      "why": "An API lets your app ask another service to do one job without knowing its insides."
     },
     {
-      "q": "Why would you use Clerk instead of building login yourself?",
+      "q": "Why use Clerk or Mapbox instead of building login/maps yourself?",
       "options": [
-        "To get polished UI and secure user management faster",
-        "To make your maps look better",
-        "To send emails cheaper",
-        "To avoid using any code"
+        "They give premium polish and expertise in a day vs months of work",
+        "They make your app offline forever",
+        "They remove the need for internet",
+        "They are required by law"
       ],
       "answer_index": 0,
-      "why": "Clerk is the auth specialist from the saves — it saves time and security mistakes."
+      "why": "Specialist APIs like Clerk for auth and Mapbox for maps save months and feel polished."
     },
     {
-      "q": "What breaks first if usage grows 100x and you use 5 APIs without limits?",
+      "q": "What breaks first if usage grows 100x and you rely on 5 APIs?",
       "options": [
-        "Costs spike and one API failure can break your app",
-        "Your app automatically gets faster for free",
-        "You no longer need to write any code",
-        "Maps become free forever"
+        "Bills, rate limits, and outages compound across every dependency",
+        "Your app logo disappears",
+        "CDNs make images slower",
+        "APIs guarantee lower cost at scale"
       ],
       "answer_index": 0,
-      "why": "Every API is a dependency with bills and downtime — scale makes cost and failure handling critical."
+      "why": "More traffic means more API calls, so costs spike and any outage in one dependency breaks your feature."
     }
   ],
   "sources": [
     "DY3rLu6FMm6"
   ],
-  "extra": [
-    "APIs often have free tiers then usage-based pricing — monitor calls to avoid surprise bills."
-  ],
+  "extra": [],
   "level": 2,
   "topic": "Software Engineering & Systems",
   "save_ids": [
     "DY3rLu6FMm6"
   ],
-  "words": 239,
+  "words": 199,
   "word_limit": 200,
-  "mermaid": "flowchart TD\n  n0[\"Your App (core idea)\"]\n  n1[\"Mapbox: Maps\"]\n  n2[\"Clerk: Auth\"]\n  n3[\"Resend: Email\"]\n  n4[\"Stream: Chat/Feeds\"]\n  n5[\"Cloudinary: Images/CDN\"]\n  n0 -->|\"calls\"| n1\n  n0 -->|\"calls\"| n2\n  n0 -->|\"calls\"| n3\n  n0 -->|\"calls\"| n4\n  n0 -->|\"calls\"| n5",
+  "mermaid": "flowchart TD\n  n0[\"Your App\"]\n  n1[\"Mapbox: Maps\"]\n  n2[\"Clerk: Auth\"]\n  n3[\"Resend: Email\"]\n  n4[\"Stream: Chat/Feed\"]\n  n5[\"Cloudinary: Media CDN\"]\n  n0 -->|\"API call\"| n1\n  n0 -->|\"API call\"| n2\n  n0 -->|\"API call\"| n3\n  n0 -->|\"API call\"| n4\n  n0 -->|\"API call\"| n5",
   "animation": [
     {
       "node": "n0",
-      "narration": "You build only your core app idea."
-    },
-    {
-      "node": "n1",
-      "narration": "You call Mapbox when you need a custom map."
+      "narration": "You keep your core app and borrow hard features via APIs."
     },
     {
       "node": "n2",
-      "narration": "Clerk handles login so you don't store passwords badly."
+      "narration": "Clerk handles login so you don't build auth."
+    },
+    {
+      "node": "n1",
+      "narration": "Mapbox delivers the premium map."
     },
     {
       "node": "n3",
-      "narration": "Resend sends the welcome email reliably."
+      "narration": "Resend sends the receipt email reliably."
     },
     {
       "node": "n4",
-      "narration": "Stream adds chat without you building real-time servers."
+      "narration": "Stream powers chat without you building real-time."
     },
     {
       "node": "n5",
@@ -176,20 +174,32 @@
   "rules_used": [],
   "agent_trace": [
     {
-      "tool": "search_saves",
+      "tool": "read_save",
       "args": {
-        "query": "APIs premium apps Mapbox Resend Clerk Stream Cloudinary"
+        "save_id": "DY3rLu6FMm6"
       }
     }
   ],
   "judge": {
     "drafts": 3,
-    "best": "D1",
-    "why": "",
+    "best": "D3",
+    "why": "D3 is concise for beginner level, uses one clear food-court analogy without repetition, flows cleanly from hook to risks, defines API in plain words, stays closest to the five sourced APIs, and its quiz checks the core trade-off.",
     "scores": {
-      "D1": null,
-      "D2": null,
-      "D3": null
+      "D1": {
+        "grounding": 7,
+        "level_fit": 6,
+        "clarity": 7
+      },
+      "D2": {
+        "grounding": 6,
+        "level_fit": 6,
+        "clarity": 7
+      },
+      "D3": {
+        "grounding": 7,
+        "level_fit": 8,
+        "clarity": 9
+      }
     },
     "temperatures": [
       0.4,

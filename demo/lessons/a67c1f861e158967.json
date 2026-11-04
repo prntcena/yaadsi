@@ -1,20 +1,20 @@
 {
   "title": "How to Think Like a System Designer",
-  "subtitle": "From bouncers to databases: the plan behind apps that serve millions",
-  "intro": "Your save lists 25 system design questions — from Rate Limiter to YouTube — all asking the same thing: how would you build this for millions?",
-  "takeaway": "System design is planning how parts scale and fail together before you write code.",
+  "subtitle": "From one feature to millions of users without breaking",
+  "intro": "You want to build WhatsApp or YouTube for your interview. Where do you even start drawing?",
+  "takeaway": "System design is choosing trade-offs so your app stays fast and reliable as it grows.",
   "sections": [
     {
-      "heading": "Analogy: designing a city before building it",
-      "body": "Imagine you run a busy restaurant. You need a bouncer at the door, a fast kitchen, and labeled shelves.\n\nSystem design is that plan for apps. A Rate Limiter is the bouncer, a Distributed Key-Value Store — a database spread across many machines — is the shelves.\n\nYou draw this plan before coding, which is why it matters next."
+      "heading": "Everyday analogy: planning a city",
+      "body": "Think of an app like a city. A Rate Limiter is the traffic light that stops too many cars at once.\n\nA Distributed Key-Value Store is like many warehouses holding copies of the same goods, so anyone can get them quickly.\n\nA News Feed is the newspaper delivery route that decides what each house gets first.\n\nThis city view helps you see the next idea: why we need these parts at all."
     },
     {
-      "heading": "Why it exists: handling millions without breaking",
-      "body": "You need this because one computer cannot serve millions. Your save lists 25 interview designs like URL Shortener, YouTube Video Streaming, and WhatsApp Chat.\n\nEach handles scale differently. A News Feed must rank posts for millions, Streaming must send huge video without buffering.\n\nWithout this plan your app crashes under load, and even with it things can still go wrong."
+      "heading": "Why does this exist? Handling scale you can't ignore",
+      "body": "A single server works for 100 users. It fails for 10 million.\n\nThat is why we design systems like Twitter's Social Graph and Feed or a Chat System like WhatsApp. They split work across many machines.\n\nFor example, a Video Streaming Architecture like YouTube stores one video in many places, so viewers in different cities stream fast without waiting.\n\nBut splitting work creates new problems, which is what can go wrong."
     },
     {
-      "heading": "What can go wrong: when good plans fail",
-      "body": "Even good designs break. If your Rate Limiter is too strict, real users get blocked; too loose and bots flood you.\n\nIf your Key-Value Store loses sync, one Instagram user sees an old photo while another sees the new one. Notification queues can overflow and delay chats.\n\nSo you must trade speed, freshness, and cost before you build."
+      "heading": "What can go wrong? When growth breaks things",
+      "body": "More users means more failure points.\n\n- If your Rate Limiter is too strict, real users get blocked\n- If your Key-Value Store copies lag, people see old data\n- If your Notification System retries too much, it floods phones\n\nGood design means picking what to sacrifice: speed, freshness, or cost. You never get all three perfect."
     }
   ],
   "diagram": {
@@ -25,138 +25,118 @@
       },
       {
         "id": "limiter",
-        "label": "Rate Limiter\n(bouncer)"
-      },
-      {
-        "id": "app",
-        "label": "App Logic\n(Feed / Chat / Video)"
+        "label": "Rate Limiter"
       },
       {
         "id": "store",
-        "label": "Distributed Key-Value Store"
+        "label": "Distributed Store"
       },
       {
-        "id": "queue",
-        "label": "Notification Queue"
+        "id": "feed",
+        "label": "Feed / Stream"
       }
     ],
     "edges": [
       [
         "users",
         "limiter",
-        ""
+        "requests"
       ],
       [
         "limiter",
-        "app",
-        ""
-      ],
-      [
-        "app",
         "store",
-        ""
+        "allowed"
       ],
       [
-        "app",
-        "queue",
-        ""
-      ],
-      [
-        "queue",
-        "users",
-        "push"
+        "store",
+        "feed",
+        "delivers"
       ]
     ]
   },
   "steps": [
     {
       "node_id": "users",
-      "narration": "Millions of users hit your app at once."
+      "narration": "Millions of users send requests at once."
     },
     {
       "node_id": "limiter",
-      "narration": "Rate Limiter decides who gets in now."
-    },
-    {
-      "node_id": "app",
-      "narration": "App builds Feed, Chat, or Video response."
+      "narration": "Rate limiter lets fair traffic through, blocks abuse."
     },
     {
       "node_id": "store",
-      "narration": "Distributed Store fetches data from many machines."
+      "narration": "Distributed store keeps copies close to users."
     },
     {
-      "node_id": "queue",
-      "narration": "Queue sends notifications without blocking users."
+      "node_id": "feed",
+      "narration": "Feed and streaming serve the right data fast."
     }
   ],
   "quiz": [
     {
-      "q": "What does a Rate Limiter do in system design?",
+      "q": "What does a Rate Limiter do in a system?",
       "options": [
-        "Stores photos forever",
-        "Controls how many requests get in",
-        "Ranks your News Feed",
-        "Compresses video files"
+        "Stores videos forever",
+        "Controls how many requests a user can make",
+        "Draws the user interface",
+        "Deletes old messages"
       ],
       "answer_index": 1,
-      "why": "Like a bouncer, it protects the system from being flooded."
+      "why": "It protects the system from overload by limiting requests per user or IP."
     },
     {
-      "q": "What fails first if usage grows 100x without good design?",
+      "q": "What fails first if usage grows 100x without a Distributed Key-Value Store?",
       "options": [
         "The logo color fades",
-        "One server overloads and requests queue or crash",
-        "Users get faster phones",
-        "The database becomes cheaper"
+        "One database gets overloaded and slows everyone",
+        "Users get more storage free",
+        "Notifications become funnier"
       ],
       "answer_index": 1,
-      "why": "One machine cannot handle millions; queues overflow and sync breaks."
+      "why": "A single store becomes a bottleneck; distributing copies spreads load and keeps reads fast."
     },
     {
-      "q": "Why is a Distributed Key-Value Store spread across many machines?",
+      "q": "Why is a News Feed hard to design for Instagram or Twitter?",
       "options": [
-        "To make the app look pretty",
-        "To store more and stay available if one machine fails",
-        "To send emails",
-        "To block bots"
+        "It must rank and deliver fresh posts to millions instantly",
+        "It only needs to store one photo",
+        "It never needs to update",
+        "It works without any storage"
       ],
-      "answer_index": 1,
-      "why": "Distribution gives scale and resilience, but can cause temporary inconsistency."
+      "answer_index": 0,
+      "why": "Feeds must fan-out, rank, and stay fast and fresh at huge scale."
     }
   ],
   "sources": [
     "ww-linkedin-com-feed-update-urn-li-share-7516022880535527424"
   ],
-  "extra": [],
+  "extra": [
+    "Excalidraw workspaces linked in the save let you practice drawing each architecture hands-on."
+  ],
   "level": 2,
   "topic": "Software Engineering & Systems",
   "save_ids": [
     "ww-linkedin-com-feed-update-urn-li-share-7516022880535527424"
   ],
-  "words": 203,
+  "words": 216,
   "word_limit": 200,
-  "mermaid": "flowchart TD\n  n0[\"Users\"]\n  n1[\"Rate Limiter\n(bouncer)\"]\n  n2[\"App Logic\n(Feed / Chat / Video)\"]\n  n3[\"Distributed Key-Value Store\"]\n  n4[\"Notification Queue\"]\n  n0 --> n1\n  n1 --> n2\n  n2 --> n3\n  n2 --> n4\n  n4 -->|\"push\"| n0",
+  "mermaid": "flowchart TD\n  n0[\"Users\"]\n  n1[\"Rate Limiter\"]\n  n2[\"Distributed Store\"]\n  n3[\"Feed / Stream\"]\n  n0 -->|\"requests\"| n1\n  n1 -->|\"allowed\"| n2\n  n2 -->|\"delivers\"| n3",
   "animation": [
     {
       "node": "n0",
-      "narration": "Millions of users hit your app at once."
+      "narration": "Millions of users send requests at once."
     },
     {
       "node": "n1",
-      "narration": "Rate Limiter decides who gets in now."
+      "narration": "Rate limiter lets fair traffic through, blocks abuse."
     },
     {
       "node": "n2",
-      "narration": "App builds Feed, Chat, or Video response."
+      "narration": "Distributed store keeps copies close to users."
     },
     {
       "node": "n3",
-      "narration": "Distributed Store fetches data from many machines."
-    },
-    {
-      "node": "n4",
-      "narration": "Queue sends notifications without blocking users."
+      "narration": "Feed and streaming serve the right data fast."
     }
   ],
   "rules_used": [],
@@ -164,11 +144,23 @@
   "judge": {
     "drafts": 3,
     "best": "D1",
-    "why": "",
+    "why": "D1 best fits beginner level: one consistent city analogy, plain definitions of key terms, clear flow, and quizzes checking real understanding. It still adds unmarked details beyond the source list and exceeds 200 words.",
     "scores": {
-      "D1": null,
-      "D2": null,
-      "D3": null
+      "D1": {
+        "grounding": 5,
+        "level_fit": 6,
+        "clarity": 7
+      },
+      "D2": {
+        "grounding": 6,
+        "level_fit": 6,
+        "clarity": 6
+      },
+      "D3": {
+        "grounding": 4,
+        "level_fit": 4,
+        "clarity": 8
+      }
     },
     "temperatures": [
       0.4,

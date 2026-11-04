@@ -1,179 +1,166 @@
 {
-  "title": "Stop the Scroll: Design Stories That Stick",
-  "subtitle": "Hooks get the click, structure keeps the watch",
-  "intro": "Give me 9 minutes and I'll improve your story — but you only have 3 seconds to stop someone from scrolling. How do you earn the other 8 minutes and 57 seconds?",
-  "takeaway": "A hook earns 3 seconds of attention, story structure earns the rest — never promise what you don't deliver.",
+  "title": "Tell a Story in 9 Minutes",
+  "subtitle": "How structure, hooks, and engagement turn a ramble into a story people remember",
+  "intro": "A reel promises: give me 9 minutes, I'll improve your story. 2.5 million people stopped scrolling to watch.",
+  "takeaway": "Good storytelling is structure plus a hook that earns attention, then pays it back.",
   "sections": [
     {
-      "heading": "Analogy: your story is a doorway",
-      "body": "Think of your Instagram Reel like a busy hallway. People walk past fast. A story hook is the open door that makes them stop and look inside. Story structure is the hallway inside — it guides them from start to finish without getting lost. Without that door and hallway, no one stays."
+      "heading": "Analogy: Storytelling is hosting on a couch",
+      "body": "Imagine you invite a stranger to sit on your couch. A story is how you host them. Story structure is the order you tell things in — beginning, middle, end — so they know where to sit and where you're going.\n\nWithout that order, they fidget and leave. With it, they lean in, which is why you need more than just good facts."
     },
     {
-      "heading": "Why does this exist?: stop the scroll in 3 seconds",
-      "body": "You have 3 seconds before someone scrolls. That's why hooks exist. A hook is a first line that creates curiosity, like the 50 fill-in-the-blank templates that promise a quick win — \"Give me 9 minutes and I'll improve your story.\" Audience engagement means they stay, watch, and comment. Good structure then delivers the promise step by step."
+      "heading": "Why does this exist? To earn and keep attention",
+      "body": "Audience engagement means your listener stays, reacts, and remembers. A story hook is the first 10 seconds that makes them want to stay — a question, a surprise, a promise.\n\nIn the reel, a creator talks straight to camera from a couch to model this: start close and personal, then deliver.\n\nA hook gets the click, but structure keeps the watch, and that's where stories break."
     },
     {
-      "heading": "What can go wrong?: hooks without a story",
-      "body": "What breaks if you only chase hooks? You get views but no trust. If your 9-minute tip doesn't actually help, people leave and don't come back. Another trap: using the same loud hook 50 times. Your audience gets tired and scrolls anyway. Hooks must match the real story inside, or engagement drops fast."
+      "heading": "What can go wrong? When hooks trick but don't deliver",
+      "body": "What fails first if your story gets 100x more viewers? A flashy hook with no structure. You get views but no trust, because you promised and didn't pay off.\n\nAnother trap is telling for you, not them. If your order makes sense to you but not your audience, engagement drops.\n\nSo test one hook and one clear structure before you polish anything else."
     }
   ],
   "diagram": {
     "nodes": [
       {
-        "id": "scroll",
-        "label": "Viewer Scrolling"
-      },
-      {
         "id": "hook",
-        "label": "Story Hook (3 sec)"
+        "label": "Hook (first 10s)"
       },
       {
         "id": "structure",
-        "label": "Story Structure"
+        "label": "Structure (begin → middle → end)"
       },
       {
         "id": "engagement",
-        "label": "Audience Engagement"
+        "label": "Engagement (stay + remember)"
       },
       {
-        "id": "trust",
-        "label": "Trust or Drop-off"
+        "id": "fail",
+        "label": "Fail: hook without payoff"
       }
     ],
     "edges": [
       [
-        "scroll",
-        "hook",
-        "stop"
-      ],
-      [
         "hook",
         "structure",
-        "enter"
+        "leads to"
       ],
       [
         "structure",
         "engagement",
-        "keep"
+        "creates"
       ],
       [
-        "engagement",
-        "trust",
-        "deliver?"
+        "hook",
+        "fail",
+        "without"
       ]
     ]
   },
   "steps": [
     {
-      "node_id": "scroll",
-      "narration": "Viewer is scrolling fast in a busy feed."
-    },
-    {
       "node_id": "hook",
-      "narration": "Your hook stops them in 3 seconds with curiosity."
+      "narration": "You open with a hook — a question or surprise that earns 10 seconds."
     },
     {
       "node_id": "structure",
-      "narration": "Story structure guides them from start to finish."
+      "narration": "You follow a clear structure so the listener knows where you are going."
     },
     {
       "node_id": "engagement",
-      "narration": "They stay, watch, and engage if promise holds."
+      "narration": "That order turns attention into engagement and memory."
     },
     {
-      "node_id": "trust",
-      "narration": "Deliver value and you earn trust, or you lose them."
+      "node_id": "fail",
+      "narration": "If you hook without structure, attention collapses and trust breaks."
     }
   ],
   "quiz": [
     {
-      "q": "What is a story hook in plain words?",
+      "q": "What is a story hook in this lesson?",
       "options": [
-        "The open door that makes someone stop scrolling in 3 seconds",
-        "The hashtags you add after posting",
-        "The camera you use to film",
-        "The time of day you post"
+        "The background music",
+        "The first seconds that make you want to stay",
+        "The final moral of the story",
+        "The number of views"
       ],
-      "answer_index": 0,
-      "why": "A hook is the first line that creates curiosity and stops the scroll, like the 50 templates in your saves."
+      "answer_index": 1,
+      "why": "A hook is the opening that earns attention, like the reel's 9-minute promise."
     },
     {
-      "q": "What fails first if you use hooks without good story structure?",
+      "q": "What breaks first if your story reaches 100x more people but has a hook with no structure?",
       "options": [
-        "You get views but people leave quickly and trust drops",
-        "Instagram deletes your account instantly",
-        "Your video becomes longer automatically",
-        "Hooks stop working for everyone else"
+        "You get more followers automatically",
+        "Viewers click but leave quickly and trust drops",
+        "The video gets longer",
+        "Engagement stays the same"
       ],
-      "answer_index": 0,
-      "why": "Hooks earn 3 seconds, but without structure that delivers the promise, engagement and trust break."
+      "answer_index": 1,
+      "why": "A hook without payoff gets clicks but loses retention — engagement fails."
     },
     {
-      "q": "Why does the 'Give me 9 minutes' promise work only if you deliver?",
+      "q": "Why does story structure exist?",
       "options": [
-        "Because audience engagement means staying only if the tip actually helps",
-        "Because Instagram pays you per minute",
-        "Because 9 minutes is the maximum Reel length",
-        "Because viewers cannot scroll after 9 minutes"
+        "To make stories longer",
+        "To give listeners order so they can follow and remember",
+        "To add more slides",
+        "To hide the main point"
       ],
-      "answer_index": 0,
-      "why": "Engagement is staying, watching, commenting — that only happens when structure delivers on the hook's promise."
+      "answer_index": 1,
+      "why": "Structure is beginning → middle → end so an audience can follow and stay engaged."
     }
   ],
   "sources": [
-    "DUWMqQfCMCb",
-    "DSNmIOgAYQ2"
+    "DUWMqQfCMCb"
   ],
   "extra": [
-    "Kittl.com offers AI generation and mockup tools as a Canva alternative for designing hook visuals."
+    "The save references Philipp Humm, author of The Storytelling Lab approach — not detailed in the save itself."
   ],
   "level": 2,
   "topic": "Design, Content Creation & Marketing",
   "save_ids": [
     "DUWMqQfCMCb"
   ],
-  "words": 194,
+  "words": 210,
   "word_limit": 200,
-  "mermaid": "flowchart TD\n  n0[\"Viewer Scrolling\"]\n  n1[\"Story Hook (3 sec)\"]\n  n2[\"Story Structure\"]\n  n3[\"Audience Engagement\"]\n  n4[\"Trust or Drop-off\"]\n  n0 -->|\"stop\"| n1\n  n1 -->|\"enter\"| n2\n  n2 -->|\"keep\"| n3\n  n3 -->|\"deliver?\"| n4",
+  "mermaid": "flowchart TD\n  n0[\"Hook (first 10s)\"]\n  n1[\"Structure (begin → middle → end)\"]\n  n2[\"Engagement (stay + remember)\"]\n  n3[\"Fail: hook without payoff\"]\n  n0 -->|\"leads to\"| n1\n  n1 -->|\"creates\"| n2\n  n0 -->|\"without\"| n3",
   "animation": [
     {
       "node": "n0",
-      "narration": "Viewer is scrolling fast in a busy feed."
+      "narration": "You open with a hook — a question or surprise that earns 10 seconds."
     },
     {
       "node": "n1",
-      "narration": "Your hook stops them in 3 seconds with curiosity."
+      "narration": "You follow a clear structure so the listener knows where you are going."
     },
     {
       "node": "n2",
-      "narration": "Story structure guides them from start to finish."
+      "narration": "That order turns attention into engagement and memory."
     },
     {
       "node": "n3",
-      "narration": "They stay, watch, and engage if promise holds."
-    },
-    {
-      "node": "n4",
-      "narration": "Deliver value and you earn trust, or you lose them."
+      "narration": "If you hook without structure, attention collapses and trust breaks."
     }
   ],
   "rules_used": [],
-  "agent_trace": [
-    {
-      "tool": "search_saves",
-      "args": {
-        "query": "storytelling design content creation marketing"
-      }
-    }
-  ],
+  "agent_trace": [],
   "judge": {
     "drafts": 3,
-    "best": "D1",
-    "why": "",
+    "best": "D3",
+    "why": "D3 stays closest to the thin source—9-minute promise, 2.5m views, couch image, and the three named concepts—while defining terms plainly with a clear hook-to-payoff flow. D1 and D2 invent unsupported details like 50 hook templates and, for D1, Kittl, presenting them as saved material.",
     "scores": {
-      "D1": null,
-      "D2": null,
-      "D3": null
+      "D1": {
+        "grounding": 3,
+        "level_fit": 4,
+        "clarity": 6
+      },
+      "D2": {
+        "grounding": 4,
+        "level_fit": 6,
+        "clarity": 7
+      },
+      "D3": {
+        "grounding": 7,
+        "level_fit": 5,
+        "clarity": 8
+      }
     },
     "temperatures": [
       0.4,

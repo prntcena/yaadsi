@@ -1,171 +1,198 @@
 {
-  "title": "From Chat to Doing: How Modern AI Learns to Look Things Up",
-  "subtitle": "Your saved NVIDIA courses point to one shift: AI that retrieves, acts, and runs anywhere.",
-  "intro": "You saved 7 free NVIDIA courses that promise production-ready AI, not just chat. The secret isn't a bigger brain — it's giving AI tools to look things up and act.",
-  "takeaway": "Modern AI wins by combining a language model with retrieval and specialized hardware, but only if you check what it found.",
+  "title": "How AI Learns to Look Things Up Before It Answers",
+  "subtitle": "From memory to retrieval, GPUs, and edge devices",
+  "intro": "NVIDIA just made seven industry-grade AI courses free. The big surprise is not that AI can write — it's that the smartest systems don't answer from memory alone, they look things up first.",
+  "takeaway": "Modern AI works best when it retrieves fresh facts before it generates, runs fast on GPUs, and is checked for mistakes.",
   "sections": [
     {
-      "heading": "Analogy: the intern with a library card",
-      "body": "Think of an intern who sounds smart but forgets details. Give them tools and they become useful. In AI, the intern is a Large Language Model (LLM) — a text-prediction system. Retrieval-Augmented Generation (RAG) is the library card to search your documents. An Agent is the phone to call tools. CUDA and Jetson Nano are the workshop to run AI fast."
+      "heading": "Analogy: Your AI is like a new intern with a library card",
+      "body": "Imagine a smart intern who memorized books until last year. From memory alone, answers are fast but outdated. Give that intern a library card to check your files first, and they quote the right page. That is Retrieval-Augmented Generation (RAG) — retrieval means fetching documents before generation, which means writing the answer."
     },
     {
-      "heading": "Why does this exist?: answers that stay current",
-      "body": "Retraining an LLM is slow and expensive. RAG keeps knowledge outside the model instead. You ask -> it retrieves relevant docs -> the LLM answers using them. Example from your saves: a Video AI App can answer about your own videos without retraining. Edge AI on Jetson Nano — a tiny edge device — can do this on-device, not just in the cloud."
+      "heading": "Why it exists? Stop answering from memory alone",
+      "body": "Generative AI creates new text or images from a prompt. A Large Language Model (LLM) is a text predictor trained on huge data, but stuck in the past. RAG fixes this by connecting the LLM to fresh sources first. Video AI does this for video, and Edge AI on Jetson Nano — a tiny computer that runs AI on the device itself — brings it to the real world."
     },
     {
-      "heading": "What can go wrong?: confident, wrong, and leaky",
-      "body": "A RAG Agent can still fail predictably. Bad retrieval means it finds the wrong document and hallucinates — sounds confident but is wrong. Stale or private data means outdated or leaked files cause bad answers. Hardware limits mean CUDA helps speed, but Jetson Nano has little memory — too much video at once crashes. Always check sources."
+      "heading": "What can go wrong? When the helper makes things up",
+      "body": "What fails if many people ask at once? With messy files or no GPU — the chip that speeds up AI — answers get slow or false. Hallucination is when AI invents facts because retrieval failed. CUDA programming is code that runs fast on an NVIDIA GPU. Digital fingerprinting is a hidden mark that labels content as AI-made."
     }
   ],
   "diagram": {
     "nodes": [
       {
-        "id": "user",
-        "label": "You ask"
+        "id": "q",
+        "label": "You ask a question"
       },
       {
         "id": "rag",
-        "label": "RAG retrieval"
+        "label": "RAG retrieves your files"
       },
       {
         "id": "llm",
-        "label": "LLM writes answer"
+        "label": "LLM generates answer"
       },
       {
-        "id": "agent",
-        "label": "Agent takes action"
+        "id": "gpu",
+        "label": "CUDA on GPU accelerates"
       },
       {
-        "id": "hardware",
-        "label": "CUDA / Jetson runs it"
+        "id": "edge",
+        "label": "Jetson Nano delivers on device"
+      },
+      {
+        "id": "check",
+        "label": "Fingerprint checks source"
       }
     ],
     "edges": [
       [
-        "user",
+        "q",
         "rag",
-        "search docs"
+        "fetch"
       ],
       [
         "rag",
         "llm",
-        "provides context"
+        "context"
       ],
       [
         "llm",
-        "agent",
-        "decides tool"
+        "gpu",
+        "runs on"
       ],
       [
-        "agent",
-        "hardware",
-        "executes"
+        "gpu",
+        "edge",
+        "deploys to"
+      ],
+      [
+        "llm",
+        "check",
+        "verify"
       ]
     ]
   },
   "steps": [
     {
-      "node_id": "user",
-      "narration": "You ask a question that needs current, private knowledge."
+      "node_id": "q",
+      "narration": "You ask, and the AI could guess from old memory."
     },
     {
       "node_id": "rag",
-      "narration": "RAG searches your documents for relevant passages."
+      "narration": "RAG first pulls fresh pages from your documents."
     },
     {
       "node_id": "llm",
-      "narration": "The LLM drafts an answer grounded in what was retrieved."
+      "narration": "The LLM then writes an answer using those pages."
     },
     {
-      "node_id": "agent",
-      "narration": "A RAG Agent can then call tools or run video AI steps."
+      "node_id": "gpu",
+      "narration": "CUDA lets a GPU run that work much faster."
     },
     {
-      "node_id": "hardware",
-      "narration": "CUDA on GPUs or Jetson Nano at the edge makes it run fast enough to use."
+      "node_id": "edge",
+      "narration": "Jetson Nano can run the result right on a small device."
+    },
+    {
+      "node_id": "check",
+      "narration": "Digital fingerprinting marks if the content was AI-made."
     }
   ],
   "quiz": [
     {
-      "q": "What does RAG do for an LLM?",
+      "q": "What does RAG add to a plain LLM?",
       "options": [
-        "It lets the model search external documents before answering",
-        "It deletes the model's training data",
-        "It replaces the GPU with a CPU",
-        "It automatically makes answers private"
+        "It fetches your documents before writing",
+        "It deletes old training data",
+        "It replaces the GPU",
+        "It makes video without a prompt"
       ],
       "answer_index": 0,
-      "why": "RAG = Retrieval-Augmented Generation. It retrieves relevant docs first, so answers stay current without retraining."
+      "why": "RAG = Retrieval-Augmented Generation: retrieve fresh context first, then generate."
     },
     {
-      "q": "What fails first if usage grows 100x on a Jetson Nano edge device?",
+      "q": "What breaks first if your RAG system scales 100x with messy files and no GPU?",
       "options": [
-        "The model becomes more accurate automatically",
-        "Memory and compute run out, causing crashes or slowdowns",
-        "Digital fingerprinting improves",
-        "CUDA stops being needed"
+        "Answers stay perfect but slower",
+        "Hallucinations and timeouts increase fast",
+        "Jetson Nano makes its own data",
+        "Digital fingerprinting trains the model"
       ],
       "answer_index": 1,
-      "why": "Edge devices like Jetson Nano have limited memory and GPU power. Scaling video AI 100x overwhelms them first."
+      "why": "Bad retrieval causes hallucinations, and without CUDA GPU acceleration, large loads get slow and fail."
     },
     {
-      "q": "Why add digital fingerprinting to AI content?",
+      "q": "What is CUDA programming for?",
       "options": [
-        "To make models train faster",
-        "To identify and protect AI-generated content",
-        "To replace RAG retrieval",
-        "To remove the need for CUDA"
+        "To mark AI images",
+        "To run code fast on NVIDIA GPUs",
+        "To build Jetson Nano hardware",
+        "To write course videos"
       ],
       "answer_index": 1,
-      "why": "Fingerprinting helps track provenance and security — knowing what was AI-made, as listed in your NVIDIA courses."
+      "why": "CUDA lets programs run in parallel on GPUs to accelerate AI."
     }
   ],
   "sources": [
     "linkedin-com-feed-update-urn-li-activity-7421516454489088000"
   ],
-  "extra": [
-    "NVIDIA Jetson Nano is a small edge AI computer often used for video AI demos with limited RAM."
-  ],
+  "extra": [],
   "level": 2,
   "topic": "AI & Machine Learning",
   "save_ids": [
     "linkedin-com-feed-update-urn-li-activity-7421516454489088000"
   ],
-  "words": 211,
+  "words": 212,
   "word_limit": 200,
-  "mermaid": "flowchart TD\n  n0[\"You ask\"]\n  n1[\"RAG retrieval\"]\n  n2[\"LLM writes answer\"]\n  n3[\"Agent takes action\"]\n  n4[\"CUDA / Jetson runs it\"]\n  n0 -->|\"search docs\"| n1\n  n1 -->|\"provides context\"| n2\n  n2 -->|\"decides tool\"| n3\n  n3 -->|\"executes\"| n4",
+  "mermaid": "flowchart TD\n  n0[\"You ask a question\"]\n  n1[\"RAG retrieves your files\"]\n  n2[\"LLM generates answer\"]\n  n3[\"CUDA on GPU accelerates\"]\n  n4[\"Jetson Nano delivers on device\"]\n  n5[\"Fingerprint checks source\"]\n  n0 -->|\"fetch\"| n1\n  n1 -->|\"context\"| n2\n  n2 -->|\"runs on\"| n3\n  n3 -->|\"deploys to\"| n4\n  n2 -->|\"verify\"| n5",
   "animation": [
     {
       "node": "n0",
-      "narration": "You ask a question that needs current, private knowledge."
+      "narration": "You ask, and the AI could guess from old memory."
     },
     {
       "node": "n1",
-      "narration": "RAG searches your documents for relevant passages."
+      "narration": "RAG first pulls fresh pages from your documents."
     },
     {
       "node": "n2",
-      "narration": "The LLM drafts an answer grounded in what was retrieved."
+      "narration": "The LLM then writes an answer using those pages."
     },
     {
       "node": "n3",
-      "narration": "A RAG Agent can then call tools or run video AI steps."
+      "narration": "CUDA lets a GPU run that work much faster."
     },
     {
       "node": "n4",
-      "narration": "CUDA on GPUs or Jetson Nano at the edge makes it run fast enough to use."
+      "narration": "Jetson Nano can run the result right on a small device."
+    },
+    {
+      "node": "n5",
+      "narration": "Digital fingerprinting marks if the content was AI-made."
     }
   ],
   "rules_used": [],
   "agent_trace": [],
   "judge": {
     "drafts": 3,
-    "best": "D1",
-    "why": "",
+    "best": "D2",
+    "why": "D2 best fits beginner level: starts with an everyday analogy, defines RAG, LLM, GPU, CUDA, edge AI, hallucination and fingerprinting in plain words, flows clearly, and its quiz tests retrieval and scaling.",
     "scores": {
-      "D1": null,
-      "D2": null,
-      "D3": null
+      "D1": {
+        "grounding": 6,
+        "level_fit": 6,
+        "clarity": 7
+      },
+      "D2": {
+        "grounding": 5,
+        "level_fit": 8,
+        "clarity": 8
+      },
+      "D3": {
+        "grounding": 5,
+        "level_fit": 7,
+        "clarity": 8
+      }
     },
     "temperatures": [
       0.4,

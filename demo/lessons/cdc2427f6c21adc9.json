@@ -1,131 +1,129 @@
 {
-  "title": "Stop Solving More Problems. Start Thinking Better.",
-  "subtitle": "Five hidden sites that trade easy wins for real engineering instinct",
-  "intro": "Popular platforms give you problems. Hidden ones build how you think — and that’s why tutorials stop working for you.",
-  "takeaway": "Real growth comes from seeing, breaking down, and cleaning your thinking — not just solving more problems.",
+  "title": "The 5 Hidden Dojos For Better Coding",
+  "subtitle": "Popular sites give you problems. These build how you think.",
+  "intro": "Tutorials stopped working and you ask: which site will actually make me better? Your save has five hidden answers that build depth, not dopamine.",
+  "takeaway": "Get better by training how you think, not just solving more problems.",
   "sections": [
     {
-      "heading": "Analogy: learning to cook, not just following recipes",
-      "body": "Imagine you only follow recipes. You can make one dish, but you can't fix it if it tastes wrong.\n\nReal cooking is seeing what heat does, tasting as you go, and cleaning up as you cook. Coding is the same. VisuAlgo lets you watch an algorithm move step by step, like watching heat spread in a pan.\n\nOnce you can see it, you can start to ask why we need this kind of practice at all."
+      "heading": "Analogy: Your coding gym",
+      "body": "Think of learning coding like training at a gym. One machine builds one muscle.\n\nVisuAlgo is the mirror that shows your form for algorithms, so you see how they move. Project Euler is heavy math weights for problem decomposition, which means breaking a big puzzle into small steps.\n\nThis sets up why you need different gyms for different skills."
     },
     {
-      "heading": "Why does this exist?: depth over dopamine",
-      "body": "These five sites exist because easy practice feels productive but doesn't build instinct.\n\nProject Euler forces mathematical thinking and problem decomposition — breaking a big puzzle into small steps. Exercism and Refactoring Guru teach clean code, which means code a human can read and change safely. Codewars uses kata training, short repeated drills that force you to handle edge cases.\n\nThat depth is powerful, but it has a cost when you use it wrong."
+      "heading": "Why does this exist? To build real instincts",
+      "body": "Popular platforms give you lots of problems. These five exist to build engineering instincts.\n\nExercism gives you human feedback to learn clean code, which means code that is easy to read and change. Refactoring Guru teaches design patterns, which are reusable solutions to common problems.\n\nFor example, you can practice one Codewars kata, which is a small repeated exercise, until you handle every edge-case, which is an unusual input that breaks sloppy code.\n\nBut more practice can still go wrong, as the next part shows."
     },
     {
-      "heading": "What can go wrong: practicing without feedback",
-      "body": "If you just collect solutions, you stay stuck. Design patterns intuition means knowing when to reuse a proven shape for a problem, not memorizing names.\n\nWhat breaks first if you chase all five sites at once? You skim, you don't refactor, and you never learn to read other people's code.\n\nPick one weakness this week and go deep there."
+      "heading": "What can go wrong? Practice without clarity",
+      "body": "If you chase the viral, easy-dopamine feeling, you feel productive instantly but don't improve how you think.\n\nWhat fails first if you just grind kata after kata with no feedback? You memorize tricks but can't read and refactor real code.\n\nTo avoid that, use the right site for the right weakness: VisuAlgo for intuition, Exercism for clarity, Refactoring Guru for design."
     }
   ],
   "diagram": {
     "nodes": [
       {
+        "id": "you",
+        "label": "You stuck after tutorials"
+      },
+      {
         "id": "see",
-        "label": "See it: VisuAlgo"
+        "label": "VisuAlgo: see algorithm"
       },
       {
-        "id": "break",
-        "label": "Break it: Project Euler"
+        "id": "think",
+        "label": "Project Euler: break problem"
       },
       {
-        "id": "clean",
-        "label": "Clean it: Exercism / Refactoring Guru"
+        "id": "practice",
+        "label": "Codewars kata + edge-cases"
       },
       {
-        "id": "drill",
-        "label": "Drill it: Codewars katas"
-      },
-      {
-        "id": "instinct",
-        "label": "Instinct built"
+        "id": "refine",
+        "label": "Exercism + Refactoring Guru: clean code"
       }
     ],
     "edges": [
       [
+        "you",
         "see",
-        "break",
         ""
       ],
       [
-        "break",
-        "clean",
+        "see",
+        "think",
         ""
       ],
       [
-        "clean",
-        "drill",
+        "think",
+        "practice",
         ""
       ],
       [
-        "drill",
-        "instinct",
-        ""
+        "practice",
+        "refine",
+        "feedback"
       ]
     ]
   },
   "steps": [
     {
+      "node_id": "you",
+      "narration": "You feel tutorials no longer help you grow."
+    },
+    {
       "node_id": "see",
-      "narration": "Watch how an algorithm actually moves on VisuAlgo."
+      "narration": "Use VisuAlgo to visualize how an algorithm actually runs."
     },
     {
-      "node_id": "break",
-      "narration": "Break hard math puzzles into tiny steps on Project Euler."
+      "node_id": "think",
+      "narration": "Use Project Euler to practice breaking math problems into steps."
     },
     {
-      "node_id": "clean",
-      "narration": "Learn to make code readable with Exercism and Refactoring Guru."
+      "node_id": "practice",
+      "narration": "Use Codewars katas to train on tricky edge-cases."
     },
     {
-      "node_id": "drill",
-      "narration": "Drill edge cases with short katas on Codewars."
-    },
-    {
-      "node_id": "instinct",
-      "narration": "Repeat and you build instinct, not just answers."
+      "node_id": "refine",
+      "narration": "Use Exercism and Refactoring Guru to make code clean and well-designed."
     }
   ],
   "quiz": [
     {
-      "q": "What does VisuAlgo mainly help you build?",
+      "q": "Why do these 5 hidden sites exist according to your save?",
       "options": [
-        "Algorithm intuition by watching steps",
-        "Faster typing speed",
-        "Viral social media posts",
-        "Automatic code deployment"
-      ],
-      "answer_index": 0,
-      "why": "VisuAlgo is for algorithm visualization — seeing how it works step by step."
-    },
-    {
-      "q": "What does 'clean code' mean in this lesson?",
-      "options": [
-        "Code that runs the fastest",
-        "Code a human can read and change safely",
-        "Code with no comments",
-        "Code written only by seniors"
+        "To give viral dopamine and feel productive instantly",
+        "To build thinking, clarity, and real engineering instincts",
+        "To replace all documentation",
+        "To give you easy certificates"
       ],
       "answer_index": 1,
-      "why": "Exercism and Refactoring Guru teach readability and safe refactoring."
+      "why": "Your save says popular platforms give you problems, hidden ones build thinking, reading/refactoring, and instincts."
     },
     {
-      "q": "What breaks first if you try all five sites at once without focus?",
+      "q": "What fails first if you grind Codewars katas with no feedback?",
       "options": [
-        "You learn design patterns faster",
-        "You skim and never build deep refactoring skill",
-        "Your computer runs out of memory",
-        "VisuAlgo stops working"
+        "You handle every edge-case perfectly",
+        "You memorize tricks but can't write clean, readable code",
+        "VisuAlgo stops working",
+        "You automatically learn design patterns"
       ],
       "answer_index": 1,
-      "why": "Depth needs focus — chasing everything at once means no real feedback or retention."
+      "why": "Without feedback like Exercism provides, you miss clean code and refactoring skills."
+    },
+    {
+      "q": "Which site from your save builds design patterns intuition?",
+      "options": [
+        "VisuAlgo",
+        "Project Euler",
+        "Refactoring Guru",
+        "Instagram"
+      ],
+      "answer_index": 2,
+      "why": "Refactoring Guru is listed for design patterns intuition in your save summary."
     }
   ],
   "sources": [
     "DUaCif-kfOt"
   ],
-  "extra": [
-    "Spaced repetition helps katas stick better than binge-solving."
-  ],
+  "extra": [],
   "level": 2,
   "topic": "Software Engineering & Systems",
   "save_ids": [
@@ -133,27 +131,27 @@
   ],
   "words": 229,
   "word_limit": 200,
-  "mermaid": "flowchart TD\n  n0[\"See it: VisuAlgo\"]\n  n1[\"Break it: Project Euler\"]\n  n2[\"Clean it: Exercism / Refactoring Guru\"]\n  n3[\"Drill it: Codewars katas\"]\n  n4[\"Instinct built\"]\n  n0 --> n1\n  n1 --> n2\n  n2 --> n3\n  n3 --> n4",
+  "mermaid": "flowchart TD\n  n0[\"You stuck after tutorials\"]\n  n1[\"VisuAlgo: see algorithm\"]\n  n2[\"Project Euler: break problem\"]\n  n3[\"Codewars kata + edge-cases\"]\n  n4[\"Exercism + Refactoring Guru: clean code\"]\n  n0 --> n1\n  n1 --> n2\n  n2 --> n3\n  n3 -->|\"feedback\"| n4",
   "animation": [
     {
       "node": "n0",
-      "narration": "Watch how an algorithm actually moves on VisuAlgo."
+      "narration": "You feel tutorials no longer help you grow."
     },
     {
       "node": "n1",
-      "narration": "Break hard math puzzles into tiny steps on Project Euler."
+      "narration": "Use VisuAlgo to visualize how an algorithm actually runs."
     },
     {
       "node": "n2",
-      "narration": "Learn to make code readable with Exercism and Refactoring Guru."
+      "narration": "Use Project Euler to practice breaking math problems into steps."
     },
     {
       "node": "n3",
-      "narration": "Drill edge cases with short katas on Codewars."
+      "narration": "Use Codewars katas to train on tricky edge-cases."
     },
     {
       "node": "n4",
-      "narration": "Repeat and you build instinct, not just answers."
+      "narration": "Use Exercism and Refactoring Guru to make code clean and well-designed."
     }
   ],
   "rules_used": [],
@@ -163,23 +161,28 @@
       "args": {
         "save_id": "DUaCif-kfOt"
       }
-    },
-    {
-      "tool": "search_saves",
-      "args": {
-        "query": "software engineering systems design patterns clean code",
-        "topic": "Software Engineering & Systems"
-      }
     }
   ],
   "judge": {
     "drafts": 3,
-    "best": "D1",
-    "why": "",
+    "best": "D3",
+    "why": "D3 best fits beginner level: one consistent gym analogy, plain language, and definitions for decomposition, clean code, design patterns, kata, and edge-case.",
     "scores": {
-      "D1": null,
-      "D2": null,
-      "D3": null
+      "D1": {
+        "grounding": 8,
+        "level_fit": 6,
+        "clarity": 7
+      },
+      "D2": {
+        "grounding": 7,
+        "level_fit": 7,
+        "clarity": 7
+      },
+      "D3": {
+        "grounding": 8,
+        "level_fit": 8,
+        "clarity": 9
+      }
     },
     "temperatures": [
       0.4,

@@ -1,102 +1,102 @@
 {
-  "title": "One Agent or a Team?",
-  "subtitle": "How to pick the right pattern for your agentic AI system",
-  "intro": "You asked an AI to plan a trip. Should one smart assistant do it all, or a team of specialists split the work?",
-  "takeaway": "Pick your agent pattern by task complexity, latency, cost, and risk — not hype.",
+  "title": "One Agent or Many? How to Choose Your AI Team",
+  "subtitle": "A beginner's guide to picking agentic design patterns on Vertex AI",
+  "intro": "You asked an AI to book a trip and it tried to do flights, hotels, and visas all at once — and got confused. Would you hire one super-assistant or a team of specialists?",
+  "takeaway": "Pick the simplest agent pattern that meets your task: one agent for simple goals, many for complex ones, and always weigh speed, cost, and human oversight.",
   "sections": [
     {
-      "heading": "Analogy: one chef vs a kitchen crew",
-      "body": "Think of a food truck with one chef. One person takes the order, cooks, and serves. It's fast and cheap.\n\nA big restaurant has a crew: a host, line cooks, a pastry chef. Slower to coordinate, but better for a complex menu.\n\nAn agentic AI system is the same choice: one agent doing the whole workflow, or multiple agents orchestrated together. That choice shapes everything next."
+      "heading": "Analogy: One chef or a whole kitchen?",
+      "body": "Think of an agent as a cook who can decide steps and use tools to finish a goal. A design pattern is the kitchen layout: one all-in-one chef, or a team where one chops, one grills, and one plates. One chef is fast and cheap. A team handles complex orders but needs more coordination."
     },
     {
-      "heading": "Why it exists: to match pattern to problem",
-      "body": "An agent design pattern is a framework for organizing components and orchestrating agents to hit a goal with some autonomy.\n\nYou use it for open-ended, multi-step, knowledge-intensive tasks that need real-time data — not simple chat.\n\nYour save says choose by requirements: use single-agent when speed and low cost matter; use multi-agent when accuracy on complex tasks matters more than latency."
+      "heading": "Why does this exist? Choosing the right team",
+      "body": "Agents are for open-ended, multi-step goals where the AI must decide what to do next using outside data. Use a single-agent pattern when the goal is simple with just a few tools — it is low cost and low waiting time. Use a multi-agent pattern when a complex workflow is better split among specialists who talk to each other. Choose based on complexity, latency vs accuracy, cost of inference calls, and need for human-in-the-loop oversight."
     },
     {
-      "heading": "What can go wrong: when the pattern doesn't fit",
-      "body": "A single agent fails on complex work — it forgets steps and makes more mistakes.\n\nA multi-agent team fails differently: every extra agent means extra inference calls, so cost and latency climb fast.\n\nFor high-stakes tasks, both fail without human-in-the-loop oversight. Pick cheap and fast, or accurate and costly — you can't have both."
+      "heading": "What can go wrong? When more agents make it worse",
+      "body": "Every extra agent adds inference calls — each time you pay the model to think — so cost and latency, or waiting time, go up. More agents can improve accuracy, or getting the right answer, but can also miscommunicate and loop. For high-stakes tasks like medical or money decisions, you need human-in-the-loop, where a person approves actions. So start simple and add agents only when proven needed."
     }
   ],
   "diagram": {
     "nodes": [
       {
-        "id": "task",
-        "label": "Your Task"
+        "id": "goal",
+        "label": "Your Goal"
       },
       {
-        "id": "check",
-        "label": "Check: Complex?"
+        "id": "choice",
+        "label": "Choose Pattern"
       },
       {
         "id": "single",
-        "label": "Single Agent: Fast & Cheap"
+        "label": "Single Agent: fast & cheap"
       },
       {
         "id": "multi",
-        "label": "Multi-Agent Team: Accurate"
+        "label": "Multi-Agent: specialists"
       },
       {
-        "id": "cost",
-        "label": "Cost & Latency Tradeoff"
+        "id": "tradeoff",
+        "label": "Tradeoff: latency, cost, accuracy"
       },
       {
         "id": "human",
-        "label": "Human-in-the-loop if High Stakes"
+        "label": "Human-in-the-loop if high stakes"
       }
     ],
     "edges": [
       [
-        "task",
-        "check",
-        ""
+        "goal",
+        "choice",
+        "complex?"
       ],
       [
-        "check",
+        "choice",
         "single",
-        "simple"
+        "simple task"
       ],
       [
-        "check",
+        "choice",
         "multi",
-        "complex"
+        "complex task"
       ],
       [
         "single",
-        "cost",
+        "tradeoff",
         ""
       ],
       [
         "multi",
-        "cost",
+        "tradeoff",
         ""
       ],
       [
-        "cost",
+        "tradeoff",
         "human",
-        ""
+        "risk check"
       ]
     ]
   },
   "steps": [
     {
-      "node_id": "task",
-      "narration": "Start with your goal and workflow."
+      "node_id": "goal",
+      "narration": "Start with your goal and how complex it is."
     },
     {
-      "node_id": "check",
-      "narration": "Ask: is it open-ended and multi-step?"
+      "node_id": "choice",
+      "narration": "Pick single vs multi-agent pattern based on requirements."
     },
     {
       "node_id": "single",
-      "narration": "If simple, one agent is faster and cheaper."
+      "narration": "Use one agent for simple workflows to save time and money."
     },
     {
       "node_id": "multi",
-      "narration": "If complex, a team of agents is more accurate."
+      "narration": "Use many agents for complex multi-step workflows."
     },
     {
-      "node_id": "cost",
-      "narration": "More agents means more inference calls, cost, and latency."
+      "node_id": "tradeoff",
+      "narration": "Check latency vs accuracy and cost of inference calls."
     },
     {
       "node_id": "human",
@@ -105,71 +105,73 @@
   ],
   "quiz": [
     {
-      "q": "When should you use an AI agent instead of a simple assistant?",
+      "q": "When is a single-agent pattern the better choice?",
       "options": [
-        "For open-ended, multi-step tasks needing autonomy and real-time data",
-        "For any simple one-answer question",
-        "Only to save money",
-        "Never, assistants are always better"
+        "When the task is open-ended but simple with few tools",
+        "When you need 5 specialists to debate every answer",
+        "When latency doesn't matter at all",
+        "When you want the highest possible cost"
       ],
       "answer_index": 0,
-      "why": "Your save says agents excel at goal-focused, autonomous, knowledge-intensive workflows, not simple assistive tasks."
+      "why": "Single-agent is fast, cheap, and works for straightforward goals; multi-agent is for complex workflows."
     },
     {
-      "q": "What fails first if usage grows 100x with a multi-agent pattern?",
+      "q": "What can go wrong if you use too many agents and usage grows 100x?",
       "options": [
-        "Cost and latency explode from many inference calls",
-        "The model gets smarter automatically",
+        "Latency and inference cost explode first",
+        "The model becomes free to run",
         "Human oversight is no longer needed",
-        "Single-agent would be slower"
+        "Accuracy always becomes perfect"
       ],
       "answer_index": 0,
-      "why": "Each agent adds inference calls. At scale, cost and latency are the first tradeoffs to break."
+      "why": "Each agent adds inference calls, so cost and wait time scale quickly and coordination can fail."
     },
     {
-      "q": "You need high accuracy for a complex legal review. What pattern fits best?",
+      "q": "What does human-in-the-loop mean?",
       "options": [
-        "Single-agent with no oversight",
-        "Multi-agent team with human-in-the-loop",
-        "No agent, just autocomplete",
-        "Single-agent because it's cheapest"
+        "A person reviews or approves high-stakes agent actions",
+        "The AI trains a human to be faster",
+        "Agents only talk to other agents",
+        "No human is ever involved"
       ],
-      "answer_index": 1,
-      "why": "Complex tasks favor multi-agent for accuracy, and high-stakes tasks need human oversight per your save."
+      "answer_index": 0,
+      "why": "It's required oversight for risky tasks to catch errors before they cause harm."
     }
   ],
   "sources": [
     "gle-com-architecture-choose-design-pattern-agentic-ai-system"
   ],
-  "extra": [],
+  "extra": [
+    "Vertex AI Agent Builder lets you orchestrate single and multi-agent systems with built-in tool use."
+  ],
   "level": 2,
   "topic": "AI & Machine Learning",
   "save_ids": [
     "gle-com-architecture-choose-design-pattern-agentic-ai-system"
   ],
-  "words": 204,
+  "words": 230,
   "word_limit": 200,
-  "mermaid": "flowchart TD\n  n0[\"Your Task\"]\n  n1[\"Check: Complex?\"]\n  n2[\"Single Agent: Fast   Cheap\"]\n  n3[\"Multi-Agent Team: Accurate\"]\n  n4[\"Cost   Latency Tradeoff\"]\n  n5[\"Human-in-the-loop if High Stakes\"]\n  n0 --> n1\n  n1 -->|\"simple\"| n2\n  n1 -->|\"complex\"| n3\n  n2 --> n4\n  n3 --> n4\n  n4 --> n5",
+  "mermaid": "flowchart TD\n  n0[\"Your Goal\"]\n  n1[\"Choose Pattern\"]\n  n2[\"Single Agent: fast   cheap\"]\n  n3[\"Multi-Agent: specialists\"]\n  n4[\"Tradeoff: latency, cost, accuracy\"]\n  n5[\"Human-in-the-loop if high stakes\"]\n  n0 -->|\"complex?\"| n1\n  n1 -->|\"simple task\"| n2\n  n1 -->|\"complex task\"| n3\n  n2 --> n4\n  n3 --> n4\n  n4 -->|\"risk check\"| n5",
   "animation": [
     {
       "node": "n0",
-      "narration": "Start with your goal and workflow."
+      "narration": "Start with your goal and how complex it is."
     },
     {
       "node": "n1",
-      "narration": "Ask: is it open-ended and multi-step?"
+      "narration": "Pick single vs multi-agent pattern based on requirements."
     },
     {
       "node": "n2",
-      "narration": "If simple, one agent is faster and cheaper."
+      "narration": "Use one agent for simple workflows to save time and money."
     },
     {
       "node": "n3",
-      "narration": "If complex, a team of agents is more accurate."
+      "narration": "Use many agents for complex multi-step workflows."
     },
     {
       "node": "n4",
-      "narration": "More agents means more inference calls, cost, and latency."
+      "narration": "Check latency vs accuracy and cost of inference calls."
     },
     {
       "node": "n5",
@@ -187,12 +189,24 @@
   ],
   "judge": {
     "drafts": 3,
-    "best": "D1",
-    "why": "",
+    "best": "D3",
+    "why": "D3 best matches beginner level: starts with an everyday analogy, defines agent, pattern, inference calls, latency, accuracy and human-in-the-loop in plain words, flows clearly to trade-offs, and its quiz checks real choices.",
     "scores": {
-      "D1": null,
-      "D2": null,
-      "D3": null
+      "D1": {
+        "grounding": 8,
+        "level_fit": 4,
+        "clarity": 7
+      },
+      "D2": {
+        "grounding": 7,
+        "level_fit": 5,
+        "clarity": 7
+      },
+      "D3": {
+        "grounding": 8,
+        "level_fit": 6,
+        "clarity": 8
+      }
     },
     "temperatures": [
       0.4,

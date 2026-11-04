@@ -1,185 +1,181 @@
 {
-  "title": "How 7 Prompts Turn ChatGPT Into Your DSA Tutor",
-  "subtitle": "You don't need another tutorial — you need an AI that adapts to you.",
-  "intro": "You watched the same DSA tutorial 3 times and still got stuck on the code. What if you could ask it to explain it your way instead?",
-  "takeaway": "Prompt engineering turns a general AI into a personal tutor that adapts to your level, mistakes, and pace.",
+  "title": "Learn DSA With an AI Coach, Not Just Videos",
+  "subtitle": "7 prompts turn ChatGPT into your personal tutor",
+  "intro": "Tutorials made you watch. ChatGPT made you think, says Minhaz. What if the same 7 questions could fix your mistakes at your pace?",
+  "takeaway": "Prompt engineering turns AI into a personal DSA tutor, but you must verify its answers.",
   "sections": [
     {
-      "heading": "Analogy: personal trainer vs. YouTube workout",
-      "body": "A tutorial is like a YouTube workout video. It plays the same for everyone.\n\nA good prompt is like telling a personal trainer: \"I'm a beginner, my knees hurt, go slow.\" Prompt engineering means writing clear instructions so the AI knows your level, your goal, and how to teach you.\n\nThat shift is why the next idea matters."
+      "heading": "Analogy: A coach, not a video",
+      "body": "Learning from a tutorial is like watching a basketball video. It plays the same for everyone.\n\nLearning with AI is like a coach watching you. Prompt engineering means writing clear instructions so the AI teaches to your level, your mistakes, and your pace.\n\nWith the right prompt, it can explain intuition, break a problem down, and spot your bug, which is why it exists."
     },
     {
-      "heading": "Why it exists: tutorials can't adapt to you",
-      "body": "Tutorials teach everyone the same way. An AI tutor can adapt to your pace, your mistakes, and your gaps.\n\nWith 7 prompts from your save, you can ask for concept intuition, problem breakdown, pattern recognition, debugging, and time and space complexity help.\n\nYou learn by thinking, not just watching. But personal doesn't mean perfect."
+      "heading": "Why does this exist? Personal help without paid courses",
+      "body": "Tutorials teach everyone the same way and can't see your code.\n\nMinhaz's 7 prompts fix that. They ask AI to build concept intuition, debug your code, break problems into steps, recognize patterns, and analyze time and space complexity. Time complexity means how runtime grows, space complexity means how memory grows.\n\nIt's personalized learning with AI, without paid courses. But personal help has a price, shown next."
     },
     {
-      "heading": "What can go wrong: when your tutor hallucinates",
-      "body": "An AI tutor can sound confident and still be wrong. It can give you a buggy solution, a fake pattern, or an inefficient answer.\n\nIf you copy without testing edge cases or checking complexity, you learn the mistake.\n\nUse prompts to ask \"why\" and \"show me a test case,\" not just \"give me the code.\""
+      "heading": "What can go wrong? When your coach is wrong",
+      "body": "An AI tutor can hallucinate a wrong answer or a weak complexity analysis and sound confident.\n\nIf you copy without testing edge-cases, you learn the mistake, not the pattern. Pattern-based problem solving only works if you practice and verify.\n\nUse prompts to think, then test the code yourself."
     }
   ],
   "diagram": {
     "nodes": [
       {
-        "id": "you",
-        "label": "You + your level/mistake"
+        "id": "n1",
+        "label": "You ask vague question"
       },
       {
-        "id": "prompt",
-        "label": "Prompt (clear instruction)"
+        "id": "n2",
+        "label": "Prompt engineering"
       },
       {
-        "id": "ai",
-        "label": "ChatGPT Tutor"
+        "id": "n3",
+        "label": "AI personal tutor"
       },
       {
-        "id": "personal",
-        "label": "Personalized lesson"
+        "id": "n4",
+        "label": "Feedback on your mistake"
       },
       {
-        "id": "check",
-        "label": "You test & verify"
+        "id": "n5",
+        "label": "You verify and learn"
       }
     ],
     "edges": [
       [
-        "you",
-        "prompt",
-        "write"
+        "n1",
+        "n2",
+        ""
       ],
       [
-        "prompt",
-        "ai",
-        "guides"
+        "n2",
+        "n3",
+        ""
       ],
       [
-        "ai",
-        "personal",
-        "creates"
+        "n3",
+        "n4",
+        ""
       ],
       [
-        "personal",
-        "check",
-        "needs"
+        "n4",
+        "n5",
+        ""
       ]
     ]
   },
   "steps": [
     {
-      "node_id": "you",
-      "narration": "You start with your specific level and stuck point."
+      "node_id": "n1",
+      "narration": "You start stuck on a DSA concept or bug."
     },
     {
-      "node_id": "prompt",
-      "narration": "You write a prompt that tells the AI how to teach you."
+      "node_id": "n2",
+      "narration": "You craft a clear prompt for your level and goal."
     },
     {
-      "node_id": "ai",
-      "narration": "ChatGPT adapts its explanation to you, not everyone."
+      "node_id": "n3",
+      "narration": "ChatGPT adapts and explains like a personal tutor."
     },
     {
-      "node_id": "personal",
-      "narration": "You get intuition, breakdown, and practice at your pace."
+      "node_id": "n4",
+      "narration": "It breaks down the problem and fixes your mistake."
     },
     {
-      "node_id": "check",
-      "narration": "You test the answer for bugs and complexity before trusting it."
+      "node_id": "n5",
+      "narration": "You test edge-cases and complexity yourself."
     }
   ],
   "quiz": [
     {
-      "q": "What does prompt engineering mean here?",
+      "q": "What is prompt engineering in this lesson?",
       "options": [
-        "Writing clear instructions so AI teaches at your level",
-        "Watching more tutorials faster",
-        "Paying for a DSA course",
-        "Memorizing code patterns"
+        "Writing clear instructions so AI teaches to your needs",
+        "Paying for DSA video courses",
+        "Memorizing code without understanding",
+        "Watching the same tutorial faster"
       ],
       "answer_index": 0,
-      "why": "Your save shows 7 prompts that make ChatGPT adapt to your level, mistakes, and pace."
+      "why": "The save shows prompts make AI adapt to your level, mistakes, and pace."
     },
     {
-      "q": "Why does personalized AI tutoring exist instead of just tutorials?",
+      "q": "Why does this AI approach exist compared to tutorials?",
       "options": [
-        "Tutorials are too short",
-        "Tutorials teach everyone the same way and can't adapt",
-        "AI is cheaper to build",
-        "Tutorials don't use video"
+        "Tutorials adapt to your personal mistakes",
+        "AI gives personalized intuition, debugging, and pattern help instantly",
+        "AI replaces all practice",
+        "Videos are always more personal"
       ],
       "answer_index": 1,
-      "why": "The save says tutorials teach everyone the same way, while ChatGPT teaches you personally."
+      "why": "Tutorials teach everyone the same; prompts ask for intuition, breakdown, debugging, and complexity."
     },
     {
-      "q": "What can go wrong if you trust the AI tutor blindly?",
+      "q": "What breaks or goes wrong if you trust the AI blindly?",
       "options": [
-        "It will always give optimal time and space complexity",
-        "It can confidently give buggy or inefficient code you then memorize",
-        "It will refuse to debug",
-        "It will delete your progress"
+        "You automatically become an expert",
+        "AI can hallucinate wrong answers and you may learn the mistake",
+        "Videos will stop existing",
+        "Complexity analysis is never needed"
       ],
       "answer_index": 1,
-      "why": "AI can hallucinate wrong solutions, so you must test edge cases and verify complexity."
+      "why": "AI can sound confident while wrong, so you must verify with tests and edge-cases."
     }
   ],
   "sources": [
     "DTg1Dnqk8tY"
   ],
-  "extra": [
-    "DSA = Data Structures and Algorithms, core topics for coding interviews."
-  ],
+  "extra": [],
   "level": 2,
   "topic": "AI & Machine Learning",
   "save_ids": [
     "DTg1Dnqk8tY"
   ],
-  "words": 194,
+  "words": 201,
   "word_limit": 200,
-  "mermaid": "flowchart TD\n  n0[\"You + your level/mistake\"]\n  n1[\"Prompt (clear instruction)\"]\n  n2[\"ChatGPT Tutor\"]\n  n3[\"Personalized lesson\"]\n  n4[\"You test   verify\"]\n  n0 -->|\"write\"| n1\n  n1 -->|\"guides\"| n2\n  n2 -->|\"creates\"| n3\n  n3 -->|\"needs\"| n4",
+  "mermaid": "flowchart TD\n  n0[\"You ask vague question\"]\n  n1[\"Prompt engineering\"]\n  n2[\"AI personal tutor\"]\n  n3[\"Feedback on your mistake\"]\n  n4[\"You verify and learn\"]\n  n0 --> n1\n  n1 --> n2\n  n2 --> n3\n  n3 --> n4",
   "animation": [
     {
       "node": "n0",
-      "narration": "You start with your specific level and stuck point."
+      "narration": "You start stuck on a DSA concept or bug."
     },
     {
       "node": "n1",
-      "narration": "You write a prompt that tells the AI how to teach you."
+      "narration": "You craft a clear prompt for your level and goal."
     },
     {
       "node": "n2",
-      "narration": "ChatGPT adapts its explanation to you, not everyone."
+      "narration": "ChatGPT adapts and explains like a personal tutor."
     },
     {
       "node": "n3",
-      "narration": "You get intuition, breakdown, and practice at your pace."
+      "narration": "It breaks down the problem and fixes your mistake."
     },
     {
       "node": "n4",
-      "narration": "You test the answer for bugs and complexity before trusting it."
+      "narration": "You test edge-cases and complexity yourself."
     }
   ],
   "rules_used": [],
-  "agent_trace": [
-    {
-      "tool": "search_saves",
-      "args": {
-        "query": "AI machine learning personalized tutoring prompts",
-        "topic": "AI & Machine Learning"
-      }
-    },
-    {
-      "tool": "read_save",
-      "args": {
-        "save_id": "DTg1Dnqk8tY"
-      }
-    }
-  ],
+  "agent_trace": [],
   "judge": {
     "drafts": 3,
-    "best": "D1",
-    "why": "",
+    "best": "D3",
+    "why": "D3 is the most grounded and readable: it uses the source's watch-vs-think hook, one coach analogy, plain definitions for prompt engineering and complexity, a clear flow into risks, and quizzes testing real understanding.",
     "scores": {
-      "D1": null,
-      "D2": null,
-      "D3": null
+      "D1": {
+        "grounding": 6,
+        "level_fit": 5,
+        "clarity": 6
+      },
+      "D2": {
+        "grounding": 5,
+        "level_fit": 7,
+        "clarity": 7
+      },
+      "D3": {
+        "grounding": 7,
+        "level_fit": 7,
+        "clarity": 8
+      }
     },
     "temperatures": [
       0.4,
