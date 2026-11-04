@@ -4,7 +4,11 @@
 
 Built for the Meta Global AI Developer Hackathon (Indie track, "Build for Your World") with Muse Spark Open.
 
-![Today: your backlog in numbers and today's 15-minute lesson](docs/today.png)
+**Try it in one minute:** clone, `pip install -r requirements.txt`, run with `TUTOR_DATA=demo` (see [Run it](#run-it)), press **Try the demo**. No API keys needed.
+
+| Landing | Today: your backlog and a 15-minute pick | A lesson from your saves |
+|---|---|---|
+| ![Landing page](docs/landing.png) | ![Today](docs/today.png) | ![Lesson as an article](docs/article.png) |
 
 ## The problem
 
@@ -22,7 +26,7 @@ Keep saving the way you already do. Yaad, a small study buddy, does the rest:
 
 1. **Reads everything you save**, even carousels (every slide, by OCR) and Reels (a short brief). Each one is filed by topic, with its time to read and its difficulty.
 2. **Plans your backlog for you.** The home screen shows the pile in numbers: saved, learned, waiting, fading, gone. Every day it picks a coherent 15-minute bite: one deep read plus one quick save from the same topic. No setup.
-3. **Teaches it at your level, from your own saves.** It uses the real diagram, cropped out of the post you saved, next to a kid-simple picture. Then a quiz, with a teach-back you can do if you want.
+3. **Teaches it at your level, from your own saves**, as a short article you'd actually read: a hook, one analogy, a takeaway. It shows the real diagram cropped out of the post you saved next to a kid-simple picture, then a quiz and an optional teach-back. **Make it your way** at the end switches images, diagram, audio and depth (1 to 5) for that lesson.
 4. **Checks you remember**, right before you'd forget: spaced review on a Leitner schedule (1, 3, 7, 21 days).
 5. **Answers "that Reel about system design last month"**: ask in words or by voice, across everything you saved.
 6. **Connects the dots**: one topic across all your saves. It shows what agrees, what disagrees, what's missing, and the order to learn it in.
@@ -75,6 +79,8 @@ landing page and the app; there is no real authentication yet.
 
 The demo corpus (`demo/`) holds 24 public posts by other creators on software, AI, careers and design. Each keeps only a short excerpt and Yaad's own analysis. My personal saves are not in this repo.
 
+**Honest note on the demo lessons:** they were re-made with the article-style prompt on Nov 4 while the Meta API (Muse Wonder) was unreachable from my network, so each is a single Spark Open draft rather than a judged best of 3. With keys, new lessons use the full best-of-3 path.
+
 ## Architecture
 
 ```
@@ -98,6 +104,6 @@ saves (link / note) ──► read: fetch (SSRF-safe) · OCR · Reel brief ─�
 
 ## What's next
 
-This web app is the learning half of **Yaadsi** (yaadsi.com). The capture half is a Telegram bot, and WhatsApp next: you share a link the way you already do, and get a daily nudge with today's lesson. The nudge shown on the Today screen is marked "coming" because it isn't built into this demo.
+This web app is the learning half of **Yaadsi** (yaadsi.com). The capture half is a Telegram bot, and WhatsApp next: you share a link the way you already do, and get a daily nudge with today's lesson. The nudge shown on the Today screen is marked "coming" because it isn't built into this demo, and the login is a mock (one demo account) that only separates the landing page from the app.
 
 *Yaad* means memory in Hindi. Yaadsi remembers, so you don't have to.
