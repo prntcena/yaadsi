@@ -19,7 +19,7 @@ jobs:
     env:
       TUTOR_DATA: demo
       TUTOR_PICK_SEED: replay
-      TUTOR_PROFILE: ${{ runner.temp }}/remake-profile.json
+      TUTOR_PROFILE: /tmp/remake-profile.json   # a throwaway learner; the runner context isn't available at job level
       META_API_KEY: ${{ secrets.META_API_KEY }}
       BASETEN_API_KEY: ${{ secrets.BASETEN_API_KEY }}
     steps:
