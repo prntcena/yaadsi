@@ -79,7 +79,7 @@ landing page and the app; there is no real authentication yet.
 
 The demo corpus (`demo/`) holds 24 public posts by other creators on software, AI, careers and design. Each keeps only a short excerpt and Yaad's own analysis. My personal saves are not in this repo.
 
-**Honest note on the demo lessons:** they were re-made with the article-style prompt on Nov 4 while the Meta API (Muse Wonder) was unreachable from my network, so each is a single Spark Open draft rather than a judged best of 3. With keys, new lessons use the full best-of-3 path.
+The demo lessons and their Muse Image pictures were made the same way a live lesson is (three Spark Open drafts, Muse Wonder picks one), by the [Remake demo lessons](.github/workflows/remake-demo.yml) workflow, since my office network can't reach the Meta API. Each lesson keeps Wonder's reason in its `judge` field.
 
 ## Architecture
 
