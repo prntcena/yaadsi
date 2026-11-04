@@ -116,7 +116,9 @@ def graph() -> dict:
                 continue
             saves_out.setdefault(sid, {"id": sid, "kind": "save", "title": (s.get("title") or s["raw_title"])[:80],
                                        "platform": s["platform"], "difficulty": s.get("difficulty", 3), "minutes": int(s.get("minutes") or 10),
-                                       "note": s.get("user_note", "")[:80], "topics": []})["topics"].append(tid)
+                                       "note": s.get("user_note", "")[:80], "url": s.get("url", ""),
+                                       "available": s.get("available", True) is not False,
+                                       "learnable": s.get("learnable", True) is not False, "topics": []})["topics"].append(tid)
             links.append({"source": sid, "target": tid, "kind": "topic"})
     words = {sid: _concept_words(all_saves[sid]) for sid in saves_out}
     seen = set()

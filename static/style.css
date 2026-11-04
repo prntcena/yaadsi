@@ -322,7 +322,7 @@ body { background-repeat: no-repeat; background-attachment: fixed; min-height: 1
 .brain .has-focus .save.focus .save-label { display: block; }
 .brain .has-focus .save:not(.focus) .cell { opacity: .08; }
 .brain .has-focus .save.focus .cell { opacity: 1; cursor: pointer; }
-.brain .save.focus:focus-visible { outline: none; }
+.brain .save.focus:focus, .brain .save.focus:focus-visible { outline: none; }   /* the cell stroke below is the keyboard ring */
 .brain .save.focus:focus-visible .cell { stroke: var(--ink); stroke-width: 3; }
 .brain-back { position: absolute; top: 10px; left: 10px; z-index: 2; background: var(--panel); box-shadow: var(--shadow); }
 .topic-saves { margin-top: 10px; }
@@ -894,3 +894,12 @@ body.view-setup:has(#customise[open]) .dock-slot { bottom: 96px; }
 .ask-try { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 8px 0; }
 .ask-try[hidden] { display: none; }
 .ask-try .chip { max-width: 100%; white-space: normal; text-align: left; }
+
+/* a pinned save card in Your saves: Learn it / Open original */
+.brain-tip.pinned { pointer-events: auto; max-width: 260px; }
+.brain-tip .tip-actions { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.brain-tip .tip-actions .chip { font-size: .78rem; padding: 4px 10px; text-decoration: none; }
+.brain-tip .tip-actions .primary-chip { background: var(--accent); color: var(--on-primary); border-color: var(--accent); }
+/* in a zoomed topic the save labels are tap targets too (they open the same card as the dot) */
+.brain .has-focus .save.focus .save-label { pointer-events: auto; cursor: pointer; }
+.brain .has-focus .save.focus .cell { cursor: pointer; }

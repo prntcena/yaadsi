@@ -150,6 +150,7 @@ async function loadBrain() {
     const data = await api("/api/graph");
     brain = Brain.render($("#brain"), data, {
       onSelect: (name) => { pickTopic(name); openCustomise(); },
+      onLearn: (id) => openMini(id),
       onHover: (t) => {
         if (!window.Yaad || !t) return;
         Yaad.mood("curious", 1500);
@@ -185,6 +186,7 @@ function renderTopicSaves(t, mine) {
       const on = () => brain?.highlight(s.id, true), off = () => brain?.highlight(s.id, false);
       chip.addEventListener("mouseenter", on); chip.addEventListener("focus", on);
       chip.addEventListener("mouseleave", off); chip.addEventListener("blur", off);
+      chip.addEventListener("click", () => { if (!brain?.pin(s.id, chip)) openMini(s.id); });   // Learn it / Open original
       return chip;
     })));
 }

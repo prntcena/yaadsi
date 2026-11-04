@@ -19,7 +19,7 @@
     return [parts.slice(0, half).join(", "), `& ${parts.slice(half).join(", ")}`];
   }
 
-  function render(container, data, { onSelect, onHover, onFocusChange } = {}) {
+  function render(container, data, { onSelect, onHover, onFocusChange, onLearn } = {}) {
     if (!window.d3) throw new Error("d3 unavailable");
     const d3 = window.d3;
     container.replaceChildren();
@@ -78,10 +78,33 @@
     const tip = document.createElement("div");
     tip.className = "brain-tip"; tip.hidden = true;
     container.append(back, tip);
-    let pinned = null;
-    function showTip(s, at) {
-      tip.replaceChildren(...[["t", s.title], ["m", `${platformOf(s)[1]}${s.minutes ? ` · ${s.minutes} min` : ""}${s.held_out ? " · kept for your blind test" : ""}`],
-        ...(s.note ? [["n", `Your note: ${s.note}`]] : [])].map(([cls, text]) => { const d = document.createElement("div"); d.className = cls; d.textContent = text; return d; }));
+    let pinned = null, returnFocus = null;
+    const line = (cls, text) => { const d = document.createElement("div"); d.className = cls; d.textContent = text; return d; };
+    function actions(s) {   // only on a pinned card: the hover card disappears before you could click it
+      const row = document.createElement("div");
+      row.className = "tip-actions";
+      if (s.learnable && s.available && !s.held_out && onLearn) {
+        const learn = document.createElement("button");
+        learn.type = "button"; learn.className = "chip primary-chip"; learn.textContent = "Learn it";
+        learn.addEventListener("click", () => { closeTip(); onLearn(s.id); });
+        row.append(learn);
+      }
+      if (!s.available) row.append(line("n", "No longer online: removed or made private."));
+      else if (/^https?:\/\//i.test(s.url || "")) {   // never a javascript: or data: link
+        const open = document.createElement("a");
+        open.className = "chip"; open.href = s.url; open.target = "_blank"; open.rel = "noopener noreferrer";
+        open.textContent = "Open original ↗"; open.setAttribute("aria-label", `Open the original ${platformOf(s)[1]} in a new tab`);
+        row.append(open);
+      }
+      return row.childNodes.length ? [row] : [];
+    }
+    function showTip(s, at, withActions = false) {
+      tip.replaceChildren(line("t", s.title),
+        line("m", `${platformOf(s)[1]}${s.minutes ? ` · ${s.minutes} min` : ""}${s.held_out ? " · kept for your blind test" : ""}`),
+        ...(s.note ? [line("n", `Your note: ${s.note}`)] : []), ...(withActions ? actions(s) : []));
+      tip.classList.toggle("pinned", withActions);
+      if (withActions) { tip.setAttribute("role", "dialog"); tip.setAttribute("aria-label", s.title); }
+      else { tip.removeAttribute("role"); tip.removeAttribute("aria-label"); }
       tip.hidden = false;
       const box = container.getBoundingClientRect();
       const x = at.clientX - box.left, y = at.clientY - box.top, tw = tip.offsetWidth, th = tip.offsetHeight;
@@ -89,6 +112,16 @@
       tip.style.top = `${y + 12 + th > box.height ? Math.max(6, y - th - 12) : y + 12}px`;   // flip above near the bottom
     }
     const hideTip = () => { if (!pinned) tip.hidden = true; };
+    function pin(s, at, { keyboard = false, opener = null } = {}) {
+      pinned = s; returnFocus = opener;
+      showTip(s, at, true);
+      if (keyboard) tip.querySelector("button, a")?.focus();
+    }
+    function closeTip() {
+      const back = returnFocus;
+      pinned = null; returnFocus = null; tip.hidden = true;
+      return back;
+    }
 
     // ---- camera
     let k = 1;
@@ -124,6 +157,7 @@
       return { mine, scale: sc };
     }
     function focusOn(t) {
+      closeTip();
       focused = t;
       const { mine, scale } = placeRings(t);
       const ids = new Set(mine.map((s) => s.id));
@@ -143,6 +177,7 @@
       onFocusChange?.(t, mine);
     }
     function unfocus() {
+      closeTip();
       if (!focused) return;
       focused = null;
       svg.classed("has-focus", false);
@@ -177,17 +212,19 @@
       .on("mouseenter", (ev, t) => onHover?.(t)).on("mouseleave", () => onHover?.(null));   // not on focus: aria-label covers keyboard users
     saveG.on("mouseenter", (ev, s) => { d3.select(ev.currentTarget).classed("hover", true); if (!pinned) showTip(s, ev); })
       .on("mouseleave", (ev) => { d3.select(ev.currentTarget).classed("hover", false); hideTip(); })
-      .on("click", (ev, s) => { ev.stopPropagation(); pinned = s; showTip(s, ev); })
+      .on("click", (ev, s) => { ev.stopPropagation(); pin(s, ev); })
       .on("keydown", (ev, s) => {
         if (ev.key !== "Enter" && ev.key !== " ") return;
         ev.preventDefault();
         const r = ev.currentTarget.getBoundingClientRect();
-        pinned = s; showTip(s, { clientX: r.right, clientY: r.top });
+        pin(s, { clientX: r.right, clientY: r.top }, { keyboard: true, opener: ev.currentTarget });
       });
-    bg.on("click", () => { pinned = null; tip.hidden = true; });
+    bg.on("click", () => closeTip());
     svg.on("dblclick", (ev) => { if (ev.target === bg.node()) unfocus(); });
     back.addEventListener("click", unfocus);
-    container.addEventListener("keydown", (ev) => { if (ev.key === "Escape" && focused) { ev.preventDefault(); unfocus(); topicSel.filter((t) => t.id === selectedId).node()?.focus(); } });
+    container.addEventListener("keydown", (ev) => {
+      if (ev.key === "Escape" && pinned) { ev.preventDefault(); ev.stopPropagation(); closeTip()?.focus(); return; }   // the card first, then the zoom
+      if (ev.key === "Escape" && focused) { ev.preventDefault(); unfocus(); topicSel.filter((t) => t.id === selectedId).node()?.focus(); } });
 
     // ---- forces: topics pinned on the ring; saves gather around their topic
     const sim = d3.forceSimulation([...topics, ...saves])
@@ -226,6 +263,13 @@
       select: (name, opts) => select(name, opts || { zoomIn: false }),
       unfocus, pause, resume,
       highlight: (id, on) => saveG.filter((s) => s.id === id).classed("hover", on),
+      pin: (id, opener) => {   // a chip under the graph: the same card, next to that save's dot
+        const node = saveG.filter((s) => s.id === id);
+        if (node.empty()) return false;
+        const r = node.node().getBoundingClientRect();
+        pin(node.datum(), { clientX: r.right, clientY: r.top }, { keyboard: true, opener });
+        return true;
+      },
       setStates: (map) => {                               // mastery overlay: {save id: new|learning|review|mastered} or null
         svg.classed("mastery", !!map);
         saveG.attr("data-state", (s) => (map ? map[s.id] || "new" : null));
