@@ -1,4 +1,4 @@
-"""Yaadsi Tutor web app (local only).
+"""Yaadsi Tutor web app: local, or the keyless replay demo on Vercel (see HOSTED below).
 
     python -m uvicorn app:app --port 8765
 """
@@ -20,7 +20,13 @@ from fastapi.staticfiles import StaticFiles
 from starlette.middleware.trustedhost import TrustedHostMiddleware
 from pydantic import BaseModel, Field
 
-import ask
+HOSTED = bool(os.environ.get("VERCEL"))   # the hosted replay demo: set by Vercel itself, before the modules below read it
+if HOSTED:   # the public corpus, no background builds, and a throwaway learner in the only writable folder
+    os.environ.setdefault("TUTOR_DATA", "demo")
+    os.environ.setdefault("TUTOR_PREWARM", "0")
+    os.environ.setdefault("TUTOR_PROFILE", "/tmp/yaadsi-profile.json")
+
+import ask  # noqa: E402  (after the hosted defaults)
 import eval as evaluation
 import improve
 import ingest
@@ -37,10 +43,15 @@ import tools
 import visuals
 from lesson import cache_key, is_cached, make_lesson
 
+if HOSTED and llm.has_keys():   # the login is a published mock, so a hosted key would be anyone's to spend
+    raise RuntimeError("The hosted demo runs in replay mode: remove the API keys from the Vercel project.")
+
 STATIC = llm.HERE / "static"
 app = FastAPI(title="Yaadsi Tutor")
 # Local-only app: reject other Host headers so a DNS-rebinding page cannot drive the paid endpoints.
-app.add_middleware(TrustedHostMiddleware, allowed_hosts=["127.0.0.1", "localhost"])
+# The hosted demo also answers on Vercel's domain; it runs with no keys, so nothing there is paid.
+app.add_middleware(TrustedHostMiddleware,
+                   allowed_hosts=["127.0.0.1", "localhost"] + (["*.vercel.app"] if HOSTED else []))
 app.mount("/static", StaticFiles(directory=STATIC), name="static")
 
 UPLOAD_LIMIT = 5 * 1024 * 1024 + 64 * 1024   # the 5 MB recording plus multipart overhead
